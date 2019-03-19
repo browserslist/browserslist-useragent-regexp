@@ -1,4 +1,3 @@
-const browserslist = require('browserslist');
 const {
 	semverify,
 	rangedSemverToRegExpParts,
@@ -12,54 +11,6 @@ const {
 	regExpToString
 } = require('./regexp');
 
-const BROWSERS_SHIRTNAMES = {
-	bb:             'BlackBerry',
-	and_chr:        'Chrome',
-	ChromeAndroid:  'Chrome',
-	FirefoxAndroid: 'Firefox',
-	ff:             'Firefox',
-	ie:             'Explorer',
-	ie_mob:         'ExplorerMobile',
-	and_ff:         'Firefox',
-	ios_saf:        'iOS',
-	op_mini:        'OperaMini',
-	op_mob:         'OperaMobile',
-	and_qq:         'QQAndroid',
-	and_uc:         'UCAndroid'
-};
-const BROWSERS_SHIRTNAMES_REGEXP = new RegExp(`(${Object.keys(BROWSERS_SHIRTNAMES).join('|')})`);
-
-function normalizeQuery(query) {
-
-	const matches = query.match(BROWSERS_SHIRTNAMES_REGEXP)
-
-	if (Array.isArray(matches)) {
-
-		const [shirtName] = matches;
-
-		return query.replace(shirtName, BROWSERS_SHIRTNAMES[shirtName]);
-	}
-
-	return query;
-}
-
-function parseBrowsersList(browsersList) {
-	return [].concat(
-        ...browsersList.map((browser) => {
-
-            const [
-                name,
-                ...versions
-            ] = browser.split(/ |-/);
-            const family = (BROWSERS_SHIRTNAMES[name] || name).toLowerCase();
-
-            return versions.map(version => ({
-                family,
-                version: semverify(version)
-            }));
-        })
-    );
-}
 
 function applyVersionsToRegExp(regExp, versions, options) {
 
@@ -125,24 +76,3 @@ function applyVersionsToRegExps(regExps, browsers, options) {
 }
 
 exports.applyVersionsToRegExps = applyVersionsToRegExps;
-
-function getBrowsersList({
-	browsers: queries,
-    env,
-    path
-} = {}) {
-
-	const normalizedQuery = Array.isArray(queries)
-		? queries.map(normalizeQuery)
-		: '';
-	const browsers = browserslist(normalizedQuery, {
-		env,
-		path
-	});
-	console.log(browsers);
-    const parsedBrowsers = parseBrowsersList(browsers);
-    
-    return parsedBrowsers;
-}
-
-exports.getBrowsersList = getBrowsersList;

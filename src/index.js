@@ -29,7 +29,6 @@ function createRegExp({
 	const sourceRegExps = findBrowsersRegExps(mergedBrowsers, options);
 	const rangedBrowsers = browsersVersionsToRanges(mergedBrowsers);
 	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
-	// todo: merge common parts in regexps
 	console.log(rangedBrowsers);
 	console.log(regExps);
 }

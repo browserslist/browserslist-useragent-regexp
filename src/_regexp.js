@@ -1,18 +1,4 @@
 
-const NUMBER_PATTERN = '\\d+';
-const BRACED_NUMBER_PATTERN = `(${NUMBER_PATTERN})`;
-const ESCAPE_SYMBOL = '\\';
-
-function join(parts, wrapRequired) {
-
-    const joined = parts.join('|');
-
-    return wrapRequired || parts.length
-        ? `(${joined})`
-        : joined;
-}
-
-exports.join = join;
 
 function rayRangePart(number, includes) {
 
@@ -63,7 +49,7 @@ function optimizeRayPartsParts(parts) {
 
             digitsSymbolsCount = parts.filter(filterDigitsSymbol).length;
             prevDigitsSymbolsCount = prev.filter(filterDigitsSymbol).length;
-            
+
             if (digitsSymbolsCount <= prevDigitsSymbolsCount) {
                 return false;
             }
@@ -163,10 +149,6 @@ function extractCommonStart(a, b) {
         parseInt(diffA),
         parseInt(diffB)
     ];
-}
-
-function numberToDigits(number) {
-    return Array.from(number.toString()).map(Number);
 }
 
 function rayToRegExpParts(from) {
@@ -306,15 +288,15 @@ exports.rangeToRegExp = rangeToRegExp;
 /*
     2 ([2-9]|\d{2,})
     34 ([3-9][4-9]|[4-9]\d|\d{3,})
-    123 ([1-9][2-9][3-9]|[1-9][3-9]\d|[2-9]\d\d|\d{4,}) 
+    123 ([1-9][2-9][3-9]|[1-9][3-9]\d|[2-9]\d\d|\d{4,})
         3               2            1
-    223 ([2-9][2-9][3-9]|[2-9][3-9]\d|[3-9]\d\d|\d{4,}) 
+    223 ([2-9][2-9][3-9]|[2-9][3-9]\d|[3-9]\d\d|\d{4,})
         0 0    1    2   1 0    1*  2 2 0*  1 2
     4567 (
        0 [4-9][5-9][6-9][7-9]|
        1 [4-9][5-9][7-9]\d|
        2 [4-9][6-9]\d\d|
-       3 [5-9]\d\d\d|\d{5,}) 
+       3 [5-9]\d\d\d|\d{5,})
 
     2-8 ([2-8])
     8-16 ([8-9]|1[0-6])
@@ -357,11 +339,11 @@ exports.rangeToRegExp = rangeToRegExp;
 [ [ 2, 3, 4 ], [ 2, 3, '[4-9]' ], [ 2, '[4-9]', '[0-9]' ] ]
   0            1                  2
     0  1  2      0  1  2            0  1        2
-  3            2                  1                  
+  3            2                  1
   2            1                  0
     3  2  1      3  2  1            3  2        1
     2  1  0      2  1  0            2  1        0
-    
+
 */
 
 // console.log(q(234));
@@ -377,42 +359,7 @@ exports.rangeToRegExp = rangeToRegExp;
 // console.log(extractCommonStart([1], [1]));
 // console.log(splitToDecadeRanges(9, 10));
 
-function hasNumberPattern(regExp) {
-    return regExp.toString().includes(BRACED_NUMBER_PATTERN);
-}
 
-exports.hasNumberPattern = hasNumberPattern;
-
-function getNumberPatternsCount(regExp) {
-    return regExp.toString().split(BRACED_NUMBER_PATTERN).length - 1;
-}
-
-exports.getNumberPatternsCount = getNumberPatternsCount;
-
-function regExpToString(regExp) {
-    return regExp
-        .toString()
-        .replace(/^\/|\/$/g, '');
-}
-
-exports.regExpToString = regExpToString;
-
-function replaceNumbers(regExp, numbers, useString) {
-
-    const strRegExp = regExpToString(regExp);
-    const numberedStrRegExp = numbers.reduce(
-        (_, number) => _.replace(BRACED_NUMBER_PATTERN, number),
-        strRegExp
-    );
-
-    if (useString) {
-        return numberedStrRegExp;
-    }
-
-    return new RegExp(numberedStrRegExp);
-}
-
-exports.replaceNumbers = replaceNumbers;
 
 /*
 
