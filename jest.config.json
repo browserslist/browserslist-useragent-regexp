@@ -1,0 +1,16 @@
+{
+	"testEnvironment": "node",
+	"testRegex": "/test/.*\\.spec\\.ts$",
+	"transform": {
+		"^.+\\.(jsx?|tsx?)$": "babel-jest"
+	},
+	"collectCoverage": true,
+	"collectCoverageFrom": [
+		"src/**/*.{ts,tsx}",
+		"!**/node_modules/**"
+	],
+	"coverageReporters": [
+		"lcovonly",
+		"text"
+	]
+}
