@@ -1,13 +1,11 @@
-import { ISemver } from '../semver';
+import {
+	ISemver,
+	IRangedSemver
+} from '../semver';
 
 export interface IBrowser {
 	family: string;
 	version: ISemver;
-}
-
-export interface IBrowserVersions {
-	family: string;
-	versions: ISemver[];
 }
 
 export interface IBrowsersListRequest {
@@ -15,3 +13,7 @@ export interface IBrowsersListRequest {
 	env?: string;
 	path?: string;
 }
+
+export type IBrowsers = Map<string, ISemver[]>;
+
+export type IRangedBrowsers = Map<string, IRangedSemver[]>;

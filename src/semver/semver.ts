@@ -1,18 +1,9 @@
+import {
+	ISemverLike,
+	ISemver,
+	ISemverCompareOptions
+} from './types';
 // import { rangeToRegExp } from './regexp';
-
-export interface ISemverCompareOptions {
-	ignoreMinor?: boolean;
-	ignorePatch?: boolean;
-	allowHigherVersions?: boolean;
-}
-
-export type ISemver = [
-	number|string, // 'all'
-	number,
-	number
-];
-
-export type ISemverLike = string|(number|string)[];
 
 export function isAllVersion(version: any): version is 'all' {
 	return version === 'all';
@@ -25,7 +16,7 @@ export function semverify(version: ISemverLike): ISemver {
 		: version.toString().split('.');
 
 	if (isAllVersion(split[0])) {
-		return [split[0], 0, 0];
+		return [split[0] as any, 0, 0];
 	}
 
 	while (split.length < 3) {
