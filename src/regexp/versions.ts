@@ -1,25 +1,33 @@
-const {
-	semverify,
-	rangedSemverToRegExpParts,
-	getRequiredPartsCount
-} = require('./semver');
-const {
+import {
+	IRangedSemver,
+	ISemverCompareOptions,
+	rangedSemverToRegExp,
+	getRequiredSemverPartsCount
+} from '../semver';
+import {
+	IRangedBrowsers
+} from '../browsers';
+import {
+	IBrowserVersionRegExp
+} from '../useragent';
+import {
 	join,
-	findVersionSlug,
 	getNumberPatternsCount,
-	replaceNumbers,
+	replaceNumberPatterns,
 	regExpToString
-} = require('./regexp');
+} from './util';
+import {
+	getNumberPatternsPart
+} from './numbersPart';
 
+export function applyVersionsToRegExp(regExp: RegExp, versions: IRangedSemver[], options: ISemverCompareOptions) {
 
-function applyVersionsToRegExp(regExp, versions, options) {
-
-	let regExpStr = regExpToString(regExp);
 	let maxRequiredPartsCount = 1;
+	const regExpStr = regExpToString(regExp);
 	const numberPatternsCount = getNumberPatternsCount(regExpStr);
 	const suitableVersions = versions.map((version) => {
 
-		const requiredPartsCount = getRequiredPartsCount(version, options);
+		const requiredPartsCount = getRequiredSemverPartsCount(version, options);
 
 		maxRequiredPartsCount = Math.max(maxRequiredPartsCount, requiredPartsCount);
 
@@ -32,28 +40,27 @@ function applyVersionsToRegExp(regExp, versions, options) {
 		return null;
 	}
 
-	const slug = findVersionSlug(regExpStr, maxRequiredPartsCount);
+	const numberPatternsPart = getNumberPatternsPart(regExpStr, maxRequiredPartsCount);
 	// todo: optimize with refactor: ((60|61)) and etc
-	const versionsRegExp = join(suitableVersions.map(version => replaceNumbers(
-		slug,
-		rangedSemverToRegExpParts(version, options),
-		true
-	)));
-	const regExpWithVersions = new RegExp(
-		regExpStr.replace(slug, versionsRegExp)
+	const versionsRegExpPart = join(
+		suitableVersions.map(version =>
+			replaceNumberPatterns(
+				numberPatternsPart,
+				rangedSemverToRegExp(version, options)
+			)
+		)
 	);
-	// console.log(suitableVersions.map(version => replaceNumbers(
-	// 	slug,
-	// 	rangedSemverToRegExpParts(version, options),
-	// 	true
-	// )));
-	console.log(regExp, suitableVersions);
+	const regExpWithVersions = regExpStr.replace(numberPatternsPart, versionsRegExpPart);
 
 	return regExpWithVersions;
 }
 
-function applyVersionsToRegExps(regExps, browsers, options) {
-	return regExps
+export function applyVersionsToRegExps(
+	browserVersionRegExps: IBrowserVersionRegExp[],
+	browsers: IRangedBrowsers,
+	options: ISemverCompareOptions
+) {
+	return browserVersionRegExps
 		.map(({
 			family,
 			regExp,
@@ -62,7 +69,7 @@ function applyVersionsToRegExps(regExps, browsers, options) {
 		}) => ({
 			family,
 			sourceRegExp: regExp,
-			regExp:      resultVersion
+			regExp:       resultVersion
 				? regExp
 				: applyVersionsToRegExp(
 					regExp,
@@ -74,5 +81,3 @@ function applyVersionsToRegExps(regExps, browsers, options) {
 		}))
 		.filter(_ => _.regExp);
 }
-
-exports.applyVersionsToRegExps = applyVersionsToRegExps;

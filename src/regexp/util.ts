@@ -25,9 +25,11 @@ export function regExpToString(regExp: RegExp) {
 		.replace(/^\/|\/$/g, '');
 }
 
-export function replaceNumberPatterns(regExp: RegExp, numbers: string[]) {
+export function replaceNumberPatterns(regExp: string|RegExp, numbers: string[]) {
 
-	const strRegExp = regExpToString(regExp);
+	const strRegExp = typeof regExp === 'string'
+		? regExp
+		: regExpToString(regExp);
 	const numberedStrRegExp = numbers.reduce(
 		(_, num) => _.replace(BRACED_NUMBER_PATTERN, num),
 		strRegExp

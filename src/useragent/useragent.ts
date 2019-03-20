@@ -5,6 +5,7 @@ import {
 	IBrowserVersionRegExp,
 	BrowserRegExpSourceProps
 } from './types';
+import { uniq } from '../util';
 import {
 	someSemverMatched,
 	hasVersion,
@@ -90,13 +91,11 @@ export function fixBrowserFamily(family: string, regExp: RegExp) {
 
 				const families = matches[1].toLowerCase().split('|');
 
-				return Array.from(
-					new Set([
-						...families,
-						...families.map(_ => _.replace(/ /g, '')),
-						...families.map(_ => _.replace(/[_\-/\s]/g, ''))
-					])
-				);
+				return uniq([
+					...families,
+					...families.map(_ => _.replace(/ /g, '')),
+					...families.map(_ => _.replace(/[_\-/\s]/g, ''))
+				]);
 			}
 
 			return [];

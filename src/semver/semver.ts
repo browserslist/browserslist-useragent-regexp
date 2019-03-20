@@ -1,9 +1,14 @@
 import {
 	ISemverLike,
 	ISemver,
+	IRangedSemver,
 	ISemverCompareOptions
 } from './types';
-// import { rangeToRegExp } from './regexp';
+import { uniq } from '../util';
+import {
+	NUMBER_PATTERN,
+	rangeToRegExps
+} from '../regexp';
 
 export function isAllVersion(version: any): version is 'all' {
 	return version === 'all';
@@ -77,32 +82,34 @@ export function compareSemvers(
 	return major === majorBase;
 }
 
-// function rangedSemverToRegExpParts(rangedVersion, {
-// 	ignoreMinor,
-// 	ignorePatch,
-// 	allowHigherVersions
-// }) {
+export function rangedSemverToRegExp(rangedVersion: IRangedSemver, {
+	ignoreMinor,
+	ignorePatch,
+	allowHigherVersions
+}: ISemverCompareOptions) {
 
-// 	const ignoreIndex = isAllVersion(rangedVersion[0])
-// 		? 0
-// 		: ignoreMinor
-// 			? 1
-// 			: ignorePatch
-// 				? 2
-// 				: Infinity;
+	const ignoreIndex = isAllVersion(rangedVersion[0])
+		? 0
+		: ignoreMinor
+			? 1
+			: ignorePatch
+				? 2
+				: Infinity;
+	const numberPatterns: string[] = [].concat(
+		...rangedVersion.map((range, i) =>
+			i >= ignoreIndex
+				? NUMBER_PATTERN
+				: Array.isArray(range)
+					? rangeToRegExps(range[0], allowHigherVersions ? Infinity : range[1])
+					: range.toString()
+		)
+	);
+	const uniqNumberPatterns = uniq(numberPatterns);
 
-// 	return rangedVersion.map((range, i) =>
-// 		i >= ignoreIndex
-// 			? '\\d+'
-// 			: Array.isArray(range)
-// 				? rangeToRegExp(range[0], allowHigherVersions ? Infinity : range[1])
-// 				: range.toString()
-// 	);
-// }
+	return uniqNumberPatterns;
+}
 
-// exports.rangedSemverToRegExpParts = rangedSemverToRegExpParts;
-
-export function getRequiredSemverPartsCount(version: ISemver, {
+export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, {
 	ignoreMinor,
 	ignorePatch
 }: ISemverCompareOptions) {
