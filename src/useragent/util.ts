@@ -5,6 +5,12 @@ import {
 	compareSemvers
 } from '../semver';
 
+export function uniq<T>(items: T[]): T[] {
+	return Array.from(
+		new Set(items)
+	);
+}
+
 export function someSemverMatched(version: ISemver, bases: ISemver[], options: ISemverCompareOptions) {
 	return !version || bases.some(
 		_ => compareSemvers(version, _, options)

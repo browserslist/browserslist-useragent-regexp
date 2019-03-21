@@ -1,7 +1,7 @@
 import {
-	NUMBER_PATTERN,
+	DIGIT_PATTERN,
 	numberToDigits,
-	join
+	joinParts
 } from './util';
 
 const DECADE = 10;
@@ -151,7 +151,7 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 		const digitsInNumber = digitsCount - common.length;
 		const diffParts = segmentToNumberPatterns(from, to, digitsInNumber);
 
-		return [`${common}${join(diffParts)}`];
+		return [`${common}${joinParts(diffParts)}`];
 	}
 
 	const range = Array.from({
@@ -197,7 +197,7 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 	);
 
 	if (middleSegment) {
-		parts.push(`${middleSegment}${NUMBER_PATTERN.repeat(digitsCount - 1)}`)
+		parts.push(`${middleSegment}${DIGIT_PATTERN.repeat(digitsCount - 1)}`)
 	}
 
 	return parts;

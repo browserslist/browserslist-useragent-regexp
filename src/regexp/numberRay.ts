@@ -1,5 +1,5 @@
 import {
-	NUMBER_PATTERN,
+	DIGIT_PATTERN,
 	numberToDigits
 } from './util';
 
@@ -8,7 +8,7 @@ export function rayRangeNumberPattern(num: number, includes: boolean) {
 	const rangeStart = num + Number(!includes);
 
 	if (rangeStart === 0) {
-		return '\\d';
+		return DIGIT_PATTERN;
 	}
 
 	if (rangeStart === 9) {
@@ -19,7 +19,7 @@ export function rayRangeNumberPattern(num: number, includes: boolean) {
 }
 
 function filterNumberPattern(pattern: string) {
-	return pattern === NUMBER_PATTERN;
+	return pattern === DIGIT_PATTERN;
 }
 
 export function optimizeRaysNumberPatterns(raysNumberPatterns: string[][]) {

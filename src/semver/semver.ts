@@ -4,10 +4,9 @@ import {
 	IRangedSemver,
 	ISemverCompareOptions
 } from './types';
-import { uniq } from '../util';
 import {
 	NUMBER_PATTERN,
-	rangeToRegExps
+	rangeToRegExp
 } from '../regexp';
 
 export function isAllVersion(version: any): version is 'all' {
@@ -95,23 +94,21 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, {
 			: ignorePatch
 				? 2
 				: Infinity;
-	const numberPatterns: string[] = [].concat(
-		...rangedVersion.map((range, i) =>
-			i >= ignoreIndex
-				? NUMBER_PATTERN
-				: Array.isArray(range)
-					? rangeToRegExps(range[0], allowHigherVersions ? Infinity : range[1])
-					: range.toString()
-		)
+	const numberPatterns: string[] = rangedVersion.map((range, i) =>
+		i >= ignoreIndex
+			? NUMBER_PATTERN
+			: Array.isArray(range)
+				? rangeToRegExp(range[0], allowHigherVersions ? Infinity : range[1])
+				: range.toString()
 	);
-	const uniqNumberPatterns = uniq(numberPatterns);
 
-	return uniqNumberPatterns;
+	return numberPatterns;
 }
 
 export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, {
 	ignoreMinor,
-	ignorePatch
+	ignorePatch,
+	allowZeroSubverions
 }: ISemverCompareOptions) {
 
 	let shouldRepeatCount = ignoreMinor
@@ -120,13 +117,16 @@ export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, {
 			? 2
 			: 3;
 
-	for (let i = 2; i > 0; i--) {
+	if (allowZeroSubverions) {
 
-		if (version[i] !== 0 || shouldRepeatCount === 1) {
-			break;
+		for (let i = shouldRepeatCount - 1; i > 0; i--) {
+
+			if (version[i] !== 0 || shouldRepeatCount === 1) {
+				break;
+			}
+
+			shouldRepeatCount--;
 		}
-
-		shouldRepeatCount--;
 	}
 
 	return shouldRepeatCount;

@@ -5,8 +5,8 @@ import {
 	IBrowserVersionRegExp,
 	BrowserRegExpSourceProps
 } from './types';
-import { uniq } from '../util';
 import {
+	uniq,
 	someSemverMatched,
 	hasVersion,
 	familyMatched
@@ -15,14 +15,16 @@ import {
 	ISemverCompareOptions,
 	semverify
 } from '../semver';
+import {
+	IBrowsers
+} from '../browsers';
 
 export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
 	...extractIOSRegExp(regexps.os),
 	...fixBrowsersRegExps(regexps.browser)
 ];
 
-// todo browsers type
-export function getRegExpsForBrowsers(browsers, options: ISemverCompareOptions) {
+export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompareOptions) {
 
 	const regExps: IBrowserVersionRegExp[] = [];
 

@@ -1,6 +1,7 @@
 import {
 	BRACED_NUMBER_PATTERN,
 	ESCAPE_SYMBOL,
+	getNumberPatternsCount,
 	regExpToString
 } from './util';
 
@@ -99,6 +100,7 @@ function capturePostfix(regExpStr: string, startFrom: number) {
 	return postfix;
 }
 
+// todo optimize (HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))? with only first
 export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount?: number) {
 
 	const regExpStr = typeof regExp === 'string'
@@ -107,7 +109,7 @@ export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount
 	const regExpStrLength = regExpStr.length;
 	const maxNumbersCount = typeof numberPatternsCount === 'number'
 		? numberPatternsCount
-		: regExpStr.split(BRACED_NUMBER_PATTERN).length - 1;
+		: getNumberPatternsCount(regExpStr);
 	let braceBalance = 0;
 	let skip = false;
 	let numberCounter = 0;

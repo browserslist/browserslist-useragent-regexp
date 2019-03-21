@@ -2,6 +2,7 @@
 export interface ISemverCompareOptions {
 	ignoreMinor?: boolean;
 	ignorePatch?: boolean;
+	allowZeroSubverions?: boolean;
 	allowHigherVersions?: boolean;
 }
 
