@@ -4,9 +4,6 @@ import {
 	joinParts
 } from './util';
 
-const DECADE = 10;
-const MAX_DIGIT = 9;
-
 export function segmentRangeNumberPattern(from: number, to: number, zeros?: number) {
 
 	if (to < from) {
@@ -36,7 +33,7 @@ export function splitToDecadeRanges(from: number, to: number) {
 
 	do {
 
-		decade *= DECADE;
+		decade *= 10;
 
 		if (num < decade) {
 			ranges.push([
@@ -116,7 +113,7 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 	const fromDigits = numberToDigits(from);
 	const digitsCount = fromDigits.length;
 
-	if (from < DECADE && to < DECADE || from === to) {
+	if (from < 10 && to < 10 || from === to) {
 
 		const zeros = digitsInNumber - digitsCount;
 
@@ -170,7 +167,7 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 						j > ri
 							? 0
 							: digit + d,
-						MAX_DIGIT
+						9
 					)
 			)).join('');
 		}),
@@ -185,7 +182,7 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 					: segmentRangeNumberPattern(
 						0,
 						j > ri
-							? MAX_DIGIT
+							? 9
 							: digit - d
 					)
 			)).join('');
@@ -197,7 +194,7 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 	);
 
 	if (middleSegment) {
-		parts.push(`${middleSegment}${DIGIT_PATTERN.repeat(digitsCount - 1)}`)
+		parts.push(`${middleSegment}${DIGIT_PATTERN.repeat(digitsCount - 1)}`);
 	}
 
 	return parts;
