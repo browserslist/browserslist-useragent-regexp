@@ -1,6 +1,6 @@
 import {
 	isAllVersion
-} from '../semver';
+} from '../semver/util';
 import {
 	NUMBER_PATTERN,
 	joinParts

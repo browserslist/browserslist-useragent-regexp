@@ -5,18 +5,14 @@ import {
 	ISemverCompareOptions
 } from './types';
 import {
-	NUMBER_PATTERN,
+	NUMBER_PATTERN
+} from '../regexp/util';
+import {
 	rangeToRegExp
-} from '../regexp';
-
-/**
- * Check target if is 'all'.
- * @param  version - Target to check.
- * @return Is 'all' or not.
- */
-export function isAllVersion(version: any): version is 'all' {
-	return version === 'all';
-}
+} from '../regexp/numberRange';
+import {
+	isAllVersion
+} from './util';
 
 /**
  * Get semver from string or array.
