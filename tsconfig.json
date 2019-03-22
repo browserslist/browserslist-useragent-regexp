@@ -17,7 +17,8 @@
 		]
 	},
 	"include": [
-		"src/index.ts"
+		"src/index.ts",
+		"src/**/*spec.ts"
 	],
 	"exclude": [
 		"lib/**/*"

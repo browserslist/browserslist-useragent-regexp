@@ -1,7 +1,7 @@
 import { ISemver } from '../semver';
 import { IBrowser } from '../browsers';
 
-export enum BrowserRegExpSourceProps {
+export enum BrowserRegExpSourceProp {
 	RegExp = 0,
 	Family,
 	Major,
@@ -10,11 +10,11 @@ export enum BrowserRegExpSourceProps {
 }
 
 export interface IBrowserRegExpSource {
-	[BrowserRegExpSourceProps.RegExp]: RegExp;
-	[BrowserRegExpSourceProps.Family]: string;
-	[BrowserRegExpSourceProps.Major]: number|string;
-	[BrowserRegExpSourceProps.Minor]: number|string;
-	[BrowserRegExpSourceProps.Patch]: number|string;
+	[BrowserRegExpSourceProp.RegExp]: RegExp;
+	[BrowserRegExpSourceProp.Family]: string;
+	[BrowserRegExpSourceProp.Major]: number|string;
+	[BrowserRegExpSourceProp.Minor]: number|string;
+	[BrowserRegExpSourceProp.Patch]: number|string;
 }
 
 export interface IBrowserRegExp extends IBrowser {

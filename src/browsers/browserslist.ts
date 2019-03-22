@@ -1,28 +1,23 @@
 import browserslist from 'browserslist';
-import { semverify } from '../semver';
+import {
+	semverify
+} from '../semver';
 import {
 	IBrowser,
 	IBrowsersListRequest
 } from './types';
 import {
-	BROWSERS_SHIRTNAMES_REGEXP,
 	BROWSERS_SHIRTNAMES
 } from './shirtnames';
+import {
+	normalizeBrowserFamily
+} from './util';
 
-export function normalizeQuery(query: string) {
-
-	const matches = query.match(BROWSERS_SHIRTNAMES_REGEXP);
-
-	if (Array.isArray(matches)) {
-
-		const [shirtname] = matches;
-
-		return query.replace(shirtname, BROWSERS_SHIRTNAMES[shirtname]);
-	}
-
-	return query;
-}
-
+/**
+ * Browsers strings to info objects.
+ * @param  browsersList - Browsers strings with family and version.
+ * @return Browser info objects.
+ */
 export function parseBrowsersList(browsersList: string[]): IBrowser[] {
 	return [].concat(
 		...browsersList.map((browser) => {
@@ -41,6 +36,11 @@ export function parseBrowsersList(browsersList: string[]): IBrowser[] {
 	);
 }
 
+/**
+ * Request browsers list.
+ * @param  options - Options to get browsers list.
+ * @return Browser info objects.
+ */
 export function getBrowsersList({
 	browsers,
 	env,
@@ -48,7 +48,7 @@ export function getBrowsersList({
 }: IBrowsersListRequest = {}) {
 
 	const normalizedBrowsers = Array.isArray(browsers)
-		? browsers.map(normalizeQuery)
+		? browsers.map(normalizeBrowserFamily)
 		: '';
 	const browsersList = browserslist(normalizedBrowsers, {
 		env,

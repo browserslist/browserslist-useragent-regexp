@@ -3,7 +3,7 @@ import {
 	IBrowserRegExpSource,
 	IBrowserRegExp,
 	IBrowserVersionRegExp,
-	BrowserRegExpSourceProps
+	BrowserRegExpSourceProp
 } from './types';
 import {
 	uniq,
@@ -115,11 +115,11 @@ export function fixBrowserFamily(family: string, regExp: RegExp) {
 export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 
 	const {
-		[BrowserRegExpSourceProps.RegExp]: regExp,
-		[BrowserRegExpSourceProps.Family]: family,
-		[BrowserRegExpSourceProps.Major]: major,
-		[BrowserRegExpSourceProps.Minor]: minor,
-		[BrowserRegExpSourceProps.Patch]: patch
+		[BrowserRegExpSourceProp.RegExp]: regExp,
+		[BrowserRegExpSourceProp.Family]: family,
+		[BrowserRegExpSourceProp.Major]: major,
+		[BrowserRegExpSourceProp.Minor]: minor,
+		[BrowserRegExpSourceProp.Patch]: patch
 	} = browserRegExpSource;
 	const families = fixBrowserFamily(
 		family,
@@ -157,7 +157,7 @@ export function extractIOSRegExp(osRegExpSources: IBrowserRegExpSource[]) {
 
 	for (let i = 0; i < length; i++) {
 
-		if (osRegExpSources[i][BrowserRegExpSourceProps.Family] !== 'iOS') {
+		if (osRegExpSources[i][BrowserRegExpSourceProp.Family] !== 'iOS') {
 			continue;
 		}
 

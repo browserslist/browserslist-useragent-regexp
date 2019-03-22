@@ -22,7 +22,7 @@ export type IRangedSemver = [
 
 export type ISemverLike = string|(number|string)[];
 
-export enum SemverParts {
+export enum SemverPart {
 	Major = 0,
 	Minor,
 	Patch

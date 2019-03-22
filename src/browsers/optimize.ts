@@ -2,14 +2,23 @@ import {
 	ISemver,
 	IRangedSemver,
 	ISemverRange,
-	SemverParts
+	SemverPart
 } from '../semver';
 import {
 	IBrowser,
 	IBrowsers,
 	IRangedBrowsers
 } from './types';
+import {
+	compareArrays,
+	numbersToRanges
+} from './util';
 
+/**
+ * Merge browser info object to map with versions.
+ * @param  browsers - Browser info object to merge.
+ * @return Merged browsers map.
+ */
 export function mergeBrowserVersions(browsers: IBrowser[]) {
 
 	const merge: IBrowsers = new Map();
@@ -53,97 +62,83 @@ export function mergeBrowserVersions(browsers: IBrowser[]) {
 	return merge;
 }
 
-export function compareArrays(a: any[], b: any[], from: number) {
-
-	const len = a.length;
-
-	for (let i = from; i < len; i++) {
-
-		if (a[i] !== b[i]) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-export function numbersToRanges(numbers: number|number[]) {
-
-	if (typeof numbers === 'number') {
-		return numbers;
-	}
-
-	if (numbers.length === 1) {
-		return numbers[0];
-	}
-
-	return [
-		numbers[0],
-		numbers[numbers.length - 1]
-	];
-}
-
+/**
+ * Versions to ranged versions.
+ * @param  versions - Semver versions list.
+ * @return Ranged versions list.
+ */
 export function versionsListToRanges(versions: ISemver[]) {
+
+	if (versions.length < 2) {
+		return versions;
+	}
 
 	const max = versions.length + 1;
 	const ranges: IRangedSemver[] = [];
 	let prev: number[] = null;
 	let current: number[] = versions[0];
-	let major: ISemverRange = [current[SemverParts.Major]];
-	let minor: ISemverRange = [current[SemverParts.Minor]];
-	let patch: ISemverRange = [current[SemverParts.Patch]];
+	let major: ISemverRange = [current[SemverPart.Major]];
+	let minor: ISemverRange = [current[SemverPart.Minor]];
+	let patch: ISemverRange = [current[SemverPart.Patch]];
+	let part: SemverPart = SemverPart.Patch;
 
 	for (let i = 1; i < max; i++) {
 
 		prev = versions[i - 1];
 		current = versions[i] || [];
 
-		// todo oprimize to loop?
-		if (prev[SemverParts.Major] + 1 === current[SemverParts.Major]
-			&& compareArrays(prev, current, SemverParts.Minor)
-		) {
+		for (let p = SemverPart.Major; p <= SemverPart.Patch; p++) {
 
-			(major as number[]).push(current[SemverParts.Major]);
+			if (prev[p] + 1 === current[p]
+				&& compareArrays(prev, current, p + 1)
+			) {
 
-			minor = current[SemverParts.Minor];
-			patch = current[SemverParts.Patch];
+				part = p;
 
-			continue;
+				if (part === SemverPart.Major) {
+					(major as number[]).push(current[SemverPart.Major]);
+				} else {
+					major = current[SemverPart.Major];
+				}
+
+				if (part === SemverPart.Minor) {
+					(minor as number[]).push(current[SemverPart.Minor]);
+				} else {
+					minor = current[SemverPart.Minor];
+				}
+
+				if (part === SemverPart.Patch) {
+					(patch as number[]).push(current[SemverPart.Patch]);
+				} else {
+					patch = current[SemverPart.Patch];
+				}
+
+				break;
+			}
+
+			if (part === p) {
+				part = SemverPart.Patch;
+				ranges.push([
+					numbersToRanges(major),
+					numbersToRanges(minor),
+					numbersToRanges(patch)
+				]);
+				major = [current[SemverPart.Major]];
+				minor = [current[SemverPart.Minor]];
+				patch = [current[SemverPart.Patch]];
+				break;
+			}
 		}
-
-		if (prev[SemverParts.Minor] + 1 === current[SemverParts.Minor]
-			&& compareArrays(prev, current, SemverParts.Patch)
-		) {
-
-			major = current[SemverParts.Major];
-			(minor as number[]).push(current[SemverParts.Minor]);
-			patch = current[SemverParts.Patch];
-
-			continue;
-		}
-
-		if (prev[SemverParts.Patch] + 1 === current[SemverParts.Patch]) {
-
-			major = current[SemverParts.Major];
-			minor = current[SemverParts.Minor];
-			(patch as number[]).push(current[SemverParts.Patch]);
-
-			continue;
-		}
-
-		ranges.push([
-			numbersToRanges(major),
-			numbersToRanges(minor),
-			numbersToRanges(patch)
-		]);
-		major = [current[SemverParts.Major]];
-		minor = [current[SemverParts.Minor]];
-		patch = [current[SemverParts.Patch]];
 	}
 
 	return ranges;
 }
 
+/**
+ * Browser versions to ranged versions.
+ * @param  browsers - Browser map with versions.
+ * @return Browser map with ranged versions.
+ */
 export function browserVersionsToRanges(browsers: IBrowsers) {
 
 	const ranged: IRangedBrowsers = new Map();
