@@ -7,6 +7,12 @@ export const NUMBER_PATTERN = `${DIGIT_PATTERN}+`;
 export const BRACED_NUMBER_PATTERN = `(${NUMBER_PATTERN})`;
 export const ESCAPE_SYMBOL = '\\';
 
+/**
+ * Join RegExp parts with "or".
+ * @param  parts - Some RegExp parts.
+ * @param  wrapRequired - Should always wrap with braces.
+ * @return Joined parts.
+ */
 export function joinParts(parts: string[], wrapRequired = false) {
 
 	const joined = parts.join('|');
@@ -16,26 +22,53 @@ export function joinParts(parts: string[], wrapRequired = false) {
 		: joined;
 }
 
+/**
+ * Join RegExps with "or".
+ * @param  versionedBrowsersRegExps - RegExps strings array.
+ * @return Joined RegExps string.
+ */
 export function joinVersionedBrowsersRegExps(versionedBrowsersRegExps: IBrowserVersionedRegExp[]) {
 	return versionedBrowsersRegExps
 		.map(_ => `(${_.regExpString})`)
 		.join('|');
 }
 
+/**
+ * Contains number pattern or not.
+ * @param  regExp - Target string or RegExp.
+ * @return Has or not.
+ */
 export function hasNumberPattern(regExp: string|RegExp) {
 	return regExp.toString().includes(BRACED_NUMBER_PATTERN);
 }
 
+/**
+ * Find number patterns count.
+ * @param regExp - Target string or RegExp.
+ * @return Number patterns count.
+ */
 export function getNumberPatternsCount(regExp: string|RegExp) {
 	return regExp.toString().split(BRACED_NUMBER_PATTERN).length - 1;
 }
 
+/**
+ * Convert RegExp to string without slashes.
+ * @param  regExp - Target RegExp.
+ * @return RegExp string without slashes.
+ */
 export function regExpToString(regExp: RegExp) {
 	return regExp
 		.toString()
 		.replace(/^\/|\/$/g, '');
 }
 
+/**
+ * Replace number patterns.
+ * @param  regExp - Target RegExp.
+ * @param  numbers - Number patterns to paste.
+ * @param  numberPatternsCount - Number patterns count to replace.
+ * @return RegExp string with replaced number patterns.
+ */
 export function replaceNumberPatterns(
 	regExp: string|RegExp,
 	numbers: string[],
@@ -57,6 +90,11 @@ export function replaceNumberPatterns(
 	return numberedStrRegExp;
 }
 
+/**
+ * Transform number to digits array.
+ * @param  num - Target number.
+ * @return Digits array.
+ */
 export function numberToDigits(num: string|number) {
 	return Array.from(num.toString()).map(Number);
 }
