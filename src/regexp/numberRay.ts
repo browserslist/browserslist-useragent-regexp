@@ -1,12 +1,18 @@
 import {
 	DIGIT_PATTERN,
+	NUMBER_PATTERN,
 	numberToDigits
 } from './util';
 
-export function rayRangeNumberPattern(num: number, includes: boolean) {
+/**
+ * Get digit pattern.
+ * @param  digit - Ray start.
+ * @param  includes - Include start digit or use next.
+ * @return Digit pattern.
+ */
+export function rayRangeDigitPattern(digit: number, includes: boolean) {
 
-	const rangeStart = num + Number(!includes);
-
+	const rangeStart = digit + Number(!includes);
 	if (rangeStart === 0) {
 		return DIGIT_PATTERN;
 	}
@@ -15,59 +21,104 @@ export function rayRangeNumberPattern(num: number, includes: boolean) {
 		return '9';
 	}
 
+	if (rangeStart > 9) {
+		return '';
+	}
+
 	return `[${rangeStart}-9]`;
 }
 
-function filterNumberPattern(pattern: string) {
+function filterDigitPattern(pattern: string) {
 	return pattern === DIGIT_PATTERN;
 }
 
+/**
+ * Reduce number patterns by removing useless patterns.
+ * @todo   Is it still useful?
+ * @param  raysNumberPatterns - Number patterns to filter.
+ * @return Optimized number patterns.
+ */
 export function optimizeRaysNumberPatterns(raysNumberPatterns: string[][]) {
 
 	let prev: string[] = [];
-	let numberPatternCount = 0;
-	let prevNumberPatternCount = 0;
+	let partsCount = 0;
+	let prevPartsCount = 0;
 
-	return raysNumberPatterns.filter((numberPatterns, i) => {
+	return raysNumberPatterns.filter((digitsPatterns, i) => {
 
 		if (i > 0) {
 
-			numberPatternCount = numberPatterns.filter(filterNumberPattern).length;
-			prevNumberPatternCount = prev.filter(filterNumberPattern).length;
+			partsCount = digitsPatterns.filter(filterDigitPattern).length;
+			prevPartsCount = prev.filter(filterDigitPattern).length;
 
-			if (numberPatternCount <= prevNumberPatternCount) {
+			if (partsCount <= prevPartsCount) {
 				return false;
 			}
 		}
 
-		prev = numberPatterns;
+		prev = digitsPatterns;
 
 		return true;
 	});
 }
 
+/**
+ * Create numeric ray pattern.
+ * @param  from - Start from this number.
+ * @return Numeric ray pattern parts.
+ */
 export function rayToNumberPatterns(from: number) {
+
+	if (from === 0) {
+		return [NUMBER_PATTERN];
+	}
 
 	const digits = numberToDigits(from);
 	const digitsCount = digits.length;
+	const other = `${DIGIT_PATTERN}{${digitsCount + 1},}`;
+	const zeros = digitsCount - 1;
+
+	if (from / Math.pow(10, zeros) === digits[0]) {
+		return [
+			`${
+				rayRangeDigitPattern(digits[0], true)
+			}${
+				DIGIT_PATTERN.repeat(zeros)
+			}`,
+			other
+		];
+	}
+
 	const raysNumberPatterns = optimizeRaysNumberPatterns(
 		digits.map((_, i) => {
 
 			const ri = digitsCount - i - 1;
 			const d = Number(i > 0);
+			let prev = ' ';
 
-			return digits.map<string>((digit, j) => (
-				j < ri
-					? digit.toString()
-					: j > ri
-						? '\\d'
-						: rayRangeNumberPattern(digit, j + d <= ri)
-			));
+			return digits.map<string>((digit, j) => {
+
+				if (j < ri) {
+					return digit.toString();
+				}
+
+				if (!prev) {
+					return '';
+				}
+
+				if (j > ri) {
+					return DIGIT_PATTERN;
+				}
+
+				prev = rayRangeDigitPattern(digit, j + d <= ri);
+
+				return prev;
+			});
 		})
 	);
 	const numberPatterns = raysNumberPatterns.map(_ => _.join(''));
 
-	numberPatterns.push(`\\d{${digitsCount + 1},}`);
+	numberPatterns.push(other);
 
 	return numberPatterns;
 }

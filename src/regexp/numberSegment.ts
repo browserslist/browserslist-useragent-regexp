@@ -19,7 +19,7 @@ export function segmentRangeNumberPattern(from: number, to: number, zeros?: numb
 	}
 
 	if (from === 0 && to === 9) {
-		return `${zerosPrefix}\\d`;
+		return `${zerosPrefix}${DIGIT_PATTERN}`;
 	}
 
 	return `${zerosPrefix}[${from}-${to}]`;
