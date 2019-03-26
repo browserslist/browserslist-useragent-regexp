@@ -21,6 +21,13 @@ import {
 	getNumberPatternsPart
 } from './numbersPart';
 
+/**
+ * Apply ranged sevmers to the RegExp.
+ * @param  regExp - Target RegExp.
+ * @param  versions - Ranged semvers.
+ * @param  options - Semver compare options.
+ * @return RegExp with given versions.
+ */
 export function applyVersionsToRegExp(
 	regExp: string|RegExp,
 	versions: IRangedSemver[],
@@ -62,6 +69,13 @@ export function applyVersionsToRegExp(
 	return regExpWithVersions;
 }
 
+/**
+ * Apply browser versions to info objects.
+ * @param  browserVersionRegExps - Objects with requested browser version and RegExp.
+ * @param  browsers - Ranged versions of browsers.
+ * @param  options - Semver compare options.
+ * @return Objects with requested browser version and RegExp special for this version.
+ */
 export function applyVersionsToRegExps(
 	browserVersionRegExps: IBrowserVersionRegExp[],
 	browsers: IRangedBrowsers,
@@ -93,7 +107,7 @@ export function applyVersionsToRegExps(
 			regExp = new RegExp(regExpString);
 		}
 
-		if (regExp) {
+		if (regExpString && regExp) {
 			versionedRegExps.push({
 				family,
 				sourceRegExp,
