@@ -24,6 +24,13 @@ export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
 	...fixBrowsersRegExps(regexps.browser)
 ];
 
+/**
+ * Get user agent RegExps for given browsers.
+ * @todo   Blacklist.
+ * @param  browsers - Browsers.
+ * @param  options - Semver compare options.
+ * @return User agent RegExps.
+ */
 export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompareOptions) {
 
 	const regExps: IBrowserVersionRegExp[] = [];
@@ -36,7 +43,6 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
 
 		const browserVersions = browsers.get(family);
 
-		// todo: blacklist
 		if (browserVersions
 			&& someSemverMatched(version, browserVersions, options)
 			&& hasVersion(version, regExp)
@@ -53,6 +59,11 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
 	return regExps;
 }
 
+/**
+ * Fix browser family.
+ * @param family - Browser family.
+ * @param regExp - User agent RegExp to find browser family as fallback.
+ */
 export function fixBrowserFamily(family: string, regExp: RegExp) {
 
 	const familyOrRegExp = family || regExp;
@@ -112,6 +123,11 @@ export function fixBrowserFamily(family: string, regExp: RegExp) {
 	return [];
 }
 
+/**
+ * Fix browser RegExp object.
+ * @param  browserRegExpSource - Source browser RegExp object.
+ * @return Fixed object.
+ */
 export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 
 	const {
@@ -136,6 +152,11 @@ export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 	}));
 }
 
+/**
+ * Fix browser RegExp objects.
+ * @param  browserRegExpSources - Source browser RegExp objects.
+ * @return Fixed objects.
+ */
 export function fixBrowsersRegExps(browsersRegExpSoruces: IBrowserRegExpSource[]) {
 
 	const length = browsersRegExpSoruces.length;
@@ -150,6 +171,11 @@ export function fixBrowsersRegExps(browsersRegExpSoruces: IBrowserRegExpSource[]
 	return regExps;
 }
 
+/**
+ * Extract and Fix iOS RegExp objects.
+ * @param  osRegExpSources - Source OS RegExp objects.
+ * @return Fixed objects.
+ */
 export function extractIOSRegExp(osRegExpSources: IBrowserRegExpSource[]) {
 
 	const length = osRegExpSources.length;

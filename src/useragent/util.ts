@@ -5,24 +5,47 @@ import {
 	compareSemvers
 } from '../semver';
 
+/**
+ * Remove duplicates from array.
+ * @param  items - Items to filter.
+ * @return Uniq items.
+ */
 export function uniq<T>(items: T[]): T[] {
-	return Array.from(
-		new Set(items)
-	);
+	return items.filter((_, i) => !items.includes(_, i + 1));
 }
 
+/**
+ * Check version.
+ * @param  version - Semver version.
+ * @param  bases - Base semver versions.
+ * @param  options - Semver compare options.
+ * @return Some version is matched.
+ */
 export function someSemverMatched(version: ISemver, bases: ISemver[], options: ISemverCompareOptions) {
 	return !version || bases.some(
 		_ => compareSemvers(version, _, options)
 	);
 }
 
+/**
+ * Another version check. ^.^
+ * @param  version - Semver version.
+ * @param  regExp - Useragent RegExp.
+ * @return Has version or not.
+ */
 export function hasVersion(version: any, regExp: RegExp) {
 	return Boolean(
 		version || hasNumberPattern(regExp)
 	);
 }
 
+/**
+ * Check browser family.
+ * @param  exact - Compare exact or not.
+ * @param  family - Browser family.
+ * @param  searchFamilies  - Browser family variations.
+ * @return Family matched or not.
+ */
 export function familyMatched(exact: boolean, family: string|RegExp, searchFamilies: string[]) {
 
 	const isRegExp = family instanceof RegExp;
