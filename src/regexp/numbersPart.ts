@@ -5,6 +5,13 @@ import {
 	regExpToString
 } from './util';
 
+/**
+ * Skip every char inside square braces.
+ * @param  skip - Current skip state.
+ * @param  prevChar - Previous char.
+ * @param  char - Current char to check.
+ * @return Should skip this char or not.
+ */
 function skipSquareBraces(skip: boolean, prevChar: string, char: string) {
 
 	if (char === '['
@@ -22,6 +29,12 @@ function skipSquareBraces(skip: boolean, prevChar: string, char: string) {
 	return skip;
 }
 
+/**
+ * Get possible RegExp group postfix.
+ * @param  regExpStr - Whole RegExp string.
+ * @param  startFrom - Index to start capture.
+ * @return RegExp group postfix part.
+ */
 function capturePostfix(regExpStr: string, startFrom: number) {
 
 	let char = regExpStr[startFrom];
@@ -100,7 +113,16 @@ function capturePostfix(regExpStr: string, startFrom: number) {
 	return postfix;
 }
 
-// todo optimize (HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))? with only first
+/**
+ * Get from RegExp part with number patterns.
+ * @todo   Optimize.
+ * 	E.g.: (HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))?
+ * 	now: (?:\/(\d+)\.(\d+)\.(\d+))?
+ * 	need: (\d+)\.(\d+)\.(\d+)
+ * @param  regExp - Target RegExp.
+ * @param  numberPatternsCount - Number patterns to extract.
+ * @return RegExp part with number patterns.
+ */
 export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount?: number) {
 
 	const regExpStr = typeof regExp === 'string'
