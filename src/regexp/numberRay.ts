@@ -93,7 +93,7 @@ export function rayToNumberPatterns(from: number) {
 		digits.map((_, i) => {
 
 			const ri = digitsCount - i - 1;
-			const d = Number(i > 0);
+			const d = i <= 0;
 			let prev = ' ';
 
 			return digits.map<string>((digit, j) => {
@@ -110,7 +110,7 @@ export function rayToNumberPatterns(from: number) {
 					return DIGIT_PATTERN;
 				}
 
-				prev = rayRangeDigitPattern(digit, j + d <= ri);
+				prev = rayRangeDigitPattern(digit, d);
 
 				return prev;
 			});

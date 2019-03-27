@@ -11,7 +11,8 @@ import {
 	rangeToRegExp
 } from '../regexp/numberRange';
 import {
-	isAllVersion
+	isAllVersion,
+	uniqItems
 } from './util';
 
 /**
@@ -150,29 +151,56 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, {
 			: ignorePatch
 				? 2
 				: Infinity;
+
+	if (allowHigherVersions) {
+		const numberPatterns: string[][] = uniqItems(
+			rangedVersion.map((_, i) => {
+
+				const ri = 2 - i;
+				const d = Number(i > 0);
+				let start = 0;
+
+				return rangedVersion.map((range, j) => {
+
+					if (j >= ignoreIndex) {
+						return NUMBER_PATTERN;
+					}
+
+					start = Array.isArray(range)
+						? range[0]
+						: range;
+
+					if (j < ri) {
+						return start.toString();
+					}
+
+					if (j > ri) {
+						return NUMBER_PATTERN;
+					}
+
+					return rangeToRegExp(start + d);
+				});
+			})
+		);
+
+		return numberPatterns;
+	}
+
 	const numberPatterns: string[] = rangedVersion.map((range, i) => {
 
 		if (i >= ignoreIndex) {
 			return NUMBER_PATTERN;
 		}
 
-		const isRange = Array.isArray(range);
-
-		if (!isRange && !allowHigherVersions) {
-			return range.toString();
-		}
-
-		if (isRange) {
+		if (Array.isArray(range)) {
 			return rangeToRegExp(
 				range[0],
-				allowHigherVersions
-					? Infinity
-					: range[1]
+				range[1]
 			);
 		}
 
-		return rangeToRegExp(range as number);
+		return range.toString();
 	});
 
-	return numberPatterns;
+	return [numberPatterns];
 }

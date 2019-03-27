@@ -9,7 +9,8 @@ import {
 } from '../browsers';
 import {
 	IBrowserVersionRegExp,
-	IBrowserVersionedRegExp
+	IBrowserVersionedRegExp,
+	uniq
 } from '../useragent';
 import {
 	joinParts,
@@ -56,11 +57,17 @@ export function applyVersionsToRegExp(
 
 	const numberPatternsPart = getNumberPatternsPart(regExpStr, maxRequiredPartsCount);
 	const versionsRegExpPart = joinParts(
-		suitableVersions.map(version =>
-			replaceNumberPatterns(
-				numberPatternsPart,
-				rangedSemverToRegExp(version, options),
-				maxRequiredPartsCount
+		uniq(
+			[].concat(
+				...suitableVersions.map(version =>
+					rangedSemverToRegExp(version, options).map(parts =>
+						replaceNumberPatterns(
+							numberPatternsPart,
+							parts,
+							maxRequiredPartsCount
+						)
+					)
+				)
 			)
 		)
 	);

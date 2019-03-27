@@ -49,7 +49,7 @@ export function getBrowsersList({
 
 	const normalizedBrowsers = Array.isArray(browsers)
 		? browsers.map(normalizeBrowserFamily)
-		: '';
+		: browsers;
 	const browsersList = browserslist(normalizedBrowsers, {
 		env,
 		path

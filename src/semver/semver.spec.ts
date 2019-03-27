@@ -502,9 +502,9 @@ describe('Semver', () => {
 					[11, 12, 0],
 					options
 				)
-			).toEqual(
+			).toEqual([
 				['11', '12', '0']
-			);
+			]);
 		});
 
 		it('should return only numbers patterns', () => {
@@ -514,9 +514,9 @@ describe('Semver', () => {
 					['all', 0, 0] as any,
 					options
 				)
-			).toEqual(
+			).toEqual([
 				['\\d+', '\\d+', '\\d+']
-			);
+			]);
 		});
 
 		it('should return number pattern at patch', () => {
@@ -531,9 +531,9 @@ describe('Semver', () => {
 					[11, 12, 0],
 					ignorePatchOptions
 				)
-			).toEqual(
+			).toEqual([
 				['11', '12', '\\d+']
-			);
+			]);
 		});
 
 		it('should return number patterns at minor and patch', () => {
@@ -548,9 +548,9 @@ describe('Semver', () => {
 					[11, 12, 0],
 					ignoreMinorOptions
 				)
-			).toEqual(
+			).toEqual([
 				['11', '\\d+', '\\d+']
-			);
+			]);
 		});
 
 		it('should return ranged major', () => {
@@ -560,9 +560,9 @@ describe('Semver', () => {
 					[[11, 13], 12, 0],
 					options
 				)
-			).toEqual(
+			).toEqual([
 				['1[1-3]', '12', '0']
-			);
+			]);
 		});
 
 		it('should return ranged major ray', () => {
@@ -578,9 +578,9 @@ describe('Semver', () => {
 					allowHigherOptions
 				)
 			).toEqual([
-				'(1[1-9]|[2-9]\\d|\\d{3,})',
-				'(1[2-9]|[2-9]\\d|\\d{3,})',
-				'\\d+'
+				['11', '12', '\\d+'],
+				['11', '(1[3-9]|[2-9]\\d|\\d{3,})', '\\d+'],
+				['(1[2-9]|[2-9]\\d|\\d{3,})', '\\d+', '\\d+']
 			]);
 		});
 	});
