@@ -9,9 +9,11 @@ import {
 } from '../browsers';
 import {
 	IBrowserVersionRegExp,
-	IBrowserVersionedRegExp,
-	uniq
+	IBrowserVersionedRegExp
 } from '../useragent';
+import {
+	uniq
+} from '../useragent/util';
 import {
 	joinParts,
 	getNumberPatternsCount,
