@@ -45,6 +45,7 @@
     "babel-jest": "^24.3.0",
     "babel-preset-trigen": "^2.2.1",
     "browserslist-config-trigen": "^1.1.0",
+    "browserslist-useragent": "^3.0.0",
     "clean-publish": "^1.1.0",
     "coveralls": "^3.0.0",
     "eslint": "^5.12.0",
@@ -63,7 +64,7 @@
     "tslint-config-trigen": "^3.0.7",
     "typedoc": "^0.14.0",
     "typescript": "^3.2.2",
-    "useragent-generator": "^1.1.1-amkt-22079-finish.0"
+    "user-agents": "^1.0.207"
   },
   "files": [
     "lib"

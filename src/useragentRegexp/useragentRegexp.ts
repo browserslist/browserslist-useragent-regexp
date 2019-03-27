@@ -41,7 +41,7 @@ export function getUserAgentRegExps({
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
 	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
-	console.log(regExps);
+	// console.log(regExps);
 
 	return regExps;
 }
