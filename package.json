@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.4.2",
-    "@types/node": "^11.11.6",
+    "@types/node": "^11.12.0",
     "browserslist": "^4.5.2",
     "core-js": "^3.0.0",
     "useragent": "^2.3.0"
