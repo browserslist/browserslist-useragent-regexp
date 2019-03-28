@@ -4,7 +4,7 @@ const { getUserAgentRegExps } = require('../lib');
 function renderStyles() {
 	return `<style>
 body {
-	--fontFamilySansSerif:
+	font-family:
 		/* Safari for OS X and iOS (San Francisco) */
 		-apple-system,
 		/* Chrome < 56 for OS X (San Francisco) */
@@ -21,7 +21,10 @@ body {
 		'Apple Color Emoji',
 		'Segoe UI Emoji',
 		'Segoe UI Symbol';
-	--fontFamilyMonospace:
+}
+
+pre {
+	font-family:
 		SFMono-Regular,
 		Menlo,
 		Monaco,
@@ -29,11 +32,6 @@ body {
 		'Liberation Mono',
 		'Courier New',
 		monospace;
-	font-family: var(--fontFamilySansSerif);
-}
-
-pre {
-	font-family: var(--fontFamilyMonospace);
 }
 
 h2 > pre {
