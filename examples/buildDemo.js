@@ -92,7 +92,7 @@ function renderScript() {
 
 	forEach(findByAttribute('data-query'), function(input) {
 
-		var queryDiv = input.parentElement;
+		var queryDiv = input.parentElement.parentElement;
 		var queriesDiv = queryDiv.parentElement;
 		var query = input.getAttribute('data-query');
 		var some = false;
