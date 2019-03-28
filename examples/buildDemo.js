@@ -104,11 +104,11 @@ function renderHtml(body) {
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimal-ui">
 		<meta name="format-detection" content="telephone=no">
 		<title>DEMO</title>
+		${renderScript()}
 		${renderStyles()}
 	</head>
 	<body>
 		${body}
-		${renderScript()}
 	</body>
 </html>`;
 }
