@@ -130,7 +130,7 @@ function renderHtml(body) {
 		${body}
 		${renderScript()}
 	</body>
-</html`;
+</html>`;
 }
 
 function renderUserAgentRegExp({
