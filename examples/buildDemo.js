@@ -107,7 +107,7 @@ function renderHtml(body) {
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimal-ui">
 		<meta name="format-detection" content="telephone=no">
 		<title>DEMO</title>
 		${renderStyles()}
