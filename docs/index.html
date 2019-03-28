@@ -69,15 +69,74 @@
 					<a href="https://travis-ci.com/TrigenSoftware/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Build status"></a>
 					<a href="https://coveralls.io/r/TrigenSoftware/browserslist-useragent-regexp"><img src="https://img.shields.io/coveralls/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Coverage status"></a>
 				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Greenkeeper badge"></a></p>
-				<p>A utility to compile a browselist query to regular expression.</p>
+				<p>Utility to compile browserslist query to regular expression.</p>
 				<h2 id="install">Install</h2>
 				<pre><code class="language-bash">npm i -D browserslist-useragent-regexp
 <span class="hljs-comment"># or</span>
 yarn add -D browserslist-useragent-regexp</code></pre>
-				<h2 id="api">API</h2>
-				<p>Module exposes next API:</p>
-				<pre><code class="language-js">...</code></pre>
-				<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/index.html">Description of this methods you can find in Documentation.</a></p>
+				<h2 id="why-">Why?</h2>
+				<p>As was written in article <a href="https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/">&quot;Smart Bundling: Shipping legacy code to only legacy browsers&quot;</a>, you can determinate, which bundle you should give to browser from server with <a href="https://github.com/browserslist/browserslist-useragent"><code>browserslist-useragent</code></a>. But in this case you must have your own server with special logic. Now, with <code>browserslist-useragent-regexp</code>, you can move that to client-side.</p>
+				<p>Development was inspired by <a href="https://twitter.com/mathias/status/1105857829393653761">this proposal by Mathias Bynens</a>.</p>
+				<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17">sources</a>, <a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61">build script</a>).</p>
+				<h2 id="usage-basics">Usage basics</h2>
+				<p>Module exposes two main methods:</p>
+				<h3 id="getuseragentregexps-options-"><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
+				<p>Compile browserslist query to <a href="#regexp-info-objects">RegExps for each browser</a>.</p>
+				<h3 id="getuseragentregexp-options-"><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
+				<p>Compile browserslist query to one RegExp.</p>
+				<blockquote>
+					<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/index.html">Description of all methods you can find in Documentation.</a></p>
+				</blockquote>
+				<h4 id="options">Options</h4>
+				<p>| Option | Type | Default Value | Description |
+					|--------|---------------|------------ |
+					| browsers | <code>string | string[]</code> | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
+					| env | <code>string</code> | — | When multiple browserslist <a href="https://github.com/ai/browserslist#environments">environments</a> are specified, pick the config belonging to this environment.|
+					| ignorePatch | <code>boolean</code> | <code>true</code> | Ignore differences in patch browser numbers |
+					| ignoreMinor | <code>boolean</code> | <code>false</code> | Ignore differences in minor browser versions |
+					| allowHigherVersions | <code>boolean</code> | <code>false</code> | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. |
+				| allowZeroVersions | <code>boolean</code> | <code>false</code> | Ignore match of patch or patch and minor, if they are 0. |</p>
+				<h4 id="regexp-info-objects">RegExp info objects</h4>
+				<table>
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>family</td>
+							<td><code>string</code></td>
+							<td>Browser family.</td>
+						</tr>
+						<tr>
+							<td>requestVersions</td>
+							<td><code>[number, number, number][]</code></td>
+							<td>Versions provided by browserslist.</td>
+						</tr>
+						<tr>
+							<td>regExp</td>
+							<td><code>RegExp</code></td>
+							<td>RegExp to match user agent with family and versions.</td>
+						</tr>
+						<tr>
+							<td>sourceRegExp</td>
+							<td><code>RegExp</code></td>
+							<td>Original user agent RegExp, without versions.</td>
+						</tr>
+						<tr>
+							<td>resultVersion</td>
+							<td>`[number, number, number]</td>
+							<td>null`</td>
+						</tr>
+				</tbody></table>
+				<h3 id="other">Other</h3>
+				<ul>
+					<li><a href="https://github.com/browserslist/browserslist-useragent#supported-browsers">Supported browsers</a></li>
+					<li><a href="https://github.com/browserslist/browserslist-useragent#notes">Notes</a></li>
+					<li><a href="https://github.com/browserslist/browserslist-useragent#when-querying-for-modern-browsers">When querying for modern browsers</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
