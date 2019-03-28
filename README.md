@@ -69,7 +69,7 @@ Compile browserslist query to one RegExp.
 | allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. |
 | allowZeroVersions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
 
-#### RegExp info objects
+#### RegExp info object
 
 | Property | Type | Description |
 |----------|------|-------------|
