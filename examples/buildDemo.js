@@ -42,6 +42,10 @@ h2 > input {
 	vertical-align: middle;
 }
 
+th, td {
+	text-align: left;
+}
+
 </style>`;
 }
 
@@ -80,6 +84,8 @@ function renderScript() {
 		return result;
 	}
 
+	document.getElementById('useragent').innerText = navigator.userAgent;
+
 	forEach(findByAttribute('data-query'), function(input) {
 
 		var query = input.getAttribute('data-query');
@@ -101,6 +107,7 @@ function renderScript() {
 
 		input.checked = some;
 	});
+
 </script>`;
 }
 
@@ -175,14 +182,20 @@ function renderQuery(query) {
 
 function render(queries) {
 	return renderHtml(`<h1>browserslist-useragent-regexp demo</h1>
-<article>
-Options:
-<pre>
-{
-    allowHigherVersions: true,
-    allowZeroSubverions: true
-}
-</pre>
+<table>
+	<tr>
+		<th>UserAgent:</th>
+		<td id="useragent"></td>
+	<tr>
+		<th>Options:</th>
+		<td>
+			<pre>{
+	allowHigherVersions: true,
+	allowZeroSubverions: true
+}</pre>
+		</td>
+	</tr>
+</table>
 </article>
 ${queries.map(_ => renderQuery(_)).join('\n')}`);
 }
