@@ -92,6 +92,8 @@ function renderScript() {
 
 	forEach(findByAttribute('data-query'), function(input) {
 
+		var queryDiv = input.parentElement;
+		var queriesDiv = queryDiv.parentElement;
 		var query = input.getAttribute('data-query');
 		var some = false;
 
@@ -110,6 +112,10 @@ function renderScript() {
 		});
 
 		input.checked = some;
+
+		if (some) {
+			queriesDiv.insertBefore(queryDiv, queriesDiv.children[0]);
+		}
 	});
 
 </script>`;
@@ -174,14 +180,15 @@ function renderQuery(query) {
 		allowZeroSubverions: true
 	});
 
-	return `<h2>
-	<input type="checkbox" onclick="return false" readonly data-query="${query}">
-	<pre>${query}</pre>
-</h2>
-<ul>
-	${result.map(_ => renderUserAgentRegExp(_, query)).join('\n')}
-</ul>
-`;
+	return `<div>
+	<h2>
+		<input type="checkbox" onclick="return false" readonly data-query="${query}">
+		<pre>${query}</pre>
+	</h2>
+	<ul>
+		${result.map(_ => renderUserAgentRegExp(_, query)).join('\n')}
+	</ul>
+</div>`;
 }
 
 function render(queries) {
@@ -200,8 +207,9 @@ function render(queries) {
 		</td>
 	</tr>
 </table>
-</article>
-${queries.map(_ => renderQuery(_)).join('\n')}`);
+<div>
+	${queries.map(_ => renderQuery(_)).join('\n')}
+</div>`);
 }
 
 console.log(render([

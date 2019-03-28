@@ -72,13 +72,14 @@ th, td {
 		</td>
 	</tr>
 </table>
-</article>
-<h2>
-	<input type="checkbox" onclick="return false" readonly data-query="defaults">
-	<pre>defaults</pre>
-</h2>
-<ul>
-	<li>
+<div>
+	<div>
+	<h2>
+		<input type="checkbox" onclick="return false" readonly data-query="defaults">
+		<pre>defaults</pre>
+	</h2>
+	<ul>
+		<li>
 	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android">
 	<table>
 		<tr>
@@ -678,14 +679,15 @@ th, td {
 		
 	</table>
 </li>
-</ul>
-
-<h2>
-	<input type="checkbox" onclick="return false" readonly data-query="dead">
-	<pre>dead</pre>
-</h2>
-<ul>
-	<li>
+	</ul>
+</div>
+<div>
+	<h2>
+		<input type="checkbox" onclick="return false" readonly data-query="dead">
+		<pre>dead</pre>
+	</h2>
+	<ul>
+		<li>
 	<input type="checkbox" onclick="return false" readonly data-for-query="dead" data-regexp="(IEMobile)[ \/](10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)">
 	<table>
 		<tr>
@@ -825,8 +827,9 @@ th, td {
 		
 	</table>
 </li>
-</ul>
-
+	</ul>
+</div>
+</div>
 		<script>
 	function forEach(elements, handler) {
 
@@ -865,6 +868,8 @@ th, td {
 
 	forEach(findByAttribute('data-query'), function(input) {
 
+		var queryDiv = input.parentElement;
+		var queriesDiv = queryDiv.parentElement;
 		var query = input.getAttribute('data-query');
 		var some = false;
 
@@ -883,6 +888,10 @@ th, td {
 		});
 
 		input.checked = some;
+
+		if (some) {
+			queriesDiv.insertBefore(queryDiv, queriesDiv.children[0]);
+		}
 	});
 
 </script>
