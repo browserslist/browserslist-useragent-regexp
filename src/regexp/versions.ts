@@ -26,6 +26,7 @@ import {
 
 /**
  * Apply ranged sevmers to the RegExp.
+ * @todo   if `allowHigherVersions`, apply only min version.
  * @param  regExp - Target RegExp.
  * @param  versions - Ranged semvers.
  * @param  options - Semver compare options.
