@@ -26,7 +26,7 @@
 [greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/browserslist-useragent-regexp.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
-A utility to compile a browselist query to regular expression.
+Utility to compile browserslist query to regular expression.
 
 ## Install
 
@@ -36,12 +36,51 @@ npm i -D browserslist-useragent-regexp
 yarn add -D browserslist-useragent-regexp
 ```
 
-## API
+## Why?
 
-Module exposes next API:
+As was written in article ["Smart Bundling: Shipping legacy code to only legacy browsers"](https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/), you can determinate, which bundle you should give to browser from server with [`browserslist-useragent`](https://github.com/browserslist/browserslist-useragent). But in this case you must have your own server with special logic. Now, with `browserslist-useragent-regexp`, you can move that to client-side.
 
-```js
-...
-```
+Development was inspired by [this proposal by Mathias Bynens](https://twitter.com/mathias/status/1105857829393653761).
 
-[Description of this methods you can find in Documentation.](https://trigensoftware.github.io/browserslist-useragent-regexp/index.html)
+[Demo](https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17), [build script](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61)).
+
+## Usage basics
+
+Module exposes two main methods:
+
+### [getUserAgentRegExps(options)](https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps)
+
+Compile browserslist query to [RegExps for each browser](#regexp-info-objects).
+
+### [getUserAgentRegExp(options)](https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp)
+
+Compile browserslist query to one RegExp.
+
+> [Description of all methods you can find in Documentation.](https://trigensoftware.github.io/browserslist-useragent-regexp/index.html)
+
+#### Options
+
+| Option | Type | Default Value | Description |
+|--------|---------------|------------ |
+| browsers | `string | string[]` | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
+| env | `string` | — | When multiple browserslist [environments](https://github.com/ai/browserslist#environments) are specified, pick the config belonging to this environment.|
+| ignorePatch | `boolean` | `true` | Ignore differences in patch browser numbers |
+| ignoreMinor | `boolean` | `false` | Ignore differences in minor browser versions |
+| allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. |
+| allowZeroVersions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
+
+#### RegExp info objects
+
+| Property | Type | Description |
+|--------|---------------|------------ |
+| family | `string` | Browser family. |
+| requestVersions | `[number, number, number][]` | Versions provided by browserslist. |
+| regExp | `RegExp` | RegExp to match user agent with family and versions. |
+| sourceRegExp | `RegExp` | Original user agent RegExp, without versions. |
+| resultVersion | `[number, number, number] | null` | User agent version of RegExp. |
+
+### Other
+
+- [Supported browsers](https://github.com/browserslist/browserslist-useragent#supported-browsers)
+- [Notes](https://github.com/browserslist/browserslist-useragent#notes)
+- [When querying for modern browsers](https://github.com/browserslist/browserslist-useragent#when-querying-for-modern-browsers)
