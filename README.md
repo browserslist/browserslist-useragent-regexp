@@ -42,7 +42,7 @@ As was written in article ["Smart Bundling: Shipping legacy code to only legacy 
 
 Development was inspired by [this proposal from Mathias Bynens](https://twitter.com/mathias/status/1105857829393653761).
 
-[Demo](https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17), [build script](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61)).
+[Demo](https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29), [build script](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74)).
 
 ## Usage basics
 
@@ -79,7 +79,7 @@ Compile browserslist query to one RegExp.
 | sourceRegExp | `RegExp` | Original user agent RegExp, without versions. |
 | resultVersion | `[number, number, number] \| null` | User agent version of RegExp. |
 
-### Other
+## Other
 
 - [Supported browsers](https://github.com/browserslist/browserslist-useragent#supported-browsers)
 - [Notes](https://github.com/browserslist/browserslist-useragent#notes)
