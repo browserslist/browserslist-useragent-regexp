@@ -141,7 +141,7 @@ function renderUserAgentRegExp({
 	requestVersionsStrings
 }, query) {
 	return `<li>
-	<input type="checkbox" readonly data-for-query="${query}" data-regexp="${regExpString.replace(/([^\\])"/g, '$1\\"')}">
+	<input type="checkbox" onclick="return false" readonly data-for-query="${query}" data-regexp="${regExpString.replace(/([^\\])"/g, '$1\\"')}">
 	<table>
 		<tr>
 			<th>Family:</th><td>${family}</td>
@@ -175,7 +175,7 @@ function renderQuery(query) {
 	});
 
 	return `<h2>
-	<input type="checkbox" readonly data-query="${query}">
+	<input type="checkbox" onclick="return false" readonly data-query="${query}">
 	<pre>${query}</pre>
 </h2>
 <ul>
