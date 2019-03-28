@@ -38,9 +38,9 @@ yarn add -D browserslist-useragent-regexp
 
 ## Why?
 
-As was written in article ["Smart Bundling: Shipping legacy code to only legacy browsers"](https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/), you can determinate, which bundle you should give to browser from server with [`browserslist-useragent`](https://github.com/browserslist/browserslist-useragent). But in this case you must have your own server with special logic. Now, with `browserslist-useragent-regexp`, you can move that to client-side.
+As was written in article ["Smart Bundling: Shipping legacy code to only legacy browsers"](https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/): you can determinate, which bundle you should give to browser from server with [`browserslist-useragent`](https://github.com/browserslist/browserslist-useragent). But in this case you must have your own server with special logic. Now, with `browserslist-useragent-regexp`, you can move that to client-side.
 
-Development was inspired by [this proposal by Mathias Bynens](https://twitter.com/mathias/status/1105857829393653761).
+Development was inspired by [this proposal from Mathias Bynens](https://twitter.com/mathias/status/1105857829393653761).
 
 [Demo](https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17), [build script](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61)).
 
@@ -61,8 +61,8 @@ Compile browserslist query to one RegExp.
 #### Options
 
 | Option | Type | Default Value | Description |
-|--------|---------------|------------ |
-| browsers | `string | string[]` | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
+|--------|------|---------------|-------------|
+| browsers | `string \| string[]` | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
 | env | `string` | — | When multiple browserslist [environments](https://github.com/ai/browserslist#environments) are specified, pick the config belonging to this environment.|
 | ignorePatch | `boolean` | `true` | Ignore differences in patch browser numbers |
 | ignoreMinor | `boolean` | `false` | Ignore differences in minor browser versions |
@@ -72,12 +72,12 @@ Compile browserslist query to one RegExp.
 #### RegExp info objects
 
 | Property | Type | Description |
-|--------|---------------|------------ |
+|----------|------|-------------|
 | family | `string` | Browser family. |
 | requestVersions | `[number, number, number][]` | Versions provided by browserslist. |
 | regExp | `RegExp` | RegExp to match user agent with family and versions. |
 | sourceRegExp | `RegExp` | Original user agent RegExp, without versions. |
-| resultVersion | `[number, number, number] | null` | User agent version of RegExp. |
+| resultVersion | `[number, number, number] \| null` | User agent version of RegExp. |
 
 ### Other
 
