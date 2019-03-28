@@ -59,7 +59,7 @@ th, td {
 function renderScript() {
 
 	const modernBrowsers = getUserAgentRegExp({
-		browsers:            'last 2 versions',
+		browsers:            'last 2 versions and last 1 year',
 		allowHigherVersions: true,
 		allowZeroSubverions: true
 	});
