@@ -105,7 +105,7 @@ function renderScript() {
 			some = some || checked;
 
 			if (checked) {
-				ul.insertBefore(li, ul.firstElementChild);
+				ul.insertBefore(li, ul.children[0]);
 			}
 		});
 
