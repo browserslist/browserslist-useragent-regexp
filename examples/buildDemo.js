@@ -91,7 +91,7 @@ function renderScript() {
 			script.src = 'demojs/index.old.js';
 	}
 
-	document.head.appendChild(script);
+	document.getElementsByTagName('head')[0].appendChild(script);
 </script>`;
 }
 
