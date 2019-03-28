@@ -56,11 +56,16 @@ function renderScript() {
 
 	function findByAttribute(attribute, value) {
 
+		var hasValue = typeof value !== 'undefined';
+
 		if (typeof document.querySelectorAll === 'function') {
-			return document.querySelectorAll('[' + attribute + ']');
+			return document.querySelectorAll(
+				hasValue
+					? '[' + attribute + '=' + value + ']'
+					: '[' + attribute + ']'
+			);
 		}
 
-		var hasValue = typeof value !== 'undefined';
 		var result = [];
 
 		forEach(document.all, function(element) {
