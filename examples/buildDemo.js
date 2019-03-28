@@ -42,6 +42,10 @@ h2 > input {
 	vertical-align: middle;
 }
 
+table {
+	width: 100%;
+}
+
 th, td {
 	text-align: left;
 }
