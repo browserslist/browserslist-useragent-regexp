@@ -146,9 +146,11 @@ function renderUserAgentRegExp({
 				<th>Source RegExp version:</th><td>${resultVersion.join('.')}</td>
 			</tr>
 		`}
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
-		</tr>
+		${resultVersion ? '' : `
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
+			</tr>
+		`}
 	</table>
 </li>`;
 }
