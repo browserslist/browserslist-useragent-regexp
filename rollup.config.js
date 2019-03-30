@@ -26,19 +26,30 @@ const dependencies = [].concat(
 );
 
 function external(id) {
-	return dependencies.some(_ =>
-		_ == id || id.indexOf(`${_}/`) == 0
-	);
+	return id === '../lib'
+		|| dependencies.some(_ =>
+			_ == id || id.indexOf(`${_}/`) == 0
+		);
 }
 
-export default {
-	input:  'src/index.ts',
+export default [{
+	input:   'src/index.ts',
 	plugins,
 	external,
-	output: {
+	output:  {
 		file:      pkg.main,
 		format:    'cjs',
 		exports:   'named',
 		sourcemap: 'inline'
 	}
-};
+}, {
+	input:   'src/cli.ts',
+	plugins,
+	external,
+	output:  {
+		file:      'lib/cli.js',
+		format:    'cjs',
+		exports:   'named',
+		sourcemap: 'inline'
+	}
+}];

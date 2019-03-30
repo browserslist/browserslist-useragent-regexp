@@ -1,0 +1,173 @@
+import {
+	argv,
+	read,
+	end,
+	options as readOptions
+} from 'argue-cli';
+import chalk from 'chalk';
+import Table from 'easy-table';
+import {
+	getUserAgentRegExp,
+	getBrowsersList,
+	mergeBrowserVersions,
+	browserVersionsToRanges,
+	getRegExpsForBrowsers,
+	applyVersionsToRegExps,
+	joinVersionedBrowsersRegExps,
+	isAllVersion
+} from '../lib';
+
+const {
+	help,
+	verbose,
+	...regExpOptions
+} = readOptions([
+	['help', 'h'],
+	['verbose', 'v'],
+	'ignoreMajor',
+	'ignorePatch',
+	'allowHigherVersions',
+	'allowZeroVersions'
+], []);
+
+if (help) {
+
+	end();
+
+	const optionsTable = new Table();
+
+	optionsTable.cell('Option', 'query');
+	optionsTable.cell(
+		'Description',
+		'Manually provide a browserslist query.'
+		+ ' Specifying this overrides the browserslist configuration specified in your project.'
+	);
+	optionsTable.newRow();
+
+	optionsTable.cell('Option', '--help, -h');
+	optionsTable.cell('Description', 'Print this message.');
+	optionsTable.newRow();
+
+	optionsTable.cell('Option', '--verbose, -v');
+	optionsTable.cell('Description', 'Print additional info about RegExps.');
+	optionsTable.newRow();
+
+	optionsTable.cell('Option', '--ignorePatch');
+	optionsTable.cell('Description', 'Ignore differences in patch browser numbers.');
+	optionsTable.cell('Default', 'true');
+	optionsTable.newRow();
+
+	optionsTable.cell('Option', '--ignoreMinor');
+	optionsTable.cell('Description', 'Ignore differences in minor browser versions.');
+	optionsTable.cell('Default', 'false');
+	optionsTable.newRow();
+
+	optionsTable.cell('Option', '--allowHigherVersions');
+	optionsTable.cell(
+		'Description',
+		'For all the browsers in the browserslist query,'
+		+ ' return a match if the user agent version is equal to or higher than the one specified in browserslist.'
+	);
+	optionsTable.cell('Default', 'false');
+	optionsTable.newRow();
+
+	optionsTable.cell('Option', '--allowZeroSubverions');
+	optionsTable.cell('Description', 'Ignore match of patch or patch and minor, if they are 0.');
+	optionsTable.cell('Default', 'false');
+	optionsTable.newRow();
+
+	console.log(`\nbrowserslist-useragent-regexp [query] [...options]\n\n${optionsTable.toString()}`);
+	process.exit(0);
+}
+
+const query = argv.length
+	? read()
+	: undefined;
+const options = {
+	browsers: query,
+	...regExpOptions
+};
+
+end();
+
+if (verbose) {
+
+	const browsersList = getBrowsersList(options);
+	const mergedBrowsers = mergeBrowserVersions(browsersList);
+
+	console.log(
+		chalk.blue('\n> Browserslist\n')
+	);
+
+	const browsersTable = new Table();
+
+	mergedBrowsers.forEach((versions, browser) => {
+
+		browsersTable.cell('Browser', chalk.yellow(browser));
+
+		versions.forEach((version, i) => {
+
+			if (isAllVersion(version)) {
+				browsersTable.cell(`Version ${i}`, version[0]);
+			} else {
+				browsersTable.cell(`Version ${i}`, version.join('.'));
+			}
+		});
+
+		browsersTable.newRow();
+	});
+
+	console.log(browsersTable.print());
+
+	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
+	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
+	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+
+	console.log(
+		chalk.blue('\n> RegExps\n')
+	);
+
+	regExps.forEach(({
+		family,
+		requestVersionsStrings,
+		sourceRegExp,
+		resultVersion,
+		regExp
+	}) => {
+
+		const regExpsTable = new Table();
+
+		regExpsTable.cell('Name', chalk.yellow('Family:'));
+		regExpsTable.cell('Value', family);
+		regExpsTable.newRow();
+
+		regExpsTable.cell('Name', chalk.yellow('Versions:'));
+		regExpsTable.cell('Value', requestVersionsStrings.join(' '));
+		regExpsTable.newRow();
+
+		regExpsTable.cell('Name', chalk.yellow('Source RegExp:'));
+		regExpsTable.cell('Value', sourceRegExp);
+		regExpsTable.newRow();
+
+		regExpsTable.cell('Name', chalk.yellow('Source RegExp version:'));
+		regExpsTable.cell('Value', resultVersion && resultVersion.join('.'));
+		regExpsTable.newRow();
+
+		regExpsTable.cell('Name', chalk.yellow('Versioned RegExp:'));
+		regExpsTable.cell('Value', regExp);
+		regExpsTable.newRow();
+
+		console.log(`${regExpsTable.print()}\n`);
+	});
+
+	const regExpStr = joinVersionedBrowsersRegExps(regExps);
+	const regExp = new RegExp(regExpStr);
+
+	console.log(regExp);
+	process.exit(0);
+
+}
+
+console.log(
+	getUserAgentRegExp(options)
+);

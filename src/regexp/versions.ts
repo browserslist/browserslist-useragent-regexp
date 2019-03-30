@@ -2,7 +2,8 @@ import {
 	IRangedSemver,
 	ISemverCompareOptions,
 	rangedSemverToRegExp,
-	getRequiredSemverPartsCount
+	getRequiredSemverPartsCount,
+	isAllVersion
 } from '../semver';
 import {
 	IRangedBrowsers
@@ -126,7 +127,11 @@ export function applyVersionsToRegExps(
 				regExpString,
 				resultVersion,
 				requestVersions,
-				requestVersionsStrings: requestVersions.map(_ => _.join('.'))
+				requestVersionsStrings: requestVersions.map(_ =>
+					isAllVersion(_)
+						? _[0]
+						: _.join('.')
+				)
 			});
 		}
 	});

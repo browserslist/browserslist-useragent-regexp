@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/TrigenSoftware/browserslist-useragent-regexp/issues"
   },
+  "bin": {
+    "browserslist-useragent-regexp": "lib/cli.js"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
@@ -36,8 +39,11 @@
   "dependencies": {
     "@babel/runtime": "^7.4.2",
     "@types/node": "^11.11.6",
+    "argue-cli": "^1.2.0",
     "browserslist": "^4.5.2",
+    "chalk": "^2.4.2",
     "core-js": "^3.0.0",
+    "easy-table": "^1.1.1",
     "useragent": "^2.3.0"
   },
   "devDependencies": {
