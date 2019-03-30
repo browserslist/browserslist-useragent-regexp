@@ -1,7 +1,7 @@
 {
   "name": "browserslist-useragent-regexp",
-  "version": "0.0.0",
-  "description": "Utility to compile browserslist query to regular expression.",
+  "version": "1.0.0-beta",
+  "description": "A utility to compile browserslist query to a RegExp.",
   "author": "dangreen",
   "license": "MIT",
   "repository": {

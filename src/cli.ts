@@ -14,7 +14,8 @@ import {
 	getRegExpsForBrowsers,
 	applyVersionsToRegExps,
 	joinVersionedBrowsersRegExps,
-	isAllVersion
+	isAllVersion,
+	defaultOptions
 } from '../lib';
 
 const {
@@ -85,6 +86,7 @@ const query = argv.length
 	: undefined;
 const options = {
 	browsers: query,
+	...defaultOptions,
 	...regExpOptions
 };
 

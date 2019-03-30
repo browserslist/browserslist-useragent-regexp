@@ -26,7 +26,20 @@
 [greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/browserslist-useragent-regexp.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
-Utility to compile browserslist query to regular expression.
+A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp. Simplest example: you can detect "dead" browsers on client-side.
+
+```bash
+$ npx browserslist-useragent-regexp "dead"
+/((IEMobile)[ \/]10\.0)|((PlayBook).+RIM Tablet OS (7\.0|10\.0)\.(\d+))|((Black[bB]erry|BB10).+Version\/(7\.0|10\.0)\.(\d+))|((Trident)\/(6)\.(0))|((Trident)\/(5)\.(0))|((Trident)\/(4)\.(0))|(([MS]?IE) (5\.5|([6-9]|10)\.0))/
+```
+
+```js
+const deadBrowsers = /.../;
+
+if (deadBrowsers.test(navigator.userAgent)) {
+    alert('Your browser is ☠️');
+}
+```
 
 ## Install
 
@@ -44,13 +57,31 @@ Development was inspired by [this proposal from Mathias Bynens](https://twitter.
 
 [Demo](https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29), [build script](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74)).
 
-## Usage basics
+## CLI
+
+```bash
+npx browserslist-useragent-regexp [query] [...options]
+# or
+yarn exec -- browserslist-useragent-regexp [query] [...options]
+```
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| query | Manually provide a browserslist query. Specifying this overrides the browserslist configuration specified in your project. | |
+| --help, -h | Print this message. | |
+| --verbose, -v | Print additional info about RegExps. | |
+| --ignorePatch | Ignore differences in patch browser numbers. | `true` |
+| --ignoreMinor | Ignore differences in minor browser versions. | `false` |
+| --allowHigherVersions | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. | `false` |
+| --allowZeroSubverions | Ignore match of patch or patch and minor, if they are 0. | `false` |
+
+## JS API basics
 
 Module exposes two main methods:
 
 ### [getUserAgentRegExps(options)](https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps)
 
-Compile browserslist query to [RegExps for each browser](#regexp-info-objects).
+Compile browserslist query to [RegExps for each browser](#regexp-info-object).
 
 ### [getUserAgentRegExp(options)](https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp)
 
@@ -60,8 +91,8 @@ Compile browserslist query to one RegExp.
 
 #### Options
 
-| Option | Type | Default Value | Description |
-|--------|------|---------------|-------------|
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
 | browsers | `string \| string[]` | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
 | env | `string` | — | When multiple browserslist [environments](https://github.com/ai/browserslist#environments) are specified, pick the config belonging to this environment. |
 | ignorePatch | `boolean` | `true` | Ignore differences in patch browser numbers. |

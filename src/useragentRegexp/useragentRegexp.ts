@@ -14,7 +14,7 @@ import {
 	joinVersionedBrowsersRegExps
 } from '../regexp';
 
-const defaultOptions = {
+export const defaultOptions = {
 	ignoreMinor: false,
 	ignorePatch: true,
 	allowZeroSubverions: false,
