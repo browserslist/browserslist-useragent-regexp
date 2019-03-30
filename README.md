@@ -68,12 +68,12 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 | Option | Description | Default |
 |--------|-------------|---------|
 | query | Manually provide a browserslist query. Specifying this overrides the browserslist configuration specified in your project. | |
-| --help, -h | Print this message. | |
-| --verbose, -v | Print additional info about RegExps. | |
-| --ignorePatch | Ignore differences in patch browser numbers. | `true` |
-| --ignoreMinor | Ignore differences in minor browser versions. | `false` |
-| --allowHigherVersions | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. | `false` |
-| --allowZeroSubverions | Ignore match of patch or patch and minor, if they are 0. | `false` |
+| &#x2011;&#x2011;help, -h | Print this message. | |
+| &#x2011;&#x2011;verbose, -v | Print additional info about RegExps. | |
+| &#x2011;&#x2011;ignorePatch | Ignore differences in patch browser numbers. | `true` |
+| &#x2011;&#x2011;ignoreMinor | Ignore differences in minor browser versions. | `false` |
+| &#x2011;&#x2011;allowHigherVersions | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. | `false` |
+| &#x2011;&#x2011;allowZeroSubverions | Ignore match of patch or patch and minor, if they are 0. | `false` |
 
 ## JS API basics
 
