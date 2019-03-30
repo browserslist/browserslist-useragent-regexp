@@ -37,7 +37,7 @@ $ npx browserslist-useragent-regexp "dead"
 const deadBrowsers = /.../;
 
 if (deadBrowsers.test(navigator.userAgent)) {
-    alert('Your browser is ☠️');
+    alert('Your browser is dead');
 }
 ```
 
