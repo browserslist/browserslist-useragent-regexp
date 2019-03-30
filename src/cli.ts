@@ -165,7 +165,6 @@ if (verbose) {
 
 	console.log(regExp);
 	process.exit(0);
-
 }
 
 console.log(
