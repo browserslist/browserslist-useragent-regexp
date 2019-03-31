@@ -28,17 +28,27 @@
 
 A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp. Simplest example: you can detect "dead" browsers on client-side.
 
-1) Add script to `package.json`:
+1) Create `.browserslistrc` config, for example with [environments](https://github.com/browserslist/browserslist#environments), like this:
+
+```
+[production]
+defaults
+
+[dead]
+dead
+```
+
+2) Add script to `package.json`:
 
 ```json
 {
   "scripts": {
-    "deadBrowsers": "echo \"module.exports = $(browserslist-useragent-regexp 'dead');\" > deadBrowsers.js"
+    "deadBrowsers": "echo \"module.exports = $(BROWSERSLIST_ENV=dead browserslist-useragent-regexp);\" > deadBrowsers.js"
   }
 }
 ```
 
-2) Run this script, to compile RegExp:
+3) Run this script, to compile RegExp:
 
 ```bash
 npm run deadBrowsers
@@ -46,7 +56,7 @@ npm run deadBrowsers
 yarn deadBrowsers
 ```
 
-3) Import RegExp from created file:
+4) Import RegExp from created file:
 
 ```js
 const deadBrowsers = require('./deadBrowsers');
