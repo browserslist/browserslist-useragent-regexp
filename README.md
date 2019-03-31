@@ -28,13 +28,28 @@
 
 A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp. Simplest example: you can detect "dead" browsers on client-side.
 
-```bash
-$ npx browserslist-useragent-regexp "dead"
-/((IEMobile)[ \/]10\.0)|((PlayBook).+RIM Tablet OS (7\.0|10\.0)\.(\d+))|((Black[bB]erry|BB10).+Version\/(7\.0|10\.0)\.(\d+))|((Trident)\/(6)\.(0))|((Trident)\/(5)\.(0))|((Trident)\/(4)\.(0))|(([MS]?IE) (5\.5|([6-9]|10)\.0))/
+1) Add script to `package.json`:
+
+```json
+{
+  "scripts": {
+    "deadBrowsers": "echo \"module.exports = $(browserslist-useragent-regexp 'dead');\" > deadBrowsers.js"
+  }
+}
 ```
 
+2) Run this script, to compile RegExp:
+
+```bash
+$ npm run deadBrowsers
+# or
+$ yarn deadBrowsers
+```
+
+3) Import RegExp from created file:
+
 ```js
-const deadBrowsers = /.../;
+const deadBrowsers = require('./deadBrowsers');
 
 if (deadBrowsers.test(navigator.userAgent)) {
     alert('Your browser is dead');
