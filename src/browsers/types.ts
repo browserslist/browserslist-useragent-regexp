@@ -9,7 +9,7 @@ export interface IBrowser {
 }
 
 export interface IBrowsersListRequest {
-	browsers?: string[];
+	browsers?: string|string[];
 	env?: string;
 	path?: string;
 }

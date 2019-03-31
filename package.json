@@ -1,7 +1,7 @@
 {
   "name": "browserslist-useragent-regexp",
-  "version": "0.0.0",
-  "description": "A utility to compile a browselist query to regular expression.",
+  "version": "1.0.0-beta",
+  "description": "A utility to compile browserslist query to a RegExp.",
   "author": "dangreen",
   "license": "MIT",
   "repository": {
@@ -10,6 +10,9 @@
   },
   "bugs": {
     "url": "https://github.com/TrigenSoftware/browserslist-useragent-regexp/issues"
+  },
+  "bin": {
+    "browserslist-useragent-regexp": "lib/cli.js"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -21,8 +24,9 @@
     "lint": "tslint -p . -t stylish 'src/**/*.{ts,tsx}'",
     "jest": "NODE_ENV=test jest -c jest.config.json",
     "checkSize": "size-limit",
-    "test": "npm run typecheck && npm run lint && npm run jest && npm run build && npm run checkSize",
-    "build:docs": "typedoc ./src --out ./docs --ignoreCompilerErrors --excludeExternals --mode modules; touch docs/.nojekyll",
+    "test": "npm run lint && npm run jest && npm run build && npm run typecheck && npm run checkSize",
+    "build:demo": "node examples/buildDemo > ./docs/demo.html && cp -R examples/demojs/ docs/demojs/",
+    "build:docs": "typedoc ./src --out ./docs --ignoreCompilerErrors --excludeExternals --mode modules --exclude '**/*.spec.ts'; touch docs/.nojekyll; npm run build:demo",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "coverage": "cat ./coverage/lcov.info | coveralls",
@@ -35,8 +39,11 @@
   "dependencies": {
     "@babel/runtime": "^7.4.2",
     "@types/node": "^11.12.0",
-    "browserslist": "^4.5.2",
+    "argue-cli": "^1.2.0",
+    "browserslist": "^4.5.3",
+    "chalk": "^2.4.2",
     "core-js": "^3.0.0",
+    "easy-table": "^1.1.1",
     "useragent": "^2.3.0"
   },
   "devDependencies": {

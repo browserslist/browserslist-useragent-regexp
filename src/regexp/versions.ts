@@ -2,7 +2,8 @@ import {
 	IRangedSemver,
 	ISemverCompareOptions,
 	rangedSemverToRegExp,
-	getRequiredSemverPartsCount
+	getRequiredSemverPartsCount,
+	isAllVersion
 } from '../semver';
 import {
 	IRangedBrowsers
@@ -11,6 +12,9 @@ import {
 	IBrowserVersionRegExp,
 	IBrowserVersionedRegExp
 } from '../useragent';
+import {
+	uniq
+} from '../useragent/util';
 import {
 	joinParts,
 	getNumberPatternsCount,
@@ -23,6 +27,7 @@ import {
 
 /**
  * Apply ranged sevmers to the RegExp.
+ * @todo   if `allowHigherVersions`, apply only min version.
  * @param  regExp - Target RegExp.
  * @param  versions - Ranged semvers.
  * @param  options - Semver compare options.
@@ -56,11 +61,17 @@ export function applyVersionsToRegExp(
 
 	const numberPatternsPart = getNumberPatternsPart(regExpStr, maxRequiredPartsCount);
 	const versionsRegExpPart = joinParts(
-		suitableVersions.map(version =>
-			replaceNumberPatterns(
-				numberPatternsPart,
-				rangedSemverToRegExp(version, options),
-				maxRequiredPartsCount
+		uniq(
+			[].concat(
+				...suitableVersions.map(version =>
+					rangedSemverToRegExp(version, options).map(parts =>
+						replaceNumberPatterns(
+							numberPatternsPart,
+							parts,
+							maxRequiredPartsCount
+						)
+					)
+				)
 			)
 		)
 	);
@@ -116,7 +127,11 @@ export function applyVersionsToRegExps(
 				regExpString,
 				resultVersion,
 				requestVersions,
-				requestVersionsStrings: requestVersions.map(_ => _.join('.'))
+				requestVersionsStrings: requestVersions.map(_ =>
+					isAllVersion(_)
+						? _[0]
+						: _.join('.')
+				)
 			});
 		}
 	});

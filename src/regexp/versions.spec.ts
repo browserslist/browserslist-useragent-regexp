@@ -86,7 +86,26 @@ describe('RegExp', () => {
 						}
 					)
 				).toBe(
-					'Chrome v(([1-9]\\d|\\d{3,})|(6[4-9]|[7-9]\\d|\\d{3,}))'
+					'Chrome v(10|(1[1-9]|[2-9]\\d|\\d{3,})|64|(6[5-9]|[7-9]\\d|\\d{3,}))'
+				);
+			});
+
+			it('should apply semver to match higher version ', () => {
+
+				expect(
+					applyVersionsToRegExp(
+						'Chrome v(\\d+) (\\d+)',
+						[
+							[8, 2, 0]
+						],
+						{
+							ignorePatch:         true,
+							allowZeroSubverions: true,
+							allowHigherVersions: true
+						}
+					)
+				).toBe(
+					'Chrome v(8 2|8 ([3-9]|\\d{2,})|(9|\\d{2,}) \\d+)'
 				);
 			});
 		});
@@ -141,8 +160,8 @@ describe('RegExp', () => {
 						...regExps[0],
 						sourceRegExp:           regExps[0].regExp,
 						sourceRegExpString:     regExpToString(regExps[0].regExp),
-						regExp:                 /Chrome (6[4-9]|[7-9]\d|\d{3,}) (\d+) (\d+)/,
-						regExpString:           'Chrome (6[4-9]|[7-9]\\d|\\d{3,}) (\\d+) (\\d+)',
+						regExp:                 /Chrome (64|(6[5-9]|[7-9]\d|\d{3,})) (\d+) (\d+)/,
+						regExpString:           'Chrome (64|(6[5-9]|[7-9]\\d|\\d{3,})) (\\d+) (\\d+)',
 						requestVersionsStrings: regExps[0].requestVersions.map(_ => _.join('.'))
 					},
 					{

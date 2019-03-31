@@ -14,13 +14,18 @@ import {
 	joinVersionedBrowsersRegExps
 } from '../regexp';
 
-const defaultOptions = {
+export const defaultOptions = {
 	ignoreMinor: false,
 	ignorePatch: true,
 	allowZeroSubverions: false,
 	allowHigherVersions: false
 };
 
+/**
+ * Compile browserslist query to RegExps.
+ * @param  options - Browserslist and semver compare options.
+ * @return Objects with info about compiled RegExps.
+ */
 export function getUserAgentRegExps({
 	browsers,
 	env,
@@ -41,11 +46,15 @@ export function getUserAgentRegExps({
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
 	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
-	// console.log(regExps);
 
 	return regExps;
 }
 
+/**
+ * Compile browserslist query to RegExp.
+ * @param  options - Browserslist and semver compare options.
+ * @return Compiled RegExp.
+ */
 export function getUserAgentRegExp(options: IUserAgentRegExpOptions) {
 
 	const regExps = getUserAgentRegExps(options);

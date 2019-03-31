@@ -96,6 +96,9 @@ export function fixBrowserFamily(family: string, regExp: RegExp) {
 		case familyMatched(true, familyOrRegExp, ['IE Mobile']):
 			return ['explorermobile'];
 
+		case familyMatched(true, familyOrRegExp, ['BlackBerry WebKit']):
+			return ['blackberry'];
+
 		case familyOrRegExp === regExp: {
 
 			const matches = regExpString.match(/\(([\s\w\d_\-/|]+)\)/i);

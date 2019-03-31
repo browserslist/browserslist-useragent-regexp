@@ -44,8 +44,8 @@ function *getUserAgents() {
 						&& mobile(userAgent, i)
 						&& matchesUA(userAgent, options)
 				);
-			} catch (e) {
-				break;
+			} catch (err) {
+				continue;
 			}
 
 			userAgents.add(data.userAgent);
@@ -69,15 +69,16 @@ describe('UserAgentRegExp', () => {
 		for (const ua of userAgents) {
 
 			const regExp = getUserAgentRegExp({
-				browsers:            [ua.query],
+				browsers:            ua.query,
 				allowHigherVersions: true,
 				allowZeroSubverions: true
 			});
 			const works = regExp.test(ua.userAgent);
 
 			if (!works) {
+
 				const info = getUserAgentRegExps({
-					browsers:            [ua.query],
+					browsers:            ua.query,
 					allowHigherVersions: true,
 					allowZeroSubverions: true
 				});

@@ -1,4 +1,6 @@
-import { hasNumberPattern } from '../regexp';
+import {
+	hasNumberPattern
+} from '../regexp/util';
 import {
 	ISemver,
 	ISemverCompareOptions,
