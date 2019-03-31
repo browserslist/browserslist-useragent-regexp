@@ -41,9 +41,9 @@ A utility to compile [browserslist query](https://github.com/browserslist/browse
 2) Run this script, to compile RegExp:
 
 ```bash
-$ npm run deadBrowsers
+npm run deadBrowsers
 # or
-$ yarn deadBrowsers
+yarn deadBrowsers
 ```
 
 3) Import RegExp from created file:
