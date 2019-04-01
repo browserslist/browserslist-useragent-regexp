@@ -17,6 +17,11 @@ export interface IBrowserRegExpSource {
 	[BrowserRegExpSourceProp.Patch]: number|string;
 }
 
+export interface IFixedFamily {
+	family: string;
+	regExp?: RegExp;
+}
+
 export interface IBrowserRegExp extends IBrowser {
 	regExp: RegExp;
 	version: ISemver|null;

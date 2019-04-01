@@ -1,10 +1,14 @@
 import regexps from 'useragent/lib/regexps';
 import {
+	IFixedFamily,
 	IBrowserRegExpSource,
 	IBrowserRegExp,
 	IBrowserVersionRegExp,
 	BrowserRegExpSourceProp
 } from './types';
+import {
+	regExpToString
+} from '../regexp/util';
 import {
 	uniq,
 	someSemverMatched,
@@ -61,18 +65,13 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
 
 /**
  * Fix browser family.
- * @todo  Instead of blacklist, extract from RegExp only need families.
- * e.g. For Opera
- * /(WebPilot|Opera Mini|Opera|NetFront)\/(\d+)\.(\d+)(?:\.(\d+))?/
- * ->
- * /(Opera)\/(\d+)\.(\d+)(?:\.(\d+))?/
  * @param family - Browser family.
  * @param regExp - User agent RegExp to find browser family as fallback.
  */
-export function fixBrowserFamily(family: string, regExp: RegExp) {
+export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[] {
 
 	const familyOrRegExp = family || regExp;
-	const regExpString = regExp.toString();
+	const regExpString = regExpToString(regExp);
 
 	switch (true) {
 
@@ -84,25 +83,28 @@ export function fixBrowserFamily(family: string, regExp: RegExp) {
 			'Chromium',
 			'HeadlessChrome'
 		]):
-			return ['chrome'];
+			return [{ family: 'chrome' }];
 
 		case familyMatched(true, familyOrRegExp, ['Samsung Internet']):
-			return ['samsung'];
+			return [{ family: 'samsung' }];
 
 		case familyMatched(true, familyOrRegExp, [
 			'Firefox Mobile',
 			'Firefox ($1)'
 		]):
-			return ['firefox'];
+			return [{ family: 'firefox' }];
 
 		case familyMatched(true, familyOrRegExp, ['IE']):
-			return ['explorer'];
+			return [{ family: 'explorer' }];
 
 		case familyMatched(true, familyOrRegExp, ['IE Mobile']):
-			return ['explorermobile'];
+			return [{ family: 'explorermobile' }];
 
 		case familyMatched(true, familyOrRegExp, ['BlackBerry WebKit']):
-			return ['blackberry'];
+			return [{ family: 'blackberry' }];
+
+		case familyMatched(true, familyOrRegExp, ['Opera Mobile']):
+			return [{ family: 'operamobile' }];
 
 		case familyOrRegExp === regExp: {
 
@@ -110,20 +112,25 @@ export function fixBrowserFamily(family: string, regExp: RegExp) {
 
 			if (Array.isArray(matches)) {
 
-				const families = matches[1].toLowerCase().split('|');
-
-				return uniq([
-					...families,
-					...families.map(_ => _.replace(/ /g, '')),
-					...families.map(_ => _.replace(/[_\-/\s]/g, ''))
+				const match = matches[1];
+				const familiesFromRegExp = match.toLowerCase().split('|');
+				const families = uniq([
+					...familiesFromRegExp,
+					...familiesFromRegExp.map(_ => _.replace(/ /g, '')),
+					...familiesFromRegExp.map(_ => _.replace(/[_\-/\s]/g, ''))
 				]);
+
+				return families.map(family => ({
+					family,
+					regExp: new RegExp(regExpString.replace(match, family))
+				}));
 			}
 
 			return [];
 		}
 
 		case typeof family === 'string':
-			return [family.toLowerCase()];
+			return [{ family: family.toLowerCase() }];
 
 		default:
 	}
@@ -153,10 +160,10 @@ export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 		? null
 		: semverify([major, minor, patch]);
 
-	return families.map<IBrowserRegExp>((family: string) => ({
+	return families.map<IBrowserRegExp>(family => ({
 		regExp,
-		family,
-		version
+		version,
+		...family
 	}));
 }
 
