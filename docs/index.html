@@ -69,34 +69,141 @@
 					<a href="https://travis-ci.com/TrigenSoftware/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Build status"></a>
 					<a href="https://coveralls.io/r/TrigenSoftware/browserslist-useragent-regexp"><img src="https://img.shields.io/coveralls/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Coverage status"></a>
 				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Greenkeeper badge"></a></p>
-				<p>Utility to compile browserslist query to regular expression.</p>
+				<p>A utility to compile <a href="https://github.com/browserslist/browserslist#queries">browserslist query</a> to a RegExp. Simplest example: you can detect &quot;dead&quot; browsers on client-side.</p>
+				<p>1) Create <code>.browserslistrc</code> config, for example with <a href="https://github.com/browserslist/browserslist#environments">environments</a>, like this:</p>
+				<pre><code><span class="hljs-string">[production]</span>
+defaults
+
+<span class="hljs-string">[dead]</span>
+dead</code></pre><p>2) Add script to <code>package.json</code>:</p>
+				<pre><code class="language-json">{
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"deadBrowsers"</span>: <span class="hljs-string">"echo \"module.exports = $(BROWSERSLIST_ENV=dead browserslist-useragent-regexp);\" &gt; deadBrowsers.js"</span>
+  }
+}</code></pre>
+				<p>3) Run this script, to compile RegExp:</p>
+				<pre><code class="language-bash">npm run deadBrowsers
+<span class="hljs-comment"># or</span>
+yarn deadBrowsers</code></pre>
+				<p>4) Import RegExp from created file:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> deadBrowsers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./deadBrowsers'</span>);
+
+<span class="hljs-keyword">if</span> (deadBrowsers.test(navigator.userAgent)) {
+    alert(<span class="hljs-string">'Your browser is dead'</span>);
+}</code></pre>
 				<h2 id="install">Install</h2>
 				<pre><code class="language-bash">npm i -D browserslist-useragent-regexp
 <span class="hljs-comment"># or</span>
 yarn add -D browserslist-useragent-regexp</code></pre>
 				<h2 id="why-">Why?</h2>
-				<p>As was written in article <a href="https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/">&quot;Smart Bundling: Shipping legacy code to only legacy browsers&quot;</a>, you can determinate, which bundle you should give to browser from server with <a href="https://github.com/browserslist/browserslist-useragent"><code>browserslist-useragent</code></a>. But in this case you must have your own server with special logic. Now, with <code>browserslist-useragent-regexp</code>, you can move that to client-side.</p>
-				<p>Development was inspired by <a href="https://twitter.com/mathias/status/1105857829393653761">this proposal by Mathias Bynens</a>.</p>
-				<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17">sources</a>, <a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61">build script</a>).</p>
-				<h2 id="usage-basics">Usage basics</h2>
+				<p>As was written in article <a href="https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/">&quot;Smart Bundling: Shipping legacy code to only legacy browsers&quot;</a>: you can determinate, which bundle you should give to browser from server with <a href="https://github.com/browserslist/browserslist-useragent"><code>browserslist-useragent</code></a>. But in this case you must have your own server with special logic. Now, with <code>browserslist-useragent-regexp</code>, you can move that to client-side.</p>
+				<p>Development was inspired by <a href="https://twitter.com/mathias/status/1105857829393653761">this proposal from Mathias Bynens</a>.</p>
+				<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29">sources</a>, <a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74">build script</a>).</p>
+				<h2 id="cli">CLI</h2>
+				<pre><code class="language-bash">npx browserslist-useragent-regexp [query] [...options]
+<span class="hljs-comment"># or</span>
+yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [query] [...options]</code></pre>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>query</td>
+							<td>Manually provide a browserslist query. Specifying this overrides the browserslist configuration specified in your project.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>&#x2011;&#x2011;help, -h</td>
+							<td>Print this message.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>&#x2011;&#x2011;verbose, -v</td>
+							<td>Print additional info about RegExps.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>&#x2011;&#x2011;ignorePatch</td>
+							<td>Ignore differences in patch browser numbers.</td>
+							<td><code>true</code></td>
+						</tr>
+						<tr>
+							<td>&#x2011;&#x2011;ignoreMinor</td>
+							<td>Ignore differences in minor browser versions.</td>
+							<td><code>false</code></td>
+						</tr>
+						<tr>
+							<td>&#x2011;&#x2011;allowHigherVersions</td>
+							<td>For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist.</td>
+							<td><code>false</code></td>
+						</tr>
+						<tr>
+							<td>&#x2011;&#x2011;allowZeroSubverions</td>
+							<td>Ignore match of patch or patch and minor, if they are 0.</td>
+							<td><code>false</code></td>
+						</tr>
+				</tbody></table>
+				<h2 id="js-api-basics">JS API basics</h2>
 				<p>Module exposes two main methods:</p>
 				<h3 id="getuseragentregexps-options-"><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
-				<p>Compile browserslist query to <a href="#regexp-info-objects">RegExps for each browser</a>.</p>
+				<p>Compile browserslist query to <a href="#regexp-info-object">RegExps for each browser</a>.</p>
 				<h3 id="getuseragentregexp-options-"><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
 				<p>Compile browserslist query to one RegExp.</p>
 				<blockquote>
 					<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/index.html">Description of all methods you can find in Documentation.</a></p>
 				</blockquote>
 				<h4 id="options">Options</h4>
-				<p>| Option | Type | Default Value | Description |
-					|--------|---------------|------------ |
-					| browsers | <code>string | string[]</code> | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
-					| env | <code>string</code> | — | When multiple browserslist <a href="https://github.com/ai/browserslist#environments">environments</a> are specified, pick the config belonging to this environment.|
-					| ignorePatch | <code>boolean</code> | <code>true</code> | Ignore differences in patch browser numbers |
-					| ignoreMinor | <code>boolean</code> | <code>false</code> | Ignore differences in minor browser versions |
-					| allowHigherVersions | <code>boolean</code> | <code>false</code> | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. |
-				| allowZeroVersions | <code>boolean</code> | <code>false</code> | Ignore match of patch or patch and minor, if they are 0. |</p>
-				<h4 id="regexp-info-objects">RegExp info objects</h4>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>browsers</td>
+							<td><code>string | string[]</code></td>
+							<td>—</td>
+							<td>Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project.</td>
+						</tr>
+						<tr>
+							<td>env</td>
+							<td><code>string</code></td>
+							<td>—</td>
+							<td>When multiple browserslist <a href="https://github.com/ai/browserslist#environments">environments</a> are specified, pick the config belonging to this environment.</td>
+						</tr>
+						<tr>
+							<td>ignorePatch</td>
+							<td><code>boolean</code></td>
+							<td><code>true</code></td>
+							<td>Ignore differences in patch browser numbers.</td>
+						</tr>
+						<tr>
+							<td>ignoreMinor</td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Ignore differences in minor browser versions.</td>
+						</tr>
+						<tr>
+							<td>allowHigherVersions</td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist.</td>
+						</tr>
+						<tr>
+							<td>allowZeroSubverions</td>
+							<td><code>boolean</code></td>
+							<td><code>false</code></td>
+							<td>Ignore match of patch or patch and minor, if they are 0.</td>
+						</tr>
+				</tbody></table>
+				<h4 id="regexp-info-object">RegExp info object</h4>
 				<table>
 					<thead>
 						<tr>
@@ -127,11 +234,11 @@ yarn add -D browserslist-useragent-regexp</code></pre>
 						</tr>
 						<tr>
 							<td>resultVersion</td>
-							<td>`[number, number, number]</td>
-							<td>null`</td>
+							<td><code>[number, number, number] | null</code></td>
+							<td>User agent version of RegExp.</td>
 						</tr>
 				</tbody></table>
-				<h3 id="other">Other</h3>
+				<h2 id="other">Other</h2>
 				<ul>
 					<li><a href="https://github.com/browserslist/browserslist-useragent#supported-browsers">Supported browsers</a></li>
 					<li><a href="https://github.com/browserslist/browserslist-useragent#notes">Notes</a></li>
@@ -162,6 +269,9 @@ yarn add -D browserslist-useragent-regexp</code></pre>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_browsers_util_.html">"browsers/util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_cli_.html">"cli"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_index_.html">"index"</a>
