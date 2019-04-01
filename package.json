@@ -24,7 +24,7 @@
     "lint": "tslint -p . -t stylish 'src/**/*.{ts,tsx}'",
     "jest": "NODE_ENV=test jest -c jest.config.json",
     "checkSize": "size-limit",
-    "test": "npm run lint && npm run jest && npm run build && npm run typecheck && npm run checkSize",
+    "test": "npm run lint && npm run jest && npm run typecheck && npm run build && npm run checkSize",
     "build:demo": "node examples/buildDemo > ./docs/demo.html && cp -R examples/demojs/ docs/demojs/",
     "build:docs": "typedoc ./src --out ./docs --ignoreCompilerErrors --excludeExternals --mode modules --exclude '**/*.spec.ts'; touch docs/.nojekyll; npm run build:demo",
     "build": "rollup -c",

@@ -16,7 +16,7 @@ import {
 	joinVersionedBrowsersRegExps,
 	isAllVersion,
 	defaultOptions
-} from '../lib';
+} from './';
 
 const {
 	help,
