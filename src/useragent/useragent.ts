@@ -113,7 +113,7 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 			if (Array.isArray(matches)) {
 
 				const match = matches[1];
-				const familiesFromRegExp = match.toLowerCase().split('|');
+				const familiesFromRegExp = match.split('|');
 				const families = uniq([
 					...familiesFromRegExp,
 					...familiesFromRegExp.map(_ => _.replace(/ /g, '')),
@@ -121,7 +121,7 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 				]);
 
 				return families.map(family => ({
-					family,
+					family: family.toLowerCase(),
 					regExp: new RegExp(regExpString.replace(match, family))
 				}));
 			}
