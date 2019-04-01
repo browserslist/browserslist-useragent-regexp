@@ -1,6 +1,6 @@
 {
   "name": "browserslist-useragent-regexp",
-  "version": "1.0.0-beta",
+  "version": "1.0.1-beta",
   "description": "A utility to compile browserslist query to a RegExp.",
   "author": "dangreen",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "cleanPublish": "npm run test && clean-publish"
+    "cleanPublish": "npm run test && del 'lib/**/*.spec.*' && clean-publish"
   },
   "keywords": [
     "browserslist",
@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.4.2",
-    "@types/node": "^11.12.0",
+    "@types/node": "^11.12.2",
     "argue-cli": "^1.2.0",
     "browserslist": "^4.5.3",
     "chalk": "^2.4.2",
@@ -53,8 +53,9 @@
     "babel-preset-trigen": "^2.2.1",
     "browserslist-config-trigen": "^1.1.0",
     "browserslist-useragent": "^3.0.0",
-    "clean-publish": "^1.1.0",
+    "clean-publish": "^1.1.1",
     "coveralls": "^3.0.0",
+    "del-cli": "^1.1.0",
     "eslint": "^5.12.0",
     "eslint-config-trigen": "^3.2.1",
     "husky": "^1.3.1",
@@ -71,7 +72,7 @@
     "tslint-config-trigen": "^3.0.7",
     "typedoc": "^0.14.0",
     "typescript": "^3.2.2",
-    "user-agents": "^1.0.207"
+    "user-agents": "^1.0.213"
   },
   "files": [
     "lib"
