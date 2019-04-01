@@ -61,6 +61,11 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
 
 /**
  * Fix browser family.
+ * @todo  Instead of blacklist, extract from RegExp only need families.
+ * e.g. For Opera
+ * /(WebPilot|Opera Mini|Opera|NetFront)\/(\d+)\.(\d+)(?:\.(\d+))?/
+ * ->
+ * /(Opera)\/(\d+)\.(\d+)(?:\.(\d+))?/
  * @param family - Browser family.
  * @param regExp - User agent RegExp to find browser family as fallback.
  */
