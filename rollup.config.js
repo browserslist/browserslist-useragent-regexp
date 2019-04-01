@@ -26,10 +26,9 @@ const dependencies = [].concat(
 );
 
 function external(id) {
-	return id === '../lib'
-		|| dependencies.some(_ =>
-			_ == id || id.indexOf(`${_}/`) == 0
-		);
+	return dependencies.some(_ =>
+		_ == id || id.indexOf(`${_}/`) == 0
+	);
 }
 
 export default [{
@@ -43,10 +42,10 @@ export default [{
 		sourcemap: 'inline'
 	}
 }, {
-	input:   'src/cli.ts',
+	input:    'src/cli.ts',
 	plugins,
-	external,
-	output:  {
+	external: () => true,
+	output:   {
 		file:      'lib/cli.js',
 		format:    'cjs',
 		exports:   'named',
