@@ -97,7 +97,7 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 | &#x2011;&#x2011;verbose, -v | Print additional info about RegExps. | |
 | &#x2011;&#x2011;ignorePatch | Ignore differences in patch browser numbers. | `true` |
 | &#x2011;&#x2011;ignoreMinor | Ignore differences in minor browser versions. | `false` |
-| &#x2011;&#x2011;allowHigherVersions | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. | `false` |
+| &#x2011;&#x2011;allowHigherVersions | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. | `false` |
 | &#x2011;&#x2011;allowZeroSubverions | Ignore match of patch or patch and minor, if they are 0. | `false` |
 
 ## JS API basics
@@ -122,7 +122,7 @@ Compile browserslist query to one RegExp.
 | env | `string` | — | When multiple browserslist [environments](https://github.com/ai/browserslist#environments) are specified, pick the config belonging to this environment. |
 | ignorePatch | `boolean` | `true` | Ignore differences in patch browser numbers. |
 | ignoreMinor | `boolean` | `false` | Ignore differences in minor browser versions. |
-| allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist. |
+| allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. |
 | allowZeroSubverions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
 
 #### RegExp info object
@@ -131,9 +131,9 @@ Compile browserslist query to one RegExp.
 |----------|------|-------------|
 | family | `string` | Browser family. |
 | requestVersions | `[number, number, number][]` | Versions provided by browserslist. |
-| regExp | `RegExp` | RegExp to match user agent with family and versions. |
-| sourceRegExp | `RegExp` | Original user agent RegExp, without versions. |
-| resultVersion | `[number, number, number] \| null` | User agent version of RegExp. |
+| regExp | `RegExp` | RegExp to match useragent with family and versions. |
+| sourceRegExp | `RegExp` | Original useragent RegExp, without versions. |
+| resultVersion | `[number, number, number] \| null` | Useragent version of RegExp. |
 
 ## Other
 
