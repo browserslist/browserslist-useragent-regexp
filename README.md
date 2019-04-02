@@ -26,7 +26,7 @@
 [greenkeeper]: https://badges.greenkeeper.io/browserslist/browserslist-useragent-regexp.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
-A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp. Simplest example: you can detect "dead" browsers on client-side.
+A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp to test browser useragent. Simplest example: you can detect "dead" browsers on client-side.
 
 1) Create `.browserslistrc` config, for example with [environments](https://github.com/browserslist/browserslist#environments), like this:
 

@@ -1,15 +1,15 @@
 {
   "name": "browserslist-useragent-regexp",
-  "version": "1.0.1-beta",
-  "description": "A utility to compile browserslist query to a RegExp.",
+  "version": "1.0.2-beta",
+  "description": "A utility to compile browserslist query to a RegExp to test browser useragent.",
   "author": "dangreen",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TrigenSoftware/browserslist-useragent-regexp"
+    "url": "https://github.com/browserslist/browserslist-useragent-regexp"
   },
   "bugs": {
-    "url": "https://github.com/TrigenSoftware/browserslist-useragent-regexp/issues"
+    "url": "https://github.com/browserslist/browserslist-useragent-regexp/issues"
   },
   "bin": {
     "browserslist-useragent-regexp": "lib/cli.js"
