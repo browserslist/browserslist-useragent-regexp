@@ -37,7 +37,7 @@
     "regexp"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.4.2",
+    "@babel/runtime": "^7.4.3",
     "@types/node": "^11.12.2",
     "argue-cli": "^1.2.0",
     "browserslist": "^4.5.3",
