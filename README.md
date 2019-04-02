@@ -28,7 +28,7 @@
 
 A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.
 
-1) Create `.browserslistrc` config, for example with [environments](https://github.com/browserslist/browserslist#environments), like this:
+1) Create `.browserslistrc` config, for example like this:
 
 ```
 last 2 versions
