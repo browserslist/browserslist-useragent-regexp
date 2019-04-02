@@ -65,31 +65,30 @@
 				<h1 id="browserslist-useragent-regexp">browserslist-useragent-regexp</h1>
 				<p><a href="https://www.npmjs.com/package/browserslist-useragent-regexp"><img src="https://img.shields.io/npm/v/browserslist-useragent-regexp.svg" alt="NPM version"></a>
 					<a href="https://nodejs.org"><img src="https://img.shields.io/node/v/browserslist-useragent-regexp.svg" alt="Node version"></a>
-					<a href="https://david-dm.org/TrigenSoftware/browserslist-useragent-regexp"><img src="https://img.shields.io/david/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Dependency status"></a>
-					<a href="https://travis-ci.com/TrigenSoftware/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Build status"></a>
-					<a href="https://coveralls.io/r/TrigenSoftware/browserslist-useragent-regexp"><img src="https://img.shields.io/coveralls/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Coverage status"></a>
-				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/TrigenSoftware/browserslist-useragent-regexp.svg" alt="Greenkeeper badge"></a></p>
-				<p>A utility to compile <a href="https://github.com/browserslist/browserslist#queries">browserslist query</a> to a RegExp. Simplest example: you can detect &quot;dead&quot; browsers on client-side.</p>
-				<p>1) Create <code>.browserslistrc</code> config, for example with <a href="https://github.com/browserslist/browserslist#environments">environments</a>, like this:</p>
-				<pre><code><span class="hljs-string">[production]</span>
-defaults
-
-<span class="hljs-string">[dead]</span>
-dead</code></pre><p>2) Add script to <code>package.json</code>:</p>
+					<a href="https://david-dm.org/browserslist/browserslist-useragent-regexp"><img src="https://img.shields.io/david/browserslist/browserslist-useragent-regexp.svg" alt="Dependency status"></a>
+					<a href="https://travis-ci.com/browserslist/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp.svg" alt="Build status"></a>
+					<a href="https://coveralls.io/r/browserslist/browserslist-useragent-regexp"><img src="https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg" alt="Coverage status"></a>
+				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/browserslist/browserslist-useragent-regexp.svg" alt="Greenkeeper badge"></a></p>
+				<p>A utility to compile <a href="https://github.com/browserslist/browserslist#queries">browserslist query</a> to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.</p>
+				<p>1) Create <code>.browserslistrc</code> config, for example like this:</p>
+				<pre><code>last <span class="hljs-number">2</span> versions
+<span class="hljs-keyword">not</span> dead</code></pre><p>2) Add script to <code>package.json</code>:</p>
 				<pre><code class="language-json">{
   <span class="hljs-attr">"scripts"</span>: {
-    <span class="hljs-attr">"deadBrowsers"</span>: <span class="hljs-string">"echo \"module.exports = $(BROWSERSLIST_ENV=dead browserslist-useragent-regexp);\" &gt; deadBrowsers.js"</span>
+    <span class="hljs-attr">"supportedBrowsers"</span>: <span class="hljs-string">"echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" &gt; supportedBrowsers.js"</span>
   }
 }</code></pre>
 				<p>3) Run this script, to compile RegExp:</p>
-				<pre><code class="language-bash">npm run deadBrowsers
+				<pre><code class="language-bash">npm run supportedBrowsers
 <span class="hljs-comment"># or</span>
-yarn deadBrowsers</code></pre>
+yarn supportedBrowsers</code></pre>
+				<p><code>supportedBrowsers.js</code>:</p>
+				<pre><code class="language-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-regexp">/((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android)|(^UCWEB.*; (iPad|iPh|iPd) OS (11_3|11_([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})_\d+|12_0|12_([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;)|((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?)|((iPhone|iPad|iPod).*Mac OS X.*Version\/(11\.3|11\.([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+))|((Fennec)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+)\.?([ab]?\d+[a-z]*))|((Fennec)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+)(pre))|((Fennec)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+))|((?:Mobile|Tablet);.*(Firefox)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+))|((Namoroka|Shiretoko|Minefield)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+)\.(\d+(?:pre)?))|((Namoroka|Shiretoko|Minefield)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+)([ab]\d+[a-z]*)?)|((OperaMini)(?:\/att)?\/?\d+?(?:\.\d+)?(?:\.(\d+))?)|((Opera)\/.+Opera Mobi.+Version\/(46\.0|46\.([1-9]|\d{2,})|(4[7-9]|[5-9]\d|\d{3,})\.\d+))|((Opera)\/(46\.0|46\.([1-9]|\d{2,})|(4[7-9]|[5-9]\d|\d{3,})\.\d+).+Opera Mobi)|(Opera Mobi.+(Opera)(?:\/|\s+)(46\.0|46\.([1-9]|\d{2,})|(4[7-9]|[5-9]\d|\d{3,})\.\d+))|((Opera)\/9.80.*Version\/(57\.0|57\.([1-9]|\d{2,})|(5[8-9]|[6-9]\d|\d{3,})\.\d+)(?:\.(\d+))?)|((?:Mobile Safari).*(OPR)\/(46\.0|46\.([1-9]|\d{2,})|(4[7-9]|[5-9]\d|\d{3,})\.\d+)\.(\d+))|((?:Chrome).*(OPR)\/(57\.0|57\.([1-9]|\d{2,})|(5[8-9]|[6-9]\d|\d{3,})\.\d+)\.(\d+))|((SamsungBrowser)\/(7\.2|7\.([3-9]|\d{2,})|7\.4|7\.([5-9]|\d{2,})|([8-9]|\d{2,})\.\d+|8\.2|8\.([3-9]|\d{2,})|(9|\d{2,})\.\d+))|(; wv\).+(Chrome)\/(71\.0|71\.([1-9]|\d{2,})|(7[2-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+))|((CrMo)\/(71\.0|71\.([1-9]|\d{2,})|(7[2-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+))|((Chrome)\/(71\.0|71\.([1-9]|\d{2,})|(7[2-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$))|( Mobile .*(Chrome)\/(71\.0|71\.([1-9]|\d{2,})|(7[2-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+))|((Chrome)\/(71\.0|71\.([1-9]|\d{2,})|(7[2-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+).* MRCHROME)|((Edge)\/(17(?:\.0)?|17(?:\.([1-9]|\d{2,}))?|(1[8-9]|[2-9]\d|\d{3,})(?:\.\d+)?))|((HeadlessChrome)((?:\/71\.0\.(\d+))?|(?:\/71\.([1-9]|\d{2,})\.(\d+))?|(?:\/(7[2-9]|[8-9]\d|\d{3,})\.\d+\.(\d+))?))|((OperaMini)\/\d+\.\d+(?:\.(\d+))?)|((Opera)\/(57\.0|57\.([1-9]|\d{2,})|(5[8-9]|[6-9]\d|\d{3,})\.\d+)(?:\.(\d+))?)|((Chromium|Chrome)\/(71\.0|71\.([1-9]|\d{2,})|(7[2-9]|[8-9]\d|\d{3,})\.\d+)(?:\.(\d+))?)|((IEMobile)[ \/](11\.0|11\.([1-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+))|((Version)\/(11\.1|11\.([2-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)(?:\.(\d+))?.*Safari\/)|((Trident)\/(7)\.(0))|((Firefox)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+)\.(\d+))|((Firefox)\/(64\.0|64\.([1-9]|\d{2,})|(6[5-9]|[7-9]\d|\d{3,})\.\d+)(pre|[ab]\d+[a-z]*)?)|(([MS]?IE) (11\.0|11\.([1-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+))/</span>;</code></pre>
 				<p>4) Import RegExp from created file:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> deadBrowsers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./deadBrowsers'</span>);
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> supportedBrowsers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./supportedBrowsers'</span>);
 
-<span class="hljs-keyword">if</span> (deadBrowsers.test(navigator.userAgent)) {
-    alert(<span class="hljs-string">'Your browser is dead'</span>);
+<span class="hljs-keyword">if</span> (supportedBrowsers.test(navigator.userAgent)) {
+    alert(<span class="hljs-string">'Your browser is supported.'</span>);
 }</code></pre>
 				<h2 id="install">Install</h2>
 				<pre><code class="language-bash">npm i -D browserslist-useragent-regexp
@@ -98,7 +97,7 @@ yarn add -D browserslist-useragent-regexp</code></pre>
 				<h2 id="why-">Why?</h2>
 				<p>As was written in article <a href="https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/">&quot;Smart Bundling: Shipping legacy code to only legacy browsers&quot;</a>: you can determinate, which bundle you should give to browser from server with <a href="https://github.com/browserslist/browserslist-useragent"><code>browserslist-useragent</code></a>. But in this case you must have your own server with special logic. Now, with <code>browserslist-useragent-regexp</code>, you can move that to client-side.</p>
 				<p>Development was inspired by <a href="https://twitter.com/mathias/status/1105857829393653761">this proposal from Mathias Bynens</a>.</p>
-				<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29">sources</a>, <a href="https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74">build script</a>).</p>
+				<p><a href="https://browserslist.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29">sources</a>, <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74">build script</a>).</p>
 				<h2 id="cli">CLI</h2>
 				<pre><code class="language-bash">npx browserslist-useragent-regexp [query] [...options]
 <span class="hljs-comment"># or</span>
@@ -138,7 +137,7 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 						</tr>
 						<tr>
 							<td>&#x2011;&#x2011;allowHigherVersions</td>
-							<td>For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist.</td>
+							<td>For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist.</td>
 							<td><code>false</code></td>
 						</tr>
 						<tr>
@@ -149,12 +148,12 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 				</tbody></table>
 				<h2 id="js-api-basics">JS API basics</h2>
 				<p>Module exposes two main methods:</p>
-				<h3 id="getuseragentregexps-options-"><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
+				<h3 id="getuseragentregexps-options-"><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
 				<p>Compile browserslist query to <a href="#regexp-info-object">RegExps for each browser</a>.</p>
-				<h3 id="getuseragentregexp-options-"><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
+				<h3 id="getuseragentregexp-options-"><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
 				<p>Compile browserslist query to one RegExp.</p>
 				<blockquote>
-					<p><a href="https://trigensoftware.github.io/browserslist-useragent-regexp/index.html">Description of all methods you can find in Documentation.</a></p>
+					<p><a href="https://browserslist.github.io/browserslist-useragent-regexp/index.html">Description of all methods you can find in Documentation.</a></p>
 				</blockquote>
 				<h4 id="options">Options</h4>
 				<table>
@@ -194,7 +193,7 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 							<td>allowHigherVersions</td>
 							<td><code>boolean</code></td>
 							<td><code>false</code></td>
-							<td>For all the browsers in the browserslist query, return a match if the user agent version is equal to or higher than the one specified in browserslist.</td>
+							<td>For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist.</td>
 						</tr>
 						<tr>
 							<td>allowZeroSubverions</td>
@@ -225,17 +224,17 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 						<tr>
 							<td>regExp</td>
 							<td><code>RegExp</code></td>
-							<td>RegExp to match user agent with family and versions.</td>
+							<td>RegExp to match useragent with family and versions.</td>
 						</tr>
 						<tr>
 							<td>sourceRegExp</td>
 							<td><code>RegExp</code></td>
-							<td>Original user agent RegExp, without versions.</td>
+							<td>Original useragent RegExp, without versions.</td>
 						</tr>
 						<tr>
 							<td>resultVersion</td>
 							<td><code>[number, number, number] | null</code></td>
-							<td>User agent version of RegExp.</td>
+							<td>Useragent version of RegExp.</td>
 						</tr>
 				</tbody></table>
 				<h2 id="other">Other</h2>
