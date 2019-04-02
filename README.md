@@ -14,16 +14,16 @@
 [node]: https://img.shields.io/node/v/browserslist-useragent-regexp.svg
 [node-url]: https://nodejs.org
 
-[deps]: https://img.shields.io/david/TrigenSoftware/browserslist-useragent-regexp.svg
-[deps-url]: https://david-dm.org/TrigenSoftware/browserslist-useragent-regexp
+[deps]: https://img.shields.io/david/browserslist/browserslist-useragent-regexp.svg
+[deps-url]: https://david-dm.org/browserslist/browserslist-useragent-regexp
 
-[build]: http://img.shields.io/travis/com/TrigenSoftware/browserslist-useragent-regexp.svg
-[build-url]: https://travis-ci.com/TrigenSoftware/browserslist-useragent-regexp
+[build]: http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp.svg
+[build-url]: https://travis-ci.com/browserslist/browserslist-useragent-regexp
 
-[coverage]: https://img.shields.io/coveralls/TrigenSoftware/browserslist-useragent-regexp.svg
-[coverage-url]: https://coveralls.io/r/TrigenSoftware/browserslist-useragent-regexp
+[coverage]: https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg
+[coverage-url]: https://coveralls.io/r/browserslist/browserslist-useragent-regexp
 
-[greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/browserslist-useragent-regexp.svg
+[greenkeeper]: https://badges.greenkeeper.io/browserslist/browserslist-useragent-regexp.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
 A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp. Simplest example: you can detect "dead" browsers on client-side.
@@ -80,7 +80,7 @@ As was written in article ["Smart Bundling: Shipping legacy code to only legacy 
 
 Development was inspired by [this proposal from Mathias Bynens](https://twitter.com/mathias/status/1105857829393653761).
 
-[Demo](https://trigensoftware.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29), [build script](https://github.com/TrigenSoftware/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74)).
+[Demo](https://browserslist.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29), [build script](https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74)).
 
 ## CLI
 
@@ -104,15 +104,15 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 
 Module exposes two main methods:
 
-### [getUserAgentRegExps(options)](https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps)
+### [getUserAgentRegExps(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps)
 
 Compile browserslist query to [RegExps for each browser](#regexp-info-object).
 
-### [getUserAgentRegExp(options)](https://trigensoftware.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp)
+### [getUserAgentRegExp(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp)
 
 Compile browserslist query to one RegExp.
 
-> [Description of all methods you can find in Documentation.](https://trigensoftware.github.io/browserslist-useragent-regexp/index.html)
+> [Description of all methods you can find in Documentation.](https://browserslist.github.io/browserslist-useragent-regexp/index.html)
 
 #### Options
 
