@@ -26,16 +26,13 @@
 [greenkeeper]: https://badges.greenkeeper.io/browserslist/browserslist-useragent-regexp.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
-A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp to test browser useragent. Simplest example: you can detect "dead" browsers on client-side.
+A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.
 
 1) Create `.browserslistrc` config, for example with [environments](https://github.com/browserslist/browserslist#environments), like this:
 
 ```
-[production]
-defaults
-
-[dead]
-dead
+last 2 Chrome versions
+last 2 Firefox versions
 ```
 
 2) Add script to `package.json`:
@@ -43,7 +40,7 @@ dead
 ```json
 {
   "scripts": {
-    "deadBrowsers": "echo \"module.exports = $(BROWSERSLIST_ENV=dead browserslist-useragent-regexp);\" > deadBrowsers.js"
+    "supportedBrowsers": "echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" > supportedBrowsers.js"
   }
 }
 ```
@@ -51,18 +48,24 @@ dead
 3) Run this script, to compile RegExp:
 
 ```bash
-npm run deadBrowsers
+npm run supportedBrowsers
 # or
-yarn deadBrowsers
+yarn supportedBrowsers
+```
+
+`supportedBrowsers.js`:
+
+```js
+module.exports = /((Fennec)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+)\.?([ab]?\d+[a-z]*))|((Fennec)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+)(pre))|((Fennec)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+))|((?:Mobile|Tablet);.*(Firefox)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+))|((Namoroka|Shiretoko|Minefield)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+)\.(\d+(?:pre)?))|((Namoroka|Shiretoko|Minefield)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+)([ab]\d+[a-z]*)?)|(; wv\).+(Chrome)\/(72\.0|72\.([1-9]|\d{2,})|(7[3-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+))|((CrMo)\/(72\.0|72\.([1-9]|\d{2,})|(7[3-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+))|((Chrome)\/(72\.0|72\.([1-9]|\d{2,})|(7[3-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$))|( Mobile .*(Chrome)\/(72\.0|72\.([1-9]|\d{2,})|(7[3-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+)\.(\d+))|((Chrome)\/(72\.0|72\.([1-9]|\d{2,})|(7[3-9]|[8-9]\d|\d{3,})\.\d+)\.(\d+).* MRCHROME)|((HeadlessChrome)((?:\/72\.0\.(\d+))?|(?:\/72\.([1-9]|\d{2,})\.(\d+))?|(?:\/(7[3-9]|[8-9]\d|\d{3,})\.\d+\.(\d+))?))|((Chromium|Chrome)\/(72\.0|72\.([1-9]|\d{2,})|(7[3-9]|[8-9]\d|\d{3,})\.\d+)(?:\.(\d+))?)|((Firefox)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+)\.(\d+))|((Firefox)\/(65\.0|65\.([1-9]|\d{2,})|(6[6-9]|[7-9]\d|\d{3,})\.\d+)(pre|[ab]\d+[a-z]*)?)/;
 ```
 
 4) Import RegExp from created file:
 
 ```js
-const deadBrowsers = require('./deadBrowsers');
+const supportedBrowsers = require('./supportedBrowsers');
 
-if (deadBrowsers.test(navigator.userAgent)) {
-    alert('Your browser is dead');
+if (supportedBrowsers.test(navigator.userAgent)) {
+    alert('Your browser is supported.');
 }
 ```
 
