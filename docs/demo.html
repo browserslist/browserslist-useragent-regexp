@@ -7,8 +7,8 @@
 		<meta name="format-detection" content="telephone=no">
 		<title>DEMO</title>
 		<script>
-	var modernBrowsers = /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android)|(^UCWEB.*; (iPad|iPh|iPd) OS (12_0|12_([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;)|((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?)|((iPhone|iPad|iPod).*Mac OS X.*Version\/(12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+))|((?:Mobile|Tablet);.*(Firefox)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+))|((Opera)\/9.80.*Version\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((?:Chrome).*(OPR)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+))|((SamsungBrowser)\/(7\.2|7\.([3-9]|\d{2,})|7\.4|7\.([5-9]|\d{2,})|([8-9]|\d{2,})\.\d+|8\.2|8\.([3-9]|\d{2,})|(9|\d{2,})\.\d+))|((Edge)\/(17|(1[8-9]|[2-9]\d|\d{3,}))(?:\.(\d+))?)|((HeadlessChrome)((?:\/71\.(\d+)\.(\d+))?|(?:\/(7[2-9]|[8-9]\d|\d{3,})\.(\d+)\.(\d+))?))|((Chromium|Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((Version)\/(12|(1[3-9]|[2-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?.*Safari\/)|((Firefox)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+))|((Firefox)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre|[ab]\d+[a-z]*)?)/;
-	var actualBrowsers = /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(11[_\.]0|11[_\.]([1-9]|\d{2,})|11[_\.]2|11[_\.]([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android)|(^UCWEB.*; (iPad|iPh|iPd) OS (11_0|11_([1-9]|\d{2,})|11_2|11_([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;)|((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.]0|11[_\.]([1-9]|\d{2,})|11[_\.]2|11[_\.]([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?)|((iPhone|iPad|iPod).*Mac OS X.*Version\/(11\.0|11\.([1-9]|\d{2,})|11\.2|11\.([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+))|(CFNetwork\/8.* Darwin\/17\.0\.\d+)|(CFNetwork\/8.* Darwin\/17\.2\.\d+)|(CFNetwork\/8.* Darwin\/17\.3\.\d+)|(CFNetwork\/8.* Darwin\/(17)\.\d+)|(\b(iOS[ \/]|iOS; |iPhone(?:\/| v|[ _]OS[\/,]|; | OS : |\d,\d\/|\d,\d; )|iPad\/)(\d{1,2})[_\.](\d{1,2})((?:[_\.]11)?|(?:[_\.](1[2-9]|[2-9]\d|\d{3,}))?))|((?:Mobile|Tablet);.*(Firefox)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+))|((Opera)\/9.80.*Version\/(45|(4[6-9]|[5-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((?:Chrome).*(OPR)\/(45|(4[6-9]|[5-9]\d|\d{3,}))\.(\d+)\.(\d+))|((SamsungBrowser)\/(6\.2|6\.([3-9]|\d{2,})|6\.4|6\.([5-9]|\d{2,})|([7-9]|\d{2,})\.\d+))|((Edge)\/(15|(1[6-9]|[2-9]\d|\d{3,}))(?:\.(\d+))?)|((HeadlessChrome)((?:\/58\.(\d+)\.(\d+))?|(?:\/(59|[6-9]\d|\d{3,})\.(\d+)\.(\d+))?))|((Chromium|Chrome)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((Version)\/(11|(1[2-9]|[2-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?.*Safari\/)|((Firefox)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+))|((Firefox)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)(pre|[ab]\d+[a-z]*)?)/;
+	var modernBrowsers = /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android)|(^UCWEB.*; (iPad|iPh|iPd) OS (12_0|12_([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;)|((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?)|((iPhone|iPad|iPod).*Mac OS X.*Version\/(12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+))|((Fennec)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.?([ab]?\d+[a-z]*))|((Fennec)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre))|((Fennec)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+))|((?:Mobile|Tablet);.*(Firefox)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+))|((Namoroka|Shiretoko|Minefield)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+(?:pre)?))|((Namoroka|Shiretoko|Minefield)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)([ab]\d+[a-z]*)?)|((Opera)\/9.80.*Version\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((?:Chrome).*(OPR)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+))|((SamsungBrowser)\/(7\.2|7\.([3-9]|\d{2,})|7\.4|7\.([5-9]|\d{2,})|([8-9]|\d{2,})\.\d+|8\.2|8\.([3-9]|\d{2,})|(9|\d{2,})\.\d+))|(; wv\).+(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+))|((CrMo)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+))|((Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$))|( Mobile .*(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+))|((Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+).* MRCHROME)|((Edge)\/(17|(1[8-9]|[2-9]\d|\d{3,}))(?:\.(\d+))?)|((HeadlessChrome)((?:\/71\.(\d+)\.(\d+))?|(?:\/(7[2-9]|[8-9]\d|\d{3,})\.(\d+)\.(\d+))?))|((Opera)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((Chromium|Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((Version)\/(12|(1[3-9]|[2-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?.*Safari\/)|((Firefox)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+))|((Firefox)\/(64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre|[ab]\d+[a-z]*)?)/;
+	var actualBrowsers = /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(11[_\.]0|11[_\.]([1-9]|\d{2,})|11[_\.]2|11[_\.]([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android)|(^UCWEB.*; (iPad|iPh|iPd) OS (11_0|11_([1-9]|\d{2,})|11_2|11_([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;)|((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.]0|11[_\.]([1-9]|\d{2,})|11[_\.]2|11[_\.]([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?)|((iPhone|iPad|iPod).*Mac OS X.*Version\/(11\.0|11\.([1-9]|\d{2,})|11\.2|11\.([3-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+))|(CFNetwork\/8.* Darwin\/17\.0\.\d+)|(CFNetwork\/8.* Darwin\/17\.2\.\d+)|(CFNetwork\/8.* Darwin\/17\.3\.\d+)|(CFNetwork\/8.* Darwin\/(17)\.\d+)|(\b(iOS[ \/]|iOS; |iPhone(?:\/| v|[ _]OS[\/,]|; | OS : |\d,\d\/|\d,\d; )|iPad\/)(\d{1,2})[_\.](\d{1,2})((?:[_\.]11)?|(?:[_\.](1[2-9]|[2-9]\d|\d{3,}))?))|((Fennec)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)\.?([ab]?\d+[a-z]*))|((Fennec)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)(pre))|((Fennec)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+))|((?:Mobile|Tablet);.*(Firefox)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+))|((Namoroka|Shiretoko|Minefield)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+(?:pre)?))|((Namoroka|Shiretoko|Minefield)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)([ab]\d+[a-z]*)?)|((Opera)\/9.80.*Version\/(45|(4[6-9]|[5-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((?:Chrome).*(OPR)\/(45|(4[6-9]|[5-9]\d|\d{3,}))\.(\d+)\.(\d+))|((SamsungBrowser)\/(6\.2|6\.([3-9]|\d{2,})|6\.4|6\.([5-9]|\d{2,})|([7-9]|\d{2,})\.\d+))|(; wv\).+(Chrome)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+))|((CrMo)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+))|((Chrome)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$))|( Mobile .*(Chrome)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+))|((Chrome)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)\.(\d+).* MRCHROME)|((Edge)\/(15|(1[6-9]|[2-9]\d|\d{3,}))(?:\.(\d+))?)|((HeadlessChrome)((?:\/58\.(\d+)\.(\d+))?|(?:\/(59|[6-9]\d|\d{3,})\.(\d+)\.(\d+))?))|((Opera)\/(45|(4[6-9]|[5-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((Chromium|Chrome)\/(58|(59|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?)|((Version)\/(11|(1[2-9]|[2-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?.*Safari\/)|((Firefox)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+))|((Firefox)\/(53|(5[4-9]|[6-9]\d|\d{3,}))\.(\d+)(pre|[ab]\d+[a-z]*)?)/;
 	var script = document.createElement('script');
 
 	script.type = 'text/javascript';
@@ -115,9 +115,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(\d+)[_\.](\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?.*Outlook-iOS-Android</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -132,9 +135,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>^UCWEB.*; (iPad|iPh|iPd) OS (\d+)_(\d+)(?:_(\d+))?;</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>^UCWEB.*; (iPad|iPh|iPd) OS (11_3|11_([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})_\d+|12_0|12_([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>^UCWEB.*; (iPad|iPh|iPd) OS (11_3|11_([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})_\d+|12_0|12_([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})_\d+)(?:_(\d+))?;</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -149,9 +155,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(\d+)[_\.](\d+)(?:[_\.](\d+))?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.]3|11[_\.]([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})[_\.]\d+|12[_\.]0|12[_\.]([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})[_\.]\d+)(?:[_\.](\d+))?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -166,9 +175,72 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(iPhone|iPad|iPod).*Mac OS X.*Version\/(\d+)\.(\d+)</pre></td>
 		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(iPhone|iPad|iPod).*Mac OS X.*Version\/(11\.3|11\.([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Fennec)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.?([ab]?\d+[a-z]*)">
+	<table>
 		<tr>
-			<th>Versioned RegExp:</th><td><pre>(iPhone|iPad|iPod).*Mac OS X.*Version\/(11\.3|11\.([4-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)</pre></td>
+			<th>Family:</th><td>firefox</td>
 		</tr>
+		<tr>
+			<th>Versions:</th><td>60.0.0 64.0.0 65.0.0 66.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Fennec)\/(\d+)\.(\d+)\.?([ab]?\d+[a-z]*)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Fennec)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.?([ab]?\d+[a-z]*)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Fennec)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre)">
+	<table>
+		<tr>
+			<th>Family:</th><td>firefox</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>60.0.0 64.0.0 65.0.0 66.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Fennec)\/(\d+)\.(\d+)(pre)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Fennec)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Fennec)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)">
+	<table>
+		<tr>
+			<th>Family:</th><td>firefox</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>60.0.0 64.0.0 65.0.0 66.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Fennec)\/(\d+)\.(\d+)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Fennec)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -183,9 +255,52 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(?:Mobile|Tablet);.*(Firefox)\/(\d+)\.(\d+)</pre></td>
 		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(?:Mobile|Tablet);.*(Firefox)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Namoroka|Shiretoko|Minefield)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+(?:pre)?)">
+	<table>
 		<tr>
-			<th>Versioned RegExp:</th><td><pre>(?:Mobile|Tablet);.*(Firefox)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)</pre></td>
+			<th>Family:</th><td>firefox</td>
 		</tr>
+		<tr>
+			<th>Versions:</th><td>60.0.0 64.0.0 65.0.0 66.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Namoroka|Shiretoko|Minefield)\/(\d+)\.(\d+)\.(\d+(?:pre)?)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Namoroka|Shiretoko|Minefield)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+(?:pre)?)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Namoroka|Shiretoko|Minefield)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)([ab]\d+[a-z]*)?">
+	<table>
+		<tr>
+			<th>Family:</th><td>firefox</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>60.0.0 64.0.0 65.0.0 66.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Namoroka|Shiretoko|Minefield)\/(\d+)\.(\d+)([ab]\d+[a-z]*)?</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Namoroka|Shiretoko|Minefield)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)([ab]\d+[a-z]*)?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -200,9 +315,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(OperaMini)(?:\/att)?\/?(\d+)?(?:\.(\d+))?(?:\.(\d+))?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(OperaMini)(?:\/att)?\/?\d+?(?:\.(\d+))?(?:\.(\d+))?</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(OperaMini)(?:\/att)?\/?\d+?(?:\.(\d+))?(?:\.(\d+))?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -217,9 +335,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Opera)\/.+Opera Mobi.+Version\/(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Opera)\/.+Opera Mobi.+Version\/(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Opera)\/.+Opera Mobi.+Version\/(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -234,9 +355,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Opera)\/(\d+)\.(\d+).+Opera Mobi</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Opera)\/(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+).+Opera Mobi</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Opera)\/(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+).+Opera Mobi</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -251,9 +375,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>Opera Mobi.+(Opera)(?:\/|\s+)(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>Opera Mobi.+(Opera)(?:\/|\s+)(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>Opera Mobi.+(Opera)(?:\/|\s+)(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -268,9 +395,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Opera)\/9.80.*Version\/(\d+)\.(\d+)(?:\.(\d+))?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Opera)\/9.80.*Version\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Opera)\/9.80.*Version\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -285,9 +415,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(?:Mobile Safari).*(OPR)\/(\d+)\.(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(?:Mobile Safari).*(OPR)\/(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(?:Mobile Safari).*(OPR)\/(46|(4[7-9]|[5-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -302,9 +435,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(?:Chrome).*(OPR)\/(\d+)\.(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(?:Chrome).*(OPR)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(?:Chrome).*(OPR)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -319,9 +455,112 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(SamsungBrowser)\/(\d+)\.(\d+)</pre></td>
 		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(SamsungBrowser)\/(4\.0|4\.([1-9]|\d{2,})|([5-9]|\d{2,})\.\d+|7\.2|7\.([3-9]|\d{2,})|7\.4|7\.([5-9]|\d{2,})|([8-9]|\d{2,})\.\d+|8\.2|8\.([3-9]|\d{2,})|(9|\d{2,})\.\d+)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="; wv\).+(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+)">
+	<table>
 		<tr>
-			<th>Versioned RegExp:</th><td><pre>(SamsungBrowser)\/(4\.0|4\.([1-9]|\d{2,})|([5-9]|\d{2,})\.\d+|7\.2|7\.([3-9]|\d{2,})|7\.4|7\.([5-9]|\d{2,})|([8-9]|\d{2,})\.\d+|8\.2|8\.([3-9]|\d{2,})|(9|\d{2,})\.\d+)</pre></td>
+			<th>Family:</th><td>chrome</td>
 		</tr>
+		<tr>
+			<th>Versions:</th><td>71.0.0 72.0.0 73.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>; wv\).+(Chrome)\/(\d+)\.(\d+)\.(\d+)\.(\d+)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>; wv\).+(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(CrMo)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+)">
+	<table>
+		<tr>
+			<th>Family:</th><td>chrome</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>71.0.0 72.0.0 73.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(CrMo)\/(\d+)\.(\d+)\.(\d+)\.(\d+)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(CrMo)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$)">
+	<table>
+		<tr>
+			<th>Family:</th><td>chrome</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>71.0.0 72.0.0 73.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Chrome)\/(\d+)\.(\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+) Mobile(?:[ \/]|$)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp=" Mobile .*(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+)">
+	<table>
+		<tr>
+			<th>Family:</th><td>chrome</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>71.0.0 72.0.0 73.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre> Mobile .*(Chrome)\/(\d+)\.(\d+)\.(\d+)\.(\d+)</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre> Mobile .*(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+).* MRCHROME">
+	<table>
+		<tr>
+			<th>Family:</th><td>chrome</td>
+		</tr>
+		<tr>
+			<th>Versions:</th><td>71.0.0 72.0.0 73.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Chrome)\/(\d+)\.(\d+)\.(\d+).* MRCHROME</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)\.(\d+).* MRCHROME</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -336,9 +575,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Edge)\/(\d+)(?:\.(\d+))?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Edge)\/(17|(1[8-9]|[2-9]\d|\d{3,}))(?:\.(\d+))?</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Edge)\/(17|(1[8-9]|[2-9]\d|\d{3,}))(?:\.(\d+))?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -353,9 +595,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(HeadlessChrome)((?:\/71\.(\d+)\.(\d+))?|(?:\/(7[2-9]|[8-9]\d|\d{3,})\.(\d+)\.(\d+))?)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(HeadlessChrome)((?:\/71\.(\d+)\.(\d+))?|(?:\/(7[2-9]|[8-9]\d|\d{3,})\.(\d+)\.(\d+))?)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -370,9 +615,32 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(OperaMini)\/(\d+)\.(\d+)(?:\.(\d+))?</pre></td>
 		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(OperaMini)\/\d+\.(\d+)(?:\.(\d+))?</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="defaults" data-regexp="(Opera)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?">
+	<table>
 		<tr>
-			<th>Versioned RegExp:</th><td><pre>(OperaMini)\/\d+\.(\d+)(?:\.(\d+))?</pre></td>
+			<th>Family:</th><td>opera</td>
 		</tr>
+		<tr>
+			<th>Versions:</th><td>57.0.0 58.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Opera)\/(\d+)\.(\d+)(?:\.(\d+))?</pre></td>
+		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Opera)\/(57|(5[8-9]|[6-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -387,9 +655,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Chromium|Chrome)\/(\d+)\.(\d+)(?:\.(\d+))?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Chromium|Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Chromium|Chrome)\/(71|(7[2-9]|[8-9]\d|\d{3,}))\.(\d+)(?:\.(\d+))?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -404,9 +675,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(IEMobile)[ \/](\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(IEMobile)[ \/](11|(1[2-9]|[2-9]\d|\d{3,}))\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(IEMobile)[ \/](11|(1[2-9]|[2-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -421,9 +695,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Version)\/(\d+)\.(\d+)(?:\.(\d+))?.*Safari\/</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Version)\/(11\.1|11\.([2-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)(?:\.(\d+))?.*Safari\/</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Version)\/(11\.1|11\.([2-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)(?:\.(\d+))?.*Safari\/</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -438,9 +715,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Trident)\/(7)\.(0)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Trident)\/(7)\.(0)</pre></td>
-		</tr>
+		
+			<tr>
+				<th>Source RegExp version:</th><td>11.0.0</td>
+			</tr>
+		
+		
 	</table>
 </li>
 <li>
@@ -455,9 +735,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Firefox)\/(\d+)\.(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Firefox)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Firefox)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -472,9 +755,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Firefox)\/(\d+)\.(\d+)(pre|[ab]\d+[a-z]*)?</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Firefox)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre|[ab]\d+[a-z]*)?</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Firefox)\/(60|(6[1-9]|[7-9]\d|\d{3,})|64|(6[5-9]|[7-9]\d|\d{3,}))\.(\d+)(pre|[ab]\d+[a-z]*)?</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -489,9 +775,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>([MS]?IE) (\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>([MS]?IE) (11|(1[2-9]|[2-9]\d|\d{3,}))\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>([MS]?IE) (11|(1[2-9]|[2-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 	</ul>
@@ -514,9 +803,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Opera)\/.+Opera Mobi.+Version\/(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Opera)\/.+Opera Mobi.+Version\/(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Opera)\/.+Opera Mobi.+Version\/(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -531,9 +823,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Opera)\/(\d+)\.(\d+).+Opera Mobi</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Opera)\/(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+).+Opera Mobi</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Opera)\/(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+).+Opera Mobi</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -548,9 +843,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>Opera Mobi.+(Opera)(?:\/|\s+)(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>Opera Mobi.+(Opera)(?:\/|\s+)(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>Opera Mobi.+(Opera)(?:\/|\s+)(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -565,9 +863,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(?:Mobile Safari).*(OPR)\/(\d+)\.(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(?:Mobile Safari).*(OPR)\/(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(?:Mobile Safari).*(OPR)\/(10\.0|10\.([1-9]|\d{2,})|(1[1-9]|[2-9]\d|\d{3,})\.\d+|11\.1|11\.([2-9]|\d{2,})|11\.5|11\.([6-9]|\d{2,})|(1[2-9]|[2-9]\d|\d{3,})\.\d+|12\.0|12\.([1-9]|\d{2,})|(1[3-9]|[2-9]\d|\d{3,})\.\d+)\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -582,9 +883,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(IEMobile)[ \/](\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(IEMobile)[ \/](10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(IEMobile)[ \/](10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -599,9 +903,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(PlayBook).+RIM Tablet OS (\d+)\.(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(PlayBook).+RIM Tablet OS (7|([8-9]|\d{2,})|10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(PlayBook).+RIM Tablet OS (7|([8-9]|\d{2,})|10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -616,9 +923,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Black[bB]erry|BB10).+Version\/(\d+)\.(\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Black[bB]erry|BB10).+Version\/(7|([8-9]|\d{2,})|10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Black[bB]erry|BB10).+Version\/(7|([8-9]|\d{2,})|10|(1[1-9]|[2-9]\d|\d{3,}))\.(\d+)\.(\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 <li>
@@ -633,9 +943,32 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Black[bB]erry)\s?(\d+)</pre></td>
 		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>(Black[bB]erry)\s?(7|([8-9]|\d{2,})|10|(1[1-9]|[2-9]\d|\d{3,}))</pre></td>
+			</tr>
+		
+	</table>
+</li>
+<li>
+	<input type="checkbox" onclick="return false" readonly data-for-query="dead" data-regexp="(Trident)\/(7)\.(0)">
+	<table>
 		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Black[bB]erry)\s?(7|([8-9]|\d{2,})|10|(1[1-9]|[2-9]\d|\d{3,}))</pre></td>
+			<th>Family:</th><td>explorer</td>
 		</tr>
+		<tr>
+			<th>Versions:</th><td>5.5.0 6.0.0 7.0.0 8.0.0 9.0.0 10.0.0</td>
+		</tr>
+		<tr>
+			<th>Source RegExp:</th><td><pre>(Trident)\/(7)\.(0)</pre></td>
+		</tr>
+		
+			<tr>
+				<th>Source RegExp version:</th><td>11.0.0</td>
+			</tr>
+		
+		
 	</table>
 </li>
 <li>
@@ -650,9 +983,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Trident)\/(6)\.(0)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Trident)\/(6)\.(0)</pre></td>
-		</tr>
+		
+			<tr>
+				<th>Source RegExp version:</th><td>10.0.0</td>
+			</tr>
+		
+		
 	</table>
 </li>
 <li>
@@ -667,9 +1003,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Trident)\/(5)\.(0)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Trident)\/(5)\.(0)</pre></td>
-		</tr>
+		
+			<tr>
+				<th>Source RegExp version:</th><td>9.0.0</td>
+			</tr>
+		
+		
 	</table>
 </li>
 <li>
@@ -684,9 +1023,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>(Trident)\/(4)\.(0)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>(Trident)\/(4)\.(0)</pre></td>
-		</tr>
+		
+			<tr>
+				<th>Source RegExp version:</th><td>8.0.0</td>
+			</tr>
+		
+		
 	</table>
 </li>
 <li>
@@ -701,9 +1043,12 @@ th, td {
 		<tr>
 			<th>Source RegExp:</th><td><pre>([MS]?IE) (\d+)\.(\d+)</pre></td>
 		</tr>
-		<tr>
-			<th>Versioned RegExp:</th><td><pre>([MS]?IE) (5\.5|5\.([6-9]|\d{2,})|([6-9]|\d{2,})\.\d+|6\.0|6\.([1-9]|\d{2,})|([7-9]|\d{2,})\.\d+)</pre></td>
-		</tr>
+		
+		
+			<tr>
+				<th>Versioned RegExp:</th><td><pre>([MS]?IE) (5\.5|5\.([6-9]|\d{2,})|([6-9]|\d{2,})\.\d+|6\.0|6\.([1-9]|\d{2,})|([7-9]|\d{2,})\.\d+)</pre></td>
+			</tr>
+		
 	</table>
 </li>
 	</ul>
