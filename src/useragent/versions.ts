@@ -61,6 +61,15 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 				[16, 0, 0]
 			];
 
+		/**
+		 * https://help.opera.com/en/operas-archived-history/
+		 */
+		case /Opera\)\\\/9\.8/.test(regExpString):
+			return [
+				null,
+				[12, 15, 0]
+			];
+
 		default:
 			return [null, null];
 	}

@@ -82,16 +82,29 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 	switch (true) {
 
 		/**
-		 * 1. iOS browsers: CriOS|OPiOS|FxiOS
-		 * 2. YaBrowser and Mail.ru Amigo works with regular Chrome RegExp
+		 * iOS browsers: CriOS|OPiOS|FxiOS etc
 		 */
-		case /[^\w]?([A-Z]\w+iOS|YaBrowser|MRCHROME)[^\w]?/.test(regExpString):
-			return [];
-
+		case /[^\w]?([A-Z]\w+iOS)[^\w]?/.test(regExpString):
+		/**
+		 * YaBrowser, Mail.ru Amigo, new Opera works with regular Chrome RegExp
+		 */
+		case /YaBrowser|MRCHROME|Chrome.*\(OPR\)/.test(regExpString):
 		/**
 		 * Chrome Mobile browser and WebView works with regular Chrome RegExp (except CrMo)
 		 */
 		case /\(Chrome\).* Mobile|Mobile \.\*\(Chrome\)|; wv\\\)\.\+\(Chrome\)/.test(regExpString):
+		/**
+		 * Firefox Mobile works with regular Firefox RegExp
+		 */
+		case /\(\?:Mobile\|Tablet\);\.\*\(Firefox\)/.test(regExpString):
+		/**
+		 * Very old Opera
+		 */
+		case /Opera.*\) \(\\d/.test(regExpString):
+		/**
+		 * Strange RegExps
+		 */
+		case /bingbot|^\\b\(/.test(regExpString):
 			return [];
 
 		case familyMatched(false, familyOrRegExp, [
@@ -124,7 +137,7 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 
 		case familyOrRegExp === regExp: {
 
-			const matches = regExpString.match(/\(([\s\w\d_\-/|]+)\)/i);
+			const matches = regExpString.match(/\(([\s\w\d_\-/!|]+)\)/i);
 
 			if (Array.isArray(matches)) {
 
@@ -178,17 +191,23 @@ export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 	let minVersion = fixedVersion;
 	let maxVersion = fixedVersion;
 
-	if (!fixedVersion) {
-		[minVersion, maxVersion] = getMinMaxVersions(regExp);
-	}
-
-	return families.map<IBrowserRegExp>(family => ({
-		regExp,
-		fixedVersion,
-		minVersion,
-		maxVersion,
+	return families.map<IBrowserRegExp>(({
+		regExp: patchedRegExp = regExp,
 		...family
-	}));
+	}) => {
+
+		if (!fixedVersion) {
+			[minVersion, maxVersion] = getMinMaxVersions(patchedRegExp);
+		}
+
+		return {
+			regExp: patchedRegExp,
+			fixedVersion,
+			minVersion,
+			maxVersion,
+			...family
+		};
+	});
 }
 
 /**
