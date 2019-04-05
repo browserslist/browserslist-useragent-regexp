@@ -71,12 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_browsers_types_.ibrowser.html" class="tsd-signature-type">IBrowser</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">IBrowserRegExp</span>
-							</li>
-						</ul>
+						<span class="target">IBrowserRegExp</span>
 					</li>
 				</ul>
 			</section>
@@ -87,9 +82,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_useragent_types_.ibrowserregexp.html#family" class="tsd-kind-icon">family</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_useragent_types_.ibrowserregexp.html#family" class="tsd-kind-icon">family</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_useragent_types_.ibrowserregexp.html#fixedversion" class="tsd-kind-icon">fixed<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_useragent_types_.ibrowserregexp.html#maxversion" class="tsd-kind-icon">max<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_useragent_types_.ibrowserregexp.html#minversion" class="tsd-kind-icon">min<wbr>Version</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_useragent_types_.ibrowserregexp.html#regexp" class="tsd-kind-icon">reg<wbr>Exp</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_useragent_types_.ibrowserregexp.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,14 +94,43 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="family" class="tsd-anchor"></a>
 					<h3>family</h3>
 					<div class="tsd-signature tsd-kind-icon">family<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_browsers_types_.ibrowser.html">IBrowser</a>.<a href="_browsers_types_.ibrowser.html#family">family</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/12d6d1d/src/browsers/types.ts#L7">browsers/types.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/985cb5f/src/useragent/types.ts#L26">useragent/types.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="fixedversion" class="tsd-anchor"></a>
+					<h3>fixed<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">fixed<wbr>Version<span class="tsd-signature-symbol">:</span> <a href="../modules/_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/985cb5f/src/useragent/types.ts#L27">useragent/types.ts:27</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="maxversion" class="tsd-anchor"></a>
+					<h3>max<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Version<span class="tsd-signature-symbol">:</span> <a href="../modules/_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/985cb5f/src/useragent/types.ts#L29">useragent/types.ts:29</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="minversion" class="tsd-anchor"></a>
+					<h3>min<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">min<wbr>Version<span class="tsd-signature-symbol">:</span> <a href="../modules/_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/985cb5f/src/useragent/types.ts#L28">useragent/types.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -114,18 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">reg<wbr>Exp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/12d6d1d/src/useragent/types.ts#L26">useragent/types.ts:26</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="version" class="tsd-anchor"></a>
-					<h3>version</h3>
-					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <a href="../modules/_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="_browsers_types_.ibrowser.html">IBrowser</a>.<a href="_browsers_types_.ibrowser.html#version">version</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/12d6d1d/src/useragent/types.ts#L27">useragent/types.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/985cb5f/src/useragent/types.ts#L25">useragent/types.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -152,14 +167,20 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_useragent_types_.ibrowserregexp.html" class="tsd-kind-icon">IBrowser<wbr>Reg<wbr>Exp</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_useragent_types_.ibrowserregexp.html#family" class="tsd-kind-icon">family</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_useragent_types_.ibrowserregexp.html#regexp" class="tsd-kind-icon">reg<wbr>Exp</a>
+								<a href="_useragent_types_.ibrowserregexp.html#fixedversion" class="tsd-kind-icon">fixed<wbr>Version</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="_useragent_types_.ibrowserregexp.html#version" class="tsd-kind-icon">version</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_useragent_types_.ibrowserregexp.html#maxversion" class="tsd-kind-icon">max<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_useragent_types_.ibrowserregexp.html#minversion" class="tsd-kind-icon">min<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_useragent_types_.ibrowserregexp.html#regexp" class="tsd-kind-icon">reg<wbr>Exp</a>
 							</li>
 						</ul>
 					</li>
