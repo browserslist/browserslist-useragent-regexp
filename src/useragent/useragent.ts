@@ -7,6 +7,13 @@ import {
 	BrowserRegExpSourceProp
 } from './types';
 import {
+	ISemverCompareOptions,
+	semverify
+} from '../semver';
+import {
+	IBrowsers
+} from '../browsers';
+import {
 	regExpToString
 } from '../regexp/util';
 import {
@@ -16,12 +23,8 @@ import {
 	familyMatched
 } from './util';
 import {
-	ISemverCompareOptions,
-	semverify
-} from '../semver';
-import {
-	IBrowsers
-} from '../browsers';
+	getMinMaxVersions
+} from './versions';
 
 export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
 	...extractIOSRegExp(regexps.os),
@@ -30,7 +33,6 @@ export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
 
 /**
  * Get user agent RegExps for given browsers.
- * @todo   Blacklist.
  * @param  browsers - Browsers.
  * @param  options - Semver compare options.
  * @return User agent RegExps.
@@ -42,20 +44,24 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
 	BROWSERS_REGEXPS.forEach(({
 		family,
 		regExp,
-		version
+		fixedVersion,
+		minVersion,
+		maxVersion
 	}) => {
 
 		const browserVersions = browsers.get(family);
 
 		if (browserVersions
-			&& someSemverMatched(version, browserVersions, options)
-			&& hasVersion(version, regExp)
+			&& someSemverMatched(minVersion, maxVersion, browserVersions, options)
+			&& hasVersion(fixedVersion, regExp)
 		) {
 			regExps.push({
 				family,
 				regExp,
-				requestVersions: browserVersions,
-				resultVersion:   version
+				requestVersions:    browserVersions,
+				resultFixedVersion: fixedVersion,
+				resultMinVersion:   minVersion,
+				resultMaxVersion:   maxVersion
 			});
 		}
 	});
@@ -75,11 +81,21 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 
 	switch (true) {
 
-		case /[^\w]?([A-Z]\w+iOS|YaBrowser)[^\w]?/.test(regExpString): // CriOS|OPiOS|FxiOS
+		/**
+		 * 1. iOS browsers: CriOS|OPiOS|FxiOS
+		 * 2. YaBrowser and Mail.ru Amigo works with regular Chrome RegExp
+		 */
+		case /[^\w]?([A-Z]\w+iOS|YaBrowser|MRCHROME)[^\w]?/.test(regExpString):
+			return [];
+
+		/**
+		 * Chrome Mobile browser and WebView works with regular Chrome RegExp (except CrMo)
+		 */
+		case /\(Chrome\).* Mobile|Mobile \.\*\(Chrome\)|; wv\\\)\.\+\(Chrome\)/.test(regExpString):
 			return [];
 
 		case familyMatched(false, familyOrRegExp, [
-			'Chrome Mobile',
+			'Chrome Mobile', // CrMo
 			'Chromium',
 			'HeadlessChrome'
 		]):
@@ -156,13 +172,21 @@ export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 		family,
 		regExp
 	);
-	const version = major === 0
+	const fixedVersion = major === 0
 		? null
 		: semverify([major, minor, patch]);
+	let minVersion = fixedVersion;
+	let maxVersion = fixedVersion;
+
+	if (!fixedVersion) {
+		[minVersion, maxVersion] = getMinMaxVersions(regExp);
+	}
 
 	return families.map<IBrowserRegExp>(family => ({
 		regExp,
-		version,
+		fixedVersion,
+		minVersion,
+		maxVersion,
 		...family
 	}));
 }

@@ -133,7 +133,9 @@ if (verbose) {
 		family,
 		requestVersionsStrings,
 		sourceRegExp,
-		resultVersion,
+		resultFixedVersion,
+		resultMinVersion,
+		resultMaxVersion,
 		regExp
 	}) => {
 
@@ -151,8 +153,28 @@ if (verbose) {
 		regExpsTable.cell('Value', sourceRegExp);
 		regExpsTable.newRow();
 
-		regExpsTable.cell('Name', chalk.yellow('Source RegExp version:'));
-		regExpsTable.cell('Value', resultVersion && resultVersion.join('.'));
+		regExpsTable.cell('Name', chalk.yellow('Source RegExp fixed version:'));
+		regExpsTable.cell('Value', resultFixedVersion ? resultFixedVersion.join('.') : '...');
+		regExpsTable.newRow();
+
+		let regExpBrowsersVersion = '';
+
+		if (resultMinVersion) {
+			regExpBrowsersVersion = resultMinVersion.join('.');
+		} else {
+			regExpBrowsersVersion = '...';
+		}
+
+		regExpBrowsersVersion += ' - ';
+
+		if (resultMaxVersion) {
+			regExpBrowsersVersion += resultMaxVersion.join('.');
+		} else {
+			regExpBrowsersVersion += '...';
+		}
+
+		regExpsTable.cell('Name', chalk.yellow('Source RegExp browsers versions:'));
+		regExpsTable.cell('Value', regExpBrowsersVersion);
 		regExpsTable.newRow();
 
 		regExpsTable.cell('Name', chalk.yellow('Versioned RegExp:'));
