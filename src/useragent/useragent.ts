@@ -86,6 +86,14 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 		 */
 		case /[^\w]?([A-Z]\w+iOS)[^\w]?/.test(regExpString):
 		/**
+		 * iOS Outlook and UC Browser works with regular iOS RegExp
+		 */
+		case /iPhone.*Outlook-iOS-Android|UCWEB.*iPad\|iPh/.test(regExpString):
+		/**
+		 * This RegExp matches Safari version, not iOS
+		 */
+		case /\(iPhone\|iPad\|iPod\)\.\*Mac OS X\.\*Version/.test(regExpString):
+		/**
 		 * YaBrowser, Mail.ru Amigo, new Opera works with regular Chrome RegExp
 		 */
 		case /YaBrowser|MRCHROME|Chrome.*\(OPR\)/.test(regExpString):
