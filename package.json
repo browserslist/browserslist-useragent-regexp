@@ -1,6 +1,6 @@
 {
   "name": "browserslist-useragent-regexp",
-  "version": "1.0.2-beta",
+  "version": "1.0.3-beta",
   "description": "A utility to compile browserslist query to a RegExp to test browser useragent.",
   "author": "dangreen",
   "license": "MIT",
@@ -64,6 +64,7 @@
     "rollup": "^1.7.1",
     "rollup-plugin-babel": "^4.2.0",
     "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-shebang": "^0.1.5",
     "rollup-plugin-tslint": "^0.2.2",
     "rollup-plugin-typescript2": "^0.20.1",
     "size-limit": "^1.0.0",

@@ -7400,6 +7400,11 @@ rollup-plugin-commonjs@^9.1.6:
     resolve "^1.10.0"
     rollup-pluginutils "^2.5.0"
 
+rollup-plugin-shebang@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-shebang/-/rollup-plugin-shebang-0.1.5.tgz#a15c9fed2d6c369f668a66a311b99c2023a6e0e4"
+  integrity sha512-7rtj//+Y0b4ha71PNCIk1GJjjcyZUZtPZe4l4YguUsrZrp5ukc/tbw5N1CTglbLojICrL/oJT9xDnjKQrXX1ZQ==
+
 rollup-plugin-tslint@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-tslint/-/rollup-plugin-tslint-0.2.2.tgz#be440f020bffcb6622e3dd8d1b15a5234df833a5"
