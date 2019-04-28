@@ -14,6 +14,7 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 
 	const regExpString = regExpToString(regExp);
 
+	/* istanbul ignore next */
 	switch (true) {
 
 		/**
