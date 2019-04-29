@@ -13,6 +13,7 @@ import {
 	browserVersionsToRanges,
 	getRegExpsForBrowsers,
 	applyVersionsToRegExps,
+	optimizeAll,
 	joinVersionedBrowsersRegExps,
 	isAllVersion,
 	defaultOptions
@@ -124,12 +125,13 @@ if (verbose) {
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
 	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+	const optimizedRegExps = optimizeAll(regExps);
 
 	console.log(
 		chalk.blue('\n> RegExps\n')
 	);
 
-	regExps.forEach(({
+	optimizedRegExps.forEach(({
 		family,
 		requestVersionsStrings,
 		sourceRegExp,
@@ -184,7 +186,7 @@ if (verbose) {
 		console.log(`${regExpsTable.print()}\n`);
 	});
 
-	const regExpStr = joinVersionedBrowsersRegExps(regExps);
+	const regExpStr = joinVersionedBrowsersRegExps(optimizedRegExps);
 	const regExp = new RegExp(regExpStr);
 
 	console.log(regExp);

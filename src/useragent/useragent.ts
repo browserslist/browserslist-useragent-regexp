@@ -106,6 +106,10 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 		 */
 		case /\(\?:Mobile\|Tablet\);\.\*\(Firefox\)/.test(regExpString):
 		/**
+		 * iOS Opera Mobile works with regular iOS RegExp
+		 */
+		case /\(\?:Mobile Safari\)\.\*\(OPR\)/.test(regExpString):
+		/**
 		 * Very old Opera
 		 */
 		case /Opera.*\) \(\\d/.test(regExpString):
