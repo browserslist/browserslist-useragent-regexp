@@ -105,7 +105,7 @@ describe('RegExp', () => {
 						}
 					)
 				).toBe(
-					'Chrome v(8 2|8 ([3-9]|\\d{2,})|(9|\\d{2,}) \\d+)'
+					'Chrome v(8 2|8 ([3-9]|\\d{2,})|(9|\\d{2,}) (\\d+))'
 				);
 			});
 		});
@@ -114,22 +114,28 @@ describe('RegExp', () => {
 
 			const regExps: IBrowserVersionRegExp[] = [
 				{
-					family:          'chrome',
-					regExp:          /Chrome (\d+) (\d+) (\d+)/,
-					resultVersion:   null,
-					requestVersions: [[64, 0, 0], [73, 0, 0]]
+					family:             'chrome',
+					regExp:             /Chrome (\d+) (\d+) (\d+)/,
+					requestVersions:    [[64, 0, 0], [73, 0, 0]],
+					resultFixedVersion: null,
+					resultMinVersion:   null,
+					resultMaxVersion:   null
 				},
 				{
-					family:          'firefox',
-					regExp:          /FF/,
-					resultVersion:   null,
-					requestVersions: [[1, 2, 3]]
+					family:             'firefox',
+					regExp:             /FF/,
+					requestVersions:    [[1, 2, 3]],
+					resultFixedVersion: null,
+					resultMinVersion:   null,
+					resultMaxVersion:   null
 				},
 				{
-					family:          'ie',
-					regExp:          /lol serious?/,
-					resultVersion:   [5, 0, 0],
-					requestVersions: [[5, 0, 0]]
+					family:             'ie',
+					regExp:             /lol serious?/,
+					requestVersions:    [[5, 0, 0]],
+					resultFixedVersion: [5, 0, 0],
+					resultMinVersion:   null,
+					resultMaxVersion:   null
 				}
 			];
 			const browsers: IRangedBrowsers = new Map([

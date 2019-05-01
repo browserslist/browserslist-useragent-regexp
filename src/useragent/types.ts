@@ -1,5 +1,4 @@
 import { ISemver } from '../semver';
-import { IBrowser } from '../browsers';
 
 export enum BrowserRegExpSourceProp {
 	RegExp = 0,
@@ -22,16 +21,21 @@ export interface IFixedFamily {
 	regExp?: RegExp;
 }
 
-export interface IBrowserRegExp extends IBrowser {
+export interface IBrowserRegExp {
 	regExp: RegExp;
-	version: ISemver|null;
+	family: string;
+	fixedVersion: ISemver|null;
+	minVersion: ISemver|null;
+	maxVersion: ISemver|null;
 }
 
 export interface IBrowserVersionRegExp {
 	family: string;
 	regExp: RegExp;
 	requestVersions: ISemver[];
-	resultVersion: ISemver|null;
+	resultFixedVersion: ISemver|null;
+	resultMinVersion: ISemver|null;
+	resultMaxVersion: ISemver|null;
 }
 
 export interface IBrowserVersionedRegExp extends IBrowserVersionRegExp {
