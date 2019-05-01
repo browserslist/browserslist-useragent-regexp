@@ -40,7 +40,7 @@
     "@babel/runtime": "^7.4.3",
     "@types/node": "^11.12.2",
     "argue-cli": "^1.2.0",
-    "browserslist": "^4.5.3",
+    "browserslist": "^4.5.6",
     "chalk": "^2.4.2",
     "core-js": "^3.0.0",
     "easy-table": "^1.1.1",
