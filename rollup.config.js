@@ -2,6 +2,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 import tslint from 'rollup-plugin-tslint';
+import shebang from 'rollup-plugin-shebang';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import pkg from './package.json';
 
@@ -43,7 +44,10 @@ export default [{
 	}
 }, {
 	input:    'src/cli.ts',
-	plugins,
+	plugins:  [
+		...plugins,
+		shebang()
+	],
 	external: () => true,
 	output:   {
 		file:      'lib/cli.js',
