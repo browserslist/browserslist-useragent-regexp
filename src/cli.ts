@@ -13,6 +13,7 @@ import {
 	browserVersionsToRanges,
 	getRegExpsForBrowsers,
 	applyVersionsToRegExps,
+	optimizeAll,
 	joinVersionedBrowsersRegExps,
 	isAllVersion,
 	defaultOptions
@@ -124,16 +125,19 @@ if (verbose) {
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
 	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+	const optimizedRegExps = optimizeAll(regExps);
 
 	console.log(
 		chalk.blue('\n> RegExps\n')
 	);
 
-	regExps.forEach(({
+	optimizedRegExps.forEach(({
 		family,
 		requestVersionsStrings,
 		sourceRegExp,
-		resultVersion,
+		resultFixedVersion,
+		resultMinVersion,
+		resultMaxVersion,
 		regExp
 	}) => {
 
@@ -151,8 +155,28 @@ if (verbose) {
 		regExpsTable.cell('Value', sourceRegExp);
 		regExpsTable.newRow();
 
-		regExpsTable.cell('Name', chalk.yellow('Source RegExp version:'));
-		regExpsTable.cell('Value', resultVersion && resultVersion.join('.'));
+		regExpsTable.cell('Name', chalk.yellow('Source RegExp fixed version:'));
+		regExpsTable.cell('Value', resultFixedVersion ? resultFixedVersion.join('.') : '...');
+		regExpsTable.newRow();
+
+		let regExpBrowsersVersion = '';
+
+		if (resultMinVersion) {
+			regExpBrowsersVersion = resultMinVersion.join('.');
+		} else {
+			regExpBrowsersVersion = '...';
+		}
+
+		regExpBrowsersVersion += ' - ';
+
+		if (resultMaxVersion) {
+			regExpBrowsersVersion += resultMaxVersion.join('.');
+		} else {
+			regExpBrowsersVersion += '...';
+		}
+
+		regExpsTable.cell('Name', chalk.yellow('Source RegExp browsers versions:'));
+		regExpsTable.cell('Value', regExpBrowsersVersion);
 		regExpsTable.newRow();
 
 		regExpsTable.cell('Name', chalk.yellow('Versioned RegExp:'));
@@ -162,7 +186,7 @@ if (verbose) {
 		console.log(`${regExpsTable.print()}\n`);
 	});
 
-	const regExpStr = joinVersionedBrowsersRegExps(regExps);
+	const regExpStr = joinVersionedBrowsersRegExps(optimizedRegExps);
 	const regExp = new RegExp(regExpStr);
 
 	console.log(regExp);
