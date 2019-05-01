@@ -18,14 +18,32 @@ export function uniq<T>(items: T[]): T[] {
 
 /**
  * Check version.
- * @param  version - Semver version.
+ * @param  minVersion - Semver version.
+ * @param  maxVersion - Semver version.
  * @param  bases - Base semver versions.
  * @param  options - Semver compare options.
  * @return Some version is matched.
  */
-export function someSemverMatched(version: ISemver, bases: ISemver[], options: ISemverCompareOptions) {
-	return !version || bases.some(
-		_ => compareSemvers(version, _, options)
+export function someSemverMatched(
+	minVersion: ISemver,
+	maxVersion: ISemver,
+	bases: ISemver[],
+	options: ISemverCompareOptions
+) {
+
+	const compareOptions = {
+		...options,
+		allowHigherVersions: true
+	};
+
+	return (
+		!minVersion || bases.some(
+			_ => compareSemvers(_, minVersion, compareOptions)
+		)
+	) && (
+		!maxVersion || bases.some(
+			_ => compareSemvers(maxVersion, _, compareOptions)
+		)
 	);
 }
 

@@ -13,6 +13,9 @@ import {
 	applyVersionsToRegExps,
 	joinVersionedBrowsersRegExps
 } from '../regexp';
+import {
+	optimizeAll
+} from './optimize';
 
 export const defaultOptions = {
 	ignoreMinor: false,
@@ -46,8 +49,9 @@ export function getUserAgentRegExps({
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
 	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+	const optimizedRegExps = optimizeAll(regExps);
 
-	return regExps;
+	return optimizedRegExps;
 }
 
 /**

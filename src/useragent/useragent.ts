@@ -7,6 +7,13 @@ import {
 	BrowserRegExpSourceProp
 } from './types';
 import {
+	ISemverCompareOptions,
+	semverify
+} from '../semver';
+import {
+	IBrowsers
+} from '../browsers';
+import {
 	regExpToString
 } from '../regexp/util';
 import {
@@ -16,12 +23,8 @@ import {
 	familyMatched
 } from './util';
 import {
-	ISemverCompareOptions,
-	semverify
-} from '../semver';
-import {
-	IBrowsers
-} from '../browsers';
+	getMinMaxVersions
+} from './versions';
 
 export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
 	...extractIOSRegExp(regexps.os),
@@ -30,7 +33,6 @@ export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
 
 /**
  * Get user agent RegExps for given browsers.
- * @todo   Blacklist.
  * @param  browsers - Browsers.
  * @param  options - Semver compare options.
  * @return User agent RegExps.
@@ -42,20 +44,24 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
 	BROWSERS_REGEXPS.forEach(({
 		family,
 		regExp,
-		version
+		fixedVersion,
+		minVersion,
+		maxVersion
 	}) => {
 
 		const browserVersions = browsers.get(family);
 
 		if (browserVersions
-			&& someSemverMatched(version, browserVersions, options)
-			&& hasVersion(version, regExp)
+			&& someSemverMatched(minVersion, maxVersion, browserVersions, options)
+			&& hasVersion(fixedVersion, regExp)
 		) {
 			regExps.push({
 				family,
 				regExp,
-				requestVersions: browserVersions,
-				resultVersion:   version
+				requestVersions:    browserVersions,
+				resultFixedVersion: fixedVersion,
+				resultMinVersion:   minVersion,
+				resultMaxVersion:   maxVersion
 			});
 		}
 	});
@@ -75,11 +81,46 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 
 	switch (true) {
 
-		case /[^\w]?([A-Z]\w+iOS|YaBrowser)[^\w]?/.test(regExpString): // CriOS|OPiOS|FxiOS
+		/**
+		 * iOS browsers: CriOS|OPiOS|FxiOS etc
+		 */
+		case /[^\w]?([A-Z]\w+iOS)[^\w]?/.test(regExpString):
+		/**
+		 * iOS Outlook and UC Browser works with regular iOS RegExp
+		 */
+		case /iPhone.*Outlook-iOS-Android|UCWEB.*iPad\|iPh/.test(regExpString):
+		/**
+		 * This RegExp matches Safari version, not iOS
+		 */
+		case /\(iPhone\|iPad\|iPod\)\.\*Mac OS X\.\*Version/.test(regExpString):
+		/**
+		 * YaBrowser, Mail.ru Amigo, new Opera works with regular Chrome RegExp
+		 */
+		case /YaBrowser|MRCHROME|Chrome.*\(OPR\)/.test(regExpString):
+		/**
+		 * Chrome Mobile browser and WebView works with regular Chrome RegExp (except CrMo)
+		 */
+		case /\(Chrome\).* Mobile|Mobile \.\*\(Chrome\)|; wv\\\)\.\+\(Chrome\)/.test(regExpString):
+		/**
+		 * Firefox Mobile works with regular Firefox RegExp
+		 */
+		case /\(\?:Mobile\|Tablet\);\.\*\(Firefox\)/.test(regExpString):
+		/**
+		 * iOS Opera Mobile works with regular iOS RegExp
+		 */
+		case /\(\?:Mobile Safari\)\.\*\(OPR\)/.test(regExpString):
+		/**
+		 * Very old Opera
+		 */
+		case /Opera.*\) \(\\d/.test(regExpString):
+		/**
+		 * Strange RegExps
+		 */
+		case /bingbot|^\\b\(/.test(regExpString):
 			return [];
 
 		case familyMatched(false, familyOrRegExp, [
-			'Chrome Mobile',
+			'Chrome Mobile', // CrMo
 			'Chromium',
 			'HeadlessChrome'
 		]):
@@ -108,7 +149,7 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 
 		case familyOrRegExp === regExp: {
 
-			const matches = regExpString.match(/\(([\s\w\d_\-/|]+)\)/i);
+			const matches = regExpString.match(/\(([\s\w\d_\-/!|]+)\)/i);
 
 			if (Array.isArray(matches)) {
 
@@ -156,15 +197,29 @@ export function fixBrowserRegExp(browserRegExpSource: IBrowserRegExpSource) {
 		family,
 		regExp
 	);
-	const version = major === 0
+	const fixedVersion = major === 0
 		? null
 		: semverify([major, minor, patch]);
+	let minVersion = fixedVersion;
+	let maxVersion = fixedVersion;
 
-	return families.map<IBrowserRegExp>(family => ({
-		regExp,
-		version,
+	return families.map<IBrowserRegExp>(({
+		regExp: patchedRegExp = regExp,
 		...family
-	}));
+	}) => {
+
+		if (!fixedVersion) {
+			[minVersion, maxVersion] = getMinMaxVersions(patchedRegExp);
+		}
+
+		return {
+			regExp: patchedRegExp,
+			fixedVersion,
+			minVersion,
+			maxVersion,
+			...family
+		};
+	});
 }
 
 /**

@@ -98,3 +98,111 @@ export function replaceNumberPatterns(
 export function numberToDigits(num: string|number) {
 	return Array.from(num.toString()).map(Number);
 }
+
+/**
+ * Skip every char inside square braces.
+ * @param  skip - Current skip state.
+ * @param  prevChar - Previous char.
+ * @param  char - Current char to check.
+ * @return Should skip this char or not.
+ */
+export function skipSquareBraces(skip: boolean, prevChar: string, char: string) {
+
+	if (char === '['
+		&& prevChar !== ESCAPE_SYMBOL
+	) {
+		return true;
+	}
+
+	if (char === ']'
+		&& prevChar !== ESCAPE_SYMBOL
+	) {
+		return false;
+	}
+
+	return skip;
+}
+
+/**
+ * Get possible RegExp group postfix.
+ * @param  regExpStr - Whole RegExp string.
+ * @param  startFrom - Index to start capture.
+ * @return RegExp group postfix part.
+ */
+export function capturePostfix(regExpStr: string, startFrom: number) {
+
+	let char = regExpStr[startFrom];
+
+	switch (char) {
+
+		case '+':
+		case '*':
+		case '?':
+			return char;
+
+		case '(': {
+
+			const nextChar = regExpStr[startFrom + 1];
+			const afterNextChar = regExpStr[startFrom + 2];
+
+			if (
+				nextChar !== '?'
+				|| afterNextChar !== '=' && afterNextChar !== '!'
+			) {
+				return '';
+			}
+
+			break;
+		}
+
+		case '{':
+			break;
+
+		default:
+			return '';
+	}
+
+	const regExpStrLength = regExpStr.length;
+	let prevChar = '';
+	let braceBalance = 0;
+	let skip = false;
+	let postfix = '';
+
+	for (let i = startFrom; i < regExpStrLength; i++) {
+
+		char = regExpStr[i];
+		prevChar = regExpStr[i - 1];
+		skip = skipSquareBraces(skip, prevChar, char);
+
+		if (!skip
+			&& prevChar !== ESCAPE_SYMBOL
+			&& (
+				char === '('
+				|| char === '{'
+			)
+		) {
+			braceBalance++;
+		}
+
+		if (braceBalance > 0) {
+			postfix += char;
+		}
+
+		if (!skip
+			&& prevChar !== ESCAPE_SYMBOL
+			&& braceBalance > 0
+			&& (
+				char === ')'
+				|| char === '}'
+			)
+		) {
+			braceBalance--;
+
+			if (braceBalance === 0) {
+				break;
+			}
+		}
+	}
+
+	return postfix;
+}
