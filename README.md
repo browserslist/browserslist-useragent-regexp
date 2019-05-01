@@ -136,7 +136,9 @@ Compile browserslist query to one RegExp.
 | requestVersions | `[number, number, number][]` | Versions provided by browserslist. |
 | regExp | `RegExp` | RegExp to match useragent with family and versions. |
 | sourceRegExp | `RegExp` | Original useragent RegExp, without versions. |
-| resultVersion | `[number, number, number] \| null` | Useragent version of RegExp. |
+| resultFixedVersion | `[number, number, number] \| null` | Useragent version of RegExp. |
+| resultMinVersion | `[number, number, number] \| null` | Useragent min version of RegExp. |
+| resultMaxVersion | `[number, number, number] \| null` | Useragent max version of RegExp. |
 
 ## Other
 
