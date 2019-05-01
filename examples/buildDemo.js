@@ -117,8 +117,28 @@ function renderUserAgentRegExp({
 	family,
 	sourceRegExpString,
 	regExpString,
-	requestVersionsStrings
+	requestVersionsStrings,
+	resultFixedVersion,
+	resultMinVersion,
+	resultMaxVersion
 }, query) {
+
+	let regExpBrowsersVersion = '';
+
+	if (resultMinVersion) {
+		regExpBrowsersVersion = resultMinVersion.join('.');
+	} else {
+		regExpBrowsersVersion = '...';
+	}
+
+	regExpBrowsersVersion += ' - ';
+
+	if (resultMaxVersion) {
+		regExpBrowsersVersion += resultMaxVersion.join('.');
+	} else {
+		regExpBrowsersVersion += '...';
+	}
+
 	return `<li>
 	<input type="checkbox" onclick="return false" readonly data-for-query="${query}" data-regexp="${regExpString.replace(/([^\\])"/g, '$1\\"')}">
 	<table>
@@ -130,6 +150,12 @@ function renderUserAgentRegExp({
 		</tr>
 		<tr>
 			<th>Source RegExp:</th><td><pre>${sourceRegExpString}</pre></td>
+		</tr>
+		<tr>
+			<th>Source RegExp fixed version:</th><td>${resultFixedVersion ? resultFixedVersion.join('.') : '...'}</td>
+		</tr>
+		<tr>
+			<th>Source RegExp browsers versions:</th><td>${regExpBrowsersVersion}</td>
 		</tr>
 		<tr>
 			<th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
