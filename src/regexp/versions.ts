@@ -98,15 +98,16 @@ export function applyVersionsToRegExps(
 	browserVersionRegExps.forEach(({
 		family,
 		regExp: sourceRegExp,
-		resultVersion,
-		requestVersions
+		resultFixedVersion,
+		requestVersions,
+		...other
 	}) => {
 
 		const sourceRegExpString = regExpToString(sourceRegExp);
 		let regExp = null;
 		let regExpString = '';
 
-		if (resultVersion) {
+		if (resultFixedVersion) {
 			regExp = sourceRegExp;
 			regExpString = sourceRegExpString;
 		} else {
@@ -125,13 +126,14 @@ export function applyVersionsToRegExps(
 				sourceRegExpString,
 				regExp,
 				regExpString,
-				resultVersion,
+				resultFixedVersion,
 				requestVersions,
 				requestVersionsStrings: requestVersions.map(_ =>
 					isAllVersion(_)
 						? _[0]
 						: _.join('.')
-				)
+				),
+				...other
 			});
 		}
 	});

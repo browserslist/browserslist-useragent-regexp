@@ -77,6 +77,11 @@ describe('UserAgentRegExp', () => {
 
 			if (!works) {
 
+				if (ua.query === 'Explorer 6-10' && /Trident\/7/.test(ua.userAgent)) {
+					console.log(`"${ua.userAgent}" is IE 11, not "${ua.query}"!!!`);
+					return;
+				}
+
 				const info = getUserAgentRegExps({
 					browsers:            ua.query,
 					allowHigherVersions: true,
