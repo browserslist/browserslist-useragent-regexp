@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;regexp/versions&quot; | browserslist-useragent-regexp</title>
+	<title>&quot;useragent/versions&quot; | browserslist-useragent-regexp</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_regexp_versions_.html">&quot;regexp/versions&quot;</a>
+					<a href="_useragent_versions_.html">&quot;useragent/versions&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;regexp/versions&quot;</h1>
+			<h1>External module &quot;useragent/versions&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,8 +71,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_regexp_versions_.html#applyversionstoregexp" class="tsd-kind-icon">apply<wbr>Versions<wbr>ToReg<wbr>Exp</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_regexp_versions_.html#applyversionstoregexps" class="tsd-kind-icon">apply<wbr>Versions<wbr>ToReg<wbr>Exps</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_useragent_versions_.html#getminmaxversions" class="tsd-kind-icon">get<wbr>Min<wbr>Max<wbr>Versions</a></li>
 							</ul>
 						</section>
 					</div>
@@ -81,95 +80,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="applyversionstoregexp" class="tsd-anchor"></a>
-					<h3>apply<wbr>Versions<wbr>ToReg<wbr>Exp</h3>
+					<a name="getminmaxversions" class="tsd-anchor"></a>
+					<h3>get<wbr>Min<wbr>Max<wbr>Versions</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">apply<wbr>Versions<wbr>ToReg<wbr>Exp<span class="tsd-signature-symbol">(</span>regExp<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span>, versions<span class="tsd-signature-symbol">: </span><a href="_semver_types_.html#irangedsemver" class="tsd-signature-type">IRangedSemver</a><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_semver_types_.isemvercompareoptions.html" class="tsd-signature-type">ISemverCompareOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Min<wbr>Max<wbr>Versions<span class="tsd-signature-symbol">(</span>regExp<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol">, </span><a href="_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol">]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/e114620/src/regexp/versions.ts#L36">regexp/versions.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/e114620/src/useragent/versions.ts#L13">useragent/versions.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Apply ranged sevmers to the RegExp.</p>
+									<p>Get browser min and max versions for given useragent RegExp.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>todo</dt>
-									<dd><p>if <code>allowHigherVersions</code>, apply only min version.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>regExp: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span></h5>
+									<h5>regExp: <span class="tsd-signature-type">RegExp</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Target RegExp.</p>
 									</div>
 								</li>
-								<li>
-									<h5>versions: <a href="_semver_types_.html#irangedsemver" class="tsd-signature-type">IRangedSemver</a><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Ranged semvers.</p>
-									</div>
-								</li>
-								<li>
-									<h5>options: <a href="../interfaces/_semver_types_.isemvercompareoptions.html" class="tsd-signature-type">ISemverCompareOptions</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Semver compare options.</p>
-									</div>
-								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>RegExp with given versions.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="applyversionstoregexps" class="tsd-anchor"></a>
-					<h3>apply<wbr>Versions<wbr>ToReg<wbr>Exps</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">apply<wbr>Versions<wbr>ToReg<wbr>Exps<span class="tsd-signature-symbol">(</span>browserVersionRegExps<span class="tsd-signature-symbol">: </span><a href="../interfaces/_useragent_types_.ibrowserversionregexp.html" class="tsd-signature-type">IBrowserVersionRegExp</a><span class="tsd-signature-symbol">[]</span>, browsers<span class="tsd-signature-symbol">: </span><a href="_browsers_types_.html#irangedbrowsers" class="tsd-signature-type">IRangedBrowsers</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_semver_types_.isemvercompareoptions.html" class="tsd-signature-type">ISemverCompareOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/e114620/src/regexp/versions.ts#L90">regexp/versions.ts:90</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Apply browser versions to info objects.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>browserVersionRegExps: <a href="../interfaces/_useragent_types_.ibrowserversionregexp.html" class="tsd-signature-type">IBrowserVersionRegExp</a><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Objects with requested browser version and RegExp.</p>
-									</div>
-								</li>
-								<li>
-									<h5>browsers: <a href="_browsers_types_.html#irangedbrowsers" class="tsd-signature-type">IRangedBrowsers</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Ranged versions of browsers.</p>
-									</div>
-								</li>
-								<li>
-									<h5>options: <a href="../interfaces/_semver_types_.isemvercompareoptions.html" class="tsd-signature-type">ISemverCompareOptions</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Semver compare options.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span></h4>
-							<p>Objects with requested browser version and RegExp special for this version.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol">, </span><a href="_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a><span class="tsd-signature-symbol">]</span></h4>
+							<p>Min and max versions.</p>
 						</li>
 					</ul>
 				</section>
@@ -182,17 +120,14 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_regexp_versions_.html">"regexp/versions"</a>
+						<a href="_useragent_versions_.html">"useragent/versions"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_regexp_versions_.html#applyversionstoregexp" class="tsd-kind-icon">apply<wbr>Versions<wbr>ToReg<wbr>Exp</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_regexp_versions_.html#applyversionstoregexps" class="tsd-kind-icon">apply<wbr>Versions<wbr>ToReg<wbr>Exps</a>
+						<a href="_useragent_versions_.html#getminmaxversions" class="tsd-kind-icon">get<wbr>Min<wbr>Max<wbr>Versions</a>
 					</li>
 				</ul>
 			</nav>
