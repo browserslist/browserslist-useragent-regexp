@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.1.0-beta] - 2019-05-01
 ### Summary
-RegExp for `defaults` decreased by ~63%.
+The size of RegExp for `defaults` has decreased by ~63%.
 ### Changed
 - Result RegExps optimizations;
 - Removing of useless RegExps from result.
