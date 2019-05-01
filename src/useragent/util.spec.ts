@@ -36,6 +36,7 @@ describe('UserAgent', () => {
 
 				expect(
 					someSemverMatched(
+						[9, 0, 0],
 						null,
 						versions,
 						{}
@@ -46,6 +47,7 @@ describe('UserAgent', () => {
 
 				expect(
 					someSemverMatched(
+						null,
 						[11, 0, 0],
 						versions,
 						{}
@@ -56,7 +58,30 @@ describe('UserAgent', () => {
 
 				expect(
 					someSemverMatched(
+						[10, 0, 0],
 						[16, 0, 0],
+						versions,
+						{}
+					)
+				).toBe(
+					true
+				);
+
+				expect(
+					someSemverMatched(
+						[16, 0, 0],
+						null,
+						versions,
+						{}
+					)
+				).toBe(
+					false
+				);
+
+				expect(
+					someSemverMatched(
+						null,
+						[9, 0, 0],
 						versions,
 						{}
 					)

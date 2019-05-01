@@ -117,7 +117,6 @@ function renderUserAgentRegExp({
 	family,
 	sourceRegExpString,
 	regExpString,
-	resultVersion,
 	requestVersionsStrings
 }, query) {
 	return `<li>
@@ -132,16 +131,9 @@ function renderUserAgentRegExp({
 		<tr>
 			<th>Source RegExp:</th><td><pre>${sourceRegExpString}</pre></td>
 		</tr>
-		${!resultVersion ? '' : `
-			<tr>
-				<th>Source RegExp version:</th><td>${resultVersion.join('.')}</td>
-			</tr>
-		`}
-		${resultVersion ? '' : `
-			<tr>
-				<th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
-			</tr>
-		`}
+		<tr>
+			<th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
+		</tr>
 	</table>
 </li>`;
 }

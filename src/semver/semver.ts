@@ -5,7 +5,7 @@ import {
 	ISemverCompareOptions
 } from './types';
 import {
-	NUMBER_PATTERN
+	BRACED_NUMBER_PATTERN
 } from '../regexp/util';
 import {
 	rangeToRegExp
@@ -163,7 +163,7 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, {
 				return rangedVersion.map((range, j) => {
 
 					if (j >= ignoreIndex) {
-						return NUMBER_PATTERN;
+						return BRACED_NUMBER_PATTERN;
 					}
 
 					start = Array.isArray(range)
@@ -175,7 +175,7 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, {
 					}
 
 					if (j > ri) {
-						return NUMBER_PATTERN;
+						return BRACED_NUMBER_PATTERN;
 					}
 
 					return rangeToRegExp(start + d);
@@ -189,7 +189,7 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, {
 	const numberPatterns: string[] = rangedVersion.map((range, i) => {
 
 		if (i >= ignoreIndex) {
-			return NUMBER_PATTERN;
+			return BRACED_NUMBER_PATTERN;
 		}
 
 		if (Array.isArray(range)) {
