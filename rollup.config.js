@@ -2,7 +2,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 import tslint from 'rollup-plugin-tslint';
-import shebang from 'rollup-plugin-shebang';
+import shebang from 'rollup-plugin-add-shebang';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import pkg from './package.json';
 
