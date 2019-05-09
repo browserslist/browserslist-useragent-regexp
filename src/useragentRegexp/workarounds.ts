@@ -11,7 +11,7 @@ import {
 const patches: IBrowserPatch[] = [
 	/**
 	 * Patch Chrome < 74 regexp to exclude Edge <= 18
-	 * 1) Last EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)
+	 * 1) Last ever (?) EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)
 	 * 2) First known Chromium Edge has Chrome 74 version
 	 *    (https://blogs.windows.com/msedgedev/2019/04/08/microsoft-edge-preview-channel-details/#HzAbspiQ4poHQRVc.97)
 	 */
@@ -43,7 +43,7 @@ const patches: IBrowserPatch[] = [
 				|| resultMinVersion && resultMinVersion[0] >= 74
 				|| regExpString.includes('HeadlessChrome')
 			) {
-				return null;
+				return regExpInfo;
 			}
 
 			const patchedRegExpString = `${regExpString}.*(?<!Edge\\/[\\d.]+)$`;
@@ -70,7 +70,7 @@ export function patchRegExps(regExps: IBrowserVersionedRegExp[], browsers: IBrow
 			}
 
 			if (tested.get(patch)) {
-				return patch.patch(regExp) || regExp;
+				return patch.patch(regExp);
 			}
 
 			return regExp;
