@@ -13,6 +13,7 @@ import {
 	browserVersionsToRanges,
 	getRegExpsForBrowsers,
 	applyVersionsToRegExps,
+	patchRegExps,
 	optimizeAll,
 	joinVersionedBrowsersRegExps,
 	isAllVersion,
@@ -124,8 +125,9 @@ if (verbose) {
 
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
-	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
-	const optimizedRegExps = optimizeAll(regExps);
+	const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+	const patchedRegExps = patchRegExps(versionedRegExps, mergedBrowsers);
+	const optimizedRegExps = optimizeAll(patchedRegExps);
 
 	console.log(
 		chalk.blue('\n> RegExps\n')
