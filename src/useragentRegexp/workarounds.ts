@@ -46,7 +46,7 @@ const patches: IBrowserPatch[] = [
 				return regExpInfo;
 			}
 
-			const patchedRegExpString = `${regExpString}.*(?<!Edge\\/[\\d.]+)$`;
+			const patchedRegExpString = `${regExpString}.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$)`;
 			const patchedRegExp = new RegExp(patchedRegExpString);
 
 			return {
