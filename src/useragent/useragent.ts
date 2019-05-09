@@ -79,8 +79,8 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 	const familyOrRegExp = family || regExp;
 	const regExpString = regExpToString(regExp);
 
+	/* istanbul ignore next */
 	switch (true) {
-
 		/**
 		 * iOS browsers: CriOS|OPiOS|FxiOS etc
 		 */
