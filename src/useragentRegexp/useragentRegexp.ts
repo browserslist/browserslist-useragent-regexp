@@ -14,6 +14,9 @@ import {
 	joinVersionedBrowsersRegExps
 } from '../regexp';
 import {
+	patchRegExps
+} from './workarounds';
+import {
 	optimizeAll
 } from './optimize';
 
@@ -48,8 +51,9 @@ export function getUserAgentRegExps({
 	const mergedBrowsers = mergeBrowserVersions(browsersList);
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
 	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
-	const regExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
-	const optimizedRegExps = optimizeAll(regExps);
+	const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+	const patchedRegExps = patchRegExps(versionedRegExps, mergedBrowsers);
+	const optimizedRegExps = optimizeAll(patchedRegExps);
 
 	return optimizedRegExps;
 }
