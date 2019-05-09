@@ -62,6 +62,7 @@ export function patchRegExps(regExps: IBrowserVersionedRegExp[], browsers: IBrow
 
 	const tested = new Map<IBrowserPatch, boolean>();
 
+	/* istanbul ignore next */
 	return regExps.map(regExp =>
 		patches.reduce((regExp, patch) => {
 
