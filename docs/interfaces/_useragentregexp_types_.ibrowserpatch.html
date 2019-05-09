@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IBrowser | browserslist-useragent-regexp</title>
+	<title>IBrowserPatch | browserslist-useragent-regexp</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_browsers_types_.html">&quot;browsers/types&quot;</a>
+					<a href="../modules/_useragentregexp_types_.html">&quot;useragentRegexp/types&quot;</a>
 				</li>
 				<li>
-					<a href="_browsers_types_.ibrowser.html">IBrowser</a>
+					<a href="_useragentregexp_types_.ibrowserpatch.html">IBrowserPatch</a>
 				</li>
 			</ul>
-			<h1>Interface IBrowser</h1>
+			<h1>Interface IBrowserPatch</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IBrowser</span>
+						<span class="target">IBrowserPatch</span>
 					</li>
 				</ul>
 			</section>
@@ -80,36 +80,62 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_browsers_types_.ibrowser.html#family" class="tsd-kind-icon">family</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_browsers_types_.ibrowser.html#version" class="tsd-kind-icon">version</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_useragentregexp_types_.ibrowserpatch.html#patch" class="tsd-kind-icon">patch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_useragentregexp_types_.ibrowserpatch.html#test" class="tsd-kind-icon">test</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="family" class="tsd-anchor"></a>
-					<h3>family</h3>
-					<div class="tsd-signature tsd-kind-icon">family<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/browsers/types.ts#L7">browsers/types.ts:7</a></li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="patch" class="tsd-anchor"></a>
+					<h3>patch</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">patch<span class="tsd-signature-symbol">(</span>regExp<span class="tsd-signature-symbol">: </span><a href="_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/useragentRegexp/types.ts#L16">useragentRegexp/types.ts:16</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>regExp: <a href="_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="version" class="tsd-anchor"></a>
-					<h3>version</h3>
-					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <a href="../modules/_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/browsers/types.ts#L8">browsers/types.ts:8</a></li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="test" class="tsd-anchor"></a>
+					<h3>test</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">test<span class="tsd-signature-symbol">(</span>browsers<span class="tsd-signature-symbol">: </span><a href="../modules/_browsers_types_.html#ibrowsers" class="tsd-signature-type">IBrowsers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/useragentRegexp/types.ts#L15">useragentRegexp/types.ts:15</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>browsers: <a href="../modules/_browsers_types_.html#ibrowsers" class="tsd-signature-type">IBrowsers</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -120,7 +146,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_browsers_types_.html">"browsers/types"</a>
+						<a href="../modules/_useragentregexp_types_.html">"useragent<wbr>Regexp/types"</a>
 					</li>
 				</ul>
 			</nav>
@@ -129,26 +155,20 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_browsers_types_.ibrowser.html" class="tsd-kind-icon">IBrowser</a>
+						<a href="_useragentregexp_types_.ibrowserpatch.html" class="tsd-kind-icon">IBrowser<wbr>Patch</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_browsers_types_.ibrowser.html#family" class="tsd-kind-icon">family</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_useragentregexp_types_.ibrowserpatch.html#patch" class="tsd-kind-icon">patch</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_browsers_types_.ibrowser.html#version" class="tsd-kind-icon">version</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_useragentregexp_types_.ibrowserpatch.html#test" class="tsd-kind-icon">test</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_browsers_types_.ibrowserslistrequest.html" class="tsd-kind-icon">IBrowsers<wbr>List<wbr>Request</a>
-					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_browsers_types_.html#ibrowsers" class="tsd-kind-icon">IBrowsers</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_browsers_types_.html#irangedbrowsers" class="tsd-kind-icon">IRanged<wbr>Browsers</a>
+						<a href="../modules/_useragentregexp_types_.html#iuseragentregexpoptions" class="tsd-kind-icon">IUser<wbr>Agent<wbr>Reg<wbr>Exp<wbr>Options</a>
 					</li>
 				</ul>
 			</nav>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IBrowser | browserslist-useragent-regexp</title>
+	<title>&quot;useragentRegexp/workarounds&quot; | browserslist-useragent-regexp</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,62 +54,75 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_browsers_types_.html">&quot;browsers/types&quot;</a>
-				</li>
-				<li>
-					<a href="_browsers_types_.ibrowser.html">IBrowser</a>
+					<a href="_useragentregexp_workarounds_.html">&quot;useragentRegexp/workarounds&quot;</a>
 				</li>
 			</ul>
-			<h1>Interface IBrowser</h1>
+			<h1>External module &quot;useragentRegexp/workarounds&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">IBrowser</span>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_browsers_types_.ibrowser.html#family" class="tsd-kind-icon">family</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_browsers_types_.ibrowser.html#version" class="tsd-kind-icon">version</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_useragentregexp_workarounds_.html#patches" class="tsd-kind-icon">patches</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_useragentregexp_workarounds_.html#patchregexps" class="tsd-kind-icon">patch<wbr>Reg<wbr>Exps</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="family" class="tsd-anchor"></a>
-					<h3>family</h3>
-					<div class="tsd-signature tsd-kind-icon">family<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="patches" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> patches</h3>
+					<div class="tsd-signature tsd-kind-icon">patches<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_useragentregexp_types_.ibrowserpatch.html" class="tsd-signature-type">IBrowserPatch</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[/*** Patch Chrome &lt; 74 regexp to exclude Edge &lt;&#x3D; 18* 1) Last ever (?) EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)* 2) First known Chromium Edge has Chrome 74 version*    (https://blogs.windows.com/msedgedev/2019/04/08/microsoft-edge-preview-channel-details/#HzAbspiQ4poHQRVc.97)*/{test(browsers) {const chromeVersions &#x3D; browsers.get(&#x27;chrome&#x27;);const edgeVersions &#x3D; browsers.get(&#x27;edge&#x27;);const hasBrowsers &#x3D; chromeVersions &amp;&amp; edgeVersions;if (!hasBrowsers) {return false;}const minChromeVersion &#x3D; chromeVersions[0][0];const minEdgeVersion &#x3D; edgeVersions[0][0];return minChromeVersion &lt; 74 &amp;&amp; minEdgeVersion &lt;&#x3D; 18;},patch(regExpInfo) {const {family,regExpString,resultMinVersion} &#x3D; regExpInfo;if (family !&#x3D;&#x3D; &#x27;chrome&#x27;|| resultMinVersion &amp;&amp; resultMinVersion[0] &gt;&#x3D; 74|| regExpString.includes(&#x27;HeadlessChrome&#x27;)) {return regExpInfo;}// Iridium browser has Safari before Chromeconst patchedRegExpString &#x3D; &#x60;${regExpString}([\\d.]+$|.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$))&#x60;;const patchedRegExp &#x3D; new RegExp(patchedRegExpString);return {...regExpInfo,regExp:       patchedRegExp,regExpString: patchedRegExpString};}}]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/browsers/types.ts#L7">browsers/types.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/useragentRegexp/workarounds.ts#L11">useragentRegexp/workarounds.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="version" class="tsd-anchor"></a>
-					<h3>version</h3>
-					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <a href="../modules/_semver_types_.html#isemver" class="tsd-signature-type">ISemver</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/browsers/types.ts#L8">browsers/types.ts:8</a></li>
-						</ul>
-					</aside>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="patchregexps" class="tsd-anchor"></a>
+					<h3>patch<wbr>Reg<wbr>Exps</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">patch<wbr>Reg<wbr>Exps<span class="tsd-signature-symbol">(</span>regExps<span class="tsd-signature-symbol">: </span><a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span>, browsers<span class="tsd-signature-symbol">: </span><a href="_browsers_types_.html#ibrowsers" class="tsd-signature-type">IBrowsers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/f70d95d/src/useragentRegexp/workarounds.ts#L62">useragentRegexp/workarounds.ts:62</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>regExps: <a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>browsers: <a href="_browsers_types_.html#ibrowsers" class="tsd-signature-type">IBrowsers</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -120,35 +133,17 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_browsers_types_.html">"browsers/types"</a>
+						<a href="_useragentregexp_workarounds_.html">"useragent<wbr>Regexp/workarounds"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_browsers_types_.ibrowser.html" class="tsd-kind-icon">IBrowser</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_browsers_types_.ibrowser.html#family" class="tsd-kind-icon">family</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_browsers_types_.ibrowser.html#version" class="tsd-kind-icon">version</a>
-							</li>
-						</ul>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_useragentregexp_workarounds_.html#patches" class="tsd-kind-icon">patches</a>
 					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_browsers_types_.ibrowserslistrequest.html" class="tsd-kind-icon">IBrowsers<wbr>List<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_browsers_types_.html#ibrowsers" class="tsd-kind-icon">IBrowsers</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_browsers_types_.html#irangedbrowsers" class="tsd-kind-icon">IRanged<wbr>Browsers</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_useragentregexp_workarounds_.html#patchregexps" class="tsd-kind-icon">patch<wbr>Reg<wbr>Exps</a>
 					</li>
 				</ul>
 			</nav>
