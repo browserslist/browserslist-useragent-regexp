@@ -174,9 +174,8 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 			return [{ family: family.toLowerCase() }];
 
 		default:
+			return [];
 	}
-
-	return [];
 }
 
 /**
