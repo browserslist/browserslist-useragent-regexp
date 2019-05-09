@@ -46,7 +46,8 @@ const patches: IBrowserPatch[] = [
 				return regExpInfo;
 			}
 
-			const patchedRegExpString = `${regExpString}.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$)`;
+			// Iridium browser has Safari before Chrome
+			const patchedRegExpString = `${regExpString}([\\d.]+$|.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$))`;
 			const patchedRegExp = new RegExp(patchedRegExpString);
 
 			return {

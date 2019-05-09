@@ -158,7 +158,7 @@ function renderUserAgentRegExp({
 			<th>Source RegExp browsers versions:</th><td>${regExpBrowsersVersion}</td>
 		</tr>
 		<tr>
-			<th>Versioned RegExp:</th><td><pre>${regExpString.replace(/</g, '&lt;')}</pre></td>
+			<th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
 		</tr>
 	</table>
 </li>`;
