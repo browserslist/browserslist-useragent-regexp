@@ -24,6 +24,13 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [1.3.0-beta] - 2019-06-09
+### Added
+- `trigen-scripts` dev tool.
+
+### Changed
+- Dependencies update.
+
 ## [1.2.0-beta] - 2019-05-09
 ### Fixed
 - [#23](https://github.com/browserslist/browserslist-useragent-regexp/issues/23): Patch Chrome regexp to ignore Edge useragent.
