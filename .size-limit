@@ -1,9 +1,14 @@
-[{
-	path:  "lib/index.js",
-	limit: "10 KB",
-	webpack: false
-}, {
-	path:  "lib/cli.js",
-	limit: "2 KB",
-	webpack: false
-}]
+[
+	{
+		"path": "lib/index.js",
+		"limit": "10 KB",
+		"webpack": false,
+		"running": false
+	},
+	{
+		"path": "lib/cli.js",
+		"limit": "2 KB",
+		"webpack": false,
+		"running": false
+	}
+]

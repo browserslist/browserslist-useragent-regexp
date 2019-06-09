@@ -43,6 +43,9 @@ node_modules
 # Compiled dist
 lib
 package
+build
+
+.env
 
 # Test artifacts
 test/artifacts/*

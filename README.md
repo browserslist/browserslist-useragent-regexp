@@ -1,20 +1,19 @@
-
 # browserslist-useragent-regexp
 
 [![NPM version][npm]][npm-url]
 [![Node version][node]][node-url]
-[![Dependency status][deps]][deps-url]
+[![Dependencies status][deps]][deps-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
 [![Greenkeeper badge][greenkeeper]][greenkeeper-url]
 
 [npm]: https://img.shields.io/npm/v/browserslist-useragent-regexp.svg
-[npm-url]: https://www.npmjs.com/package/browserslist-useragent-regexp
+[npm-url]: https://npmjs.com/package/browserslist-useragent-regexp
 
 [node]: https://img.shields.io/node/v/browserslist-useragent-regexp.svg
 [node-url]: https://nodejs.org
 
-[deps]: https://img.shields.io/david/browserslist/browserslist-useragent-regexp.svg
+[deps]: https://david-dm.org/browserslist/browserslist-useragent-regexp.svg
 [deps-url]: https://david-dm.org/browserslist/browserslist-useragent-regexp
 
 [build]: http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp.svg
