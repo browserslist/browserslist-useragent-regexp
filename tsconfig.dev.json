@@ -1,10 +1,8 @@
 {
 	"compilerOptions": {
-		"declaration": true,
-		"declarationMap": true,
-		"module": "esnext",
+		"module": "commonjs",
 		"moduleResolution": "node",
-		"target": "esnext",
+		"target": "es5",
 		"jsx": "preserve",
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -14,18 +12,9 @@
 		"resolveJsonModule": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": false,
-		"inlineSourceMap": true,
 		"baseUrl": ".",
 		"lib": [
 			"esnext"
 		]
-	},
-	"include": [
-		"src/index.ts",
-		"src/cli.ts",
-		"src/**/*spec.ts"
-	],
-	"exclude": [
-		"lib/**/*"
-	]
+	}
 }

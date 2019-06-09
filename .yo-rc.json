@@ -1,0 +1,20 @@
+{
+  "generator-trigen-lib": {
+    "editPackage": true,
+    "pkg": {
+      "name": "browserslist-useragent-regexp",
+      "version": "1.2.0-beta",
+      "description": "A utility to compile browserslist query to a RegExp to test browser useragent.",
+      "repository": "https://github.com/browserslist/browserslist-useragent-regexp",
+      "author": "dangreen"
+    },
+    "type": "node",
+    "lang": "ts",
+    "rollup": true,
+    "jest": true,
+    "coverage": true,
+    "publishAsRoot": false,
+    "cleanPublish": true,
+    "checkSize": true
+  }
+}
