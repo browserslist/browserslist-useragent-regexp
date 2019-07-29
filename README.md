@@ -44,6 +44,19 @@ not dead
 }
 ```
 
+<details>
+    <summary>for Windows users</summary>
+
+```json
+{
+  "scripts": {
+    "supportedBrowsers": "(echo module.exports = && browserslist-useragent-regexp --allowHigherVersions) > supportedBrowsers.js"
+  }
+}
+```
+
+</details>
+
 3) Run this script, to compile RegExp:
 
 ```bash
