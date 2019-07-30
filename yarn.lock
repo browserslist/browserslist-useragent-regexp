@@ -1120,9 +1120,9 @@
     jest "^24.3.0"
 
 "@trigen/scripts-plugin-rollup@2":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-rollup/-/scripts-plugin-rollup-2.0.1.tgz#a703f21294cda7a7ebf5d0b243defad22a347a11"
-  integrity sha512-LoS7iNifb5dLs0nQ4ztPITbtmc8QkD9P4DjkNvHisJpnfVqEQBRce2igxzYieUShsibcIi+qO67ZAYpTlslg5w==
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-rollup/-/scripts-plugin-rollup-2.4.0.tgz#5d06f3f9a3c6d6556ecdc57b54274cff3c6436c0"
+  integrity sha512-5+J7dOKlsTpJmaB1sol/V7vK6VY6zJ0syYTMuPxQ3zZgWCYa+olOq1yNvm5DAzlKKgd5YtIt6mI2Bwr2WLUsuQ==
   dependencies:
     builtin-modules "*"
     rollup "^1.13.0"
