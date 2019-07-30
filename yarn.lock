@@ -1109,13 +1109,14 @@
     eslint-config-trigen "^3.2.3"
 
 "@trigen/scripts-plugin-jest@2":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-2.3.0.tgz#e85fbd737a2c5e46144f47739118db0b18b0c474"
-  integrity sha512-+q7mq1sv/WJ8/e9ISaGHdl/ux5lCjnhIviJX9RVBnK3PYKiG8HfLUx0OvsLH+o4DvReXii6dcCm3OOW5GFWZqQ==
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-2.6.4.tgz#5ffb775b1e015a1a7123b548d4c077e36c13ab80"
+  integrity sha512-h2PduvrJYZAYWsfVXNETp9FWY3Dtq2f8TgB6EbCbxOE1fqZvxiMT2sXAb/hv93ojve89i/jtmIw/S8+I+ozfkA==
   dependencies:
-    "@trigen/scripts" "^2.3.0"
+    "@trigen/scripts" "^2.6.3"
     "@types/jest" "^24.0.10"
     babel-jest "^24.5.0"
+    babel-preset-trigen "^2.2.2"
     jest "^24.3.0"
 
 "@trigen/scripts-plugin-rollup@2":
@@ -2055,7 +2056,7 @@ babel-preset-minify@^0.5.0:
     babel-plugin-transform-undefined-to-void "^6.9.4"
     lodash.isplainobject "^4.0.6"
 
-babel-preset-trigen@^2.2.1:
+babel-preset-trigen@^2.2.1, babel-preset-trigen@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/babel-preset-trigen/-/babel-preset-trigen-2.2.2.tgz#193baea0aea061ef05f8db4e34392c77d39daa09"
   integrity sha512-Jfbrtk/rEwYLWBKTuuPzgI2OoMuTPF8keEnnM5Nek3Xdbo5+To/PNCnRaNyFvsmya2sohwY7kJ+yl6vQ3U5/Ew==
