@@ -1088,34 +1088,35 @@
     any-observable "^0.3.0"
 
 "@trigen/scripts-plugin-babel@2":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-2.3.0.tgz#5f4d570ed45671e71f0e08277c11cd314e7a5f8b"
-  integrity sha512-YVeq7p/TlWzx9bul4M474mI7H4XJyASZpR5aIX3J+9zBiGcadhf7JZQSpUC8Za8F9/Rd8GIexNAEBMCIg/dCYQ==
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-2.6.3.tgz#28a1128e9bd374a486a5cdb634de70a24ec91277"
+  integrity sha512-RE9KFw+rNOa0yTAlIyWn/R+EX+bHIyR5wbjGgFhcqKX8tiWpeT9ROLD+3MtkYjgmkWRbbPBrznRIMHEWe6r17g==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.4.0"
     "@babel/node" "^7.0.0"
     "@babel/runtime" "^7.4.2"
-    "@trigen/scripts" "^2.3.0"
+    "@trigen/scripts" "^2.6.3"
     babel-preset-trigen "^2.2.1"
 
 "@trigen/scripts-plugin-eslint@2":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-2.3.0.tgz#c5ea4e3a84b270aae84a8b6ef408a2e6cd55e1b5"
-  integrity sha512-eggk1arw4F76kPIcyWbVl75VQIXEfNGWW7GixDLU8q2eS81mckVxAZlRxRD1s0e5aYAgtnUl+EESFCXbzMHojw==
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-2.6.3.tgz#bfc137d81972acbb8a025f3d0a9f01406d894412"
+  integrity sha512-3gnf4PygEFEBQFKSYbGhRnrz0SAZ0lNmflDe8IwhTKm7Iqd1PRLHJUEmhRL0mu63Cj38mDvpwjn7rmApafE+TA==
   dependencies:
-    "@trigen/scripts" "^2.3.0"
+    "@trigen/scripts" "^2.6.3"
     eslint "^5.15.3"
     eslint-config-trigen "^3.2.3"
 
 "@trigen/scripts-plugin-jest@2":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-2.3.0.tgz#e85fbd737a2c5e46144f47739118db0b18b0c474"
-  integrity sha512-+q7mq1sv/WJ8/e9ISaGHdl/ux5lCjnhIviJX9RVBnK3PYKiG8HfLUx0OvsLH+o4DvReXii6dcCm3OOW5GFWZqQ==
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-2.6.4.tgz#5ffb775b1e015a1a7123b548d4c077e36c13ab80"
+  integrity sha512-h2PduvrJYZAYWsfVXNETp9FWY3Dtq2f8TgB6EbCbxOE1fqZvxiMT2sXAb/hv93ojve89i/jtmIw/S8+I+ozfkA==
   dependencies:
-    "@trigen/scripts" "^2.3.0"
+    "@trigen/scripts" "^2.6.3"
     "@types/jest" "^24.0.10"
     babel-jest "^24.5.0"
+    babel-preset-trigen "^2.2.2"
     jest "^24.3.0"
 
 "@trigen/scripts-plugin-rollup@2":
@@ -1162,7 +1163,7 @@
     husky "^2.3.0"
     lint-staged "^8.1.0"
 
-"@trigen/scripts@2", "@trigen/scripts@^2.3.0":
+"@trigen/scripts@2", "@trigen/scripts@^2.3.0", "@trigen/scripts@^2.6.3":
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-2.6.3.tgz#c5275f1a770c052c27412ebf269a5aaedac6e3e9"
   integrity sha512-n84YpkKXzAx2O4BXlTtRyz8+oyIb1Se56E+1f2WvDEfBECKSL//fYpEh7nASBKBuzka5Bv1kae7srKRzT54kAQ==
@@ -1650,9 +1651,9 @@ argparse@^1.0.7:
     sprintf-js "~1.0.2"
 
 argue-cli@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/argue-cli/-/argue-cli-1.2.0.tgz#218d1bc97faf2a098efc67075cc9709d741ae391"
-  integrity sha512-XlI/KHiglz56Ey+vnBSxOhxO1eY4k/Vxaj8HrEbM4k1lN2aeW941dTUmrIcx5NW3JxmF3tdR0Oy37IlYoj7UAg==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/argue-cli/-/argue-cli-1.2.1.tgz#27b2304f86370642ad2dcbb69f00fd728215073f"
+  integrity sha512-Em3HDMlqiVLNOgXUCYz5NG1mx/44aijsxUOO8elmfvAN4/3ar1S3WPTua7WGhsMbeQm8clOwpDZ09sN7C2FnOg==
 
 arr-diff@^4.0.0:
   version "4.0.0"
@@ -2055,7 +2056,7 @@ babel-preset-minify@^0.5.0:
     babel-plugin-transform-undefined-to-void "^6.9.4"
     lodash.isplainobject "^4.0.6"
 
-babel-preset-trigen@^2.2.1:
+babel-preset-trigen@^2.2.1, babel-preset-trigen@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/babel-preset-trigen/-/babel-preset-trigen-2.2.2.tgz#193baea0aea061ef05f8db4e34392c77d39daa09"
   integrity sha512-Jfbrtk/rEwYLWBKTuuPzgI2OoMuTPF8keEnnM5Nek3Xdbo5+To/PNCnRaNyFvsmya2sohwY7kJ+yl6vQ3U5/Ew==
@@ -5984,9 +5985,9 @@ lodash.uniq@^4.5.0:
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.5:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 log-driver@^1.2.7:
   version "1.2.7"
@@ -6053,10 +6054,10 @@ lru-queue@0.1:
   dependencies:
     es5-ext "~0.10.2"
 
-magic-string@^0.25.2:
-  version "0.25.2"
-  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.2.tgz#139c3a729515ec55e96e69e82a11fe890a293ad9"
-  integrity sha512-iLs9mPjh9IuTtRsqqhNGYcZXGei0Nh/A4xirrsqW7c+QhKVFL2vm7U09ru6cHRD22azaP/wMDgI+HCqbETMTtg==
+magic-string@^0.25.2, magic-string@^0.25.3:
+  version "0.25.3"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.3.tgz#34b8d2a2c7fec9d9bdf9929a3fd81d271ef35be9"
+  integrity sha512-6QK0OpF/phMz0Q2AxILkX2mFhi7m+WMwTRg0LQKq/WBB0cDP4rYH3Wp4/d3OTXlrPLVJT/RFqj8tFeAR4nk8AA==
   dependencies:
     sourcemap-codec "^1.4.4"
 
@@ -8120,12 +8121,12 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     inherits "^2.0.1"
 
 rollup-plugin-add-shebang@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-add-shebang/-/rollup-plugin-add-shebang-0.3.0.tgz#5a8f07e0fcc9cb9d611640120f9236e1bc1c09cf"
-  integrity sha512-G7GcqhTdI1AvQKFaoTjMhdU130gSyUuzCsr+kItfNOR8XQso9gUen+bLt5sn6ZKuer8Lkksutka4yxhVP+Vi5w==
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-add-shebang/-/rollup-plugin-add-shebang-0.3.1.tgz#ff9261f2960f3738f199bcae96d4a13b468a492a"
+  integrity sha512-tKONSgKoVw9Om1cp1CnAlPQ9nsHBzu8fInKObX3zT5KZVoAJtslD1aBL84lJuKLeh+L28dB26CBBeYT+doTMLg==
   dependencies:
-    magic-string "^0.25.2"
-    rollup-pluginutils "^2.5.0"
+    magic-string "^0.25.3"
+    rollup-pluginutils "^2.8.1"
 
 rollup-plugin-babel-minify@^8.0.0:
   version "8.0.0"
@@ -8194,7 +8195,7 @@ rollup-pluginutils@2.6.0:
     estree-walker "^0.6.0"
     micromatch "^3.1.10"
 
-rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.7.0:
+rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.7.0, rollup-pluginutils@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.1.tgz#8fa6dd0697344938ef26c2c09d2488ce9e33ce97"
   integrity sha512-J5oAoysWar6GuZo0s+3bZ6sVZAC0pfqKz68De7ZgDi5z63jOVZn1uJL/+z1jeKHNbGII8kAyHF5q8LnxSX5lQg==
