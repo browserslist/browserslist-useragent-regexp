@@ -1650,9 +1650,9 @@ argparse@^1.0.7:
     sprintf-js "~1.0.2"
 
 argue-cli@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/argue-cli/-/argue-cli-1.2.0.tgz#218d1bc97faf2a098efc67075cc9709d741ae391"
-  integrity sha512-XlI/KHiglz56Ey+vnBSxOhxO1eY4k/Vxaj8HrEbM4k1lN2aeW941dTUmrIcx5NW3JxmF3tdR0Oy37IlYoj7UAg==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/argue-cli/-/argue-cli-1.2.1.tgz#27b2304f86370642ad2dcbb69f00fd728215073f"
+  integrity sha512-Em3HDMlqiVLNOgXUCYz5NG1mx/44aijsxUOO8elmfvAN4/3ar1S3WPTua7WGhsMbeQm8clOwpDZ09sN7C2FnOg==
 
 arr-diff@^4.0.0:
   version "4.0.0"
