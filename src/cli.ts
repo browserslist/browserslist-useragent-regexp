@@ -24,7 +24,7 @@ const {
 	help,
 	verbose,
 	...regExpOptions
-} = readOptions([
+}: any = readOptions([
 	['help', 'h'],
 	['verbose', 'v'],
 	'ignoreMajor',

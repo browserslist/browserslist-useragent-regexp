@@ -5,7 +5,8 @@
 [![Dependencies status][deps]][deps-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
-[![Greenkeeper badge][greenkeeper]][greenkeeper-url]
+[![Dependabot badge][dependabot]][dependabot-url]
+[![Documentation badge][documentation]][documentation-url]
 
 [npm]: https://img.shields.io/npm/v/browserslist-useragent-regexp.svg
 [npm-url]: https://npmjs.com/package/browserslist-useragent-regexp
@@ -22,8 +23,11 @@
 [coverage]: https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg
 [coverage-url]: https://coveralls.io/r/browserslist/browserslist-useragent-regexp
 
-[greenkeeper]: https://badges.greenkeeper.io/browserslist/browserslist-useragent-regexp.svg
-[greenkeeper-url]: https://greenkeeper.io/
+[dependabot]: https://api.dependabot.com/badges/status?host=github&repo=browserslist/browserslist-useragent-regexp
+[dependabot-url]: https://dependabot.com/
+
+[documentation]: https://img.shields.io/badge/API-Documentation-2b7489.svg
+[documentation-url]: https://browserslist.github.io/browserslist-useragent-regexp
 
 A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.
 
