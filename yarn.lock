@@ -1163,13 +1163,13 @@
     lint-staged "^8.1.0"
 
 "@trigen/scripts@2", "@trigen/scripts@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-2.3.0.tgz#23110cced8fab2b8f92d6d276fe8c81e74cec247"
-  integrity sha512-0UiWwG+0vRW47td9hFI3UydNVDGYLENTz0iS/BsymvpsNuBQ5bMyz3p3ZksImgCN4a9ak4Xc0qi0dGA6QXVceA==
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-2.6.3.tgz#c5275f1a770c052c27412ebf269a5aaedac6e3e9"
+  integrity sha512-n84YpkKXzAx2O4BXlTtRyz8+oyIb1Se56E+1f2WvDEfBECKSL//fYpEh7nASBKBuzka5Bv1kae7srKRzT54kAQ==
   dependencies:
     "@babel/runtime" "^7.4.2"
     chalk "^2.4.2"
-    core-js "2"
+    core-js "3"
     immutability-helper "^3.0.0"
     rcfile "^1.0.3"
     resolve-cwd "^3.0.0"
@@ -2857,15 +2857,15 @@ core-js-pure@3.1.3:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.1.3.tgz#4c90752d5b9471f641514f3728f51c1e0783d0b5"
   integrity sha512-k3JWTrcQBKqjkjI0bkfXS0lbpWPxYuHWfMMjC1VDmzU4Q58IwSbuXSo99YO/hUHlw/EB4AlfA2PVxOGkrIq6dA==
 
-core-js@2, core-js@^2.6.5:
-  version "2.6.9"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
-  integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
-
 core-js@3, core-js@^3.0.0:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.1.3.tgz#95700bca5f248f5f78c0ec63e784eca663ec4138"
   integrity sha512-PWZ+ZfuaKf178BIAg+CRsljwjIMRV8MY00CbZczkR6Zk5LfkSkjGoaab3+bqRQWVITNZxQB7TFYz+CFcyuamvA==
+
+core-js@^2.6.5:
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
+  integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
