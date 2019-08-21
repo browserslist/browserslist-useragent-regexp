@@ -1206,11 +1206,11 @@
     eslint-config-trigen "^3.2.3"
 
 "@trigen/scripts-plugin-jest@2":
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-2.6.4.tgz#5ffb775b1e015a1a7123b548d4c077e36c13ab80"
-  integrity sha512-h2PduvrJYZAYWsfVXNETp9FWY3Dtq2f8TgB6EbCbxOE1fqZvxiMT2sXAb/hv93ojve89i/jtmIw/S8+I+ozfkA==
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-2.7.0.tgz#33b1c4220381b0df225c93803c265358c4a3f37e"
+  integrity sha512-SnnDAHfuj+hacqwSVV9ddUTUvOq9tre6dOxnam5V5dIgIWgjNOtOffv5e9DinEypi/d/Qguo6Ng1KU37QcRm5w==
   dependencies:
-    "@trigen/scripts" "^2.6.3"
+    "@trigen/scripts" "^2.7.0"
     "@types/jest" "^24.0.10"
     babel-jest "^24.5.0"
     babel-preset-trigen "^2.2.2"
