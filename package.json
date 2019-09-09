@@ -46,7 +46,7 @@
     "useragent": "^2.3.0"
   },
   "devDependencies": {
-    "@trigen/scripts": "2",
+    "@trigen/scripts": "3",
     "@trigen/scripts-plugin-babel": "2",
     "@trigen/scripts-plugin-eslint": "2",
     "@trigen/scripts-plugin-jest": "2",
