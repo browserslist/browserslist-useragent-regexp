@@ -9617,9 +9617,9 @@ use@^3.1.0:
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 user-agents@^1.0.213:
-  version "1.0.355"
-  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.355.tgz#fb2c26edbb62ed7de77fcab36169a7552fa346ed"
-  integrity sha512-TxFTvfH3kQZ1EGQSU/nlzQHih+VH5ycp41UTLLL8s5aHP1tujhHXue1LfSXQ9d4ZoVitmDSETUhyj6usMgiauA==
+  version "1.0.385"
+  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.385.tgz#e48ce7b8b9dc6bd86675a257a787d7180bf186dd"
+  integrity sha512-79o4z/qaabTtyOXpgMUbJODuV16rt+7Bq6cWl1MRFEJ/3gl0snL0VelSJCbee5vAAuD/anBvk9qNGvBL98wy1w==
   dependencies:
     dot-json "^1.1.0"
     lodash.clonedeep "^4.5.0"
