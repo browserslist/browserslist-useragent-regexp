@@ -1269,7 +1269,19 @@
     husky "^3.0.3"
     lint-staged "^9.2.1"
 
-"@trigen/scripts@2", "@trigen/scripts@^2.7.0":
+"@trigen/scripts@3":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-3.2.0.tgz#9bc4cb29e56eafa915593f6dca878b5065efb7d9"
+  integrity sha512-bYgqjaaiyWlFqR9lsC58As2+MUhyHJ0T/96/GDbN3TtxAnXWKIRwuy7u6HYOXO9gq3T+HoMy0V6FEIELfnFFZA==
+  dependencies:
+    "@babel/runtime" "^7.4.2"
+    chalk "^2.4.2"
+    core-js "3"
+    immutability-helper "^3.0.0"
+    rcfile "^1.0.3"
+    resolve-cwd "^3.0.0"
+
+"@trigen/scripts@^2.7.0":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-2.7.0.tgz#7a36334f65a868f8a424c73c3a36e6bfa0964b67"
   integrity sha512-xvRY6StDwCplpPQK1JzKopnYEQnhxa6mxPJz5D+ut39SblwcZWGcFFDG5QbbBWhurq9Lb0bnKhSfLNbHmWnLpw==
