@@ -46,6 +46,7 @@
     "useragent": "^2.3.0"
   },
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^2.1.6",
     "@trigen/scripts": "2",
     "@trigen/scripts-plugin-babel": "2",
     "@trigen/scripts-plugin-eslint": "2",
