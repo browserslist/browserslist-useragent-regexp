@@ -69,30 +69,41 @@ function renderScript() {
 		allowZeroSubverions: true
 	});
 
-	return `<script>
-	var modernBrowsers = ${modernBrowsers};
-	var actualBrowsers = ${actualBrowsers};
-	var script = document.createElement('script');
+	return `<script id="browserslist-loader">
+		var host = document.getElementById('browserslist-loader').parentElement;
+		var scripts = [
+			[
+				['defer', 'defer']
+			]
+		];
 
-	script.type = 'text/javascript';
-	script.defer = true;
+		function load(attrs, src) {
 
-	switch (true) {
+			var script = document.createElement('script');
+			var len = attrs.length;
 
-		case modernBrowsers.test(navigator.userAgent):
-			script.src = 'demojs/index.modern.js';
-			break;
+			for (var i = 0; i < len; i++) {
+				script.setAttribute(attrs[i][0], attrs[i][1]);
+			}
 
-		case actualBrowsers.test(navigator.userAgent):
-			script.src = 'demojs/index.actual.js';
-			break;
+			script.setAttribute('src', src);
+			host.appendChild(script);
+		}
 
-		default:
-			script.src = 'demojs/index.old.js';
-	}
+		switch (true) {
 
-	document.getElementsByTagName('head')[0].appendChild(script);
-</script>`;
+			case ${modernBrowsers}.test(navigator.userAgent):
+				load(scripts[0], 'demojs/index.modern.js');
+				break;
+
+			case ${actualBrowsers}.test(navigator.userAgent):
+				load(scripts[0], 'demojs/index.actual.js');
+				break;
+
+			default:
+				load(scripts[0], 'demojs/index.old.js');
+		}
+	</script>`;
 }
 
 function renderHtml(body) {
