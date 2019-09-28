@@ -51,7 +51,7 @@
     "@trigen/scripts-plugin-babel": "2",
     "@trigen/scripts-plugin-eslint": "2",
     "@trigen/scripts-plugin-jest": "2",
-    "@trigen/scripts-plugin-rollup": "2",
+    "@trigen/scripts-plugin-rollup": "3",
     "@trigen/scripts-plugin-size-limit": "2",
     "@trigen/scripts-plugin-typescript": "2",
     "@trigen/scripts-preset-lib": "2",
