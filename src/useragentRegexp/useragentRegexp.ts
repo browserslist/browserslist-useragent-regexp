@@ -37,7 +37,7 @@ export function getUserAgentRegExps({
 	env,
 	path,
 	...otherOptions
-}: IUserAgentRegExpOptions) {
+}: IUserAgentRegExpOptions = {}) {
 
 	const options = {
 		...defaultOptions,
@@ -63,7 +63,7 @@ export function getUserAgentRegExps({
  * @param  options - Browserslist and semver compare options.
  * @return Compiled RegExp.
  */
-export function getUserAgentRegExp(options: IUserAgentRegExpOptions) {
+export function getUserAgentRegExp(options: IUserAgentRegExpOptions = {}) {
 
 	const regExps = getUserAgentRegExps(options);
 	const regExpStr = joinVersionedBrowsersRegExps(regExps);

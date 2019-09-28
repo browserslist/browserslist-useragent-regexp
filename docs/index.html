@@ -62,13 +62,16 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="browserslist-useragent-regexp">browserslist-useragent-regexp</h1>
-				<p><a href="https://www.npmjs.com/package/browserslist-useragent-regexp"><img src="https://img.shields.io/npm/v/browserslist-useragent-regexp.svg" alt="NPM version"></a>
+				<a href="#browserslist-useragent-regexp" id="browserslist-useragent-regexp" style="color: inherit; text-decoration: none;">
+					<h1>browserslist-useragent-regexp</h1>
+				</a>
+				<p><a href="https://npmjs.com/package/browserslist-useragent-regexp"><img src="https://img.shields.io/npm/v/browserslist-useragent-regexp.svg" alt="NPM version"></a>
 					<a href="https://nodejs.org"><img src="https://img.shields.io/node/v/browserslist-useragent-regexp.svg" alt="Node version"></a>
-					<a href="https://david-dm.org/browserslist/browserslist-useragent-regexp"><img src="https://img.shields.io/david/browserslist/browserslist-useragent-regexp.svg" alt="Dependency status"></a>
-					<a href="https://travis-ci.com/browserslist/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp.svg" alt="Build status"></a>
+					<a href="https://david-dm.org/browserslist/browserslist-useragent-regexp"><img src="https://david-dm.org/browserslist/browserslist-useragent-regexp.svg" alt="Dependencies status"></a>
+					<a href="https://travis-ci.com/browserslist/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp/master.svg" alt="Build status"></a>
 					<a href="https://coveralls.io/r/browserslist/browserslist-useragent-regexp"><img src="https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg" alt="Coverage status"></a>
-				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/browserslist/browserslist-useragent-regexp.svg" alt="Greenkeeper badge"></a></p>
+					<a href="https://dependabot.com/"><img src="https://api.dependabot.com/badges/status?host=github&repo=browserslist/browserslist-useragent-regexp" alt="Dependabot badge"></a>
+				<a href="https://browserslist.github.io/browserslist-useragent-regexp"><img src="https://img.shields.io/badge/API-Documentation-2b7489.svg" alt="Documentation badge"></a></p>
 				<p>A utility to compile <a href="https://github.com/browserslist/browserslist#queries">browserslist query</a> to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.</p>
 				<p>1) Create <code>.browserslistrc</code> config, for example like this:</p>
 				<pre><code>last <span class="hljs-number">2</span> versions
@@ -78,6 +81,14 @@
     <span class="hljs-attr">"supportedBrowsers"</span>: <span class="hljs-string">"echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" &gt; supportedBrowsers.js"</span>
   }
 }</code></pre>
+				<details>
+					<summary>for Windows users</summary>
+					<pre><code class="language-json">{
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"supportedBrowsers"</span>: <span class="hljs-string">"(echo module.exports = &amp;&amp; browserslist-useragent-regexp --allowHigherVersions) &gt; supportedBrowsers.js"</span>
+  }
+}</code></pre>
+				</details>
 				<p>3) Run this script, to compile RegExp:</p>
 				<pre><code class="language-bash">npm run supportedBrowsers
 <span class="hljs-comment"># or</span>
@@ -90,15 +101,21 @@ yarn supportedBrowsers</code></pre>
 <span class="hljs-keyword">if</span> (supportedBrowsers.test(navigator.userAgent)) {
     alert(<span class="hljs-string">'Your browser is supported.'</span>);
 }</code></pre>
-				<h2 id="install">Install</h2>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<pre><code class="language-bash">npm i -D browserslist-useragent-regexp
 <span class="hljs-comment"># or</span>
 yarn add -D browserslist-useragent-regexp</code></pre>
-				<h2 id="why-">Why?</h2>
+				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
+					<h2>Why?</h2>
+				</a>
 				<p>As was written in article <a href="https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/">&quot;Smart Bundling: Shipping legacy code to only legacy browsers&quot;</a>: you can determinate, which bundle you should give to browser from server with <a href="https://github.com/browserslist/browserslist-useragent"><code>browserslist-useragent</code></a>. But in this case you must have your own server with special logic. Now, with <code>browserslist-useragent-regexp</code>, you can move that to client-side.</p>
 				<p>Development was inspired by <a href="https://twitter.com/mathias/status/1105857829393653761">this proposal from Mathias Bynens</a>.</p>
 				<p><a href="https://browserslist.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29">sources</a>, <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74">build script</a>).</p>
-				<h2 id="cli">CLI</h2>
+				<a href="#cli" id="cli" style="color: inherit; text-decoration: none;">
+					<h2>CLI</h2>
+				</a>
 				<pre><code class="language-bash">npx browserslist-useragent-regexp [query] [...options]
 <span class="hljs-comment"># or</span>
 yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [query] [...options]</code></pre>
@@ -146,16 +163,24 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 							<td><code>false</code></td>
 						</tr>
 				</tbody></table>
-				<h2 id="js-api-basics">JS API basics</h2>
+				<a href="#js-api-basics" id="js-api-basics" style="color: inherit; text-decoration: none;">
+					<h2>JS API basics</h2>
+				</a>
 				<p>Module exposes two main methods:</p>
-				<h3 id="getuseragentregexps-options-"><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
+				<a href="#a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpsgetuseragentregexpsoptionsa" id="a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpsgetuseragentregexpsoptionsa" style="color: inherit; text-decoration: none;">
+					<h3><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
+				</a>
 				<p>Compile browserslist query to <a href="#regexp-info-object">RegExps for each browser</a>.</p>
-				<h3 id="getuseragentregexp-options-"><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
+				<a href="#a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpgetuseragentregexpoptionsa" id="a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpgetuseragentregexpoptionsa" style="color: inherit; text-decoration: none;">
+					<h3><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
+				</a>
 				<p>Compile browserslist query to one RegExp.</p>
 				<blockquote>
 					<p><a href="https://browserslist.github.io/browserslist-useragent-regexp/index.html">Description of all methods you can find in Documentation.</a></p>
 				</blockquote>
-				<h4 id="options">Options</h4>
+				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
+					<h4>Options</h4>
+				</a>
 				<table>
 					<thead>
 						<tr>
@@ -202,7 +227,9 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 							<td>Ignore match of patch or patch and minor, if they are 0.</td>
 						</tr>
 				</tbody></table>
-				<h4 id="regexp-info-object">RegExp info object</h4>
+				<a href="#regexp-info-object" id="regexp-info-object" style="color: inherit; text-decoration: none;">
+					<h4>RegExp info object</h4>
+				</a>
 				<table>
 					<thead>
 						<tr>
@@ -247,7 +274,9 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 							<td>Useragent max version of RegExp.</td>
 						</tr>
 				</tbody></table>
-				<h2 id="other">Other</h2>
+				<a href="#other" id="other" style="color: inherit; text-decoration: none;">
+					<h2>Other</h2>
+				</a>
 				<ul>
 					<li><a href="https://github.com/browserslist/browserslist-useragent#supported-browsers">Supported browsers</a></li>
 					<li><a href="https://github.com/browserslist/browserslist-useragent#notes">Notes</a></li>
@@ -265,10 +294,16 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 						<a href="modules/_browsers_browserslist_.html">"browsers/browserslist"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_browsers_browserslist_spec_.html">"browsers/browserslist.spec"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_browsers_index_.html">"browsers/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_browsers_optimize_.html">"browsers/optimize"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_browsers_optimize_spec_.html">"browsers/optimize.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_browsers_shirtnames_.html">"browsers/shirtnames"</a>
@@ -278,6 +313,9 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_browsers_util_.html">"browsers/util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_browsers_util_spec_.html">"browsers/util.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_cli_.html">"cli"</a>
@@ -292,28 +330,52 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 						<a href="modules/_regexp_numberrange_.html">"regexp/number<wbr>Range"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_numberrange_spec_.html">"regexp/number<wbr>Range.spec"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_regexp_numberray_.html">"regexp/number<wbr>Ray"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_numberray_spec_.html">"regexp/number<wbr>Ray.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_regexp_numbersegment_.html">"regexp/number<wbr>Segment"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_numbersegment_spec_.html">"regexp/number<wbr>Segment.spec"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_regexp_numberspart_.html">"regexp/numbers<wbr>Part"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_numberspart_spec_.html">"regexp/numbers<wbr>Part.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_regexp_optimize_.html">"regexp/optimize"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_optimize_spec_.html">"regexp/optimize.spec"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_regexp_util_.html">"regexp/util"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_util_spec_.html">"regexp/util.spec"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_regexp_versions_.html">"regexp/versions"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_regexp_versions_spec_.html">"regexp/versions.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_semver_index_.html">"semver/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_semver_semver_.html">"semver/semver"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_semver_semver_spec_.html">"semver/semver.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_semver_types_.html">"semver/types"</a>
@@ -334,6 +396,9 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 						<a href="modules/_useragent_util_.html">"useragent/util"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_useragent_util_spec_.html">"useragent/util.spec"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_useragent_versions_.html">"useragent/versions"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -347,6 +412,9 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_useragentregexp_useragentregexp_.html">"useragent<wbr>Regexp/useragent<wbr>Regexp"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_useragentregexp_useragentregexp_spec_.html">"useragent<wbr>Regexp/useragent<wbr>Regexp.spec"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_useragentregexp_workarounds_.html">"useragent<wbr>Regexp/workarounds"</a>
@@ -372,6 +440,7 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -420,7 +489,7 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
