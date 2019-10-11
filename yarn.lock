@@ -1217,12 +1217,12 @@
     "@trigen/scripts" "^3.2.0"
     size-limit "^2.0.0"
 
-"@trigen/scripts-plugin-typescript@2":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-2.12.0.tgz#a1cc4383be2f96edd1fc0c9efbd2c6be95bb399b"
-  integrity sha512-kKoDYxLKsYSnGs242qUss92pnpG0Pz8YJ3XInaVR0srpEUHcto3qIchwOI8q2FA6QyWlSTGUnFk4aZqXQmqpBg==
+"@trigen/scripts-plugin-typescript@3":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-3.2.0.tgz#2234a32c16e81de8f0f39c352077414d31500295"
+  integrity sha512-TOr7VeMEPZkravaLV+6h5zggHsyFICfNsdIAcP/A2L9Si1JFKoq2MANGcjxF4bKBhx7vRD6L/4F1yZzcha7FjQ==
   dependencies:
-    "@trigen/scripts" "^2.7.0"
+    "@trigen/scripts" "^3.2.0"
     ts-node-dev "^1.0.0-pre.39"
     tsconfig-paths "^3.8.0"
     tslint "^5.11.0"
@@ -1246,18 +1246,6 @@
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-3.2.0.tgz#9bc4cb29e56eafa915593f6dca878b5065efb7d9"
   integrity sha512-bYgqjaaiyWlFqR9lsC58As2+MUhyHJ0T/96/GDbN3TtxAnXWKIRwuy7u6HYOXO9gq3T+HoMy0V6FEIELfnFFZA==
-  dependencies:
-    "@babel/runtime" "^7.4.2"
-    chalk "^2.4.2"
-    core-js "3"
-    immutability-helper "^3.0.0"
-    rcfile "^1.0.3"
-    resolve-cwd "^3.0.0"
-
-"@trigen/scripts@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-2.7.0.tgz#7a36334f65a868f8a424c73c3a36e6bfa0964b67"
-  integrity sha512-xvRY6StDwCplpPQK1JzKopnYEQnhxa6mxPJz5D+ut39SblwcZWGcFFDG5QbbBWhurq9Lb0bnKhSfLNbHmWnLpw==
   dependencies:
     "@babel/runtime" "^7.4.2"
     chalk "^2.4.2"
