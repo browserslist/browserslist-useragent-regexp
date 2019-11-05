@@ -1177,11 +1177,11 @@
     babel-preset-trigen "^2.2.1"
 
 "@trigen/scripts-plugin-eslint@3":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-3.2.0.tgz#cffc42544771b401897a4ba055369ba1bfb65d1b"
-  integrity sha512-dCVM4jIfKEmBevRnRpe+fzB40GQEOaxJSX2gglDicXdOXKGGD6ko+JBm66yZn2P+YGqkVCu6GpvMo4hTsvl+MQ==
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-3.5.0.tgz#ed296aaeb37e8358a6d2ae7fc0ca4b4b356eb9d5"
+  integrity sha512-NS5HkughasT9YChTdSZUaT7zyHhSlu5a6Y7dwfTe+bwP5W1fQJVjsXCgzEEEJ77ti67dap5yu5VNFo4l63BjSQ==
   dependencies:
-    "@trigen/scripts" "^3.2.0"
+    "@trigen/scripts" "^3.5.0"
     eslint "^5.15.3"
     eslint-config-trigen "^3.2.3"
 
