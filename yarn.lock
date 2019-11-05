@@ -1210,11 +1210,11 @@
     rollup-plugin-commonjs "^10.0.0"
 
 "@trigen/scripts-plugin-size-limit@3":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-3.2.0.tgz#b5473f3cfd9bf605680728e69fa5b19a10ad6850"
-  integrity sha512-2oSLANEAojSstMELJrxHeKiu+ni0oE7SyIVL7rqJB5OOVFYFwucvn6/E9fJZPq9RyZKPo7AbxtiTUnir8zPDjg==
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-3.5.0.tgz#8260ebbd2c348157e0761a018945b934ff3e0e85"
+  integrity sha512-AThPVbRX+f0niX+WmOuLGLoSSWSWnf1J3rd9bvdn9QEabPIu0rSFUG7IrBq9TrImXhvpKmj4NWZE57O9cmGWtw==
   dependencies:
-    "@trigen/scripts" "^3.2.0"
+    "@trigen/scripts" "^3.5.0"
     size-limit "^2.0.0"
 
 "@trigen/scripts-plugin-typescript@3":
