@@ -1218,17 +1218,17 @@
     size-limit "^2.0.0"
 
 "@trigen/scripts-plugin-typescript@3":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-3.2.0.tgz#2234a32c16e81de8f0f39c352077414d31500295"
-  integrity sha512-TOr7VeMEPZkravaLV+6h5zggHsyFICfNsdIAcP/A2L9Si1JFKoq2MANGcjxF4bKBhx7vRD6L/4F1yZzcha7FjQ==
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-3.5.0.tgz#e2e2b99d4f73de8f1d840282c9007115d6ea9a8f"
+  integrity sha512-T0JU5FxQmVNfbF+0jd8GazXWksa2/Xp99NGGMkcr5ZKOBwRSs6P1RUlIZ5y8Tk2Esd8HYWJiZSURjm9YbkQZuQ==
   dependencies:
-    "@trigen/scripts" "^3.2.0"
+    "@trigen/scripts" "^3.5.0"
     ts-node-dev "^1.0.0-pre.39"
     tsconfig-paths "^3.8.0"
     tslint "^5.11.0"
     tslint-config-trigen "^3.0.7"
     typedoc "^0.15.0"
-    typescript "3.6.2"
+    typescript "3.6.4"
 
 "@trigen/scripts-preset-lib@3":
   version "3.2.0"
@@ -9350,10 +9350,10 @@ typescript@3.5.x:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
 
-typescript@3.6.2, typescript@^3.0.0:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.2.tgz#105b0f1934119dde543ac8eb71af3a91009efe54"
-  integrity sha512-lmQ4L+J6mnu3xweP8+rOrUwzmN+MRAj7TgtJtDaXE5PMyX2kCrklhg3rvOsOIfNeAWMQWO2F1GPc1kMD2vLAfw==
+typescript@3.6.4, typescript@^3.0.0:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
+  integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
 
 uglify-js@^3.1.4:
   version "3.6.0"
