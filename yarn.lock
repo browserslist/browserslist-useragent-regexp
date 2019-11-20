@@ -1199,9 +1199,9 @@
     nodemailer "^6.3.0"
 
 "@trigen/scripts-plugin-rollup@3":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-rollup/-/scripts-plugin-rollup-3.1.0.tgz#b2c4da2b09397649153b3ecb7088d2bf2d47adc3"
-  integrity sha512-LKRdHYyJQAeJ4XpobCcJVlXxnRc4kaZnbBKejqJ3iuyGFXbGsoiwgE+IXmD6z5RSVAG8VSbAwr+uJ6chC+fH0w==
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-rollup/-/scripts-plugin-rollup-3.5.0.tgz#6c75eab64a658794ea6563a4d30196c1d3e2c842"
+  integrity sha512-NT+J8ITn3C3nU3mumBKtKAcSr/Z7cJNtTFudcIHuY7saEToh2ssQqPfstBQbtHImX3ZGmVDQTPNq1lYSKVhDdw==
   dependencies:
     builtin-modules "*"
     rollup "^1.13.0"
@@ -1242,7 +1242,7 @@
     husky "^3.0.3"
     lint-staged "^9.2.1"
 
-"@trigen/scripts@3", "@trigen/scripts@^3.2.0", "@trigen/scripts@^3.5.0":
+"@trigen/scripts@3", "@trigen/scripts@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-3.5.0.tgz#f5658e086b8c2d4e34ff4c38f5ffe8e2f40db206"
   integrity sha512-5S3kk+UoyPJIasiSiy323SDw3eNZcN7HD7edVQCDGC9DGm/kNHeV9k05SKzXs3v23TZ6kpB+fBoI9KaHtaMYJg==
