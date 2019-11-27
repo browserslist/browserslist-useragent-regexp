@@ -882,14 +882,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3":
-  version "7.7.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.2.tgz#111a78002a5c25fc8e3361bedc9529c696b85a6a"
-  integrity sha512-JONRbXbTXc9WQE2mAZd1p0Z3DZ/6vaQIkgYMSTP3KjRCyd7rCZCcfhCyX+YjwcKxcZ82UrxbRD358bpExNgrjw==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.6.3":
+"@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.6.3":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
   integrity sha512-r24eVUUr0QqNZa+qrImUk8fn5SPhHq+IfYvIoIMg0do3GdK9sMdiLKP3GYVVaxpPKORgm8KRKaNTEhAjgIpLMw==
@@ -1172,15 +1165,15 @@
     webpack-bundle-analyzer "^3.6.0"
 
 "@trigen/scripts-plugin-babel@3":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-3.5.0.tgz#1a9223671777c99bb79f950e315fbec6d026853e"
-  integrity sha512-1WuEdxOsNuXJmVnkn26dK0RZN5vi2xP2f1viBVO/uyeqPXXB83ZXqIN1W/V7zf+tyPyjgVebHLu+TeDtVKRgVw==
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-3.5.3.tgz#f25da8b3aa60d43713e54b7ce30b9dcb5aaa3a64"
+  integrity sha512-mdfDvcIn6yYkGsDYcLvbHa4uH38UaKhktsPXyAraVIcVyAPOvCMsWrpo9ptsB/O/Ti/2GR34p7HclsuBBiNOsw==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.4.0"
     "@babel/node" "^7.0.0"
     "@babel/runtime" "^7.4.2"
-    "@trigen/scripts" "^3.5.0"
+    "@trigen/scripts" "^3.5.3"
     babel-preset-trigen "^2.2.1"
 
 "@trigen/scripts-plugin-eslint@3":
