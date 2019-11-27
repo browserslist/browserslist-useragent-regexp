@@ -1210,11 +1210,11 @@
     rollup-plugin-commonjs "^10.0.0"
 
 "@trigen/scripts-plugin-size-limit@3":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-3.5.0.tgz#8260ebbd2c348157e0761a018945b934ff3e0e85"
-  integrity sha512-AThPVbRX+f0niX+WmOuLGLoSSWSWnf1J3rd9bvdn9QEabPIu0rSFUG7IrBq9TrImXhvpKmj4NWZE57O9cmGWtw==
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-3.5.3.tgz#0ddbb3e296f77f87ebe49b66ca59abb9c516a035"
+  integrity sha512-g21ZC0Gb9xwQd0T/K8zoxWoxXPOcqvWlzxBq90K1CnUCR+Xb0AHiIP+i2efqiY+v2P+1Z3Vzbuq4L6izYL0sEw==
   dependencies:
-    "@trigen/scripts" "^3.5.0"
+    "@trigen/scripts" "^3.5.3"
     size-limit "^2.0.0"
 
 "@trigen/scripts-plugin-typescript@3":
@@ -2694,11 +2694,6 @@ ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
-
-ci-job-number@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/ci-job-number/-/ci-job-number-0.3.0.tgz#34bdd114b0dece1960287bd40a57051041a2a800"
-  integrity sha1-NL3RFLDezhlgKHvUClcFEEGiqAA=
 
 ci-job-number@^0.3.1:
   version "0.3.1"
@@ -7844,15 +7839,6 @@ read-pkg-up@^4.0.0:
     find-up "^3.0.0"
     read-pkg "^3.0.0"
 
-read-pkg-up@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-6.0.0.tgz#da75ce72762f2fa1f20c5a40d4dd80c77db969e3"
-  integrity sha512-odtTvLl+EXo1eTsMnoUHRmg/XmXdTkwXVxy4VFE9Kp6cCq7b3l7QMdBndND3eAFzrbSAXC/WCUOQQ9rLjifKZw==
-  dependencies:
-    find-up "^4.0.0"
-    read-pkg "^5.1.1"
-    type-fest "^0.5.0"
-
 read-pkg-up@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.0.tgz#3f3e53858ec5ae5e6fe14bc479da0a7c98f85ff3"
@@ -8530,7 +8516,7 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-size-limit@2.2.1:
+size-limit@2.2.1, size-limit@^2.0.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-2.2.1.tgz#6511471ba0296c9954df919005802d02af818d6d"
   integrity sha512-V6SraFSyRs+JKSTJaZy5etA4ltx/LKE2pTfbMv2ojmgJLA6QwfRGZdYnED5GBzjJs3aIjrqDkmpc0QjIYkNiYg==
@@ -8541,18 +8527,6 @@ size-limit@2.2.1:
     cosmiconfig "^6.0.0"
     globby "^10.0.1"
     read-pkg-up "^7.0.0"
-
-size-limit@^2.0.0:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-2.1.6.tgz#d0a9ced5a08d1b73eaab149e66f16cb71bcfe985"
-  integrity sha512-BXrH1jMA6uXtqyv/9koJQocGn8pHogv5r+zs9eMFI+Qh5oQVmN0GPxK3ok5gkBFJ6AQ5Ug7LM1E8SDp635XG8Q==
-  dependencies:
-    bytes "^3.1.0"
-    chalk "^2.4.2"
-    ci-job-number "^0.3.0"
-    cosmiconfig "^5.2.1"
-    globby "^10.0.1"
-    read-pkg-up "^6.0.0"
 
 slash@^2.0.0:
   version "2.0.0"
@@ -9344,11 +9318,6 @@ type-check@~0.3.2:
   integrity sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=
   dependencies:
     prelude-ls "~1.1.2"
-
-type-fest@^0.5.0:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.5.2.tgz#d6ef42a0356c6cd45f49485c3b6281fc148e48a2"
-  integrity sha512-DWkS49EQKVX//Tbupb9TFa19c7+MK1XmzkrZUR8TAktmE/DizXoaoJV6TZ/tSIPXipqNiRI6CyAe7x69Jb6RSw==
 
 type-fest@^0.6.0:
   version "0.6.0"
