@@ -27,8 +27,8 @@ const {
 }: any = readOptions([
 	['help', 'h'],
 	['verbose', 'v'],
-	'ignoreMajor',
 	'ignorePatch',
+	'ignoreMinor',
 	'allowHigherVersions',
 	'allowZeroVersions'
 ], []);
