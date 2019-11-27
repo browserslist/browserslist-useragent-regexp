@@ -882,14 +882,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3":
-  version "7.7.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.2.tgz#111a78002a5c25fc8e3361bedc9529c696b85a6a"
-  integrity sha512-JONRbXbTXc9WQE2mAZd1p0Z3DZ/6vaQIkgYMSTP3KjRCyd7rCZCcfhCyX+YjwcKxcZ82UrxbRD358bpExNgrjw==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.6.3":
+"@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.6.3":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
   integrity sha512-r24eVUUr0QqNZa+qrImUk8fn5SPhHq+IfYvIoIMg0do3GdK9sMdiLKP3GYVVaxpPKORgm8KRKaNTEhAjgIpLMw==
@@ -1250,12 +1243,12 @@
     lint-staged "^9.2.1"
 
 "@trigen/scripts@3", "@trigen/scripts@^3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-3.5.0.tgz#f5658e086b8c2d4e34ff4c38f5ffe8e2f40db206"
-  integrity sha512-5S3kk+UoyPJIasiSiy323SDw3eNZcN7HD7edVQCDGC9DGm/kNHeV9k05SKzXs3v23TZ6kpB+fBoI9KaHtaMYJg==
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-3.5.3.tgz#038c55b00a1be0636948b2dc700fdb4022b2a9ea"
+  integrity sha512-iF5NLUWAio1cuwCyIkYTSA5lLrNWabmmpFlUhGwbmyeIqiH2KiKIDGszTDKPKusI+hR7C4/Ub/94zeCIUkk2bA==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    chalk "^2.4.2"
+    chalk "^3.0.0"
     core-js "3"
     immutability-helper "^3.0.0"
     rcfile "^1.0.3"
