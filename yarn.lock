@@ -1218,11 +1218,11 @@
     size-limit "^2.0.0"
 
 "@trigen/scripts-plugin-typescript@3":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-3.5.0.tgz#e2e2b99d4f73de8f1d840282c9007115d6ea9a8f"
-  integrity sha512-T0JU5FxQmVNfbF+0jd8GazXWksa2/Xp99NGGMkcr5ZKOBwRSs6P1RUlIZ5y8Tk2Esd8HYWJiZSURjm9YbkQZuQ==
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-3.5.3.tgz#b2748c343be752b6aedba779d2d2fc1463a58807"
+  integrity sha512-Ruhot3C324qjr3YSD68f1YMAoX5R4Woq+TTD6aVckGQbQLgYRO0rGlpWrQ/AswWf6BC6ZYYH/iyKcGrvDSg3oQ==
   dependencies:
-    "@trigen/scripts" "^3.5.0"
+    "@trigen/scripts" "^3.5.3"
     ts-node-dev "^1.0.0-pre.39"
     tsconfig-paths "^3.8.0"
     tslint "^5.11.0"
