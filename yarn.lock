@@ -1186,11 +1186,11 @@
     eslint-config-trigen "^3.2.3"
 
 "@trigen/scripts-plugin-jest@3":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-3.5.0.tgz#fa0ee94f90193708c06acc64af7e57e2c273f007"
-  integrity sha512-8RDn1cFp2MwAweNmiCAjXT+9EEknWcdbFUdl1Jy0fEsFagwtJQhHhQAzWFEiTKP+cp4hUmHQy3MxRgd3QpsibQ==
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-3.5.3.tgz#e6b623cc301de52e8897504603fa08a5c7de18fa"
+  integrity sha512-SkLEk2c8Ql3/Fr4NOuGwHwFCNo712Kuztw8u0lj3CE19CWhYIfZFp6QncqDuBBdHlbn78ePK+IaDRICMxxMn4A==
   dependencies:
-    "@trigen/scripts" "^3.5.0"
+    "@trigen/scripts" "^3.5.3"
     "@types/jest" "^24.0.10"
     archiver "^3.1.1"
     babel-jest "^24.5.0"
