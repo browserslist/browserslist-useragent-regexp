@@ -1242,7 +1242,7 @@
     husky "^3.0.3"
     lint-staged "^9.2.1"
 
-"@trigen/scripts@3", "@trigen/scripts@^3.5.0", "@trigen/scripts@^3.5.3":
+"@trigen/scripts@3", "@trigen/scripts@^3.5.3":
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-3.5.3.tgz#038c55b00a1be0636948b2dc700fdb4022b2a9ea"
   integrity sha512-iF5NLUWAio1cuwCyIkYTSA5lLrNWabmmpFlUhGwbmyeIqiH2KiKIDGszTDKPKusI+hR7C4/Ub/94zeCIUkk2bA==
@@ -9510,9 +9510,9 @@ use@^3.1.0:
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 user-agents@^1.0.213:
-  version "1.0.453"
-  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.453.tgz#d569dc5ef74bc940620240c23c99589028998606"
-  integrity sha512-iXoYjw/dljjLvpHM6e1sB2OM+SMWZyrtHxubPPrAD6pdqhZU8vQZ0hvzgkNOUmvp4ht2BG9NvnKMwtHMOwvoeg==
+  version "1.0.462"
+  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.462.tgz#c05d4d6a2572227396f8ce7d2d48fe1bdbce0f56"
+  integrity sha512-JVCz36xoEXXvxLuTiMiPM7yNV++y9Y8qId7Qaz2kHs7MeWhwGH5Uv2/g4ANFDvD8539cUOJbQ2N8V8aXnJUFdQ==
   dependencies:
     dot-json "^1.1.0"
     lodash.clonedeep "^4.5.0"
