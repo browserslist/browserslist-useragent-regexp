@@ -1,6 +1,6 @@
 {
   "name": "browserslist-useragent-regexp",
-  "version": "1.3.3-beta",
+  "version": "1.3.4-beta",
   "description": "A utility to compile browserslist query to a RegExp to test browser useragent.",
   "author": "dangreen",
   "license": "MIT",
