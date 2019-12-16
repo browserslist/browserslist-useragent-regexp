@@ -1,11 +1,12 @@
+
 export const BROWSERS_SHIRTNAMES = {
 	bb:             'BlackBerry',
 	and_chr:        'Chrome',
 	ChromeAndroid:  'Chrome',
 	FirefoxAndroid: 'Firefox',
 	ff:             'Firefox',
-	ie:             'Explorer',
 	ie_mob:         'ExplorerMobile',
+	ie:             'Explorer',
 	and_ff:         'Firefox',
 	ios_saf:        'iOS',
 	op_mini:        'OperaMini',
@@ -13,4 +14,5 @@ export const BROWSERS_SHIRTNAMES = {
 	and_qq:         'QQAndroid',
 	and_uc:         'UCAndroid'
 };
+
 export const BROWSERS_SHIRTNAMES_REGEXP = new RegExp(`(${Object.keys(BROWSERS_SHIRTNAMES).join('|')})`);

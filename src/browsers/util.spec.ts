@@ -26,6 +26,21 @@ describe('Browsers', () => {
 				);
 			});
 
+			it('should correct normalize IE browsers', () => {
+
+				expect(
+					normalizeBrowserFamily('ie')
+				).toBe(
+					BROWSERS_SHIRTNAMES.ie
+				);
+
+				expect(
+					normalizeBrowserFamily('ie_mob')
+				).toBe(
+					BROWSERS_SHIRTNAMES.ie_mob
+				);
+			});
+
 			it('should do not change string without family shirtname', () => {
 
 				const str = 'foo bar';
