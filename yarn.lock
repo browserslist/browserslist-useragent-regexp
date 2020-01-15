@@ -3463,6 +3463,11 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
+detect-indent@~6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.0.0.tgz#0abd0f549f69fc6659a254fe96786186b6f528fd"
+  integrity sha512-oSyFlqaTHCItVRGK5RmrmjB+CmaMOW7IaNA/kdxqhoa6d17j/5ce9O9eWXmV/KEdRwqpQA+Vqe8a8Bsybu4YnA==
+
 detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
@@ -3577,11 +3582,12 @@ domutils@^1.7.0:
     dom-serializer "0"
     domelementtype "1"
 
-dot-json@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/dot-json/-/dot-json-1.1.0.tgz#36dc7d40c00afaef2823b715b94325ba39f1bd89"
-  integrity sha512-PiQZW9/C8xILPYK2bOye/cbPZrakNEkt28jFb8RlPCwsoMAHYYw9T8JoACxgttHL9Y2AmdqVvibbZJHtLgeqTQ==
+dot-json@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/dot-json/-/dot-json-1.2.0.tgz#16f62bbb15b0b834f5c8de299cfb9e4d494f2ac1"
+  integrity sha512-4bEM7KHFl/U9gAI5nIvU0/fwVzNnE713K339vcxAMtxd2D9mZP6o65UwlcXigJL4rfk90UM0J+D7IPIFYZMQ8Q==
   dependencies:
+    detect-indent "~6.0.0"
     docopt "~0.6.2"
     underscore-keypath "~0.0.22"
 
@@ -9558,11 +9564,11 @@ use@^3.1.0:
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 user-agents@^1.0.213:
-  version "1.0.488"
-  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.488.tgz#3647adbaa25ffe5bd4fc7b132211629ca0b8f204"
-  integrity sha512-PdXdbuNGbDwGaFdS8C9ulwZcfZ2HNRyosutJs0Gwnfb+DeMQ/oC3ZnXUPb0lIH06zv5iLIb2wagV5wf/S2p/PA==
+  version "1.0.502"
+  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.502.tgz#cf7a9a00dc393b084bded503c8346a78e626913c"
+  integrity sha512-+e77OYoAhJDOoRlM2fm6wo1q6Mr+Qa4U3Kxr0buEsUSIFUQgJ8kraZ5rHFNZJsWhrFE2wMTyD2CEKjlkKDkkww==
   dependencies:
-    dot-json "^1.1.0"
+    dot-json "^1.2.0"
     lodash.clonedeep "^4.5.0"
 
 useragent@^2.3.0:
