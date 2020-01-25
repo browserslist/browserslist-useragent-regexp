@@ -1164,16 +1164,16 @@
     webpack "^4.41.4"
     webpack-bundle-analyzer "^3.6.0"
 
-"@trigen/scripts-plugin-babel@3":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-3.5.3.tgz#f25da8b3aa60d43713e54b7ce30b9dcb5aaa3a64"
-  integrity sha512-mdfDvcIn6yYkGsDYcLvbHa4uH38UaKhktsPXyAraVIcVyAPOvCMsWrpo9ptsB/O/Ti/2GR34p7HclsuBBiNOsw==
+"@trigen/scripts-plugin-babel@4":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-4.0.0.tgz#be88dfe016c5a325339e8bbebcd074ea3c03e9ad"
+  integrity sha512-duyjzf/o2k9jFNvDBmNbv0X8H+cIFuN6j0neIi3chQaFTL0T5Ao/2A0gsqWNeU9aTWNYpDFy2zAF0YIgzjMAAg==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.4.0"
     "@babel/node" "^7.0.0"
     "@babel/runtime" "^7.4.2"
-    "@trigen/scripts" "^3.5.3"
+    "@trigen/scripts" "^4.0.0"
     babel-preset-trigen "^2.2.1"
 
 "@trigen/scripts-plugin-eslint@4":
