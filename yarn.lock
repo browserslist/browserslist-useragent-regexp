@@ -1231,13 +1231,13 @@
     rollup-plugin-babel-minify "^9.0.0"
     rollup-plugin-commonjs "^10.0.0"
 
-"@trigen/scripts-plugin-size-limit@3":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-3.5.3.tgz#0ddbb3e296f77f87ebe49b66ca59abb9c516a035"
-  integrity sha512-g21ZC0Gb9xwQd0T/K8zoxWoxXPOcqvWlzxBq90K1CnUCR+Xb0AHiIP+i2efqiY+v2P+1Z3Vzbuq4L6izYL0sEw==
+"@trigen/scripts-plugin-size-limit@4":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-4.0.0.tgz#eccd867182be9ded55a1c9a2dde32df1628e57a9"
+  integrity sha512-Ytkuip1d7z0MXjgZZdtQTkaBxx6RIk3TpvqeLtaKc1w4Atf8CRnQH+shG+TAU0xdWD8xyYPi1zITdjL60bfgZQ==
   dependencies:
-    "@trigen/scripts" "^3.5.3"
-    size-limit "^2.0.0"
+    "@trigen/scripts" "^4.0.0"
+    size-limit "^3.0.0"
 
 "@trigen/scripts-plugin-typescript@3":
   version "3.6.0"
@@ -8007,15 +8007,6 @@ read-pkg-up@^4.0.0:
     find-up "^3.0.0"
     read-pkg "^3.0.0"
 
-read-pkg-up@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.0.tgz#3f3e53858ec5ae5e6fe14bc479da0a7c98f85ff3"
-  integrity sha512-t2ODkS/vTTcRlKwZiZsaLGb5iwfx9Urp924aGzVyboU6+7Z2i6eGr/G1Z4mjvwLLQV3uFOBKobNRGM3ux2PD/w==
-  dependencies:
-    find-up "^4.1.0"
-    read-pkg "^5.2.0"
-    type-fest "^0.8.1"
-
 read-pkg-up@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
@@ -8721,7 +8712,7 @@ sisteransi@^1.0.0:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.0.tgz#77d9622ff909080f1c19e5f4a1df0c1b0a27b88c"
   integrity sha512-N+z4pHB4AmUv0SjveWRd6q1Nj5w62m5jodv+GD8lvmbY/83T/rpbJGZOnK5T149OldDj4Db07BSv9xY4K6NTPQ==
 
-size-limit@3.0.0:
+size-limit@3.0.0, size-limit@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-3.0.0.tgz#948bf113fb30bb0dbbb1762dca4ca4fcc24f5932"
   integrity sha512-J7g8dcd21uJ2EGW0iI0S71ua/1JmKkf47zLouEoDfdxlbKQNCpOV8Zv6/svFaaA4nYCltx+Pk9JwDBEDDVYAhw==
@@ -8732,18 +8723,6 @@ size-limit@3.0.0:
     cosmiconfig "^6.0.0"
     globby "^11.0.0"
     read-pkg-up "^7.0.1"
-
-size-limit@^2.0.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-2.2.1.tgz#6511471ba0296c9954df919005802d02af818d6d"
-  integrity sha512-V6SraFSyRs+JKSTJaZy5etA4ltx/LKE2pTfbMv2ojmgJLA6QwfRGZdYnED5GBzjJs3aIjrqDkmpc0QjIYkNiYg==
-  dependencies:
-    bytes "^3.1.0"
-    chalk "^3.0.0"
-    ci-job-number "^0.3.1"
-    cosmiconfig "^6.0.0"
-    globby "^10.0.1"
-    read-pkg-up "^7.0.0"
 
 slash@^2.0.0:
   version "2.0.0"
