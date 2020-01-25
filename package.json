@@ -53,7 +53,7 @@
     "@trigen/scripts-plugin-jest": "3",
     "@trigen/scripts-plugin-rollup": "3",
     "@trigen/scripts-plugin-size-limit": "4",
-    "@trigen/scripts-plugin-typescript": "3",
+    "@trigen/scripts-plugin-typescript": "4",
     "@trigen/scripts-preset-lib": "3",
     "browserslist-useragent": "^3.0.0",
     "del-cli": "^3.0.0",
