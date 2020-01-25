@@ -1268,7 +1268,7 @@
     webpack "^4.41.5"
     webpack-bundle-analyzer "^3.6.0"
 
-"@trigen/scripts-plugin-babel@4":
+"@trigen/scripts-plugin-babel@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-babel/-/scripts-plugin-babel-4.0.0.tgz#be88dfe016c5a325339e8bbebcd074ea3c03e9ad"
   integrity sha512-duyjzf/o2k9jFNvDBmNbv0X8H+cIFuN6j0neIi3chQaFTL0T5Ao/2A0gsqWNeU9aTWNYpDFy2zAF0YIgzjMAAg==
@@ -1280,7 +1280,7 @@
     "@trigen/scripts" "^4.0.0"
     babel-preset-trigen "^2.2.1"
 
-"@trigen/scripts-plugin-eslint@4":
+"@trigen/scripts-plugin-eslint@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-4.0.0.tgz#b17a045992a97f2e5b1628de5f7c672d61496efa"
   integrity sha512-82jTqRJtTba81ipOSRhdnUBNEWeEFzVmIJQStANVtirTuxdjQADTc30u+qMimLa52mTIpzf0Q+tgivwHl4x2GA==
@@ -1289,7 +1289,7 @@
     eslint "^6.1.0"
     eslint-config-trigen "^3.2.3"
 
-"@trigen/scripts-plugin-jest@4":
+"@trigen/scripts-plugin-jest@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-jest/-/scripts-plugin-jest-4.0.0.tgz#5df949a0745ea32dcbd7c8ac14f40d00533d25c8"
   integrity sha512-wJD4KbY7C7oEpSjSmtLxmrl7w+7+2OK8yTRSiCr7ShrJ/EcFywmiJXUGxH7wIMVUz6wMzkApZcpSUkl1/4ZJVQ==
@@ -1302,7 +1302,7 @@
     jest "^25.1.0"
     nodemailer "^6.3.0"
 
-"@trigen/scripts-plugin-rollup@4":
+"@trigen/scripts-plugin-rollup@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-rollup/-/scripts-plugin-rollup-4.0.0.tgz#c2c9d7df842b3971fd22f88adcca2d6767d672ae"
   integrity sha512-+hsHj6Huj1SDDQD9oh/MuhAdPjVSIfCxPJ9CRJGQDS87ypzup7fyWGx54k6RjYbmDJAqbguN8ijR0XTrcEnxCQ==
@@ -1313,7 +1313,7 @@
     rollup-plugin-babel "^4.0.3"
     rollup-plugin-babel-minify "^9.0.0"
 
-"@trigen/scripts-plugin-size-limit@4":
+"@trigen/scripts-plugin-size-limit@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-4.0.0.tgz#eccd867182be9ded55a1c9a2dde32df1628e57a9"
   integrity sha512-Ytkuip1d7z0MXjgZZdtQTkaBxx6RIk3TpvqeLtaKc1w4Atf8CRnQH+shG+TAU0xdWD8xyYPi1zITdjL60bfgZQ==
@@ -1321,7 +1321,7 @@
     "@trigen/scripts" "^4.0.0"
     size-limit "^3.0.0"
 
-"@trigen/scripts-plugin-typescript@4":
+"@trigen/scripts-plugin-typescript@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-4.0.0.tgz#42d3ea93d1d7bce661a49233d57333a233b281db"
   integrity sha512-MTGQ4nS04Wz9YhE1ZTGlbt6k4mmBaaAei0I1ejR2a2S52s2rnKTAswM2lAVmjY6BtDhSGxZG+7L2JicH3L6ktw==
@@ -1334,7 +1334,7 @@
     typedoc "^0.16.8"
     typescript "3.7.5"
 
-"@trigen/scripts-preset-lib@4":
+"@trigen/scripts-preset-lib@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-4.0.0.tgz#7d0ab5bc01c2c317d307b8ef1f429b34b9664693"
   integrity sha512-+ctvD+kvKS+XIwkIRMOoZdtNafVR/O5b6RLtXIYtwoslRm6dWxSrdj2VO4Q7xbcq2TAFic4NwZWtzk/YZyClZg==
@@ -1346,7 +1346,7 @@
     husky "^4.0.9"
     lint-staged "^10.0.0"
 
-"@trigen/scripts@4", "@trigen/scripts@^4.0.0":
+"@trigen/scripts@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-4.0.0.tgz#f2e03de69e760a56faab0549c6a0c787a316ca83"
   integrity sha512-6G1sFEJd3YNBBfeynFIp2BZmaXTq0C8wQXV0NsQK7WZYgpjbHuvtJ0iu2O8+by5+n5oabG67VmjpWT0X29zQog==
