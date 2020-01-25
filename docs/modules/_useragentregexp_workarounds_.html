@@ -88,10 +88,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="patches" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> patches</h3>
-					<div class="tsd-signature tsd-kind-icon">patches<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_useragentregexp_types_.ibrowserpatch.html" class="tsd-signature-type">IBrowserPatch</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[/*** Patch Chrome &lt; 74 regexp to exclude Edge &lt;&#x3D; 18* 1) Last ever (?) EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)* 2) First known Chromium Edge has Chrome 74 version*    (https://blogs.windows.com/msedgedev/2019/04/08/microsoft-edge-preview-channel-details/#HzAbspiQ4poHQRVc.97)*/{test(browsers) {const chromeVersions &#x3D; browsers.get(&#x27;chrome&#x27;);const edgeVersions &#x3D; browsers.get(&#x27;edge&#x27;);const hasBrowsers &#x3D; chromeVersions &amp;&amp; edgeVersions;if (!hasBrowsers) {return false;}const minChromeVersion &#x3D; chromeVersions[0][0];const minEdgeVersion &#x3D; edgeVersions[0][0];return minChromeVersion &lt; 74 &amp;&amp; minEdgeVersion &lt;&#x3D; 18;},patch(regExpInfo) {const {family,regExpString,resultMinVersion} &#x3D; regExpInfo;if (family !&#x3D;&#x3D; &#x27;chrome&#x27;|| resultMinVersion &amp;&amp; resultMinVersion[0] &gt;&#x3D; 74|| regExpString.includes(&#x27;HeadlessChrome&#x27;)) {return regExpInfo;}// Iridium browser has Safari before Chromeconst patchedRegExpString &#x3D; &#x60;${regExpString}([\\d.]+$|.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$))&#x60;;const patchedRegExp &#x3D; new RegExp(patchedRegExpString);return {...regExpInfo,regExp:       patchedRegExp,regExpString: patchedRegExpString};}}]</span></div>
+					<div class="tsd-signature tsd-kind-icon">patches<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_useragentregexp_types_.ibrowserpatch.html" class="tsd-signature-type">IBrowserPatch</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [/*** Patch Chrome &lt; 74 regexp to exclude Edge &lt;&#x3D; 18* 1) Last ever (?) EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)* 2) First known Chromium Edge has Chrome 74 version*    (https://blogs.windows.com/msedgedev/2019/04/08/microsoft-edge-preview-channel-details/#HzAbspiQ4poHQRVc.97)*/{test(browsers) {const chromeVersions &#x3D; browsers.get(&#x27;chrome&#x27;);const edgeVersions &#x3D; browsers.get(&#x27;edge&#x27;);const hasBrowsers &#x3D; chromeVersions &amp;&amp; edgeVersions;if (!hasBrowsers) {return false;}const minChromeVersion &#x3D; chromeVersions[0][0];const minEdgeVersion &#x3D; edgeVersions[0][0];return minChromeVersion &lt; 74 &amp;&amp; minEdgeVersion &lt;&#x3D; 18;},patch(regExpInfo) {const {family,regExpString,resultMinVersion} &#x3D; regExpInfo;if (family !&#x3D;&#x3D; &#x27;chrome&#x27;|| resultMinVersion &amp;&amp; resultMinVersion[0] &gt;&#x3D; 74|| regExpString.includes(&#x27;HeadlessChrome&#x27;)) {return regExpInfo;}// Iridium browser has Safari before Chromeconst patchedRegExpString &#x3D; &#x60;${regExpString}([\\d.]+$|.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$))&#x60;;const patchedRegExp &#x3D; new RegExp(patchedRegExpString);return {...regExpInfo,regExp:       patchedRegExp,regExpString: patchedRegExpString};}}]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/a633135/src/useragentRegexp/workarounds.ts#L11">useragentRegexp/workarounds.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/8206469/src/useragentRegexp/workarounds.ts#L11">useragentRegexp/workarounds.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -108,7 +108,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/a633135/src/useragentRegexp/workarounds.ts#L62">useragentRegexp/workarounds.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/8206469/src/useragentRegexp/workarounds.ts#L62">useragentRegexp/workarounds.ts:62</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -133,7 +133,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_useragentregexp_workarounds_.html">"useragent<wbr>Regexp/workarounds"</a>
+						<a href="_useragentregexp_workarounds_.html">&quot;useragent<wbr>Regexp/workarounds&quot;</a>
 					</li>
 				</ul>
 			</nav>
