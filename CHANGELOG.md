@@ -24,6 +24,10 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [2.0.0] - 2020-01-25
+### Breaking
+- Requires `Node 10+`
+
 ## [1.3.1-beta] - 2019-07-30
 ### Changed
 - Dependencies update.
