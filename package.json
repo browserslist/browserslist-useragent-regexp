@@ -49,7 +49,7 @@
     "@size-limit/preset-small-lib": "^2.1.6",
     "@trigen/scripts": "3",
     "@trigen/scripts-plugin-babel": "3",
-    "@trigen/scripts-plugin-eslint": "3",
+    "@trigen/scripts-plugin-eslint": "4",
     "@trigen/scripts-plugin-jest": "3",
     "@trigen/scripts-plugin-rollup": "3",
     "@trigen/scripts-plugin-size-limit": "3",
