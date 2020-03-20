@@ -2,7 +2,7 @@ import {
 	external
 } from '@trigen/scripts-plugin-rollup/helpers';
 import tslint from 'rollup-plugin-tslint';
-import commonjs from 'rollup-plugin-commonjs'; // v10.0.0 - Error: Entry module cannot be external (src/cli.ts).
+import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import babel from 'rollup-plugin-babel';
 import shebang from 'rollup-plugin-add-shebang';
@@ -42,7 +42,7 @@ export default [{
 		...plugins,
 		shebang()
 	],
-	external: () => true,
+	external: _ => !_.endsWith('src/cli.ts'),
 	output:   {
 		file:      'lib/cli.js',
 		format:    'cjs',
