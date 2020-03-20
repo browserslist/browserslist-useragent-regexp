@@ -48,7 +48,7 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^3.0.0",
     "@trigen/scripts": "^4.0.0",
-    "@trigen/scripts-plugin-babel": "^4.0.0",
+    "@trigen/scripts-plugin-babel": "^5.1.0",
     "@trigen/scripts-plugin-eslint": "^5.1.0",
     "@trigen/scripts-plugin-jest": "^4.0.0",
     "@trigen/scripts-plugin-rollup": "^5.1.3",
