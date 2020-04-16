@@ -24,6 +24,10 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [2.0.2] - 2020-04-16
+### Fixed
+- [#409](https://github.com/browserslist/browserslist-useragent-regexp/issues/409)
+
 ## [2.0.0] - 2020-01-25
 ### Breaking
 - Requires `Node 10+`
