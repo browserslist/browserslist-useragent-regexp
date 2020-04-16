@@ -93,6 +93,41 @@ describe('Browsers', () => {
 					[10, 0, 0],
 					[14, 0, 0]
 				]);
+
+				expect(
+					versionsListToRanges([
+						[10, 0, 0],
+						[14, 1, 0]
+					])
+				).toEqual([
+					[10, 0, 0],
+					[14, 1, 0]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[4, 0, 0],
+						[10, 1, 0],
+						[11, 1, 0]
+					])
+				).toEqual([
+					[4, 0, 0],
+					[[10, 11], 1, 0]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[10, 1, 0],
+						[11, 1, 0],
+						[15, 0, 0],
+						[20, 0, 1],
+						[21, 0, 1]
+					])
+				).toEqual([
+					[[10, 11], 1, 0],
+					[15, 0, 0],
+					[[20, 21], 0, 1]
+				]);
 			});
 
 			it('should do not touch single versions', () => {
