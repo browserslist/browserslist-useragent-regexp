@@ -1333,12 +1333,12 @@
     lint-staged "^10.0.0"
 
 "@trigen/scripts@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.1.0.tgz#f54598de9545a092629d295ed8a0dda4cb5902b8"
-  integrity sha512-SqRjynJTuFjlfdLd+MaSVnKbkT4rXRzWj4I1kn5gzNQ18dUg9qqL0IU7xYNufDX7sF+vnjZiOEuFXh7dcGrdcA==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.3.0.tgz#ac47c884c238145a80cbcb6fb8f2945770351a2f"
+  integrity sha512-Yy2gLrwM33KxmUUEscYHH5T/KJ4m0HhFpf3dTUk6tcadwxAuXqLrRBdQiU65twF4WRmMgVl3y6akZVsa+D6hJQ==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    chalk "^3.0.0"
+    chalk "^4.0.0"
     core-js "3"
     immutability-helper "^3.0.0"
     rcfile "^1.0.3"
