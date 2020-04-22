@@ -128,6 +128,82 @@ describe('Browsers', () => {
 					[15, 0, 0],
 					[[20, 21], 0, 1]
 				]);
+
+				expect(
+					versionsListToRanges([
+						[15, 1, 0],
+						[15, 2, 1],
+						[15, 3, 2]
+					])
+				).toEqual([
+					[15, 1, 0],
+					[15, 2, 1],
+					[15, 3, 2]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[15, 1, 0],
+						[15, 2, 0]
+					])
+				).toEqual([
+					[15, [1, 2], 0]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[4, 0, 0],
+						[5, 0, 0],
+						[5, 1, 0]
+					])
+				).toEqual([
+					[[4, 5], 0, 0],
+					[5, 1, 0]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[4, 1, 0],
+						[4, 1, 1],
+						[4, 2, 0]
+					])
+				).toEqual([
+					[4, 1, [0, 1]],
+					[4, 2, 0]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[4, 1, 0],
+						[4, 1, 1],
+						[4, 1, 3]
+					])
+				).toEqual([
+					[4, 1, [0, 1]],
+					[4, 1, 3]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[4, 1, 0],
+						[4, 1, 1],
+						[4, 2, 1]
+					])
+				).toEqual([
+					[4, 1, [0, 1]],
+					[4, 2, 1]
+				]);
+
+				expect(
+					versionsListToRanges([
+						[4, 1, 0],
+						[4, 1, 1],
+						[4, 2, 2]
+					])
+				).toEqual([
+					[4, 1, [0, 1]],
+					[4, 2, 2]
+				]);
 			});
 
 			it('should do not touch single versions', () => {
