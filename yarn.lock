@@ -1308,11 +1308,11 @@
     size-limit "^4.1.1"
 
 "@trigen/scripts-plugin-typescript@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-5.1.0.tgz#e26b969e179ac482bdd7f4c379ec99a103344c0c"
-  integrity sha512-Tx0SHx2oJKY12pop4CG8hhY6uUqr8J7kzJVMZnZQtMSDY2FP3O5U2epPZedZ+QQlUwKyv71tx0YBYSnDgqNsjw==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-5.3.0.tgz#1a0e716a5bf624bf3b84a8f8ef16d5528135bfa5"
+  integrity sha512-QNs0NuACx9q1aESA1h8KJOpEPVuXXVd522PnUCLGhCbyPsbED14XQwWsqSLeO1RCymDgr9PcT29xm3AJ9OM2wA==
   dependencies:
-    "@trigen/scripts" "^5.1.0"
+    "@trigen/scripts" "^5.3.0"
     ts-node-dev "^1.0.0-pre.39"
     tsconfig-paths "^3.8.0"
     tslint "^6.0.0"
@@ -1332,7 +1332,7 @@
     husky "^4.0.9"
     lint-staged "^10.0.0"
 
-"@trigen/scripts@^5.1.0":
+"@trigen/scripts@^5.1.0", "@trigen/scripts@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.3.0.tgz#ac47c884c238145a80cbcb6fb8f2945770351a2f"
   integrity sha512-Yy2gLrwM33KxmUUEscYHH5T/KJ4m0HhFpf3dTUk6tcadwxAuXqLrRBdQiU65twF4WRmMgVl3y6akZVsa+D6hJQ==
