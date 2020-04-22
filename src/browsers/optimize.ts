@@ -80,31 +80,35 @@ export function versionsListToRanges(versions: ISemver[]) {
 	let major: ISemverRange = [current[SemverPart.Major]];
 	let minor: ISemverRange = [current[SemverPart.Minor]];
 	let patch: ISemverRange = [current[SemverPart.Patch]];
+	let part: SemverPart = null;
 
 	for (let i = 1; i < max; i++) {
 
 		prev = versions[i - 1];
 		current = versions[i] || [];
 
-		for (let part = SemverPart.Major; part <= SemverPart.Patch; part++) {
+		for (let p = SemverPart.Major; p <= SemverPart.Patch; p++) {
 
-			if (prev[part] + 1 === current[part]
-				&& compareArrays(prev, current, part + 1)
+			if ((p === part || part === null)
+				&& prev[p] + 1 === current[p]
+				&& compareArrays(prev, current, p + 1)
 			) {
 
-				if (part === SemverPart.Major) {
+				part = p;
+
+				if (p === SemverPart.Major) {
 					(major as number[]).push(current[SemverPart.Major]);
 				} else {
 					major = current[SemverPart.Major];
 				}
 
-				if (part === SemverPart.Minor) {
+				if (p === SemverPart.Minor) {
 					(minor as number[]).push(current[SemverPart.Minor]);
 				} else {
 					minor = current[SemverPart.Minor];
 				}
 
-				if (part === SemverPart.Patch) {
+				if (p === SemverPart.Patch) {
 					(patch as number[]).push(current[SemverPart.Patch]);
 				} else {
 					patch = current[SemverPart.Patch];
@@ -113,7 +117,7 @@ export function versionsListToRanges(versions: ISemver[]) {
 				break;
 			}
 
-			if (prev[part] !== current[part]) {
+			if (part === p || prev[p] !== current[p]) {
 				ranges.push([
 					numbersToRanges(major),
 					numbersToRanges(minor),
@@ -122,6 +126,7 @@ export function versionsListToRanges(versions: ISemver[]) {
 				major = [current[SemverPart.Major]];
 				minor = [current[SemverPart.Minor]];
 				patch = [current[SemverPart.Patch]];
+				part = null;
 				break;
 			}
 		}
