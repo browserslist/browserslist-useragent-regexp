@@ -1321,18 +1321,18 @@
     typescript "3.8.3"
 
 "@trigen/scripts-preset-lib@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-5.1.0.tgz#b19e043c54e255deba75b4c0b386a60485fa8431"
-  integrity sha512-ATkzow2Rv8Ap5DnnPimqqIzAUqOCd0/Ki+cHKpBaW7AmCIEKOzngaFN9p8AjHtZokorfihqA88vEORbDarSMLg==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-5.3.0.tgz#a37b65bd656363e9c0664073bfda1aae1ca25e3e"
+  integrity sha512-zQKc/k97fgj54uJjD4jPM4NsiHecIn0Qb6Fmn1jGmx0iF7vQz2ofqKIgZ6oncB2LKZTzrOQPY2Wpo2lcLt+JTA==
   dependencies:
-    "@trigen/scripts" "^5.1.0"
+    "@trigen/scripts" "^5.3.0"
     browserslist-config-trigen "^1.1.0"
     clean-publish "^1.1.0"
     coveralls "^3.0.0"
     husky "^4.0.9"
     lint-staged "^10.0.0"
 
-"@trigen/scripts@^5.1.0":
+"@trigen/scripts@^5.1.0", "@trigen/scripts@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.3.0.tgz#ac47c884c238145a80cbcb6fb8f2945770351a2f"
   integrity sha512-Yy2gLrwM33KxmUUEscYHH5T/KJ4m0HhFpf3dTUk6tcadwxAuXqLrRBdQiU65twF4WRmMgVl3y6akZVsa+D6hJQ==
