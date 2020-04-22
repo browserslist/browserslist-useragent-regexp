@@ -1268,11 +1268,11 @@
     babel-preset-trigen "^2.2.1"
 
 "@trigen/scripts-plugin-eslint@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-5.1.0.tgz#a0d396b7f13dbffa7270e8ad094f56101a53a51a"
-  integrity sha512-VW63bou+7KAPpqi7OIBUE3cNWMkY8npNQQKO07YKwxHa/kozNIJTNvBnUze8tNkpiBiPZ230vIBkWLy4/B0mvA==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-eslint/-/scripts-plugin-eslint-5.3.0.tgz#bbbf475bfe2c4b60760b9f7fb279885e71ca38eb"
+  integrity sha512-/hmdjahMhpjfsUOtoaUS9GKxjDEvKdTiU98PiYuN/ledYWpRO0x92iZShb2F3VMGrS374J/dRklup+03MSXbVw==
   dependencies:
-    "@trigen/scripts" "^5.1.0"
+    "@trigen/scripts" "^5.3.0"
     eslint "^6.1.0"
     eslint-config-trigen "^3.2.3"
 
