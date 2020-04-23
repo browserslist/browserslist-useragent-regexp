@@ -56,6 +56,34 @@ const patches: IBrowserPatch[] = [
 				regExpString: patchedRegExpString
 			};
 		}
+	},
+	/**
+	 * Patch Desktop Safari regexp to exclude Chrome and etc.
+	 */
+	{
+		test(browsers) {
+			return browsers.has('safari');
+		},
+		patch(regExpInfo) {
+
+			const {
+				family,
+				regExpString
+			} = regExpInfo;
+
+			if (family !== 'safari') {
+				return regExpInfo;
+			}
+
+			const patchedRegExpString = regExpString.replace(/\.\*(Safari\\\/)/, ' $1');
+			const patchedRegExp = new RegExp(patchedRegExpString);
+
+			return {
+				...regExpInfo,
+				regExp:       patchedRegExp,
+				regExpString: patchedRegExpString
+			};
+		}
 	}
 ];
 
