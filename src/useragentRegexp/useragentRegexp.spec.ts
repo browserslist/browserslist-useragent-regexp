@@ -49,6 +49,7 @@ function *getUserAgents() {
 			}
 
 			userAgents.add(data.userAgent);
+
 			yield {
 				versions:  versions.map(_ => `${_.family} ${_.version.join('.')}`),
 				userAgent: data.userAgent,
