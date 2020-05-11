@@ -108,7 +108,7 @@ export function compareSemvers(
 export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, {
 	ignoreMinor,
 	ignorePatch,
-	allowZeroSubverions
+	allowZeroSubversions
 }: ISemverCompareOptions) {
 
 	let shouldRepeatCount = ignoreMinor
@@ -117,7 +117,7 @@ export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, {
 			? 2
 			: 3;
 
-	if (allowZeroSubverions) {
+	if (allowZeroSubversions) {
 
 		for (let i = shouldRepeatCount - 1; i > 0; i--) {
 

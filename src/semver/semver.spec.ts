@@ -354,12 +354,12 @@ describe('Semver', () => {
 
 	describe('getRequiredSemverPartsCount', () => {
 
-		describe('allowZeroSubverions: false', () => {
+		describe('allowZeroSubversions: false', () => {
 
 			const options = {
-				ignoreMinor:         false,
-				ignorePatch:         false,
-				allowZeroSubverions: false
+				ignoreMinor:          false,
+				ignorePatch:          false,
+				allowZeroSubversions: false
 			};
 			const version: ISemver = [1, 2, 3];
 
@@ -401,12 +401,12 @@ describe('Semver', () => {
 			});
 		});
 
-		describe('allowZeroSubverions: true', () => {
+		describe('allowZeroSubversions: true', () => {
 
 			const options = {
-				ignoreMinor:         false,
-				ignorePatch:         false,
-				allowZeroSubverions: true
+				ignoreMinor:          false,
+				ignorePatch:          false,
+				allowZeroSubversions: true
 			};
 			const version: ISemver = [1, 2, 3];
 			const zeroVersion: ISemver = [1, 1, 0];

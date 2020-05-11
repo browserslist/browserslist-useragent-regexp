@@ -23,7 +23,7 @@ import {
 export const defaultOptions = {
 	ignoreMinor: false,
 	ignorePatch: true,
-	allowZeroSubverions: false,
+	allowZeroSubversions: false,
 	allowHigherVersions: false
 };
 
