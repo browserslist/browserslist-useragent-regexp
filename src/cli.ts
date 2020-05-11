@@ -74,7 +74,7 @@ if (help) {
 	optionsTable.cell('Default', 'false');
 	optionsTable.newRow();
 
-	optionsTable.cell('Option', '--allowZeroSubverions');
+	optionsTable.cell('Option', '--allowZeroSubversions');
 	optionsTable.cell('Description', 'Ignore match of patch or patch and minor, if they are 0.');
 	optionsTable.cell('Default', 'false');
 	optionsTable.newRow();

@@ -80,9 +80,9 @@ describe('RegExp', () => {
 							[64, 0, 0]
 						],
 						{
-							ignorePatch:         true,
-							allowZeroSubverions: true,
-							allowHigherVersions: true
+							ignorePatch:          true,
+							allowZeroSubversions: true,
+							allowHigherVersions:  true
 						}
 					)
 				).toBe(
@@ -99,9 +99,9 @@ describe('RegExp', () => {
 							[8, 2, 0]
 						],
 						{
-							ignorePatch:         true,
-							allowZeroSubverions: true,
-							allowHigherVersions: true
+							ignorePatch:          true,
+							allowZeroSubversions: true,
+							allowHigherVersions:  true
 						}
 					)
 				).toBe(
@@ -157,8 +157,8 @@ describe('RegExp', () => {
 						regExps,
 						browsers,
 						{
-							allowZeroSubverions: true,
-							allowHigherVersions: true
+							allowZeroSubversions: true,
+							allowHigherVersions:  true
 						}
 					)
 				).toEqual([

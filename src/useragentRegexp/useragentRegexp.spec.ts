@@ -70,9 +70,9 @@ describe('UserAgentRegExp', () => {
 		for (const ua of userAgents) {
 
 			const regExp = getUserAgentRegExp({
-				browsers:            ua.query,
-				allowHigherVersions: true,
-				allowZeroSubverions: true
+				browsers:             ua.query,
+				allowHigherVersions:  true,
+				allowZeroSubversions: true
 			});
 			const works = regExp.test(ua.userAgent);
 
@@ -84,9 +84,9 @@ describe('UserAgentRegExp', () => {
 				}
 
 				const info = getUserAgentRegExps({
-					browsers:            ua.query,
-					allowHigherVersions: true,
-					allowZeroSubverions: true
+					browsers:             ua.query,
+					allowHigherVersions:  true,
+					allowZeroSubversions: true
 				});
 				const message = `Invalid RegExp:
 

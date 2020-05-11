@@ -117,7 +117,7 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 | &#x2011;&#x2011;ignorePatch | Ignore differences in patch browser numbers. | `true` |
 | &#x2011;&#x2011;ignoreMinor | Ignore differences in minor browser versions. | `false` |
 | &#x2011;&#x2011;allowHigherVersions | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. | `false` |
-| &#x2011;&#x2011;allowZeroSubverions | Ignore match of patch or patch and minor, if they are 0. | `false` |
+| &#x2011;&#x2011;allowZeroSubversions | Ignore match of patch or patch and minor, if they are 0. | `false` |
 
 ## JS API basics
 
@@ -142,7 +142,7 @@ Compile browserslist query to one RegExp.
 | ignorePatch | `boolean` | `true` | Ignore differences in patch browser numbers. |
 | ignoreMinor | `boolean` | `false` | Ignore differences in minor browser versions. |
 | allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. |
-| allowZeroSubverions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
+| allowZeroSubversions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
 
 #### RegExp info object
 
