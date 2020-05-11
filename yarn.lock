@@ -2305,15 +2305,15 @@ browserslist-config-trigen@^1.1.0:
   integrity sha512-V2UUIItqwVkXhFHEyIemio0LCmIe32KgJwcpRErQzwo2U3pgewiE2VA4nrEev+c9tw5yd7PnDYAwLKfT2wnc/g==
 
 browserslist-useragent@^3.0.0:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/browserslist-useragent/-/browserslist-useragent-3.0.2.tgz#f0e209b2742baa5de0e451b52e678e8b4402617c"
-  integrity sha512-/UPzK9xZnk5mwwWx4wcuBKAKx/mD3MNY8sUuZ2NPqnr4RVFWZogX+8mOP0cQEYo8j78sHk0hiDNaVXZ1U3hM9A==
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/browserslist-useragent/-/browserslist-useragent-3.0.3.tgz#d06c062a4e444ad5e1a80323131d4508450c9af5"
+  integrity sha512-8KKO6kOXu/93IkMi8zVqzU72BgpoxcITIHtkM1qmlnxJtIMF9Y+2uWL9JS2uUbzj/PaS3kaA6LcICBThMojGjA==
   dependencies:
-    browserslist "^4.6.6"
-    semver "^6.3.0"
+    browserslist "^4.12.0"
+    semver "^7.3.2"
     useragent "^2.3.0"
 
-browserslist@^4.0.0, browserslist@^4.5.6, browserslist@^4.6.6, browserslist@^4.8.2, browserslist@^4.8.3:
+browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.5.6, browserslist@^4.8.2, browserslist@^4.8.3:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.12.0.tgz#06c6d5715a1ede6c51fc39ff67fd647f740b656d"
   integrity sha512-UH2GkcEDSI0k/lRkuDSzFl9ZZ87skSy9w2XAn1MsZnL+4c4rqbBd3e82UWHbYDpztABrPBhZsTEeuxVfHppqDg==
@@ -8260,7 +8260,7 @@ semver@7.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.0.0.tgz#5f3ca35761e47e05b206c6daff2cf814f0316b8e"
   integrity sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A==
 
-semver@7.1.1, semver@^7.1.1:
+semver@7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.1.1.tgz#29104598a197d6cbe4733eeecbe968f7b43a9667"
   integrity sha512-WfuG+fl6eh3eZ2qAf6goB7nhiCd7NPXhmyFxigB/TOkQyeLP8w8GsVehvtGNtnNmyboz4TgeK40B1Kbql/8c5A==
@@ -8269,6 +8269,11 @@ semver@^6.0.0, semver@^6.1.2, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+semver@^7.1.1, semver@^7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
+  integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
 
 send@0.17.1:
   version "0.17.1"
