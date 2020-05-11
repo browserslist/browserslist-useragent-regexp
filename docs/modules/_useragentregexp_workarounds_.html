@@ -57,7 +57,7 @@
 					<a href="_useragentregexp_workarounds_.html">&quot;useragentRegexp/workarounds&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;useragentRegexp/workarounds&quot;</h1>
+			<h1>Module &quot;useragentRegexp/workarounds&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,13 +71,13 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_useragentregexp_workarounds_.html#patches" class="tsd-kind-icon">patches</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_useragentregexp_workarounds_.html#patches" class="tsd-kind-icon">patches</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_useragentregexp_workarounds_.html#patchregexps" class="tsd-kind-icon">patch<wbr>Reg<wbr>Exps</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_useragentregexp_workarounds_.html#patchregexps" class="tsd-kind-icon">patch<wbr>Reg<wbr>Exps</a></li>
 							</ul>
 						</section>
 					</div>
@@ -85,30 +85,30 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 					<a name="patches" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> patches</h3>
-					<div class="tsd-signature tsd-kind-icon">patches<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_useragentregexp_types_.ibrowserpatch.html" class="tsd-signature-type">IBrowserPatch</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [/*** Patch Chrome &lt; 74 regexp to exclude Edge &lt;&#x3D; 18* 1) Last ever (?) EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)* 2) First known Chromium Edge has Chrome 74 version*    (https://blogs.windows.com/msedgedev/2019/04/08/microsoft-edge-preview-channel-details/#HzAbspiQ4poHQRVc.97)*/{test(browsers) {const chromeVersions &#x3D; browsers.get(&#x27;chrome&#x27;);const edgeVersions &#x3D; browsers.get(&#x27;edge&#x27;);const hasBrowsers &#x3D; chromeVersions &amp;&amp; edgeVersions;if (!hasBrowsers) {return false;}const minChromeVersion &#x3D; chromeVersions[0][0];const minEdgeVersion &#x3D; edgeVersions[0][0];return minChromeVersion &lt; 74 &amp;&amp; minEdgeVersion &lt;&#x3D; 18;},patch(regExpInfo) {const {family,regExpString,resultMinVersion} &#x3D; regExpInfo;if (family !&#x3D;&#x3D; &#x27;chrome&#x27;|| resultMinVersion &amp;&amp; resultMinVersion[0] &gt;&#x3D; 74|| regExpString.includes(&#x27;HeadlessChrome&#x27;)) {return regExpInfo;}// Iridium browser has Safari before Chromeconst patchedRegExpString &#x3D; &#x60;${regExpString}([\\d.]+$|.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$))&#x60;;const patchedRegExp &#x3D; new RegExp(patchedRegExpString);return {...regExpInfo,regExp:       patchedRegExp,regExpString: patchedRegExpString};}}]</span></div>
+					<div class="tsd-signature tsd-kind-icon">patches<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_useragentregexp_types_.ibrowserpatch.html" class="tsd-signature-type">IBrowserPatch</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [/*** Patch Chrome &lt; 74 regexp to exclude Edge &lt;&#x3D; 18* 1) Last ever (?) EdgeHTML version is 18 (https://en.wikipedia.org/wiki/Microsoft_Edge)* 2) First known Chromium Edge has Chrome 74 version*    (https://blogs.windows.com/msedgedev/2019/04/08/microsoft-edge-preview-channel-details/#HzAbspiQ4poHQRVc.97)*/{test(browsers) {const chromeVersions &#x3D; browsers.get(&#x27;chrome&#x27;);const edgeVersions &#x3D; browsers.get(&#x27;edge&#x27;);const hasBrowsers &#x3D; chromeVersions &amp;&amp; edgeVersions;if (!hasBrowsers) {return false;}const minChromeVersion &#x3D; chromeVersions[0][0];const minEdgeVersion &#x3D; edgeVersions[0][0];return minChromeVersion &lt; 74 &amp;&amp; minEdgeVersion &lt;&#x3D; 18;},patch(regExpInfo) {const {family,regExpString,resultMinVersion} &#x3D; regExpInfo;if (family !&#x3D;&#x3D; &#x27;chrome&#x27;|| resultMinVersion &amp;&amp; resultMinVersion[0] &gt;&#x3D; 74|| regExpString.includes(&#x27;HeadlessChrome&#x27;)) {return regExpInfo;}// Iridium browser has Safari before Chromeconst patchedRegExpString &#x3D; &#x60;${regExpString}([\\d.]+$|.*Safari\\/(?![\\d.]+ Edge\\/[\\d.]+$))&#x60;;const patchedRegExp &#x3D; new RegExp(patchedRegExpString);return {...regExpInfo,regExp:       patchedRegExp,regExpString: patchedRegExpString};}},/*** Patch Desktop Safari regexp to exclude Chrome and etc.*/{test(browsers) {return browsers.has(&#x27;safari&#x27;);},patch(regExpInfo) {const {family,regExpString} &#x3D; regExpInfo;if (family !&#x3D;&#x3D; &#x27;safari&#x27;) {return regExpInfo;}const patchedRegExpString &#x3D; regExpString.replace(/\.\*(Safari\\\/)/, &#x27; $1&#x27;);const patchedRegExp &#x3D; new RegExp(patchedRegExpString);return {...regExpInfo,regExp:       patchedRegExp,regExpString: patchedRegExpString};}}]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/8206469/src/useragentRegexp/workarounds.ts#L11">useragentRegexp/workarounds.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/8be6072/src/useragentRegexp/workarounds.ts#L11">useragentRegexp/workarounds.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="patchregexps" class="tsd-anchor"></a>
 					<h3>patch<wbr>Reg<wbr>Exps</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
 						<li class="tsd-signature tsd-kind-icon">patch<wbr>Reg<wbr>Exps<span class="tsd-signature-symbol">(</span>regExps<span class="tsd-signature-symbol">: </span><a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span>, browsers<span class="tsd-signature-symbol">: </span><a href="_browsers_types_.html#ibrowsers" class="tsd-signature-type">IBrowsers</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_useragent_types_.ibrowserversionedregexp.html" class="tsd-signature-type">IBrowserVersionedRegExp</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/8206469/src/useragentRegexp/workarounds.ts#L62">useragentRegexp/workarounds.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/8be6072/src/useragentRegexp/workarounds.ts#L90">useragentRegexp/workarounds.ts:90</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,17 +132,17 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class="current tsd-kind-module">
 						<a href="_useragentregexp_workarounds_.html">&quot;useragent<wbr>Regexp/workarounds&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_useragentregexp_workarounds_.html#patches" class="tsd-kind-icon">patches</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_useragentregexp_workarounds_.html#patchregexps" class="tsd-kind-icon">patch<wbr>Reg<wbr>Exps</a>
 					</li>
 				</ul>
@@ -154,59 +154,6 @@
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
 		</div>
 	</div>
 </footer>
