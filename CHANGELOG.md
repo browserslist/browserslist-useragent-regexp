@@ -24,6 +24,10 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [2.0.5] - 2020-05-12
+### Fixed
+- [#434](https://github.com/browserslist/browserslist-useragent-regexp/issues/434)
+
 ## [2.0.4] - 2020-04-23
 ### Fixed
 - Desktop Safari regexp.
