@@ -1331,11 +1331,12 @@
     typescript "3.8.3"
 
 "@trigen/scripts-preset-lib@^5.1.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-5.3.0.tgz#a37b65bd656363e9c0664073bfda1aae1ca25e3e"
-  integrity sha512-zQKc/k97fgj54uJjD4jPM4NsiHecIn0Qb6Fmn1jGmx0iF7vQz2ofqKIgZ6oncB2LKZTzrOQPY2Wpo2lcLt+JTA==
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-5.5.0.tgz#96dc0fce1ea4912f7c1ea7d2930fbf496fd5134c"
+  integrity sha512-eSsZhg+ROalCRApXBBznkst9BStYHTl5B9X7MxSpjicPixZta/VVgpNI8d4/LCrMc2B34PFnMP3Y1i8L1R54Gg==
   dependencies:
-    "@trigen/scripts" "^5.3.0"
+    "@babel/runtime-corejs3" "^7.9.6"
+    "@trigen/scripts" "^5.5.0"
     browserslist-config-trigen "^1.1.0"
     clean-publish "^1.1.0"
     coveralls "^3.0.0"
