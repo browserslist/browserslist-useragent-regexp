@@ -1,12 +1,12 @@
 [
 	{
 		"path": "lib/index.js",
-		"limit": "10 KB",
+		"limit": "11 KB",
 		"webpack": false
 	},
 	{
 		"path": "lib/cli.js",
-		"limit": "2 KB",
+		"limit": "1.6 KB",
 		"webpack": false
 	}
 ]
