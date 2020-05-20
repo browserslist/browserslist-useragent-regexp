@@ -8,7 +8,7 @@
 	"env": {
 		"test": {
 			"presets": [
-				["babel-preset-trigen",{
+				["babel-preset-trigen", {
 					"env": "jest",
 					"typescript": true
 				}]
