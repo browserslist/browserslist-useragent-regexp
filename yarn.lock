@@ -942,6 +942,14 @@
     pirates "^4.0.0"
     source-map-support "^0.5.16"
 
+"@babel/runtime-corejs3@^7.9.6":
+  version "7.9.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.9.6.tgz#67aded13fffbbc2cb93247388cf84d77a4be9a71"
+  integrity sha512-6toWAfaALQjt3KMZQc6fABqZwUDDuWzz+cAfPhqyEnzxvdWOAkjwPNxgF8xlmo7OWLsSjaKjsskpKHRLaMArOA==
+  dependencies:
+    core-js-pure "^3.0.0"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.6.3":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
@@ -1322,25 +1330,25 @@
     typescript "3.8.3"
 
 "@trigen/scripts-preset-lib@^5.1.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-5.3.0.tgz#a37b65bd656363e9c0664073bfda1aae1ca25e3e"
-  integrity sha512-zQKc/k97fgj54uJjD4jPM4NsiHecIn0Qb6Fmn1jGmx0iF7vQz2ofqKIgZ6oncB2LKZTzrOQPY2Wpo2lcLt+JTA==
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-preset-lib/-/scripts-preset-lib-5.5.0.tgz#96dc0fce1ea4912f7c1ea7d2930fbf496fd5134c"
+  integrity sha512-eSsZhg+ROalCRApXBBznkst9BStYHTl5B9X7MxSpjicPixZta/VVgpNI8d4/LCrMc2B34PFnMP3Y1i8L1R54Gg==
   dependencies:
-    "@trigen/scripts" "^5.3.0"
+    "@babel/runtime-corejs3" "^7.9.6"
+    "@trigen/scripts" "^5.5.0"
     browserslist-config-trigen "^1.1.0"
     clean-publish "^1.1.0"
     coveralls "^3.0.0"
     husky "^4.0.9"
     lint-staged "^10.0.0"
 
-"@trigen/scripts@^5.1.0", "@trigen/scripts@^5.3.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.3.0.tgz#ac47c884c238145a80cbcb6fb8f2945770351a2f"
-  integrity sha512-Yy2gLrwM33KxmUUEscYHH5T/KJ4m0HhFpf3dTUk6tcadwxAuXqLrRBdQiU65twF4WRmMgVl3y6akZVsa+D6hJQ==
+"@trigen/scripts@^5.1.0", "@trigen/scripts@^5.3.0", "@trigen/scripts@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.5.0.tgz#4f45225927fdf373182efcb05d1aa01004b6b75c"
+  integrity sha512-HOROslch9W6G+bjD/jRsQLOI4Ns0A0mP/vlwmL+XKwkLzjk/bgyfbtm8eL3OjaUhncnqPdhdGMx6sSEWiKjZWQ==
   dependencies:
-    "@babel/runtime" "^7.4.2"
+    "@babel/runtime-corejs3" "^7.9.6"
     chalk "^4.0.0"
-    core-js "3"
     immutability-helper "^3.0.0"
     rcfile "^1.0.3"
     resolve-cwd "^3.0.0"
@@ -2917,6 +2925,11 @@ core-js-compat@^3.6.2:
   dependencies:
     browserslist "^4.8.3"
     semver "7.0.0"
+
+core-js-pure@^3.0.0:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.5.tgz#c79e75f5e38dbc85a662d91eea52b8256d53b813"
+  integrity sha512-lacdXOimsiD0QyNf9BC/mxivNJ/ybBGJXQFKzRekp1WTHoVUWsUHEn+2T8GJAzzIhyOuXA+gOxCVN3l+5PLPUA==
 
 core-js@3, core-js@^3.2.1:
   version "3.6.5"
