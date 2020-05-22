@@ -1471,19 +1471,19 @@
     "@trigen/scripts" "^6.0.0"
     size-limit "^4.1.1"
 
-"@trigen/scripts-plugin-typescript@^5.1.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-5.5.0.tgz#d83402d22c01babe8f63f03d66ada36a62c4a42c"
-  integrity sha512-sjrxkabDrAKcpjrnsyC1gnncemhE7iJ5QOYMTdZyHpijKU6PXbV53hxjXvnIGKiVZFUFElZl9PHw6q93VFHaVg==
+"@trigen/scripts-plugin-typescript@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-typescript/-/scripts-plugin-typescript-6.0.0.tgz#503baa437bbbb91a58425875e5bce927c76fd3b6"
+  integrity sha512-Y/FURcoe9lruz0h6RFyTsHdeVgYteGepu/1H60yL83KQScoEYNngZnka4Y46Ya+mVk2D0enFblLx2oRgmR2pAA==
   dependencies:
     "@babel/runtime-corejs3" "^7.9.6"
-    "@trigen/scripts" "^5.5.0"
+    "@trigen/scripts" "^6.0.0"
     ts-node-dev "^1.0.0-pre.39"
     tsconfig-paths "^3.8.0"
     tslint "^6.0.0"
     tslint-config-trigen "^3.0.7"
     typedoc "^0.17.0"
-    typescript "3.9.2"
+    typescript "3.9.3"
 
 "@trigen/scripts-preset-lib@^6.0.0":
   version "6.0.0"
@@ -1497,17 +1497,6 @@
     coveralls "^3.0.0"
     husky "^4.0.9"
     lint-staged "^10.0.0"
-
-"@trigen/scripts@^5.5.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-5.5.0.tgz#4f45225927fdf373182efcb05d1aa01004b6b75c"
-  integrity sha512-HOROslch9W6G+bjD/jRsQLOI4Ns0A0mP/vlwmL+XKwkLzjk/bgyfbtm8eL3OjaUhncnqPdhdGMx6sSEWiKjZWQ==
-  dependencies:
-    "@babel/runtime-corejs3" "^7.9.6"
-    chalk "^4.0.0"
-    immutability-helper "^3.0.0"
-    rcfile "^1.0.3"
-    resolve-cwd "^3.0.0"
 
 "@trigen/scripts@^6.0.0":
   version "6.0.0"
@@ -9696,10 +9685,10 @@ typedoc@^0.17.0:
     shelljs "^0.8.3"
     typedoc-default-themes "^0.8.0"
 
-typescript@3.9.2, typescript@^3.0.0:
-  version "3.9.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.2.tgz#64e9c8e9be6ea583c54607677dd4680a1cf35db9"
-  integrity sha512-q2ktq4n/uLuNNShyayit+DTobV2ApPEo/6so68JaD5ojvc/6GClBipedB9zNWYxRSAlZXAe405Rlijzl6qDiSw==
+typescript@3.9.3, typescript@^3.0.0:
+  version "3.9.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
+  integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
 
 uglify-js@^3.1.4:
   version "3.7.6"
