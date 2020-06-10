@@ -119,10 +119,13 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 		case /bingbot|^\\b\(/.test(regExpString):
 			return [];
 
+		/**
+		 * Chrome browsers
+		 * `'HeadlessChrome'` was removed, works with regular Chrome RegExp
+		 */
 		case familyMatched(false, familyOrRegExp, [
 			'Chrome Mobile', // CrMo
-			'Chromium',
-			'HeadlessChrome'
+			'Chromium'
 		]):
 			return [{ family: 'chrome' }];
 
@@ -151,19 +154,35 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 
 			const matches = regExpString.match(/\(([\s\w\d_\-/!|]+)\)/i);
 
+			/**
+			 * Extract family from RegExp
+			 */
 			if (Array.isArray(matches)) {
 
 				const match = matches[1];
 				const familiesFromRegExp = match.split('|');
-				const families = uniq([
-					...familiesFromRegExp,
-					...familiesFromRegExp.map(_ => _.replace(/ /g, '')),
-					...familiesFromRegExp.map(_ => _.replace(/[_\-/\s]/g, ''))
-				]);
+				const familyToRegExpMap = new Map<string, string[]>();
+				const families = uniq(
+					familiesFromRegExp.map((familyFromRegExp) => {
+
+						const family = familyFromRegExp.replace(/[^\d\w]/g, '').toLowerCase();
+
+						if (familyToRegExpMap.has(family)) {
+							familyToRegExpMap.get(family).push(familyFromRegExp);
+						} else {
+							familyToRegExpMap.set(family, [familyFromRegExp]);
+						}
+
+						return family;
+					})
+				);
 
 				return families.map(family => ({
-					family: family.toLowerCase(),
-					regExp: new RegExp(regExpString.replace(match, family))
+					family,
+					regExp: new RegExp(regExpString.replace(
+						match,
+						familyToRegExpMap.get(family).join('|')
+					))
 				}));
 			}
 

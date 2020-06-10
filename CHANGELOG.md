@@ -24,6 +24,13 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [2.1.0] - 2020-06-11
+### Fixed
+- Extracting browser family from regexp fix.
+
+### Changed
+- `HeadlessChrome` regexp was removed, works with regular Chrome regexp.
+
 ## [2.0.5] - 2020-05-12
 ### Fixed
 - [#434](https://github.com/browserslist/browserslist-useragent-regexp/issues/434)
