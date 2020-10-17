@@ -26,5 +26,14 @@ describe('UserAgentRegExp', () => {
 				'Family(foo)?(?=NotFamily)'
 			);
 		});
+
+		it('should remove unnecessary escapes in ranges', () => {
+
+			expect(
+				optimize('[\\.\\[]')
+			).toBe(
+				'[.[]'
+			);
+		});
 	});
 });
