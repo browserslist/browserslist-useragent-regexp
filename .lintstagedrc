@@ -1,6 +1,3 @@
 {
-	"src/**/*.{ts,tsx}": [
-		"trigen-scripts lint:ts",
-		"git add"
-	]
+	"src/**/*.{ts,tsx}": "trigen-scripts lint:ts"
 }
