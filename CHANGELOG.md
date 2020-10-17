@@ -24,6 +24,10 @@ DO NOT TOUCH. SAVE IT ON TOP.
 
 -->
 
+## [2.1.1] - 2020-10-17
+### Fixed
+- [#472](https://github.com/browserslist/browserslist-useragent-regexp/issues/472)
+
 ## [2.1.0] - 2020-06-11
 ### Fixed
 - Extracting browser family from regexp fix.
