@@ -58,7 +58,7 @@
     "del-cli": "^3.0.0",
     "rollup-plugin-add-shebang": "^0.3.0",
     "rollup-plugin-tslint": "^0.2.2",
-    "rollup-plugin-typescript2": "^0.27.0",
+    "rollup-plugin-typescript2": "^0.28.0",
     "user-agents": "^1.0.213"
   },
   "files": [
