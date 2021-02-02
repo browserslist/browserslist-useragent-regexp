@@ -14,12 +14,11 @@ import {
 
 /**
  * Get RegExp for given numeric range.
- * @param  from - Range start.
- * @param  to - Range end.
- * @return Range pattern.
+ * @param from - Range start.
+ * @param to - Range end.
+ * @returns Range pattern.
  */
 export function rangeToRegExp(from: number, to = Infinity) {
-
 	if (isAllVersion(from)) {
 		return NUMBER_PATTERN;
 	}

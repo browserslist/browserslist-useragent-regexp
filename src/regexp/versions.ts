@@ -28,24 +28,22 @@ import {
 /**
  * Apply ranged sevmers to the RegExp.
  * @todo   if `allowHigherVersions`, apply only min version.
- * @param  regExp - Target RegExp.
- * @param  versions - Ranged semvers.
- * @param  options - Semver compare options.
- * @return RegExp with given versions.
+ * @param regExp - Target RegExp.
+ * @param versions - Ranged semvers.
+ * @param options - Semver compare options.
+ * @returns RegExp with given versions.
  */
 export function applyVersionsToRegExp(
 	regExp: string|RegExp,
 	versions: IRangedSemver[],
 	options: ISemverCompareOptions
 ) {
-
 	let maxRequiredPartsCount = 1;
 	const regExpStr = typeof regExp === 'string'
 		? regExp
 		: regExpToString(regExp);
 	const numberPatternsCount = getNumberPatternsCount(regExpStr);
 	const suitableVersions = versions.map((version) => {
-
 		const requiredPartsCount = getRequiredSemverPartsCount(version, options);
 
 		maxRequiredPartsCount = Math.max(maxRequiredPartsCount, requiredPartsCount);
@@ -63,15 +61,11 @@ export function applyVersionsToRegExp(
 	const versionsRegExpPart = joinParts(
 		uniq(
 			[].concat(
-				...suitableVersions.map(version =>
-					rangedSemverToRegExp(version, options).map(parts =>
-						replaceNumberPatterns(
-							numberPatternsPart,
-							parts,
-							maxRequiredPartsCount
-						)
-					)
-				)
+				...suitableVersions.map(version => rangedSemverToRegExp(version, options).map(parts => replaceNumberPatterns(
+					numberPatternsPart,
+					parts,
+					maxRequiredPartsCount
+				)))
 			)
 		)
 	);
@@ -82,18 +76,17 @@ export function applyVersionsToRegExp(
 
 /**
  * Apply browser versions to info objects.
- * @param  browserVersionRegExps - Objects with requested browser version and RegExp.
- * @param  browsers - Ranged versions of browsers.
- * @param  options - Semver compare options.
- * @return Objects with requested browser version and RegExp special for this version.
+ * @param browserVersionRegExps - Objects with requested browser version and RegExp.
+ * @param browsers - Ranged versions of browsers.
+ * @param options - Semver compare options.
+ * @returns Objects with requested browser version and RegExp special for this version.
  */
 export function applyVersionsToRegExps(
 	browserVersionRegExps: IBrowserVersionRegExp[],
 	browsers: IRangedBrowsers,
 	options: ISemverCompareOptions
-): IBrowserVersionedRegExp[] {
-
-	const versionedRegExps = [];
+) {
+	const versionedRegExps: IBrowserVersionedRegExp[] = [];
 
 	browserVersionRegExps.forEach(({
 		family,
@@ -102,9 +95,8 @@ export function applyVersionsToRegExps(
 		requestVersions,
 		...other
 	}) => {
-
 		const sourceRegExpString = regExpToString(sourceRegExp);
-		let regExp = null;
+		let regExp: RegExp = null;
 		let regExpString = '';
 
 		if (resultFixedVersion) {
@@ -128,11 +120,9 @@ export function applyVersionsToRegExps(
 				regExpString,
 				resultFixedVersion,
 				requestVersions,
-				requestVersionsStrings: requestVersions.map(_ =>
-					isAllVersion(_)
-						? _[0]
-						: _.join('.')
-				),
+				requestVersionsStrings: requestVersions.map(_ => (isAllVersion(_)
+					? String(_[0])
+					: _.join('.'))),
 				...other
 			});
 		}

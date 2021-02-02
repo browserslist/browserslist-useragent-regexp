@@ -9,8 +9,8 @@ import {
 
 /**
  * Remove duplicates from array.
- * @param  items - Items to filter.
- * @return Uniq items.
+ * @param items - Items to filter.
+ * @returns Uniq items.
  */
 export function uniq<T>(items: T[]): T[] {
 	return items.filter((_, i) => !items.includes(_, i + 1));
@@ -18,11 +18,11 @@ export function uniq<T>(items: T[]): T[] {
 
 /**
  * Check version.
- * @param  minVersion - Semver version.
- * @param  maxVersion - Semver version.
- * @param  bases - Base semver versions.
- * @param  options - Semver compare options.
- * @return Some version is matched.
+ * @param minVersion - Semver version.
+ * @param maxVersion - Semver version.
+ * @param bases - Base semver versions.
+ * @param options - Semver compare options.
+ * @returns Some version is matched.
  */
 export function someSemverMatched(
 	minVersion: ISemver,
@@ -30,7 +30,6 @@ export function someSemverMatched(
 	bases: ISemver[],
 	options: ISemverCompareOptions
 ) {
-
 	const compareOptions = {
 		...options,
 		allowHigherVersions: true
@@ -49,11 +48,11 @@ export function someSemverMatched(
 
 /**
  * Another version check. ^.^
- * @param  version - Semver version.
- * @param  regExp - Useragent RegExp.
- * @return Has version or not.
+ * @param version - Semver version.
+ * @param regExp - Useragent RegExp.
+ * @returns Has version or not.
  */
-export function hasVersion(version: any, regExp: RegExp) {
+export function hasVersion(version: unknown, regExp: RegExp) {
 	return Boolean(
 		version || hasNumberPattern(regExp)
 	);
@@ -61,25 +60,21 @@ export function hasVersion(version: any, regExp: RegExp) {
 
 /**
  * Check browser family.
- * @param  exact - Compare exact or not.
- * @param  family - Browser family.
- * @param  searchFamilies  - Browser family variations.
- * @return Family matched or not.
+ * @param exact - Compare exact or not.
+ * @param family - Browser family.
+ * @param searchFamilies  - Browser family variations.
+ * @returns Family matched or not.
  */
 export function familyMatched(exact: boolean, family: string|RegExp, searchFamilies: string[]) {
-
 	const isRegExp = family instanceof RegExp;
 	let matcher = null;
 
 	switch (true) {
-
 		case isRegExp: {
-
 			const regExpString = family.toString();
 
-			matcher = (_: string) =>
-				new RegExp(`(^|[^\\w])${_.replace(/ /g, '\\s*')}([^\\w]|$)`)
-					.test(regExpString);
+			matcher = (_: string) => new RegExp(`(^|[^\\w])${_.replace(/ /g, '\\s*')}([^\\w]|$)`)
+				.test(regExpString);
 			break;
 		}
 

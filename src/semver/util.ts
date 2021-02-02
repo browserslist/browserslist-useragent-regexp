@@ -4,12 +4,11 @@ import {
 
 /**
  * Check target if is 'all'.
- * @param  version - Target to check.
- * @return Is 'all' or not.
+ * @param version - Target to check.
+ * @returns Is 'all' or not.
  */
-export function isAllVersion(version: any): boolean {
-
-	const target = Array.isArray(version)
+export function isAllVersion(version: unknown): boolean {
+	const target: unknown = Array.isArray(version)
 		? version[0]
 		: version;
 
@@ -18,13 +17,9 @@ export function isAllVersion(version: any): boolean {
 
 /**
  * Remove duplicated arrays.
- * @param  items - Array of arrays to remove duplicates.
- * @return Uniq arrays.
+ * @param items - Array of arrays to remove duplicates.
+ * @returns Uniq arrays.
  */
-export function uniqItems(items: any[][]) {
-	return items.filter(Boolean).filter((a, i, items) =>
-		items && !items.some((b, j) =>
-			j > i && compareArrays(a, b)
-		)
-	);
+export function uniqItems<T = unknown>(items: T[][]) {
+	return items.filter(Boolean).filter((a, i, items) => items && !items.some((b, j) => j > i && compareArrays(a, b)));
 }

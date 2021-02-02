@@ -24,26 +24,23 @@ function mobile(userAgent: string, index: number) {
 }
 
 function *getUserAgents() {
-
 	const userAgents = new Set();
 	let data = null;
 
 	for (const query of browsers) {
-
 		const options = {
-			browsers:            [query],
+			browsers: [query],
 			allowHigherVersions: true
 		};
 		const versions = getBrowsersList(options);
 
 		for (let i = 0; i < 30; i++) {
-
 			try {
-				data = new UserAgent(({ userAgent }) =>
-					!userAgents.has(userAgent)
+				data = new UserAgent(({
+					userAgent
+				}) => !userAgents.has(userAgent)
 						&& mobile(userAgent, i)
-						&& matchesUA(userAgent, options)
-				);
+						&& matchesUA(userAgent, options));
 			} catch (err) {
 				continue;
 			}
@@ -51,7 +48,7 @@ function *getUserAgents() {
 			userAgents.add(data.userAgent);
 
 			yield {
-				versions:  versions.map(_ => `${_.family} ${_.version.join('.')}`),
+				versions: versions.map(_ => `${_.family} ${_.version.join('.')}`),
 				userAgent: data.userAgent,
 				query
 			};
@@ -60,42 +57,40 @@ function *getUserAgents() {
 }
 
 describe('UserAgentRegExp', () => {
-
 	jest.setTimeout(5 * 60 * 1000);
 
 	it('should create correct RegExps', () => {
-
 		const userAgents = getUserAgents();
 
 		for (const ua of userAgents) {
-
 			const regExp = getUserAgentRegExp({
-				browsers:             ua.query,
-				allowHigherVersions:  true,
+				browsers: ua.query,
+				allowHigherVersions: true,
 				allowZeroSubversions: true
 			});
 			const works = regExp.test(ua.userAgent);
 
 			if (!works) {
-
 				if (ua.query === 'Explorer 6-10' && /Trident\/7/.test(ua.userAgent)) {
-					console.log(`"${ua.userAgent}" is IE 11, not "${ua.query}"!!!`);
+					// eslint-disable-next-line no-console
+					console.log(`"${String(ua.userAgent)}" is IE 11, not "${ua.query}"!!!`);
 					return;
 				}
 
 				const info = getUserAgentRegExps({
-					browsers:             ua.query,
-					allowHigherVersions:  true,
+					browsers: ua.query,
+					allowHigherVersions: true,
 					allowZeroSubversions: true
 				});
 				const message = `Invalid RegExp:
 
 Query: ${ua.query}
 Browsers: ${ua.versions.join(', ')}
-UserAgent: ${ua.userAgent}${info.map(_ => `
-Source RegExp: ${_.sourceRegExp}
-RegExp: ${_.regExp}`).join('')}
+UserAgent: ${String(ua.userAgent)}${info.map(_ => `
+Source RegExp: ${String(_.sourceRegExp)}
+RegExp: ${String(_.regExp)}`).join('')}
 `;
+
 				throw new Error(message);
 			}
 		}

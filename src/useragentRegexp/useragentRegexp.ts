@@ -1,7 +1,4 @@
 import {
-	IUserAgentRegExpOptions
-} from './types';
-import {
 	getRegExpsForBrowsers
 } from '../useragent';
 import {
@@ -13,6 +10,9 @@ import {
 	applyVersionsToRegExps,
 	joinVersionedBrowsersRegExps
 } from '../regexp';
+import {
+	IUserAgentRegExpOptions
+} from './types';
 import {
 	patchRegExps
 } from './workarounds';
@@ -29,17 +29,17 @@ export const defaultOptions = {
 
 /**
  * Compile browserslist query to RegExps.
- * @param  options - Browserslist and semver compare options.
- * @return Objects with info about compiled RegExps.
+ * @param options - Browserslist and semver compare options.
+ * @returns Objects with info about compiled RegExps.
  */
-export function getUserAgentRegExps({
-	browsers,
-	env,
-	path,
-	...otherOptions
-}: IUserAgentRegExpOptions = {}) {
-
-	const options = {
+export function getUserAgentRegExps(options: IUserAgentRegExpOptions = {}) {
+	const {
+		browsers,
+		env,
+		path,
+		...otherOptions
+	} = options;
+	const finalOptions = {
 		...defaultOptions,
 		...otherOptions
 	};
@@ -50,8 +50,8 @@ export function getUserAgentRegExps({
 	});
 	const mergedBrowsers = mergeBrowserVersions(browsersList);
 	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
-	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options);
-	const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options);
+	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, finalOptions);
+	const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, finalOptions);
 	const patchedRegExps = patchRegExps(versionedRegExps, mergedBrowsers);
 	const optimizedRegExps = optimizeAll(patchedRegExps);
 
@@ -60,11 +60,10 @@ export function getUserAgentRegExps({
 
 /**
  * Compile browserslist query to RegExp.
- * @param  options - Browserslist and semver compare options.
- * @return Compiled RegExp.
+ * @param options - Browserslist and semver compare options.
+ * @returns Compiled RegExp.
  */
 export function getUserAgentRegExp(options: IUserAgentRegExpOptions = {}) {
-
 	const regExps = getUserAgentRegExps(options);
 	const regExpStr = joinVersionedBrowsersRegExps(regExps);
 	const regExp = new RegExp(regExpStr);

@@ -13,12 +13,11 @@ import {
  * 	E.g.: (HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))?
  * 	now: (?:\/(\d+)\.(\d+)\.(\d+))?
  * 	need: (\d+)\.(\d+)\.(\d+)
- * @param  regExp - Target RegExp.
- * @param  numberPatternsCount - Number patterns to extract.
- * @return RegExp part with number patterns.
+ * @param regExp - Target RegExp.
+ * @param numberPatternsCount - Number patterns to extract.
+ * @returns RegExp part with number patterns.
  */
 export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount?: number) {
-
 	const regExpStr = typeof regExp === 'string'
 		? regExp
 		: regExpToString(regExp);
@@ -35,7 +34,6 @@ export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount
 	let numberPatternsPart = '';
 
 	for (let i = 0; i < regExpStrLength; i++) {
-
 		char = regExpStr[i];
 		prevChar = regExpStr[i - 1];
 		skip = skipSquareBraces(skip, prevChar, char);

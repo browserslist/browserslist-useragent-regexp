@@ -16,13 +16,9 @@ import {
 } from './versions';
 
 describe('RegExp', () => {
-
 	describe('versions', () => {
-
 		describe('applyVersionsToRegExp', () => {
-
 			it('should work with RegExp', () => {
-
 				expect(
 					applyVersionsToRegExp(
 						/Chrome v(\d+) (\d+) (\d+)/,
@@ -38,7 +34,6 @@ describe('RegExp', () => {
 			});
 
 			it('should work with string', () => {
-
 				expect(
 					applyVersionsToRegExp(
 						'Chrome v(\\d+) (\\d+) (\\d+)?',
@@ -54,7 +49,6 @@ describe('RegExp', () => {
 			});
 
 			it('should ignore unsuitable RegExp', () => {
-
 				expect(
 					applyVersionsToRegExp(
 						'Chrome v(\\d+) (\\d+)',
@@ -70,7 +64,6 @@ describe('RegExp', () => {
 			});
 
 			it('should apply semver compare options', () => {
-
 				expect(
 					applyVersionsToRegExp(
 						'Chrome v(\\d+)',
@@ -80,9 +73,9 @@ describe('RegExp', () => {
 							[64, 0, 0]
 						],
 						{
-							ignorePatch:          true,
+							ignorePatch: true,
 							allowZeroSubversions: true,
-							allowHigherVersions:  true
+							allowHigherVersions: true
 						}
 					)
 				).toBe(
@@ -91,7 +84,6 @@ describe('RegExp', () => {
 			});
 
 			it('should apply semver to match higher version ', () => {
-
 				expect(
 					applyVersionsToRegExp(
 						'Chrome v(\\d+) (\\d+)',
@@ -99,9 +91,9 @@ describe('RegExp', () => {
 							[8, 2, 0]
 						],
 						{
-							ignorePatch:          true,
+							ignorePatch: true,
 							allowZeroSubversions: true,
-							allowHigherVersions:  true
+							allowHigherVersions: true
 						}
 					)
 				).toBe(
@@ -111,31 +103,30 @@ describe('RegExp', () => {
 		});
 
 		describe('applyVersionsToRegExps', () => {
-
 			const regExps: IBrowserVersionRegExp[] = [
 				{
-					family:             'chrome',
-					regExp:             /Chrome (\d+) (\d+) (\d+)/,
-					requestVersions:    [[64, 0, 0], [73, 0, 0]],
+					family: 'chrome',
+					regExp: /Chrome (\d+) (\d+) (\d+)/,
+					requestVersions: [[64, 0, 0], [73, 0, 0]],
 					resultFixedVersion: null,
-					resultMinVersion:   null,
-					resultMaxVersion:   null
+					resultMinVersion: null,
+					resultMaxVersion: null
 				},
 				{
-					family:             'firefox',
-					regExp:             /FF/,
-					requestVersions:    [[1, 2, 3]],
+					family: 'firefox',
+					regExp: /FF/,
+					requestVersions: [[1, 2, 3]],
 					resultFixedVersion: null,
-					resultMinVersion:   null,
-					resultMaxVersion:   null
+					resultMinVersion: null,
+					resultMaxVersion: null
 				},
 				{
-					family:             'ie',
-					regExp:             /lol serious?/,
-					requestVersions:    [[5, 0, 0]],
+					family: 'ie',
+					regExp: /lol serious?/,
+					requestVersions: [[5, 0, 0]],
 					resultFixedVersion: [5, 0, 0],
-					resultMinVersion:   null,
-					resultMaxVersion:   null
+					resultMinVersion: null,
+					resultMaxVersion: null
 				}
 			];
 			const browsers: IRangedBrowsers = new Map([
@@ -151,30 +142,29 @@ describe('RegExp', () => {
 			]);
 
 			it('should return versioned RegExp objects with info', () => {
-
 				expect(
 					applyVersionsToRegExps(
 						regExps,
 						browsers,
 						{
 							allowZeroSubversions: true,
-							allowHigherVersions:  true
+							allowHigherVersions: true
 						}
 					)
 				).toEqual([
 					{
 						...regExps[0],
-						sourceRegExp:           regExps[0].regExp,
-						sourceRegExpString:     regExpToString(regExps[0].regExp),
-						regExp:                 /Chrome (64|(6[5-9]|[7-9]\d|\d{3,})) (\d+) (\d+)/,
-						regExpString:           'Chrome (64|(6[5-9]|[7-9]\\d|\\d{3,})) (\\d+) (\\d+)',
+						sourceRegExp: regExps[0].regExp,
+						sourceRegExpString: regExpToString(regExps[0].regExp),
+						regExp: /Chrome (64|(6[5-9]|[7-9]\d|\d{3,})) (\d+) (\d+)/,
+						regExpString: 'Chrome (64|(6[5-9]|[7-9]\\d|\\d{3,})) (\\d+) (\\d+)',
 						requestVersionsStrings: regExps[0].requestVersions.map(_ => _.join('.'))
 					},
 					{
 						...regExps[2],
-						sourceRegExp:           regExps[2].regExp,
-						sourceRegExpString:     regExpToString(regExps[2].regExp),
-						regExpString:           regExpToString(regExps[2].regExp),
+						sourceRegExp: regExps[2].regExp,
+						sourceRegExpString: regExpToString(regExps[2].regExp),
+						regExpString: regExpToString(regExps[2].regExp),
 						requestVersionsStrings: regExps[2].requestVersions.map(_ => _.join('.'))
 					}
 				]);

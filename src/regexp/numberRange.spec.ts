@@ -3,13 +3,9 @@ import {
 } from './numberRange';
 
 describe('RegExp', () => {
-
 	describe('numberRange', () => {
-
 		describe('rangeToRegExp', () => {
-
 			it('should return number pattern for \'all\' version', () => {
-
 				expect(
 					rangeToRegExp('all' as any)
 				).toBe(
@@ -18,7 +14,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return ray pattern', () => {
-
 				expect(
 					rangeToRegExp(6)
 				).toBe(
@@ -27,7 +22,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return segment pattern', () => {
-
 				expect(
 					rangeToRegExp(6, 8)
 				).toBe(

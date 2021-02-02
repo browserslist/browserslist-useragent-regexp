@@ -11,24 +11,20 @@ import {
 } from './optimize';
 
 describe('Browsers', () => {
-
 	describe('optimize', () => {
-
 		describe('mergeBrowserVersions', () => {
-
 			it('should merge browsers versions', () => {
-
 				const browsers: IBrowser[] = [
 					{
-						family:  'firefox',
+						family: 'firefox',
 						version: [10, 0, 0]
 					},
 					{
-						family:  'firefox',
+						family: 'firefox',
 						version: [11, 0, 0]
 					},
 					{
-						family:  'chrome',
+						family: 'chrome',
 						version: [11, 12, 0]
 					}
 				];
@@ -49,9 +45,7 @@ describe('Browsers', () => {
 		});
 
 		describe('versionsListToRanges', () => {
-
 			it('should collapse ranges', () => {
-
 				const versions: ISemver[] = [
 					[11, 0, 0],
 					[12, 0, 0],
@@ -207,7 +201,6 @@ describe('Browsers', () => {
 			});
 
 			it('should do not touch single versions', () => {
-
 				expect(
 					versionsListToRanges([
 						[10, 0, 0]
@@ -229,9 +222,7 @@ describe('Browsers', () => {
 		});
 
 		describe('browserVersionsToRanges', () => {
-
 			it('should collapse ranges', () => {
-
 				const browsers = new Map<string, ISemver[]>([
 					['chrome', [
 						[11, 0, 0],
