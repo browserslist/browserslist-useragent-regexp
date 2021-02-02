@@ -17,8 +17,8 @@
 [deps]: https://david-dm.org/browserslist/browserslist-useragent-regexp.svg
 [deps-url]: https://david-dm.org/browserslist/browserslist-useragent-regexp
 
-[build]: http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp/master.svg
-[build-url]: https://travis-ci.com/browserslist/browserslist-useragent-regexp
+[build]: https://img.shields.io/github/workflow/status/browserslist/browserslist-useragent-regexp/CI.svg
+[build-url]: https://github.com/browserslist/browserslist-useragent-regexp/actions
 
 [coverage]: https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg
 [coverage-url]: https://coveralls.io/r/browserslist/browserslist-useragent-regexp
