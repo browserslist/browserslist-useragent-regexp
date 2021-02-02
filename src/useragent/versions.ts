@@ -7,20 +7,18 @@ import {
 
 /**
  * Get browser min and max versions for given useragent RegExp.
- * @param  regExp - Target RegExp.
- * @return Min and max versions.
+ * @param regExp - Target RegExp.
+ * @returns Min and max versions.
  */
 export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
-
 	const regExpString = regExpToString(regExp);
 
 	/* istanbul ignore next */
 	switch (true) {
-
 		/**
 		 * https://developers.whatismybrowser.com/useragents/explore/software_name/fennec/
 		 */
-		case /Fennec/.test(regExpString):
+		case regExpString.includes('Fennec'):
 			return [
 				null,
 				[31, 0, 0]
@@ -29,7 +27,7 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 		/**
 		 * https://developers.whatismybrowser.com/useragents/explore/software_name/minefield/
 		 */
-		case /Minefield/.test(regExpString):
+		case regExpString.includes('Minefield'):
 			return [
 				[3, 0, 0],
 				[4, 0, 0]
@@ -38,7 +36,7 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 		/**
 		 * https://wiki.mozilla.org/Firefox/Namoroka
 		 */
-		case /Namoroka/.test(regExpString):
+		case regExpString.includes('Namoroka'):
 			return [
 				[3, 6, 0],
 				[3, 6, 0]
@@ -47,7 +45,7 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 		/**
 		 * https://developers.whatismybrowser.com/useragents/explore/software_name/shiretoko
 		 */
-		case /Shiretoko/.test(regExpString):
+		case regExpString.includes('Shiretoko'):
 			return [
 				[3, 0, 0],
 				[3, 5, 0]
@@ -56,7 +54,7 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 		/**
 		 * https://developers.whatismybrowser.com/useragents/explore/operating_system_name/android
 		 */
-		case /CrMo/.test(regExpString):
+		case regExpString.includes('CrMo'):
 			return [
 				[16, 0, 0],
 				[16, 0, 0]
@@ -65,7 +63,7 @@ export function getMinMaxVersions(regExp: RegExp): [ISemver, ISemver] {
 		/**
 		 * https://help.opera.com/en/operas-archived-history/
 		 */
-		case /Opera\)\\\/9\.8/.test(regExpString):
+		case regExpString.includes('Opera)\\/9.8'):
 			return [
 				null,
 				[12, 15, 0]

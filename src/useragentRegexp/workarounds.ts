@@ -17,7 +17,6 @@ const patches: IBrowserPatch[] = [
 	 */
 	{
 		test(browsers) {
-
 			const chromeVersions = browsers.get('chrome');
 			const edgeVersions = browsers.get('edge');
 			const hasBrowsers = chromeVersions && edgeVersions;
@@ -32,7 +31,6 @@ const patches: IBrowserPatch[] = [
 			return minChromeVersion < 74 && minEdgeVersion <= 18;
 		},
 		patch(regExpInfo) {
-
 			const {
 				family,
 				regExpString,
@@ -52,7 +50,7 @@ const patches: IBrowserPatch[] = [
 
 			return {
 				...regExpInfo,
-				regExp:       patchedRegExp,
+				regExp: patchedRegExp,
 				regExpString: patchedRegExpString
 			};
 		}
@@ -65,7 +63,6 @@ const patches: IBrowserPatch[] = [
 			return browsers.has('safari');
 		},
 		patch(regExpInfo) {
-
 			const {
 				family,
 				regExpString
@@ -80,7 +77,7 @@ const patches: IBrowserPatch[] = [
 
 			return {
 				...regExpInfo,
-				regExp:       patchedRegExp,
+				regExp: patchedRegExp,
 				regExpString: patchedRegExpString
 			};
 		}
@@ -88,22 +85,18 @@ const patches: IBrowserPatch[] = [
 ];
 
 export function patchRegExps(regExps: IBrowserVersionedRegExp[], browsers: IBrowsers) {
-
 	const tested = new Map<IBrowserPatch, boolean>();
 
 	/* istanbul ignore next */
-	return regExps.map(regExp =>
-		patches.reduce((regExp, patch) => {
+	return regExps.map(regExp => patches.reduce((regExp, patch) => {
+		if (!tested.has(patch)) {
+			tested.set(patch, patch.test(browsers));
+		}
 
-			if (!tested.has(patch)) {
-				tested.set(patch, patch.test(browsers));
-			}
+		if (tested.get(patch)) {
+			return patch.patch(regExp);
+		}
 
-			if (tested.get(patch)) {
-				return patch.patch(regExp);
-			}
-
-			return regExp;
-		}, regExp)
-	);
+		return regExp;
+	}, regExp));
 }

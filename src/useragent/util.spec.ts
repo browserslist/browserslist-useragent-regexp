@@ -9,13 +9,9 @@ import {
 } from './util';
 
 describe('UserAgent', () => {
-
 	describe('util', () => {
-
 		describe('uniq', () => {
-
 			it('should filter duplicate elements', () => {
-
 				expect(
 					uniq([1, 1, 2, 3, 3, 3, 4])
 				).toEqual(
@@ -25,7 +21,6 @@ describe('UserAgent', () => {
 		});
 
 		describe('someSemverMatched', () => {
-
 			const versions: ISemver[] = [
 				[10, 0, 0],
 				[11, 0, 0],
@@ -33,7 +28,6 @@ describe('UserAgent', () => {
 			];
 
 			it('should correct match semver', () => {
-
 				expect(
 					someSemverMatched(
 						[9, 0, 0],
@@ -92,9 +86,7 @@ describe('UserAgent', () => {
 		});
 
 		describe('hasVersion', () => {
-
 			it('should correct test input data', () => {
-
 				expect(
 					hasVersion(
 						true,
@@ -134,9 +126,7 @@ describe('UserAgent', () => {
 		});
 
 		describe('familyMatched', () => {
-
 			it('should correct match browser family from RegExp', () => {
-
 				expect(
 					familyMatched(
 						true,
@@ -179,7 +169,6 @@ describe('UserAgent', () => {
 			});
 
 			it('should correct match exact browser family', () => {
-
 				expect(
 					familyMatched(
 						true,
@@ -202,7 +191,6 @@ describe('UserAgent', () => {
 			});
 
 			it('should correct match browser family', () => {
-
 				expect(
 					familyMatched(
 						false,

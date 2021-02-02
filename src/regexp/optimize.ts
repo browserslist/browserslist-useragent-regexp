@@ -12,11 +12,10 @@ export const CHARCLASS_UNESCAPES = /[/.$*+?[{}|()]/;
  * Optimize RegExp string:
  * - remove unnecessary braces;
  * - remove unnecessary escapes in ranges.
- * @param  regExpStr - RegExp string to optimize.
- * @return Optimized RegExp string.
+ * @param regExpStr - RegExp string to optimize.
+ * @returns Optimized RegExp string.
  */
 export function optimize(regExpStr: string) {
-
 	const regExpStrLength = regExpStr.length;
 	let inGroup = false;
 	let skip = false;
@@ -28,7 +27,6 @@ export function optimize(regExpStr: string) {
 	let optimizedRegExpStr = '';
 
 	for (let i = 0; i < regExpStrLength; i++) {
-
 		char = regExpStr[i];
 		prevChar = regExpStr[i - 1];
 		nextChar = regExpStr[i + 1];
@@ -38,7 +36,6 @@ export function optimize(regExpStr: string) {
 			&& prevChar !== ESCAPE_SYMBOL
 			&& char === '('
 		) {
-
 			if (inGroup) {
 				optimizedRegExpStr += groupAccum;
 			}
@@ -66,7 +63,6 @@ export function optimize(regExpStr: string) {
 			&& char === ')'
 			&& inGroup
 		) {
-
 			inGroup = false;
 			postfix = capturePostfix(regExpStr, i + 1);
 			groupAccum += postfix;

@@ -9,12 +9,11 @@ export const ESCAPE_SYMBOL = '\\';
 
 /**
  * Join RegExp parts with "or".
- * @param  parts - Some RegExp parts.
- * @param  wrapRequired - Should always wrap with braces.
- * @return Joined parts.
+ * @param parts - Some RegExp parts.
+ * @param wrapRequired - Should always wrap with braces.
+ * @returns Joined parts.
  */
 export function joinParts(parts: string[], wrapRequired = false) {
-
 	const joined = parts.join('|');
 
 	return wrapRequired || parts.length > 1
@@ -24,8 +23,8 @@ export function joinParts(parts: string[], wrapRequired = false) {
 
 /**
  * Join RegExps with "or".
- * @param  versionedBrowsersRegExps - RegExps strings array.
- * @return Joined RegExps string.
+ * @param versionedBrowsersRegExps - RegExps strings array.
+ * @returns Joined RegExps string.
  */
 export function joinVersionedBrowsersRegExps(versionedBrowsersRegExps: IBrowserVersionedRegExp[]) {
 	return versionedBrowsersRegExps
@@ -35,8 +34,8 @@ export function joinVersionedBrowsersRegExps(versionedBrowsersRegExps: IBrowserV
 
 /**
  * Contains number pattern or not.
- * @param  regExp - Target string or RegExp.
- * @return Has or not.
+ * @param regExp - Target string or RegExp.
+ * @returns Has or not.
  */
 export function hasNumberPattern(regExp: string|RegExp) {
 	return regExp.toString().includes(BRACED_NUMBER_PATTERN);
@@ -45,7 +44,7 @@ export function hasNumberPattern(regExp: string|RegExp) {
 /**
  * Find number patterns count.
  * @param regExp - Target string or RegExp.
- * @return Number patterns count.
+ * @returns Number patterns count.
  */
 export function getNumberPatternsCount(regExp: string|RegExp) {
 	return regExp.toString().split(BRACED_NUMBER_PATTERN).length - 1;
@@ -53,8 +52,8 @@ export function getNumberPatternsCount(regExp: string|RegExp) {
 
 /**
  * Convert RegExp to string without slashes.
- * @param  regExp - Target RegExp.
- * @return RegExp string without slashes.
+ * @param regExp - Target RegExp.
+ * @returns RegExp string without slashes.
  */
 export function regExpToString(regExp: RegExp) {
 	return regExp
@@ -64,24 +63,23 @@ export function regExpToString(regExp: RegExp) {
 
 /**
  * Replace number patterns.
- * @param  regExp - Target RegExp.
- * @param  numbers - Number patterns to paste.
- * @param  numberPatternsCount - Number patterns count to replace.
- * @return RegExp string with replaced number patterns.
+ * @param regExp - Target RegExp.
+ * @param numbers - Number patterns to paste.
+ * @param numberPatternsCount - Number patterns count to replace.
+ * @returns RegExp string with replaced number patterns.
  */
 export function replaceNumberPatterns(
 	regExp: string|RegExp,
 	numbers: string[],
 	numberPatternsCount?: number
 ) {
-
 	const strRegExp = typeof regExp === 'string'
 		? regExp
 		: regExpToString(regExp);
 	const numbersToReplace = typeof numberPatternsCount === 'number'
 		&& numberPatternsCount < numbers.length
-			? numbers.slice(0, numberPatternsCount)
-			: numbers;
+		? numbers.slice(0, numberPatternsCount)
+		: numbers;
 	const numberedStrRegExp = numbersToReplace.reduce(
 		(_, num) => _.replace(BRACED_NUMBER_PATTERN, num),
 		strRegExp
@@ -92,8 +90,8 @@ export function replaceNumberPatterns(
 
 /**
  * Transform number to digits array.
- * @param  num - Target number.
- * @return Digits array.
+ * @param num - Target number.
+ * @returns Digits array.
  */
 export function numberToDigits(num: string|number) {
 	return Array.from(num.toString()).map(Number);
@@ -101,13 +99,12 @@ export function numberToDigits(num: string|number) {
 
 /**
  * Skip every char inside square braces.
- * @param  skip - Current skip state.
- * @param  prevChar - Previous char.
- * @param  char - Current char to check.
- * @return Should skip this char or not.
+ * @param skip - Current skip state.
+ * @param prevChar - Previous char.
+ * @param char - Current char to check.
+ * @returns Should skip this char or not.
  */
 export function skipSquareBraces(skip: boolean, prevChar: string, char: string) {
-
 	if (char === '['
 		&& prevChar !== ESCAPE_SYMBOL
 	) {
@@ -125,23 +122,20 @@ export function skipSquareBraces(skip: boolean, prevChar: string, char: string) 
 
 /**
  * Get possible RegExp group postfix.
- * @param  regExpStr - Whole RegExp string.
- * @param  startFrom - Index to start capture.
- * @return RegExp group postfix part.
+ * @param regExpStr - Whole RegExp string.
+ * @param startFrom - Index to start capture.
+ * @returns RegExp group postfix part.
  */
 export function capturePostfix(regExpStr: string, startFrom: number) {
-
 	let char = regExpStr[startFrom];
 
 	switch (char) {
-
 		case '+':
 		case '*':
 		case '?':
 			return char;
 
 		case '(': {
-
 			const nextChar = regExpStr[startFrom + 1];
 			const afterNextChar = regExpStr[startFrom + 2];
 
@@ -169,7 +163,6 @@ export function capturePostfix(regExpStr: string, startFrom: number) {
 	let postfix = '';
 
 	for (let i = startFrom; i < regExpStrLength; i++) {
-
 		char = regExpStr[i];
 		prevChar = regExpStr[i - 1];
 		skip = skipSquareBraces(skip, prevChar, char);

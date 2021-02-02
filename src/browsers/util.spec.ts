@@ -8,13 +8,9 @@ import {
 } from './util';
 
 describe('Browsers', () => {
-
 	describe('util', () => {
-
 		describe('normalizeBrowserFamily', () => {
-
 			it('should correct normalize browser family', () => {
-
 				const shirtname = Object.keys(BROWSERS_SHIRTNAMES)[0];
 				const strWithShirtname = `foo ${shirtname} bar`;
 				const strWithFullname = `foo ${BROWSERS_SHIRTNAMES[shirtname]} bar`;
@@ -27,7 +23,6 @@ describe('Browsers', () => {
 			});
 
 			it('should correct normalize IE browsers', () => {
-
 				expect(
 					normalizeBrowserFamily('ie')
 				).toBe(
@@ -42,7 +37,6 @@ describe('Browsers', () => {
 			});
 
 			it('should do not change string without family shirtname', () => {
-
 				const str = 'foo bar';
 
 				expect(
@@ -54,9 +48,7 @@ describe('Browsers', () => {
 		});
 
 		describe('compareArrays', () => {
-
 			it('should correct compare arrays', () => {
-
 				expect(
 					compareArrays([], [])
 				).toBe(
@@ -102,9 +94,7 @@ describe('Browsers', () => {
 		});
 
 		describe('numbersToRanges', () => {
-
 			it('should get first and last elements form array', () => {
-
 				expect(
 					numbersToRanges([5, 6, 7])
 				).toEqual(
@@ -119,7 +109,6 @@ describe('Browsers', () => {
 			});
 
 			it('should get first element form one-element-array', () => {
-
 				expect(
 					numbersToRanges([8])
 				).toBe(
@@ -128,7 +117,6 @@ describe('Browsers', () => {
 			});
 
 			it('should return number', () => {
-
 				expect(
 					numbersToRanges(10)
 				).toBe(

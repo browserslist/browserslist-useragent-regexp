@@ -3,13 +3,9 @@ import {
 } from './numbersPart';
 
 describe('RegExp', () => {
-
 	describe('numbersPart', () => {
-
 		describe('getNumberPatternsPart', () => {
-
 			it('should work with RegExp', () => {
-
 				expect(
 					getNumberPatternsPart(/Chrome(\d+)/)
 				).toBe(
@@ -18,7 +14,6 @@ describe('RegExp', () => {
 			});
 
 			it('should work with string', () => {
-
 				expect(
 					getNumberPatternsPart('Chrome(\\d+)')
 				).toBe(
@@ -27,7 +22,6 @@ describe('RegExp', () => {
 			});
 
 			it('should ignore square braces', () => {
-
 				expect(
 					getNumberPatternsPart('[(\\d+)](\\d+)')
 				).toBe(
@@ -36,7 +30,6 @@ describe('RegExp', () => {
 			});
 
 			it('should handle escaped braces', () => {
-
 				expect(
 					getNumberPatternsPart('\\(\\d+) (not a number) (\\d+)')
 				).toBe(
@@ -45,7 +38,6 @@ describe('RegExp', () => {
 			});
 
 			it('should handle nested groups', () => {
-
 				expect(
 					getNumberPatternsPart('Chrome (Canary(\\d+)) (\\d+)(test)')
 				).toBe(
@@ -54,7 +46,6 @@ describe('RegExp', () => {
 			});
 
 			it('should handle only given number patterns count', () => {
-
 				expect(
 					getNumberPatternsPart('(\\d+)1(\\d+)2(\\d+)3', 2)
 				).toBe(
@@ -75,7 +66,6 @@ describe('RegExp', () => {
 			});
 
 			it('should capture group postfix', () => {
-
 				expect(
 					getNumberPatternsPart('(\\d+)+(some)')
 				).toBe(

@@ -1,3 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
 	argv,
 	read,
@@ -18,7 +24,7 @@ import {
 	joinVersionedBrowsersRegExps,
 	isAllVersion,
 	defaultOptions
-} from './';
+} from '.';
 
 const {
 	help,
@@ -34,7 +40,6 @@ const {
 ], []);
 
 if (help) {
-
 	end();
 
 	const optionsTable = new Table();
@@ -95,7 +100,6 @@ const options = {
 end();
 
 if (verbose) {
-
 	const browsersList = getBrowsersList(options);
 	const mergedBrowsers = mergeBrowserVersions(browsersList);
 
@@ -106,11 +110,9 @@ if (verbose) {
 	const browsersTable = new Table();
 
 	mergedBrowsers.forEach((versions, browser) => {
-
 		browsersTable.cell('Browser', chalk.yellow(browser));
 
 		versions.forEach((version, i) => {
-
 			if (isAllVersion(version)) {
 				browsersTable.cell(`Version ${i}`, version[0]);
 			} else {
@@ -142,7 +144,6 @@ if (verbose) {
 		resultMaxVersion,
 		regExp
 	}) => {
-
 		const regExpsTable = new Table();
 
 		regExpsTable.cell('Name', chalk.yellow('Family:'));

@@ -9,13 +9,9 @@ import {
 } from './util';
 
 describe('RegExp', () => {
-
 	describe('util', () => {
-
 		describe('joinParts', () => {
-
 			it('should wrap few parts with braces', () => {
-
 				expect(
 					joinParts(['1', '2'])
 				).toBe(
@@ -24,7 +20,6 @@ describe('RegExp', () => {
 			});
 
 			it('should not wrap one part with braces', () => {
-
 				expect(
 					joinParts(['1'])
 				).toBe(
@@ -33,7 +28,6 @@ describe('RegExp', () => {
 			});
 
 			it('should wrap one part with braces', () => {
-
 				expect(
 					joinParts(['1'], true)
 				).toBe(
@@ -43,9 +37,7 @@ describe('RegExp', () => {
 		});
 
 		describe('joinVersionedBrowsersRegExps', () => {
-
 			it('should correct join', () => {
-
 				const regExps: any = [
 					{
 						regExpString: '1'
@@ -70,9 +62,7 @@ describe('RegExp', () => {
 		});
 
 		describe('hasNumberPattern', () => {
-
 			it('should find \'(\\d+)\'', () => {
-
 				expect(
 					hasNumberPattern('__(\\d+)__')
 				).toBe(
@@ -112,9 +102,7 @@ describe('RegExp', () => {
 		});
 
 		describe('getNumberPatternsCount', () => {
-
 			it('should find correct number patterns count', () => {
-
 				expect(
 					getNumberPatternsCount('__(\\d+)__')
 				).toBe(
@@ -154,9 +142,7 @@ describe('RegExp', () => {
 		});
 
 		describe('regExpToString', () => {
-
 			it('should convert RegExp to string without slashes', () => {
-
 				expect(
 					regExpToString(/__(\d+)__/)
 				).toBe(
@@ -166,11 +152,9 @@ describe('RegExp', () => {
 		});
 
 		describe('replaceNumberPatterns', () => {
-
 			const numbers = ['1', '2', '3'];
 
 			it('should replace in RegExp', () => {
-
 				expect(
 					replaceNumberPatterns(/__(\d+)__/, numbers)
 				).toBe(
@@ -197,7 +181,6 @@ describe('RegExp', () => {
 			});
 
 			it('should replace in string', () => {
-
 				expect(
 					replaceNumberPatterns('__(\\d+)__', numbers)
 				).toBe(
@@ -224,7 +207,6 @@ describe('RegExp', () => {
 			});
 
 			it('should replace only given count', () => {
-
 				expect(
 					replaceNumberPatterns('__(\\d+)__(\\d+)__(\\d+)', numbers, 3)
 				).toBe(
@@ -252,9 +234,7 @@ describe('RegExp', () => {
 		});
 
 		describe('numberToDigits', () => {
-
 			it('should transform string', () => {
-
 				expect(
 					numberToDigits('123')
 				).toEqual(
@@ -263,7 +243,6 @@ describe('RegExp', () => {
 			});
 
 			it('should transform number', () => {
-
 				expect(
 					numberToDigits(123)
 				).toEqual(

@@ -16,22 +16,19 @@ import {
 
 /**
  * Merge browser info object to map with versions.
- * @param  browsers - Browser info object to merge.
- * @return Merged browsers map.
+ * @param browsers - Browser info object to merge.
+ * @returns Merged browsers map.
  */
 export function mergeBrowserVersions(browsers: IBrowser[]) {
-
-	const merge: IBrowsers = new Map();
+	const merge: IBrowsers = new Map<string, ISemver[]>();
 
 	browsers.forEach(({
 		family,
 		version
 	}) => {
-
 		const versions = merge.get(family);
 
 		if (versions) {
-
 			const strVersion = version.join('.');
 
 			if (versions.every(_ => _.join('.') !== strVersion)) {
@@ -45,13 +42,10 @@ export function mergeBrowserVersions(browsers: IBrowser[]) {
 	});
 
 	merge.forEach((versions) => {
-
 		versions.sort((a, b) => {
-
 			for (const i in a) {
-
 				if (a[i] !== b[i]) {
-					return (a[i] as number) - (b[i] as number);
+					return a[i] - b[i];
 				}
 			}
 
@@ -64,11 +58,10 @@ export function mergeBrowserVersions(browsers: IBrowser[]) {
 
 /**
  * Versions to ranged versions.
- * @param  versions - Semver versions list.
- * @return Ranged versions list.
+ * @param versions - Semver versions list.
+ * @returns Ranged versions list.
  */
 export function versionsListToRanges(versions: ISemver[]) {
-
 	if (versions.length < 2) {
 		return versions;
 	}
@@ -83,17 +76,14 @@ export function versionsListToRanges(versions: ISemver[]) {
 	let part: SemverPart = null;
 
 	for (let i = 1; i < max; i++) {
-
 		prev = versions[i - 1];
 		current = versions[i] || [];
 
 		for (let p = SemverPart.Major; p <= SemverPart.Patch; p++) {
-
 			if ((p === part || part === null)
 				&& prev[p] + 1 === current[p]
 				&& compareArrays(prev, current, p + 1)
 			) {
-
 				part = p;
 
 				if (p === SemverPart.Major) {
@@ -137,12 +127,11 @@ export function versionsListToRanges(versions: ISemver[]) {
 
 /**
  * Browser versions to ranged versions.
- * @param  browsers - Browser map with versions.
- * @return Browser map with ranged versions.
+ * @param browsers - Browser map with versions.
+ * @returns Browser map with ranged versions.
  */
 export function browserVersionsToRanges(browsers: IBrowsers) {
-
-	const ranged: IRangedBrowsers = new Map();
+	const ranged: IRangedBrowsers = new Map<string, IRangedSemver[]>();
 
 	browsers.forEach((versions, family) => {
 		ranged.set(family, versionsListToRanges(versions));

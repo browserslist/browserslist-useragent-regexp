@@ -9,11 +9,8 @@ import {
 } from './semver';
 
 describe('Semver', () => {
-
 	describe('semverify', () => {
-
 		it('should semverify strings', () => {
-
 			expect(
 				semverify('10')
 			).toEqual(
@@ -34,7 +31,6 @@ describe('Semver', () => {
 		});
 
 		it('should semverify array', () => {
-
 			expect(
 				semverify([10])
 			).toEqual(
@@ -55,7 +51,6 @@ describe('Semver', () => {
 		});
 
 		it('should ignore \'all\' version', () => {
-
 			expect(
 				semverify('all')
 			).toEqual(
@@ -71,9 +66,7 @@ describe('Semver', () => {
 	});
 
 	describe('compareSemvers', () => {
-
 		it('should handle \'all\' version', () => {
-
 			expect(
 				compareSemvers(
 					[10, 1, 1],
@@ -86,15 +79,13 @@ describe('Semver', () => {
 		});
 
 		describe('allowHigherVersions: false', () => {
-
 			const options = {
-				ignoreMinor:         false,
-				ignorePatch:         false,
+				ignoreMinor: false,
+				ignorePatch: false,
 				allowHigherVersions: false
 			};
 
 			it('should compare all parts', () => {
-
 				expect(
 					compareSemvers(
 						[10, 1, 1],
@@ -127,7 +118,6 @@ describe('Semver', () => {
 			});
 
 			it('should compare ignoring patch', () => {
-
 				const ignorePatchOptions = {
 					...options,
 					ignorePatch: true
@@ -175,7 +165,6 @@ describe('Semver', () => {
 			});
 
 			it('should compare ignoring minor', () => {
-
 				const ignoreMinorOptions = {
 					...options,
 					ignoreMinor: true
@@ -214,15 +203,13 @@ describe('Semver', () => {
 		});
 
 		describe('allowHigherVersions: true', () => {
-
 			const options = {
-				ignoreMinor:         false,
-				ignorePatch:         false,
+				ignoreMinor: false,
+				ignorePatch: false,
 				allowHigherVersions: true
 			};
 
 			it('should compare all parts', () => {
-
 				expect(
 					compareSemvers(
 						[10, 1, 1],
@@ -275,7 +262,6 @@ describe('Semver', () => {
 			});
 
 			it('should compare ignoring patch', () => {
-
 				const ignorePatchOptions = {
 					...options,
 					ignorePatch: true
@@ -313,7 +299,6 @@ describe('Semver', () => {
 			});
 
 			it('should compare ignoring minor', () => {
-
 				const ignoreMinorOptions = {
 					...options,
 					ignoreMinor: true
@@ -353,18 +338,15 @@ describe('Semver', () => {
 	});
 
 	describe('getRequiredSemverPartsCount', () => {
-
 		describe('allowZeroSubversions: false', () => {
-
 			const options = {
-				ignoreMinor:          false,
-				ignorePatch:          false,
+				ignoreMinor: false,
+				ignorePatch: false,
 				allowZeroSubversions: false
 			};
 			const version: ISemver = [1, 2, 3];
 
 			it('should require all parts', () => {
-
 				expect(
 					getRequiredSemverPartsCount(version, options)
 				).toBe(
@@ -373,7 +355,6 @@ describe('Semver', () => {
 			});
 
 			it('should require major and minor parts', () => {
-
 				const ignorePatchOptions = {
 					...options,
 					ignorePatch: true
@@ -387,7 +368,6 @@ describe('Semver', () => {
 			});
 
 			it('should require major part', () => {
-
 				const ignoreMinorOptions = {
 					...options,
 					ignoreMinor: true
@@ -402,10 +382,9 @@ describe('Semver', () => {
 		});
 
 		describe('allowZeroSubversions: true', () => {
-
 			const options = {
-				ignoreMinor:          false,
-				ignorePatch:          false,
+				ignoreMinor: false,
+				ignorePatch: false,
 				allowZeroSubversions: true
 			};
 			const version: ISemver = [1, 2, 3];
@@ -413,7 +392,6 @@ describe('Semver', () => {
 			const zerosVersion: ISemver = [1, 0, 0];
 
 			it('should require all parts', () => {
-
 				expect(
 					getRequiredSemverPartsCount(version, options)
 				).toBe(
@@ -434,7 +412,6 @@ describe('Semver', () => {
 			});
 
 			it('should require major and minor parts', () => {
-
 				const ignorePatchOptions = {
 					...options,
 					ignorePatch: true
@@ -460,7 +437,6 @@ describe('Semver', () => {
 			});
 
 			it('should require major part', () => {
-
 				const ignoreMinorOptions = {
 					...options,
 					ignoreMinor: true
@@ -488,15 +464,13 @@ describe('Semver', () => {
 	});
 
 	describe('rangedSemverToRegExp', () => {
-
 		const options = {
-			ignoreMinor:         false,
-			ignorePatch:         false,
+			ignoreMinor: false,
+			ignorePatch: false,
 			allowHigherVersions: false
 		};
 
 		it('should return only numbers', () => {
-
 			expect(
 				rangedSemverToRegExp(
 					[11, 12, 0],
@@ -508,7 +482,6 @@ describe('Semver', () => {
 		});
 
 		it('should return only numbers patterns', () => {
-
 			expect(
 				rangedSemverToRegExp(
 					['all', 0, 0] as any,
@@ -520,7 +493,6 @@ describe('Semver', () => {
 		});
 
 		it('should return number pattern at patch', () => {
-
 			const ignorePatchOptions = {
 				...options,
 				ignorePatch: true
@@ -537,7 +509,6 @@ describe('Semver', () => {
 		});
 
 		it('should return number patterns at minor and patch', () => {
-
 			const ignoreMinorOptions = {
 				...options,
 				ignoreMinor: true
@@ -554,7 +525,6 @@ describe('Semver', () => {
 		});
 
 		it('should return ranged major', () => {
-
 			expect(
 				rangedSemverToRegExp(
 					[[11, 13], 12, 0],
@@ -566,7 +536,6 @@ describe('Semver', () => {
 		});
 
 		it('should return ranged major ray', () => {
-
 			const allowHigherOptions = {
 				...options,
 				allowHigherVersions: true

@@ -6,13 +6,12 @@ import {
 
 /**
  * Get digit pattern.
- * @param  from - Segment start.
- * @param  to - Segment end.
- * @param  zeros - Zeros to add as prefix.
- * @return Digit pattern.
+ * @param from - Segment start.
+ * @param to - Segment end.
+ * @param zeros - Zeros to add as prefix.
+ * @returns Digit pattern.
  */
 export function segmentRangeNumberPattern(from: number, to: number, zeros?: number) {
-
 	if (to < from) {
 		return '';
 	}
@@ -34,18 +33,16 @@ export function segmentRangeNumberPattern(from: number, to: number, zeros?: numb
 
 /**
  * Split segment range to decade ranges.
- * @param  from - Segment start.
- * @param  to - Segment end.
- * @return Ranges.
+ * @param from - Segment start.
+ * @param to - Segment end.
+ * @returns Ranges.
  */
 export function splitToDecadeRanges(from: number, to: number) {
-
 	const ranges: [number, number][] = [];
 	let num = from;
 	let decade = 1;
 
 	do {
-
 		decade *= 10;
 
 		if (num < decade) {
@@ -55,7 +52,6 @@ export function splitToDecadeRanges(from: number, to: number) {
 			]);
 			num = decade;
 		}
-
 	} while (decade <= to);
 
 	return ranges;
@@ -63,12 +59,11 @@ export function splitToDecadeRanges(from: number, to: number) {
 
 /**
  * Get common and diffs of two numbers (arrays of digits).
- * @param  a - Digits.
- * @param  b - Other digits.
- * @return Common part and diffs.
+ * @param a - Digits.
+ * @param b - Other digits.
+ * @returns Common part and diffs.
  */
 export function splitCommonDiff(a: number[], b: number[]): [string, number, number] {
-
 	const len = a.length;
 
 	if (len !== b.length || a[0] !== b[0]) {
@@ -82,7 +77,6 @@ export function splitCommonDiff(a: number[], b: number[]): [string, number, numb
 	let diffB = '';
 
 	for (let i = 1; i < len; i++) {
-
 		currA = a[i];
 		currB = b[i];
 
@@ -103,13 +97,12 @@ export function splitCommonDiff(a: number[], b: number[]): [string, number, numb
 
 /**
  * Get shirter variant.
- * @param  from Segment start.
- * @param  to - Segment end.
- * @param  rangeNumberPatterns - Numeric segment patterns.
- * @return Enum or numeric segment patterns.
+ * @param from - Segment start.
+ * @param to - Segment end.
+ * @param rangeNumberPatterns - Numeric segment patterns.
+ * @returns Enum or numeric segment patterns.
  */
 export function enumOrRange(from: number, to: number, rangeNumberPatterns: string[]) {
-
 	const rangePartsCount = rangeNumberPatterns.length;
 	const nums: string[] = [];
 	let rangeIndex = 0;
@@ -117,12 +110,10 @@ export function enumOrRange(from: number, to: number, rangeNumberPatterns: strin
 	let enumSymbolsCount = 0;
 
 	for (let num = from; num <= to; num++) {
-
 		nums.push(num.toString());
 		enumSymbolsCount += Math.floor(Math.log10(num) + 1) + 1;
 
 		while (enumSymbolsCount > rangeSymbolsCount) {
-
 			if (rangeIndex >= rangePartsCount) {
 				return rangeNumberPatterns;
 			}
@@ -137,18 +128,16 @@ export function enumOrRange(from: number, to: number, rangeNumberPatterns: strin
 /**
  * Get segment patterns.
  * @todo   Optomize. E.g. 32-99.
- * @param  from - Segment start.
- * @param  to - Segment end.
- * @param  digitsInNumber - How many digits should be en number. Will be filled by zeros.
- * @return Segment patterns.
+ * @param from - Segment start.
+ * @param to - Segment end.
+ * @param digitsInNumber - How many digits should be en number. Will be filled by zeros.
+ * @returns Segment patterns.
  */
-export function segmentToNumberPatterns(from: number, to: number, digitsInNumber = 0) {
-
+export function segmentToNumberPatterns(from: number, to: number, digitsInNumber = 0): string[] {
 	const fromDigits = numberToDigits(from);
 	const digitsCount = fromDigits.length;
 
 	if (from < 10 && to < 10 || from === to) {
-
 		const zeros = digitsInNumber - digitsCount;
 
 		return [
@@ -159,12 +148,9 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 	const toDigits = numberToDigits(to);
 
 	if (digitsCount !== toDigits.length) {
-
 		const decadeRanges = splitToDecadeRanges(from, to);
-		const parts = [].concat(
-			...decadeRanges.map(([from, to]) =>
-				segmentToNumberPatterns(from, to, digitsInNumber)
-			)
+		const parts = ([] as string[]).concat(
+			...decadeRanges.map(([from, to]) => segmentToNumberPatterns(from, to, digitsInNumber))
 		);
 
 		return parts;
@@ -173,7 +159,6 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 	const commonStart = splitCommonDiff(fromDigits, toDigits);
 
 	if (Array.isArray(commonStart)) {
-
 		const [
 			common,
 			from,
@@ -194,12 +179,10 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 	);
 	const parts = [
 		...range.map((_, i) => {
-
 			const ri = digitsCount - i - 1;
 			const d = Number(i > 0);
 
 			return fromDigits.map((digit, j) => {
-
 				if (j < ri) {
 					return digit;
 				}
@@ -212,17 +195,14 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 			}).join('');
 		}),
 		// but output more readable
-		...(middleSegment
+		...middleSegment
 			? [`${middleSegment}${DIGIT_PATTERN.repeat(digitsCount - 1)}`]
-			: []
-		),
+			: [],
 		...range.map((_, i) => {
-
 			const ri = digitsCount - i - 1;
 			const d = Number(i > 0);
 
 			return toDigits.map((digit, j) => {
-
 				if (j < ri) {
 					return digit;
 				}
@@ -241,9 +221,9 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 
 /**
  * Get segment or enum patterns.
- * @param  from - Segment start.
- * @param  to - Segment end.
- * @return Enum or numeric segment patterns.
+ * @param from - Segment start.
+ * @param to - Segment end.
+ * @returns Enum or numeric segment patterns.
  */
 export function segmentToNumberPatternsOrEnum(from: number, to: number) {
 	return enumOrRange(from, to, segmentToNumberPatterns(from, to));

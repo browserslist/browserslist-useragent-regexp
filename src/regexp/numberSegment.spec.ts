@@ -7,13 +7,9 @@ import {
 } from './numberSegment';
 
 describe('RegExp', () => {
-
 	describe('numberSegment', () => {
-
 		describe('segmentRangeNumberPattern', () => {
-
 			it('should return digit pattern', () => {
-
 				expect(
 					segmentRangeNumberPattern(0, 9)
 				).toBe(
@@ -22,7 +18,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return digit', () => {
-
 				expect(
 					segmentRangeNumberPattern(7, 7)
 				).toBe(
@@ -31,7 +26,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return digit range', () => {
-
 				expect(
 					segmentRangeNumberPattern(1, 8)
 				).toBe(
@@ -40,7 +34,6 @@ describe('RegExp', () => {
 			});
 
 			it('should not return invalid range', () => {
-
 				expect(
 					segmentRangeNumberPattern(9, 6)
 				).toBe(
@@ -49,7 +42,6 @@ describe('RegExp', () => {
 			});
 
 			it('should add `zeros', () => {
-
 				expect(
 					segmentRangeNumberPattern(3, 4, 3)
 				).toBe(
@@ -59,9 +51,7 @@ describe('RegExp', () => {
 		});
 
 		describe('splitToDecadeRanges', () => {
-
 			it('should split to decades', () => {
-
 				expect(
 					splitToDecadeRanges(0, 9)
 				).toEqual([
@@ -93,9 +83,7 @@ describe('RegExp', () => {
 		});
 
 		describe('splitCommonDiff', () => {
-
 			it('should not get common and diff', () => {
-
 				expect(
 					splitCommonDiff([1, 2], [3])
 				).toEqual(
@@ -110,7 +98,6 @@ describe('RegExp', () => {
 			});
 
 			it('should get common and diff', () => {
-
 				expect(
 					splitCommonDiff([1, 2], [1, 3])
 				).toEqual([
@@ -130,9 +117,7 @@ describe('RegExp', () => {
 		});
 
 		describe('enumOrRange', () => {
-
 			it('should return shirter variant', () => {
-
 				expect(
 					enumOrRange(12, 13, ['1[2-3]'])
 				).toEqual(
@@ -148,9 +133,7 @@ describe('RegExp', () => {
 		});
 
 		describe('segmentToNumberPatterns', () => {
-
 			it('should return digit range', () => {
-
 				expect(
 					segmentToNumberPatterns(0, 7)
 				).toEqual(
@@ -159,7 +142,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return digit pattern', () => {
-
 				expect(
 					segmentToNumberPatterns(7, 7)
 				).toEqual(
@@ -168,7 +150,6 @@ describe('RegExp', () => {
 			});
 
 			it('should correct handle range', () => {
-
 				expect(
 					segmentToNumberPatterns(32, 65)
 				).toEqual(
@@ -183,12 +164,16 @@ describe('RegExp', () => {
 			});
 
 			it('should correct handle big range', () => {
-
 				expect(
 					segmentToNumberPatterns(32, 256)
 				).toEqual([
-					'3[2-9]', '[4-8]\\d', '9\\d',
-					'10\\d', '1[1-9]\\d', '25[0-6]', '2[0-4]\\d' // feel free to optimize
+					'3[2-9]',
+					'[4-8]\\d',
+					'9\\d',
+					'10\\d',
+					'1[1-9]\\d',
+					'25[0-6]',
+					'2[0-4]\\d' // feel free to optimize
 				]);
 			});
 		});

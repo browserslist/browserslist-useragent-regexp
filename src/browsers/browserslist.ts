@@ -15,13 +15,12 @@ import {
 
 /**
  * Browsers strings to info objects.
- * @param  browsersList - Browsers strings with family and version.
- * @return Browser info objects.
+ * @param browsersList - Browsers strings with family and version.
+ * @returns Browser info objects.
  */
-export function parseBrowsersList(browsersList: string[]): IBrowser[] {
-	return [].concat(
+export function parseBrowsersList(browsersList: string[]) {
+	return ([] as IBrowser[]).concat(
 		...browsersList.map((browser) => {
-
 			const [
 				name,
 				...versions
@@ -38,15 +37,15 @@ export function parseBrowsersList(browsersList: string[]): IBrowser[] {
 
 /**
  * Request browsers list.
- * @param  options - Options to get browsers list.
- * @return Browser info objects.
+ * @param options - Options to get browsers list.
+ * @returns Browser info objects.
  */
-export function getBrowsersList({
-	browsers,
-	env,
-	path
-}: IBrowsersListRequest = {}) {
-
+export function getBrowsersList(options: IBrowsersListRequest = {}) {
+	const {
+		browsers,
+		env,
+		path
+	} = options;
 	const normalizedBrowsers = Array.isArray(browsers)
 		? browsers.map(normalizeBrowserFamily)
 		: browsers;

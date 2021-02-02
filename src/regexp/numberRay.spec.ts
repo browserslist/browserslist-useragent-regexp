@@ -5,13 +5,9 @@ import {
 } from './numberRay';
 
 describe('RegExp', () => {
-
 	describe('numberRay', () => {
-
 		describe('rayRangeNumberPattern', () => {
-
 			it('should return digit pattern', () => {
-
 				expect(
 					rayRangeDigitPattern(0, true)
 				).toBe(
@@ -20,7 +16,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return max digit', () => {
-
 				expect(
 					rayRangeDigitPattern(9, true)
 				).toBe(
@@ -29,7 +24,6 @@ describe('RegExp', () => {
 			});
 
 			it('should return digits range', () => {
-
 				expect(
 					rayRangeDigitPattern(1, true)
 				).toBe(
@@ -38,7 +32,6 @@ describe('RegExp', () => {
 			});
 
 			it('should start from next digit', () => {
-
 				expect(
 					rayRangeDigitPattern(1, false)
 				).toBe(
@@ -47,7 +40,6 @@ describe('RegExp', () => {
 			});
 
 			it('should not return more than 9', () => {
-
 				expect(
 					rayRangeDigitPattern(9, false)
 				).toBe(
@@ -57,9 +49,7 @@ describe('RegExp', () => {
 		});
 
 		describe('optimizeRaysNumberPatterns', () => {
-
 			it('should remove useless patterns', () => {
-
 				expect(
 					optimizeRaysNumberPatterns([
 						['1', '2', '\\d'],
@@ -85,9 +75,7 @@ describe('RegExp', () => {
 		});
 
 		describe('rayToNumberPatterns', () => {
-
 			it('should return correct ray pattern', () => {
-
 				expect(
 					rayToNumberPatterns(0)
 				).toEqual([

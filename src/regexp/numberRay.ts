@@ -6,13 +6,13 @@ import {
 
 /**
  * Get digit pattern.
- * @param  digit - Ray start.
- * @param  includes - Include start digit or use next.
- * @return Digit pattern.
+ * @param digit - Ray start.
+ * @param includes - Include start digit or use next.
+ * @returns Digit pattern.
  */
 export function rayRangeDigitPattern(digit: number, includes: boolean) {
-
 	const rangeStart = digit + Number(!includes);
+
 	if (rangeStart === 0) {
 		return DIGIT_PATTERN;
 	}
@@ -35,19 +35,16 @@ function filterDigitPattern(pattern: string) {
 /**
  * Reduce number patterns by removing useless patterns.
  * @todo   Is it still useful?
- * @param  raysNumberPatterns - Number patterns to filter.
- * @return Optimized number patterns.
+ * @param raysNumberPatterns - Number patterns to filter.
+ * @returns Optimized number patterns.
  */
 export function optimizeRaysNumberPatterns(raysNumberPatterns: string[][]) {
-
 	let prev: string[] = [];
 	let partsCount = 0;
 	let prevPartsCount = 0;
 
 	return raysNumberPatterns.filter((digitsPatterns, i) => {
-
 		if (i > 0) {
-
 			partsCount = digitsPatterns.filter(filterDigitPattern).length;
 			prevPartsCount = prev.filter(filterDigitPattern).length;
 
@@ -64,11 +61,10 @@ export function optimizeRaysNumberPatterns(raysNumberPatterns: string[][]) {
 
 /**
  * Create numeric ray pattern.
- * @param  from - Start from this number.
- * @return Numeric ray pattern parts.
+ * @param from - Start from this number.
+ * @returns Numeric ray pattern parts.
  */
 export function rayToNumberPatterns(from: number) {
-
 	if (from === 0) {
 		return [NUMBER_PATTERN];
 	}
@@ -91,13 +87,11 @@ export function rayToNumberPatterns(from: number) {
 
 	const raysNumberPatterns = optimizeRaysNumberPatterns(
 		digits.map((_, i) => {
-
 			const ri = digitsCount - i - 1;
 			const d = i <= 0;
 			let prev = ' ';
 
 			return digits.map<string>((digit, j) => {
-
 				if (j < ri) {
 					return digit.toString();
 				}

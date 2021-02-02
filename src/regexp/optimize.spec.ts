@@ -3,11 +3,8 @@ import {
 } from './optimize';
 
 describe('UserAgentRegExp', () => {
-
 	describe('optimize', () => {
-
 		it('should remove braces', () => {
-
 			expect(
 				optimize('(Family)foo(NotFamily)(bar)')
 			).toBe(
@@ -28,7 +25,6 @@ describe('UserAgentRegExp', () => {
 		});
 
 		it('should remove unnecessary escapes in ranges', () => {
-
 			expect(
 				optimize('[\\.\\[]')
 			).toBe(
