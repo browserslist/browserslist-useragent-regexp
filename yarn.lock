@@ -1036,10 +1036,10 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.8.4":
-  version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.1.tgz#b4116a6b6711d010b2dad3b7b6e43bf1b9954740"
-  integrity sha512-J5AIf3vPj3UwXaAzb5j1xM4WAQDX3EMgemF8rjCP3SoW09LfRKAXQKt6CoVYl230P6iWdRcBbnLDDdnqWxZSCA==
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.8.4":
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1466,13 +1466,14 @@
     builtin-modules "*"
     rollup "^2.6.1"
 
-"@trigen/scripts-plugin-size-limit@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-6.0.0.tgz#9018dcea274639875f6528bd2558b62231ff1cd1"
-  integrity sha512-vJkyvBTvLSsqM1Hnkxc6iFVRKzgOLa5TV1bTcomOvraKXZuBMUe6VPJDVSHHfmkU46pVvsI4zQuOjuvGDT/EUQ==
+"@trigen/scripts-plugin-size-limit@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts-plugin-size-limit/-/scripts-plugin-size-limit-7.3.1.tgz#4cd4a833d79a74d0c2f45a796d57289b1898b424"
+  integrity sha512-x7Azhqff6hEepydngslx5S+Ypk9xcxHwLrkhWW2ct5pm7k5D2MW5guiuE/sUml1wPAWORtRaZ+wS+oA4ofuCrg==
   dependencies:
-    "@babel/runtime-corejs3" "^7.9.6"
-    "@trigen/scripts" "^6.0.0"
+    "@babel/runtime" "^7.12.5"
+    "@trigen/scripts" "^7.3.1"
+    core-js "^3.8.2"
     size-limit "^4.1.1"
 
 "@trigen/scripts-plugin-typescript@^6.0.0":
@@ -1509,6 +1510,18 @@
   dependencies:
     "@babel/runtime-corejs3" "^7.9.6"
     chalk "^4.0.0"
+    immutability-helper "^3.0.0"
+    rcfile "^1.0.3"
+    resolve-cwd "^3.0.0"
+
+"@trigen/scripts@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@trigen/scripts/-/scripts-7.3.1.tgz#a3dd22194d11cbbf54d1652a48ba89bd5049a8e0"
+  integrity sha512-GYK20Lx6LG8qhTEIueGXWCvi6RF6CMPJ18A0vp0oSA55UDgK0vQJPQ4P7pUXGV4x07phoOoIUV0h9RmzTEPGCw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    chalk "^4.0.0"
+    core-js "^3.8.2"
     immutability-helper "^3.0.0"
     rcfile "^1.0.3"
     resolve-cwd "^3.0.0"
@@ -3152,10 +3165,10 @@ core-js-pure@^3.0.0:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.5.tgz#c79e75f5e38dbc85a662d91eea52b8256d53b813"
   integrity sha512-lacdXOimsiD0QyNf9BC/mxivNJ/ybBGJXQFKzRekp1WTHoVUWsUHEn+2T8GJAzzIhyOuXA+gOxCVN3l+5PLPUA==
 
-core-js@^3.2.1:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
-  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
+core-js@^3.2.1, core-js@^3.8.2:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.8.3.tgz#c21906e1f14f3689f93abcc6e26883550dd92dd0"
+  integrity sha512-KPYXeVZYemC2TkNEkX/01I+7yd+nX3KddKwZ1Ww7SKWdI2wQprSgLmrTddT8nw92AjEklTsPBoSdQBhbI1bQ6Q==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
