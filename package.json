@@ -17,7 +17,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
   "scripts": {
     "lint": "trigen-scripts lint",
@@ -28,8 +28,7 @@
     "build:docs": "trigen-scripts build:docs",
     "start": "trigen-scripts start",
     "build": "trigen-scripts build",
-    "cleanPublish": "trigen-scripts test && del 'lib/**/*.spec.*' && clean-publish",
-    "coverage": "cat ./coverage/lcov.info | coveralls"
+    "cleanPublish": "trigen-scripts test && del 'lib/**/*.spec.*' && clean-publish"
   },
   "keywords": [
     "browserslist",
