@@ -3,6 +3,11 @@
 	"@trigen/scripts-plugin-babel",
 	"@trigen/scripts-plugin-typescript",
 	"@trigen/scripts-plugin-rollup",
-	"@trigen/scripts-preset-lib",
+	["@trigen/scripts-preset-lib", {
+		"lint": [
+			"rollup.config.js",
+			"src/**/*.ts"
+		]
+	}],
 	"@trigen/scripts-plugin-size-limit"
 ]

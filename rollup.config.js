@@ -1,7 +1,7 @@
 import {
 	external
 } from '@trigen/scripts-plugin-rollup/helpers';
-import tslint from 'rollup-plugin-tslint';
+import eslint from '@rollup/plugin-eslint';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import babel from '@rollup/plugin-babel';
@@ -10,9 +10,9 @@ import { DEFAULT_EXTENSIONS } from '@babel/core';
 import pkg from './package.json';
 
 const plugins = [
-	tslint({
-		exclude:    ['**/*.json', 'node_modules/**'],
-		throwError: true
+	eslint({
+		exclude: ['**/*.json', 'node_modules/**'],
+		throwOnError: true
 	}),
 	commonjs(),
 	typescript(),
