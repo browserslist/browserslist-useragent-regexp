@@ -99,6 +99,8 @@ As was written in article ["Smart Bundling: Shipping legacy code to only legacy 
 
 Development was inspired by [this proposal from Mathias Bynens](https://twitter.com/mathias/status/1105857829393653761).
 
+How to make differential resource loading and other optimizations with `browserslist-useragent-regexp` you can read in article ["Speed up with Browserslist"](https://dev.to/dangreen/speed-up-with-browserslist-30lh).
+
 [Demo](https://browserslist.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29), [build script](https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74)).
 
 ## CLI
@@ -123,11 +125,11 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 
 Module exposes two main methods:
 
-### [getUserAgentRegExps(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps)
+### [getUserAgentRegExps(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexps)
 
 Compile browserslist query to [RegExps for each browser](#regexp-info-object).
 
-### [getUserAgentRegExp(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp)
+### [getUserAgentRegExp(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexp)
 
 Compile browserslist query to one RegExp.
 
