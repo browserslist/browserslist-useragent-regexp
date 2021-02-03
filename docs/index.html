@@ -4,16 +4,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>browserslist-useragent-regexp</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for browserslist-useragent-regexp">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -38,8 +39,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -49,11 +48,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>browserslist-useragent-regexp</h1>
 		</div>
 	</div>
@@ -68,57 +62,75 @@
 				<p><a href="https://npmjs.com/package/browserslist-useragent-regexp"><img src="https://img.shields.io/npm/v/browserslist-useragent-regexp.svg" alt="NPM version"></a>
 					<a href="https://nodejs.org"><img src="https://img.shields.io/node/v/browserslist-useragent-regexp.svg" alt="Node version"></a>
 					<a href="https://david-dm.org/browserslist/browserslist-useragent-regexp"><img src="https://david-dm.org/browserslist/browserslist-useragent-regexp.svg" alt="Dependencies status"></a>
-					<a href="https://travis-ci.com/browserslist/browserslist-useragent-regexp"><img src="http://img.shields.io/travis/com/browserslist/browserslist-useragent-regexp/master.svg" alt="Build status"></a>
+					<a href="https://github.com/browserslist/browserslist-useragent-regexp/actions"><img src="https://img.shields.io/github/workflow/status/browserslist/browserslist-useragent-regexp/CI.svg" alt="Build status"></a>
 					<a href="https://coveralls.io/r/browserslist/browserslist-useragent-regexp"><img src="https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg" alt="Coverage status"></a>
 					<a href="https://dependabot.com/"><img src="https://api.dependabot.com/badges/status?host=github&repo=browserslist/browserslist-useragent-regexp" alt="Dependabot badge"></a>
 				<a href="https://browserslist.github.io/browserslist-useragent-regexp"><img src="https://img.shields.io/badge/API-Documentation-2b7489.svg" alt="Documentation badge"></a></p>
 				<p>A utility to compile <a href="https://github.com/browserslist/browserslist#queries">browserslist query</a> to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.</p>
-				<p>1) Create <code>.browserslistrc</code> config, for example like this:</p>
-				<pre><code><span class="hljs-attr">last</span> <span class="hljs-string">2 versions</span>
-<span class="hljs-attr">not</span> <span class="hljs-string">dead</span></code></pre><p>2) Add script to <code>package.json</code>:</p>
-				<pre><code class="language-json">{
-  <span class="hljs-attr">"scripts"</span>: {
-    <span class="hljs-attr">"supportedBrowsers"</span>: <span class="hljs-string">"echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" &gt; supportedBrowsers.js"</span>
-  }
-}</code></pre>
+				<ol>
+					<li>Create <code>.browserslistrc</code> config, for example like this:</li>
+				</ol>
+				<pre><code><span style="color: #001080">last</span><span style="color: #000000"> </span><span style="color: #098658">2</span><span style="color: #000000"> </span><span style="color: #001080">versions</span>
+<span style="color: #001080">not</span><span style="color: #000000"> </span><span style="color: #001080">dead</span>
+</code></pre>
+				<ol start="2">
+					<li>Add script to <code>package.json</code>:</li>
+				</ol>
+				<pre><code class="language-json"><span style="color: #000000">{</span>
+<span style="color: #000000">  </span><span style="color: #0451A5">&quot;scripts&quot;</span><span style="color: #000000">: {</span>
+<span style="color: #000000">    </span><span style="color: #0451A5">&quot;supportedBrowsers&quot;</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;echo </span><span style="color: #EE0000">\&quot;</span><span style="color: #A31515">module.exports = $(browserslist-useragent-regexp --allowHigherVersions);</span><span style="color: #EE0000">\&quot;</span><span style="color: #A31515"> &gt; supportedBrowsers.js&quot;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<details>
 					<summary>for Windows users</summary>
-					<pre><code class="language-json">{
-  <span class="hljs-attr">"scripts"</span>: {
-    <span class="hljs-attr">"supportedBrowsers"</span>: <span class="hljs-string">"(echo module.exports = &amp;&amp; browserslist-useragent-regexp --allowHigherVersions) &gt; supportedBrowsers.js"</span>
-  }
-}</code></pre>
+					<pre><code class="language-json"><span style="color: #000000">{</span>
+<span style="color: #000000">  </span><span style="color: #0451A5">&quot;scripts&quot;</span><span style="color: #000000">: {</span>
+<span style="color: #000000">    </span><span style="color: #0451A5">&quot;supportedBrowsers&quot;</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;(echo module.exports = &amp;&amp; browserslist-useragent-regexp --allowHigherVersions) &gt; supportedBrowsers.js&quot;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				</details>
-				<p>3) Run this script, to compile RegExp:</p>
-				<pre><code class="language-bash">npm run supportedBrowsers
-<span class="hljs-comment"># or</span>
-yarn supportedBrowsers</code></pre>
+				<ol start="3">
+					<li>Run this script, to compile RegExp:</li>
+				</ol>
+				<pre><code class="language-bash"><span style="color: #000000">npm run supportedBrowsers</span>
+<span style="color: #008000"># or</span>
+<span style="color: #000000">yarn supportedBrowsers</span>
+</code></pre>
 				<p><code>supportedBrowsers.js</code>:</p>
-				<pre><code class="language-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-regexp">/((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.](3|4)|12[_\.](0|1))(?:[_\.]\d+)?)|(OperaMini(?:\/att)?\/?(\d+)?(?:\.\d+)?(?:\.\d+)?)|(Opera\/.+Opera Mobi.+Version\/46\.0)|(Opera\/46\.0.+Opera Mobi)|(Opera Mobi.+Opera(?:\/|\s+)46\.0)|(SamsungBrowser\/(8|9)\.2)|(Edge\/(17|18)(?:\.0)?)|(HeadlessChrome(?:\/(72|73)\.0\.\d+)?)|((Chromium|Chrome)\/(72|73)\.0(?:\.\d+)?)|(IEMobile[ \/]11\.0)|(Version\/12\.(0|1)(?:\.\d+)?.*Safari\/)|(Trident\/7\.0)|(Firefox\/(65|66)\.0\.\d+)|(Firefox\/(65|66)\.0(pre|[ab]\d+[a-z]*)?)|(([MS]?IE) 11\.0)/</span>;</code></pre>
-				<p>4) Import RegExp from created file:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> supportedBrowsers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./supportedBrowsers'</span>);
+				<pre><code class="language-js"><span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = </span><span style="color: #811F3F">/</span><span style="color: #D16969">((</span><span style="color: #811F3F">CPU</span><span style="color: #D16969">[</span><span style="color: #811F3F"> +</span><span style="color: #D16969">]</span><span style="color: #811F3F">OS</span><span style="color: #EE0000">|</span><span style="color: #811F3F">iPhone</span><span style="color: #D16969">[</span><span style="color: #811F3F"> +</span><span style="color: #D16969">]</span><span style="color: #811F3F">OS</span><span style="color: #EE0000">|</span><span style="color: #811F3F">CPU</span><span style="color: #D16969">[</span><span style="color: #811F3F"> +</span><span style="color: #D16969">]</span><span style="color: #811F3F">iPhone</span><span style="color: #EE0000">|</span><span style="color: #811F3F">CPU IPhone OS</span><span style="color: #D16969">)[</span><span style="color: #811F3F"> +</span><span style="color: #D16969">]</span><span style="color: #000000">+</span><span style="color: #D16969">(</span><span style="color: #811F3F">11</span><span style="color: #D16969">[</span><span style="color: #811F3F">_</span><span style="color: #EE0000">\.</span><span style="color: #D16969">](</span><span style="color: #811F3F">3</span><span style="color: #EE0000">|</span><span style="color: #811F3F">4</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #811F3F">12</span><span style="color: #D16969">[</span><span style="color: #811F3F">_</span><span style="color: #EE0000">\.</span><span style="color: #D16969">](</span><span style="color: #811F3F">0</span><span style="color: #EE0000">|</span><span style="color: #811F3F">1</span><span style="color: #D16969">))(?:[</span><span style="color: #811F3F">_</span><span style="color: #EE0000">\.</span><span style="color: #D16969">]</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">OperaMini</span><span style="color: #D16969">(?:</span><span style="color: #EE0000">\/</span><span style="color: #811F3F">att</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #EE0000">\/</span><span style="color: #000000">?</span><span style="color: #D16969">(</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">(?:</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">(?:</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Opera</span><span style="color: #EE0000">\/</span><span style="color: #811F3F">.</span><span style="color: #000000">+</span><span style="color: #811F3F">Opera Mobi.</span><span style="color: #000000">+</span><span style="color: #811F3F">Version</span><span style="color: #EE0000">\/</span><span style="color: #811F3F">46</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Opera</span><span style="color: #EE0000">\/</span><span style="color: #811F3F">46</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0.</span><span style="color: #000000">+</span><span style="color: #811F3F">Opera Mobi</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Opera Mobi.</span><span style="color: #000000">+</span><span style="color: #811F3F">Opera</span><span style="color: #D16969">(?:</span><span style="color: #EE0000">\/|</span><span style="color: #811F3F">\s</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #811F3F">46</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">SamsungBrowser</span><span style="color: #EE0000">\/</span><span style="color: #D16969">(</span><span style="color: #811F3F">8</span><span style="color: #EE0000">|</span><span style="color: #811F3F">9</span><span style="color: #D16969">)</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">2</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Edge</span><span style="color: #EE0000">\/</span><span style="color: #D16969">(</span><span style="color: #811F3F">17</span><span style="color: #EE0000">|</span><span style="color: #811F3F">18</span><span style="color: #D16969">)(?:</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">HeadlessChrome</span><span style="color: #D16969">(?:</span><span style="color: #EE0000">\/</span><span style="color: #D16969">(</span><span style="color: #811F3F">72</span><span style="color: #EE0000">|</span><span style="color: #811F3F">73</span><span style="color: #D16969">)</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">((</span><span style="color: #811F3F">Chromium</span><span style="color: #EE0000">|</span><span style="color: #811F3F">Chrome</span><span style="color: #D16969">)</span><span style="color: #EE0000">\/</span><span style="color: #D16969">(</span><span style="color: #811F3F">72</span><span style="color: #EE0000">|</span><span style="color: #811F3F">73</span><span style="color: #D16969">)</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">(?:</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">IEMobile</span><span style="color: #D16969">[</span><span style="color: #811F3F"> </span><span style="color: #EE0000">\/</span><span style="color: #D16969">]</span><span style="color: #811F3F">11</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Version</span><span style="color: #EE0000">\/</span><span style="color: #811F3F">12</span><span style="color: #EE0000">\.</span><span style="color: #D16969">(</span><span style="color: #811F3F">0</span><span style="color: #EE0000">|</span><span style="color: #811F3F">1</span><span style="color: #D16969">)(?:</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #811F3F">.</span><span style="color: #000000">*</span><span style="color: #811F3F">Safari</span><span style="color: #EE0000">\/</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Trident</span><span style="color: #EE0000">\/</span><span style="color: #811F3F">7</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Firefox</span><span style="color: #EE0000">\/</span><span style="color: #D16969">(</span><span style="color: #811F3F">65</span><span style="color: #EE0000">|</span><span style="color: #811F3F">66</span><span style="color: #D16969">)</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(</span><span style="color: #811F3F">Firefox</span><span style="color: #EE0000">\/</span><span style="color: #D16969">(</span><span style="color: #811F3F">65</span><span style="color: #EE0000">|</span><span style="color: #811F3F">66</span><span style="color: #D16969">)</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">(</span><span style="color: #811F3F">pre</span><span style="color: #EE0000">|</span><span style="color: #D16969">[</span><span style="color: #811F3F">ab</span><span style="color: #D16969">]</span><span style="color: #811F3F">\d</span><span style="color: #000000">+</span><span style="color: #D16969">[</span><span style="color: #811F3F">a-z</span><span style="color: #D16969">]</span><span style="color: #000000">*</span><span style="color: #D16969">)</span><span style="color: #000000">?</span><span style="color: #D16969">)</span><span style="color: #EE0000">|</span><span style="color: #D16969">(([</span><span style="color: #811F3F">MS</span><span style="color: #D16969">]</span><span style="color: #000000">?</span><span style="color: #811F3F">IE</span><span style="color: #D16969">)</span><span style="color: #811F3F"> 11</span><span style="color: #EE0000">\.</span><span style="color: #811F3F">0</span><span style="color: #D16969">)</span><span style="color: #811F3F">/</span><span style="color: #000000">;</span>
+</code></pre>
+				<ol start="4">
+					<li>Import RegExp from created file:</li>
+				</ol>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">supportedBrowsers</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;./supportedBrowsers&#039;</span><span style="color: #000000">);</span>
 
-<span class="hljs-keyword">if</span> (supportedBrowsers.test(navigator.userAgent)) {
-    alert(<span class="hljs-string">'Your browser is supported.'</span>);
-}</code></pre>
+<span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">supportedBrowsers</span><span style="color: #000000">.</span><span style="color: #795E26">test</span><span style="color: #000000">(</span><span style="color: #001080">navigator</span><span style="color: #000000">.</span><span style="color: #001080">userAgent</span><span style="color: #000000">)) {</span>
+<span style="color: #000000">    </span><span style="color: #795E26">alert</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Your browser is supported.&#039;</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h2>Install</h2>
 				</a>
-				<pre><code class="language-bash">npm i -D browserslist-useragent-regexp
-<span class="hljs-comment"># or</span>
-yarn add -D browserslist-useragent-regexp</code></pre>
+				<pre><code class="language-bash"><span style="color: #000000">npm i -D browserslist-useragent-regexp</span>
+<span style="color: #008000"># or</span>
+<span style="color: #000000">yarn add -D browserslist-useragent-regexp</span>
+</code></pre>
 				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
 					<h2>Why?</h2>
 				</a>
 				<p>As was written in article <a href="https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/">&quot;Smart Bundling: Shipping legacy code to only legacy browsers&quot;</a>: you can determinate, which bundle you should give to browser from server with <a href="https://github.com/browserslist/browserslist-useragent"><code>browserslist-useragent</code></a>. But in this case you must have your own server with special logic. Now, with <code>browserslist-useragent-regexp</code>, you can move that to client-side.</p>
 				<p>Development was inspired by <a href="https://twitter.com/mathias/status/1105857829393653761">this proposal from Mathias Bynens</a>.</p>
+				<p>How to make differential resource loading and other optimizations with <code>browserslist-useragent-regexp</code> you can read in article <a href="https://dev.to/dangreen/speed-up-with-browserslist-30lh">&quot;Speed up with Browserslist&quot;</a>.</p>
 				<p><a href="https://browserslist.github.io/browserslist-useragent-regexp/demo.html">Demo</a> (<a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29">sources</a>, <a href="https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74">build script</a>).</p>
 				<a href="#cli" id="cli" style="color: inherit; text-decoration: none;">
 					<h2>CLI</h2>
 				</a>
-				<pre><code class="language-bash">npx browserslist-useragent-regexp [query] [...options]
-<span class="hljs-comment"># or</span>
-yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [query] [...options]</code></pre>
+				<pre><code class="language-bash"><span style="color: #000000">npx browserslist-useragent-regexp [query] [...options]</span>
+<span style="color: #008000"># or</span>
+<span style="color: #000000">yarn </span><span style="color: #795E26">exec</span><span style="color: #000000"> -- browserslist-useragent-regexp [query] [...options]</span>
+</code></pre>
 				<table>
 					<thead>
 						<tr>
@@ -167,11 +179,11 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 					<h2>JS API basics</h2>
 				</a>
 				<p>Module exposes two main methods:</p>
-				<a href="#a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpsgetuseragentregexpsoptionsa" id="a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpsgetuseragentregexpsoptionsa" style="color: inherit; text-decoration: none;">
+				<a href="#getuseragentregexpsoptions" id="getuseragentregexpsoptions" style="color: inherit; text-decoration: none;">
 					<h3><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexps">getUserAgentRegExps(options)</a></h3>
 				</a>
 				<p>Compile browserslist query to <a href="#regexp-info-object">RegExps for each browser</a>.</p>
-				<a href="#a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpgetuseragentregexpoptionsa" id="a-hrefhttpsbrowserslistgithubiobrowserslist-useragent-regexpmodules_useragentregexp_useragentregexp_htmlgetuseragentregexpgetuseragentregexpoptionsa" style="color: inherit; text-decoration: none;">
+				<a href="#getuseragentregexpoptions" id="getuseragentregexpoptions" style="color: inherit; text-decoration: none;">
 					<h3><a href="https://browserslist.github.io/browserslist-useragent-regexp/modules/_useragentregexp_useragentregexp_.html#getuseragentregexp">getUserAgentRegExp(options)</a></h3>
 				</a>
 				<p>Compile browserslist query to one RegExp.</p>
@@ -287,137 +299,137 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_browserslist_.html">&quot;browsers/browserslist&quot;</a>
+						<a href="modules/browsers.html">browsers</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_browserslist_spec_.html">&quot;browsers/browserslist.spec&quot;</a>
+						<a href="modules/browsers_browserslist.html">browsers/browserslist</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_index_.html">&quot;browsers/index&quot;</a>
+						<a href="modules/browsers_browserslist_spec.html">browsers/browserslist.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_optimize_.html">&quot;browsers/optimize&quot;</a>
+						<a href="modules/browsers_optimize.html">browsers/optimize</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_optimize_spec_.html">&quot;browsers/optimize.spec&quot;</a>
+						<a href="modules/browsers_optimize_spec.html">browsers/optimize.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_shirtnames_.html">&quot;browsers/shirtnames&quot;</a>
+						<a href="modules/browsers_shirtnames.html">browsers/shirtnames</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_types_.html">&quot;browsers/types&quot;</a>
+						<a href="modules/browsers_types.html">browsers/types</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_util_.html">&quot;browsers/util&quot;</a>
+						<a href="modules/browsers_util.html">browsers/util</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_browsers_util_spec_.html">&quot;browsers/util.spec&quot;</a>
+						<a href="modules/browsers_util_spec.html">browsers/util.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_cli_.html">&quot;cli&quot;</a>
+						<a href="modules/cli.html">cli</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_index_.html">&quot;index&quot;</a>
+						<a href="modules/index.html">index</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_index_.html">&quot;regexp/index&quot;</a>
+						<a href="modules/regexp.html">regexp</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numberrange_.html">&quot;regexp/number<wbr>Range&quot;</a>
+						<a href="modules/regexp_numberrange.html">regexp/number<wbr>Range</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numberrange_spec_.html">&quot;regexp/number<wbr>Range.spec&quot;</a>
+						<a href="modules/regexp_numberrange_spec.html">regexp/number<wbr>Range.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numberray_.html">&quot;regexp/number<wbr>Ray&quot;</a>
+						<a href="modules/regexp_numberray.html">regexp/number<wbr>Ray</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numberray_spec_.html">&quot;regexp/number<wbr>Ray.spec&quot;</a>
+						<a href="modules/regexp_numberray_spec.html">regexp/number<wbr>Ray.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numbersegment_.html">&quot;regexp/number<wbr>Segment&quot;</a>
+						<a href="modules/regexp_numbersegment.html">regexp/number<wbr>Segment</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numbersegment_spec_.html">&quot;regexp/number<wbr>Segment.spec&quot;</a>
+						<a href="modules/regexp_numbersegment_spec.html">regexp/number<wbr>Segment.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numberspart_.html">&quot;regexp/numbers<wbr>Part&quot;</a>
+						<a href="modules/regexp_numberspart.html">regexp/numbers<wbr>Part</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_numberspart_spec_.html">&quot;regexp/numbers<wbr>Part.spec&quot;</a>
+						<a href="modules/regexp_numberspart_spec.html">regexp/numbers<wbr>Part.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_optimize_.html">&quot;regexp/optimize&quot;</a>
+						<a href="modules/regexp_optimize.html">regexp/optimize</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_optimize_spec_.html">&quot;regexp/optimize.spec&quot;</a>
+						<a href="modules/regexp_optimize_spec.html">regexp/optimize.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_util_.html">&quot;regexp/util&quot;</a>
+						<a href="modules/regexp_util.html">regexp/util</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_util_spec_.html">&quot;regexp/util.spec&quot;</a>
+						<a href="modules/regexp_util_spec.html">regexp/util.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_versions_.html">&quot;regexp/versions&quot;</a>
+						<a href="modules/regexp_versions.html">regexp/versions</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_regexp_versions_spec_.html">&quot;regexp/versions.spec&quot;</a>
+						<a href="modules/regexp_versions_spec.html">regexp/versions.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_semver_index_.html">&quot;semver/index&quot;</a>
+						<a href="modules/semver.html">semver</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_semver_semver_.html">&quot;semver/semver&quot;</a>
+						<a href="modules/semver_semver.html">semver/semver</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_semver_semver_spec_.html">&quot;semver/semver.spec&quot;</a>
+						<a href="modules/semver_semver_spec.html">semver/semver.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_semver_types_.html">&quot;semver/types&quot;</a>
+						<a href="modules/semver_types.html">semver/types</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_semver_util_.html">&quot;semver/util&quot;</a>
+						<a href="modules/semver_util.html">semver/util</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragent_index_.html">&quot;useragent/index&quot;</a>
+						<a href="modules/useragent.html">useragent</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragent_types_.html">&quot;useragent/types&quot;</a>
+						<a href="modules/useragent_types.html">useragent/types</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragent_useragent_.html">&quot;useragent/useragent&quot;</a>
+						<a href="modules/useragent_useragent.html">useragent/useragent</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragent_util_.html">&quot;useragent/util&quot;</a>
+						<a href="modules/useragent_util.html">useragent/util</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragent_util_spec_.html">&quot;useragent/util.spec&quot;</a>
+						<a href="modules/useragent_util_spec.html">useragent/util.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragent_versions_.html">&quot;useragent/versions&quot;</a>
+						<a href="modules/useragent_versions.html">useragent/versions</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragentregexp_index_.html">&quot;useragent<wbr>Regexp/index&quot;</a>
+						<a href="modules/useragentregexp.html">useragent<wbr>Regexp</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragentregexp_optimize_.html">&quot;useragent<wbr>Regexp/optimize&quot;</a>
+						<a href="modules/useragentregexp_optimize.html">useragent<wbr>Regexp/optimize</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragentregexp_types_.html">&quot;useragent<wbr>Regexp/types&quot;</a>
+						<a href="modules/useragentregexp_types.html">useragent<wbr>Regexp/types</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragentregexp_useragentregexp_.html">&quot;useragent<wbr>Regexp/useragent<wbr>Regexp&quot;</a>
+						<a href="modules/useragentregexp_useragentregexp.html">useragent<wbr>Regexp/useragent<wbr>Regexp</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragentregexp_useragentregexp_spec_.html">&quot;useragent<wbr>Regexp/useragent<wbr>Regexp.spec&quot;</a>
+						<a href="modules/useragentregexp_useragentregexp_spec.html">useragent<wbr>Regexp/useragent<wbr>Regexp.spec</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_useragentregexp_workarounds_.html">&quot;useragent<wbr>Regexp/workarounds&quot;</a>
+						<a href="modules/useragentregexp_workarounds.html">useragent<wbr>Regexp/workarounds</a>
 					</li>
 				</ul>
 			</nav>
@@ -432,6 +444,18 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
 		</div>
 	</div>
 </footer>
@@ -440,6 +464,5 @@ yarn <span class="hljs-built_in">exec</span> -- browserslist-useragent-regexp [q
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
