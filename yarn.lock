@@ -3650,7 +3650,7 @@ domutils@^1.7.0:
     dom-serializer "0"
     domelementtype "1"
 
-dot-json@^1.2.0:
+dot-json@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/dot-json/-/dot-json-1.2.1.tgz#d32f67dd4e258711c786b3450bde427a9793c394"
   integrity sha512-sHtCsDBBzhTUFhS12cAvUbP9JTr59LLNxnpNr6dlgbjZlN+nrWFs+uHXgsJvFmc5HoMFR4e60rdqd+GdSUlM3w==
@@ -9418,11 +9418,11 @@ use@^3.1.0:
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 user-agents@^1.0.213:
-  version "1.0.559"
-  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.559.tgz#389817f79dff667d9e5c8803631c41043e8eccd8"
-  integrity sha512-HdAlNS3vDxOGMRwmv8or05xL96MV3CEwQhUSFTCRoOvTOEnWhTEBPAHRry/xZpVTTOtx77UHMal8YKcx6fs7Lg==
+  version "1.0.566"
+  resolved "https://registry.yarnpkg.com/user-agents/-/user-agents-1.0.566.tgz#8628cfb1b1379cc859ccd2069365ff0aa7d7b14a"
+  integrity sha512-yQwi61Yc3CDhVUPXcJQ+FN1Ze3N8xC8guHJVbzS5H3hqCVJNuix72yEKPydy2Cuwxos383uYcPb+USWF7hR63Q==
   dependencies:
-    dot-json "^1.2.0"
+    dot-json "^1.2.1"
     lodash.clonedeep "^4.5.0"
 
 useragent@^2.3.0:
