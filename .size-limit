@@ -6,7 +6,7 @@
 	},
 	{
 		"path": "lib/cli.js",
-		"limit": "1.72 KB",
+		"limit": "1.77 KB",
 		"webpack": false
 	}
 ]
