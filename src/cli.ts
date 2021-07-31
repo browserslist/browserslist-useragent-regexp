@@ -4,6 +4,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable object-curly-newline, object-curly-spacing, quote-props */
+import path from 'path';
+import fs from 'fs';
 import {
 	argv,
 	read,
@@ -37,7 +40,7 @@ const {
 	'ignoreMinor',
 	'allowHigherVersions',
 	'allowZeroVersions'
-], []);
+], [{'output': 'o'}]);
 
 if (help) {
 	end();
@@ -196,6 +199,29 @@ if (verbose) {
 	process.exit(0);
 }
 
-console.log(
-	getUserAgentRegExp(options)
-);
+if (options.output) {
+	const ext = path.extname(options.output);
+
+	if (!ext) {
+		process.exit(1);
+	}
+
+	const output = getUserAgentRegExp(options);
+
+	if (ext === '.ts') {
+		const reg = output.toString();
+		const content = `export = ${reg}`;
+
+		fs.writeFileSync(options.output, content);
+	} else if (ext === '.js') {
+		const reg = output.toString();
+		const content = `module.exports = ${reg}`;
+
+		fs.writeFileSync(options.output, content);
+	}
+} else {
+	console.log(
+		getUserAgentRegExp(options)
+	);
+}
+

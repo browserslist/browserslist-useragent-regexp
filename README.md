@@ -43,23 +43,11 @@ not dead
 ```json
 {
   "scripts": {
-    "supportedBrowsers": "echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" > supportedBrowsers.js"
+    "supportedBrowsers": "browserslist-useragent-regexp --allowHigherVersions -o supportedBrowsers.js"
   }
 }
 ```
-
-<details>
-    <summary>for Windows users</summary>
-
-```json
-{
-  "scripts": {
-    "supportedBrowsers": "(echo module.exports = && browserslist-useragent-regexp --allowHigherVersions) > supportedBrowsers.js"
-  }
-}
-```
-
-</details>
+or `supportedBrowsers.ts` for typescript.  
 
 3) Run this script, to compile RegExp:
 
@@ -83,6 +71,12 @@ const supportedBrowsers = require('./supportedBrowsers');
 if (supportedBrowsers.test(navigator.userAgent)) {
     alert('Your browser is supported.');
 }
+```
+
+for ts  
+
+```ts
+import supportedBrowsers = require('./supportedBrowsers');
 ```
 
 ## Install
