@@ -66,9 +66,9 @@ module.exports = /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[
 4) Import RegExp from created file:
 
 ```js
-const supportedBrowsers = require('./supportedBrowsers');
+const {SupportedBrowsers} = require('./supportedBrowsers');
 
-if (supportedBrowsers.test(navigator.userAgent)) {
+if (SupportedBrowsers.test(navigator.userAgent)) {
     alert('Your browser is supported.');
 }
 ```
@@ -76,7 +76,7 @@ if (supportedBrowsers.test(navigator.userAgent)) {
 for ts  
 
 ```ts
-import supportedBrowsers = require('./supportedBrowsers');
+import {SupportedBrowsers} from './supportedBrowsers';
 ```
 
 ## Install
