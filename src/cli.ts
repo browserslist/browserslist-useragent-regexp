@@ -211,12 +211,12 @@ if (options.output) {
 
 	if (ext === '.ts') {
 		const reg = output.toString();
-		const content = `export const SupportedBrowsers = ${reg}`;
+		const content = `export const SupportedBrowsers = ${reg};\n`;
 
 		fs.writeFileSync(outputPath, content);
 	} else if (ext === '.js') {
 		const reg = output.toString();
-		const content = `module.exports.SupportedBrowsers = ${reg}`;
+		const content = `module.exports.SupportedBrowsers = ${reg};\n`;
 
 		fs.writeFileSync(outputPath, content);
 	}
