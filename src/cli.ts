@@ -200,7 +200,8 @@ if (verbose) {
 }
 
 if (options.output) {
-	const ext = path.extname(options.output);
+	const outputPath = path.normalize(options.out);
+	const ext = path.extname(outputPath);
 
 	if (!ext) {
 		process.exit(1);
@@ -212,12 +213,12 @@ if (options.output) {
 		const reg = output.toString();
 		const content = `export = ${reg}`;
 
-		fs.writeFileSync(options.output, content);
+		fs.writeFileSync(outputPath, content);
 	} else if (ext === '.js') {
 		const reg = output.toString();
 		const content = `module.exports = ${reg}`;
 
-		fs.writeFileSync(options.output, content);
+		fs.writeFileSync(outputPath, content);
 	}
 } else {
 	console.log(
