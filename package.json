@@ -28,6 +28,7 @@
     "build:docs": "trigen-scripts build:docs",
     "start": "trigen-scripts start",
     "build": "trigen-scripts build",
+    "prepublishOnly": "npm run cleanPublish",
     "cleanPublish": "trigen-scripts test && del 'lib/**/*.spec.*' && clean-publish"
   },
   "keywords": [
