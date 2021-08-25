@@ -200,7 +200,7 @@ if (verbose) {
 }
 
 if (options.output) {
-	const outputPath = path.normalize(options.out);
+	const outputPath = path.normalize(options.output);
 	const ext = path.extname(outputPath);
 
 	if (!ext) {
