@@ -95,9 +95,9 @@ export function fixBrowserFamily(family: string, regExp: RegExp): IFixedFamily[]
 		 */
 		case regExpString.includes('(iPhone|iPad|iPod).*Mac OS X.*Version'):
 		/**
-		 * YaBrowser, Mail.ru Amigo, new Opera works with regular Chrome RegExp
+		 * YaBrowser, Mail.ru Amigo works with regular Chrome RegExp
 		 */
-		case /YaBrowser|MRCHROME|Chrome.*\(OPR\)/.test(regExpString):
+		case /YaBrowser|MRCHROME/.test(regExpString):
 		/**
 		 * Chrome Mobile browser and WebView works with regular Chrome RegExp (except CrMo)
 		 */
