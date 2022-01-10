@@ -36,7 +36,7 @@ const {
 	'ignorePatch',
 	'ignoreMinor',
 	'allowHigherVersions',
-	'allowZeroVersions'
+	'allowZeroSubversions'
 ], []);
 
 if (help) {
