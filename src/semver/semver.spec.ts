@@ -63,6 +63,16 @@ describe('Semver', () => {
 				['all', 0, 0]
 			);
 		});
+
+		it('should return null for non-number versions', () => {
+			expect(
+				semverify('TP')
+			).toBeNull();
+
+			expect(
+				semverify(['TP'])
+			).toBeNull();
+		});
 	});
 
 	describe('compareSemvers', () => {

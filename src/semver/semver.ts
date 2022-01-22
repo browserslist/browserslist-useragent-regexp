@@ -20,26 +20,38 @@ import {
  * @param version - Target to convert.
  * @returns Array with semver parts.
  */
-export function semverify(version: ISemverLike): ISemver {
-	const split = Array.isArray(version)
+export function semverify(version: ISemverLike): ISemver | null {
+	const versionParts = Array.isArray(version)
 		? version
 		: version.toString().split('.');
 
-	if (isAllVersion(split[0])) {
-		return [split[0] as number, 0, 0];
+	if (isAllVersion(versionParts[0])) {
+		return [versionParts[0] as number, 0, 0];
 	}
 
-	while (split.length < 3) {
-		split.push('0');
+	let versionPart: number | string = null;
+	let semverPart: number = null;
+	const semver: ISemver = [0, 0, 0];
+
+	for (let i = 0; i < 3; i++) {
+		versionPart = versionParts[i];
+
+		if (typeof versionPart === 'undefined') {
+			continue;
+		}
+
+		semverPart = typeof versionPart === 'number'
+			? versionPart
+			: parseInt(versionPart, 10);
+
+		if (isNaN(semverPart)) {
+			return null;
+		}
+
+		semver[i] = semverPart;
 	}
 
-	return split.map((_) => {
-		const num = typeof _ === 'number'
-			? _
-			: parseInt(_, 10);
-
-		return isNaN(num) ? 0 : num; // risky
-	}) as ISemver;
+	return semver;
 }
 
 /**

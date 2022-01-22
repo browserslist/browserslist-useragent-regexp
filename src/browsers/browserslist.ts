@@ -19,20 +19,26 @@ import {
  * @returns Browser info objects.
  */
 export function parseBrowsersList(browsersList: string[]) {
-	return ([] as IBrowser[]).concat(
-		...browsersList.map((browser) => {
-			const [
-				name,
-				...versions
-			] = browser.split(/ |-/);
-			const family: string = (BROWSERS_SHIRTNAMES[name] || name).toLowerCase();
+	return browsersList.reduce<IBrowser[]>((browsers, browser) => {
+		const [
+			name,
+			...versions
+		] = browser.split(/ |-/);
+		const family = (BROWSERS_SHIRTNAMES[name] || name).toLowerCase();
 
-			return versions.map<IBrowser>(version => ({
-				family,
-				version: semverify(version)
-			}));
-		})
-	);
+		return versions.reduce((browsers, version) => {
+			const semver = semverify(version);
+
+			if (semver) {
+				browsers.push({
+					family,
+					version: semver
+				});
+			}
+
+			return browsers;
+		}, browsers);
+	}, []);
 }
 
 /**

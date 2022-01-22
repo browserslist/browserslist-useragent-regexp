@@ -14,5 +14,8 @@
 	},
 	"rules": {
 		"@typescript-eslint/no-magic-numbers": "off"
-	}
+	},
+	"ignorePatterns": [
+	  "lib"
+	]
 }
