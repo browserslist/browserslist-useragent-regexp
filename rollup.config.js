@@ -1,48 +1,48 @@
+import swc from 'rollup-plugin-swc';
 import {
-	external
-} from '@trigen/scripts-plugin-rollup/helpers';
-import eslint from '@rollup/plugin-eslint';
-import commonjs from '@rollup/plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
-import babel from '@rollup/plugin-babel';
+	nodeResolve
+} from '@rollup/plugin-node-resolve';
+import nodeEsm from '@trigen/browserslist-config/node-esm';
 import shebang from 'rollup-plugin-add-shebang';
-import {
-	DEFAULT_EXTENSIONS
-} from '@babel/core';
 import pkg from './package.json';
 
-const plugins = [
-	eslint({
-		exclude: ['**/*.json', 'node_modules/**'],
-		throwOnError: true
+const extensions = ['.js', '.ts'];
+const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_);
+const plugins = targets => [
+	nodeResolve({
+		extensions
 	}),
-	commonjs(),
-	typescript(),
-	babel({
-		extensions: [
-			...DEFAULT_EXTENSIONS,
-			'ts',
-			'tsx'
-		],
-		babelHelpers: 'runtime',
-		skipPreflightCheck: true
+	swc({
+		jsc: {
+			parser: {
+				syntax: 'typescript'
+			},
+			externalHelpers: true
+		},
+		env: {
+			targets
+		},
+		module: {
+			type: 'es6'
+		},
+		sourceMaps: true
 	})
 ];
 
 export default [{
 	input: 'src/index.ts',
-	plugins,
-	external: external(pkg, true),
+	plugins: plugins(nodeEsm.join(', ')),
+	external,
 	output: {
 		file: pkg.main,
 		format: 'cjs',
 		exports: 'named',
-		sourcemap: 'inline'
+		sourcemap: true
 	}
 }, {
 	input: 'src/cli.ts',
 	plugins: [
-		...plugins,
+		...plugins(nodeEsm.join(', ')),
 		shebang()
 	],
 	external: _ => !_.endsWith('src/cli.ts'),
@@ -50,6 +50,6 @@ export default [{
 		file: 'lib/cli.js',
 		format: 'cjs',
 		exports: 'named',
-		sourcemap: 'inline'
+		sourcemap: true
 	}
 }];

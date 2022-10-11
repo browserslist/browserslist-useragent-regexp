@@ -18,7 +18,8 @@
 		"baseUrl": ".",
 		"lib": [
 			"esnext"
-		]
+		],
+		"outDir": "lib"
 	},
 	"include": [
 		"src/**/*.ts"
