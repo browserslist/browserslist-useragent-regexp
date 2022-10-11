@@ -1,24 +1,32 @@
 name: CI
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - master
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Node.js test
+    name: Tests
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 16
+          cache: 'pnpm'
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: pnpm install
       - name: Run tests
-        run: yarn test
+        run: pnpm test
       - name: Collect coverage
-        uses: coverallsapp/github-action@master
+        uses: codecov/codecov-action@v2
         if: success()
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: ./coverage/lcov.info
+          fail_ci_if_error: true
