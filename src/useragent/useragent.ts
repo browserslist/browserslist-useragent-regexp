@@ -1,25 +1,25 @@
 /* eslint-disable no-fallthrough */
-import regexps from 'useragent/lib/regexps'
+import regexps from 'useragent/lib/regexps.js'
 import {
   ISemverCompareOptions,
   semverify
-} from '../semver'
-import { IBrowsers } from '../browsers'
-import { regExpToString } from '../regexp/util'
+} from '../semver/index.js'
+import type { IBrowsers } from '../browsers/types.js'
+import { regExpToString } from '../regexp/util.js'
 import {
   IFixedFamily,
   IBrowserRegExpSource,
   IBrowserRegExp,
   IBrowserVersionRegExp,
   BrowserRegExpSourceProp
-} from './types'
+} from './types.js'
 import {
   uniq,
   someSemverMatched,
   hasVersion,
   familyMatched
-} from './util'
-import { getMinMaxVersions } from './versions'
+} from './util.js'
+import { getMinMaxVersions } from './versions.js'
 
 export const BROWSERS_REGEXPS: IBrowserRegExp[] = [
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -47,8 +47,8 @@ export function getRegExpsForBrowsers(browsers: IBrowsers, options: ISemverCompa
     const browserVersions = browsers.get(family)
 
     if (browserVersions
-			&& someSemverMatched(minVersion, maxVersion, browserVersions, options)
-			&& hasVersion(fixedVersion, regExp)
+      && someSemverMatched(minVersion, maxVersion, browserVersions, options)
+      && hasVersion(fixedVersion, regExp)
     ) {
       regExps.push({
         family,

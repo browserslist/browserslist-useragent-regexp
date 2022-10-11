@@ -1,5 +1,5 @@
-import { ISemver } from '../semver/types'
-import { regExpToString } from '../regexp/util'
+import type { ISemver } from '../semver/types.js'
+import { regExpToString } from '../regexp/util.js'
 
 /**
  * Get browser min and max versions for given useragent RegExp.

@@ -1,11 +1,11 @@
 import browserslist from 'browserslist'
-import { semverify } from '../semver'
-import {
+import { semverify } from '../semver/index.js'
+import type {
   IBrowser,
   IBrowsersListRequest
-} from './types'
-import { BROWSERS_SHIRTNAMES } from './shirtnames'
-import { normalizeBrowserFamily } from './util'
+} from './types.js'
+import { BROWSERS_SHIRTNAMES } from './shirtnames.js'
+import { normalizeBrowserFamily } from './util.js'
 
 /**
  * Browsers strings to info objects.

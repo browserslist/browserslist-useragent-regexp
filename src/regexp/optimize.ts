@@ -3,7 +3,7 @@ import {
   ESCAPE_SYMBOL,
   skipSquareBraces,
   capturePostfix
-} from './util'
+} from './util.js'
 
 export const OPTIMIZABLE_GROUP = /^\([\s\w\d_\-/!]+\)$/
 export const CHARCLASS_UNESCAPES = /[/.$*+?[{}|()]/
@@ -33,8 +33,8 @@ export function optimize(regExpStr: string) {
     skip = skipSquareBraces(skip, prevChar, char)
 
     if (!skip
-			&& prevChar !== ESCAPE_SYMBOL
-			&& char === '('
+      && prevChar !== ESCAPE_SYMBOL
+      && char === '('
     ) {
       if (inGroup) {
         optimizedRegExpStr += groupAccum
@@ -45,8 +45,8 @@ export function optimize(regExpStr: string) {
     }
 
     if (skip
-			&& char === ESCAPE_SYMBOL
-			&& CHARCLASS_UNESCAPES.test(nextChar)
+      && char === ESCAPE_SYMBOL
+      && CHARCLASS_UNESCAPES.test(nextChar)
     ) {
       i++
       char = nextChar
@@ -59,16 +59,16 @@ export function optimize(regExpStr: string) {
     }
 
     if (!skip
-			&& prevChar !== ESCAPE_SYMBOL
-			&& char === ')'
-			&& inGroup
+      && prevChar !== ESCAPE_SYMBOL
+      && char === ')'
+      && inGroup
     ) {
       inGroup = false
       postfix = capturePostfix(regExpStr, i + 1)
       groupAccum += postfix
 
       if (groupAccum === BRACED_NUMBER_PATTERN
-				|| OPTIMIZABLE_GROUP.test(groupAccum)
+        || OPTIMIZABLE_GROUP.test(groupAccum)
       ) {
         groupAccum = groupAccum.substr(1, groupAccum.length - 2)
       }

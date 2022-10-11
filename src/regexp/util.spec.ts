@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import {
   joinParts,
   joinVersionedBrowsersRegExps,
@@ -6,7 +7,7 @@ import {
   regExpToString,
   replaceNumberPatterns,
   numberToDigits
-} from './util'
+} from './util.js'
 
 describe('RegExp', () => {
   describe('util', () => {

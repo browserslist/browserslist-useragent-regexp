@@ -10,12 +10,13 @@
     "noUnusedParameters": true,
     /* Modules */
     "baseUrl": ".",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     /* Emit */
     "declaration": true,
     "declarationMap": true,
+    "importsNotUsedAsValues": "error",
     "inlineSourceMap": true,
     "outDir": "dist",
     /* Interop Constraints */
@@ -25,7 +26,7 @@
     "lib": [
       "esnext"
     ],
-    "target": "esnext",
+    "target": "ESNext",
     /* Completeness */
     "skipLibCheck": true
   },

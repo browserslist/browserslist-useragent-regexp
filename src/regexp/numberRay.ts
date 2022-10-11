@@ -2,7 +2,7 @@ import {
   DIGIT_PATTERN,
   NUMBER_PATTERN,
   numberToDigits
-} from './util'
+} from './util.js'
 
 /**
  * Get digit pattern.

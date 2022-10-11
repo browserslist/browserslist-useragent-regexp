@@ -1,4 +1,5 @@
-import { getNumberPatternsPart } from './numbersPart'
+import { describe, it, expect } from 'vitest'
+import { getNumberPatternsPart } from './numbersPart.js'
 
 describe('RegExp', () => {
   describe('numbersPart', () => {

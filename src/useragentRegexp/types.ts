@@ -1,9 +1,9 @@
-import {
+import type {
   IBrowsersListRequest,
   IBrowsers
-} from '../browsers/types'
-import { IBrowserVersionedRegExp } from '../useragent/types'
-import { ISemverCompareOptions } from '../semver/types'
+} from '../browsers/types.js'
+import type { IBrowserVersionedRegExp } from '../useragent/types.js'
+import type { ISemverCompareOptions } from '../semver/types.js'
 
 export type IUserAgentRegExpOptions = IBrowsersListRequest & ISemverCompareOptions
 

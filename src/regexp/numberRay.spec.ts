@@ -1,8 +1,9 @@
+import { describe, it, expect } from 'vitest'
 import {
   rayRangeDigitPattern,
   optimizeRaysNumberPatterns,
   rayToNumberPatterns
-} from './numberRay'
+} from './numberRay.js'
 
 describe('RegExp', () => {
   describe('numberRay', () => {

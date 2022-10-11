@@ -1,10 +1,11 @@
-import { ISemver } from '../semver'
+import { describe, it, expect } from 'vitest'
+import type { ISemver } from '../semver/types.js'
 import {
   uniq,
   someSemverMatched,
   hasVersion,
   familyMatched
-} from './util'
+} from './util.js'
 
 describe('UserAgent', () => {
   describe('util', () => {

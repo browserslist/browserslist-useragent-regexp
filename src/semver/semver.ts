@@ -1,15 +1,15 @@
-import { BRACED_NUMBER_PATTERN } from '../regexp/util'
-import { rangeToRegExp } from '../regexp/numberRange'
-import {
+import { BRACED_NUMBER_PATTERN } from '../regexp/util.js'
+import { rangeToRegExp } from '../regexp/numberRange.js'
+import type {
   ISemverLike,
   ISemver,
   IRangedSemver,
   ISemverCompareOptions
-} from './types'
+} from './types.js'
 import {
   isAllVersion,
   uniqItems
-} from './util'
+} from './util.js'
 
 /**
  * Get semver from string or array.
@@ -93,7 +93,7 @@ export function compareSemvers(a: ISemver, b: ISemver, options: ISemverCompareOp
   if (allowHigherVersions) {
     if (
       comparePatch && patch < patchBase
-			|| compareMinor && minor < minorBase
+      || compareMinor && minor < minorBase
     ) {
       return false
     }
@@ -103,7 +103,7 @@ export function compareSemvers(a: ISemver, b: ISemver, options: ISemverCompareOp
 
   if (
     comparePatch && patch !== patchBase
-		|| compareMinor && minor !== minorBase
+    || compareMinor && minor !== minorBase
   ) {
     return false
   }

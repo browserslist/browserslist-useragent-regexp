@@ -1,4 +1,5 @@
-import { optimize } from './optimize'
+import { describe, it, expect } from 'vitest'
+import { optimize } from './optimize.js'
 
 describe('UserAgentRegExp', () => {
   describe('optimize', () => {

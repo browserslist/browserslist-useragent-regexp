@@ -1,10 +1,10 @@
-import { isAllVersion } from '../semver/util'
+import { isAllVersion } from '../semver/util.js'
 import {
   NUMBER_PATTERN,
   joinParts
-} from './util'
-import { rayToNumberPatterns } from './numberRay'
-import { segmentToNumberPatternsOrEnum } from './numberSegment'
+} from './util.js'
+import { rayToNumberPatterns } from './numberRay.js'
+import { segmentToNumberPatternsOrEnum } from './numberSegment.js'
 
 /**
  * Get RegExp for given numeric range.

@@ -1,9 +1,10 @@
-import { BROWSERS_SHIRTNAMES } from './shirtnames'
+import { describe, it, expect } from 'vitest'
+import { BROWSERS_SHIRTNAMES } from './shirtnames.js'
 import {
   normalizeBrowserFamily,
   compareArrays,
   numbersToRanges
-} from './util'
+} from './util.js'
 
 describe('Browsers', () => {
   describe('util', () => {

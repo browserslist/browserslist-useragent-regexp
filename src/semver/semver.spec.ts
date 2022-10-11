@@ -1,10 +1,11 @@
-import { ISemver } from './types'
+import { describe, it, expect } from 'vitest'
+import type { ISemver } from './types.js'
 import {
   semverify,
   compareSemvers,
   getRequiredSemverPartsCount,
   rangedSemverToRegExp
-} from './semver'
+} from './semver.js'
 
 describe('Semver', () => {
   describe('semverify', () => {

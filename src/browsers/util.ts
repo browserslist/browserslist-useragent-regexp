@@ -1,7 +1,7 @@
 import {
   BROWSERS_SHIRTNAMES_REGEXP,
   BROWSERS_SHIRTNAMES
-} from './shirtnames'
+} from './shirtnames.js'
 
 /**
  * Replace family shirtname with fullname.

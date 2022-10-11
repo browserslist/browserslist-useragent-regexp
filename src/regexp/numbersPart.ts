@@ -5,14 +5,14 @@ import {
   regExpToString,
   skipSquareBraces,
   capturePostfix
-} from './util'
+} from './util.js'
 
 /**
  * Get from RegExp part with number patterns.
  * @todo   Optimize.
- * 	E.g.: (HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))?
- * 	now: (?:\/(\d+)\.(\d+)\.(\d+))?
- * 	need: (\d+)\.(\d+)\.(\d+)
+ *   E.g.: (HeadlessChrome)(?:\/(\d+)\.(\d+)\.(\d+))?
+ *   now: (?:\/(\d+)\.(\d+)\.(\d+))?
+ *   need: (\d+)\.(\d+)\.(\d+)
  * @param regExp - Target RegExp.
  * @param numberPatternsCount - Number patterns to extract.
  * @returns RegExp part with number patterns.
@@ -39,8 +39,8 @@ export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount
     skip = skipSquareBraces(skip, prevChar, char)
 
     if (!skip
-			&& prevChar !== ESCAPE_SYMBOL
-			&& char === '('
+      && prevChar !== ESCAPE_SYMBOL
+      && char === '('
     ) {
       braceBalance++
       numberAccum = ''
@@ -52,9 +52,9 @@ export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount
     }
 
     if (!skip
-			&& prevChar !== ESCAPE_SYMBOL
-			&& char === ')'
-			&& braceBalance > 0
+      && prevChar !== ESCAPE_SYMBOL
+      && char === ')'
+      && braceBalance > 0
     ) {
       braceBalance--
 
@@ -63,13 +63,13 @@ export function getNumberPatternsPart(regExp: string|RegExp, numberPatternsCount
       }
 
       if (braceBalance === 0
-				&& numberCounter === 0
+        && numberCounter === 0
       ) {
         numberPatternsPart = ''
       }
 
       if (braceBalance === 0
-				&& numberCounter >= maxNumbersCount
+        && numberCounter >= maxNumbersCount
       ) {
         numberPatternsPart += capturePostfix(regExpStr, ++i)
         break

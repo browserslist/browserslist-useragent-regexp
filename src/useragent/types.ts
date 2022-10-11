@@ -1,4 +1,4 @@
-import { ISemver } from '../semver/types'
+import type { ISemver } from '../semver/types.js'
 
 export enum BrowserRegExpSourceProp {
   RegExp = 0,

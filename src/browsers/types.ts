@@ -1,7 +1,7 @@
-import {
+import type {
   ISemver,
   IRangedSemver
-} from '../semver'
+} from '../semver/types.js'
 
 export interface IBrowser {
   family: string
