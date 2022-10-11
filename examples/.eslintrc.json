@@ -1,10 +1,4 @@
 {
-  "extends": [
-    "@trigen/eslint-config/commonjs"
-  ],
-  "env": {
-    "node": true
-  },
   "rules": {
     "no-console": "off"
   }

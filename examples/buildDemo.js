@@ -1,7 +1,7 @@
-const {
+import {
   getUserAgentRegExps,
   getUserAgentRegExp
-} = require('../dist')
+} from '../dist/index.js'
 
 function renderStyles() {
   return `<style>
