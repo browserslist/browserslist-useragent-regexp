@@ -1,6 +1,6 @@
-import { IBrowserVersionedRegExp } from '../useragent/types'
-import { IBrowsers } from '../browsers/types'
-import { IBrowserPatch } from './types'
+import type { IBrowserVersionedRegExp } from '../useragent/types.js'
+import type { IBrowsers } from '../browsers/types.js'
+import type { IBrowserPatch } from './types.js'
 
 const patches: IBrowserPatch[] = [
   /**
@@ -32,8 +32,8 @@ const patches: IBrowserPatch[] = [
       } = regExpInfo
 
       if (family !== 'chrome'
-				|| resultMinVersion && resultMinVersion[0] >= 74
-				|| regExpString.includes('HeadlessChrome')
+        || resultMinVersion && resultMinVersion[0] >= 74
+        || regExpString.includes('HeadlessChrome')
       ) {
         return regExpInfo
       }

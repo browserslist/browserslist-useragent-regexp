@@ -24,7 +24,7 @@ import {
   joinVersionedBrowsersRegExps,
   isAllVersion,
   defaultOptions
-} from '.'
+} from './index.js'
 
 const {
   help,
@@ -48,7 +48,7 @@ if (help) {
   optionsTable.cell(
     'Description',
     'Manually provide a browserslist query.'
-		+ ' Specifying this overrides the browserslist configuration specified in your project.'
+    + ' Specifying this overrides the browserslist configuration specified in your project.'
   )
   optionsTable.newRow()
 
@@ -74,7 +74,7 @@ if (help) {
   optionsTable.cell(
     'Description',
     'For all the browsers in the browserslist query,'
-		+ ' return a match if the user agent version is equal to or higher than the one specified in browserslist.'
+    + ' return a match if the user agent version is equal to or higher than the one specified in browserslist.'
   )
   optionsTable.cell('Default', 'false')
   optionsTable.newRow()

@@ -1,10 +1,11 @@
+import { describe, it, expect } from 'vitest'
 import {
   segmentRangeNumberPattern,
   splitToDecadeRanges,
   splitCommonDiff,
   enumOrRange,
   segmentToNumberPatterns
-} from './numberSegment'
+} from './numberSegment.js'
 
 describe('RegExp', () => {
   describe('numberSegment', () => {

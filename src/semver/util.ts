@@ -1,4 +1,4 @@
-import { compareArrays } from '../browsers/util'
+import { compareArrays } from '../browsers/util.js'
 
 /**
  * Check target if is 'all'.

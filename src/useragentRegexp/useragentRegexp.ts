@@ -1,16 +1,16 @@
-import { getRegExpsForBrowsers } from '../useragent'
+import { getRegExpsForBrowsers } from '../useragent/index.js'
 import {
   getBrowsersList,
   mergeBrowserVersions,
   browserVersionsToRanges
-} from '../browsers'
+} from '../browsers/index.js'
 import {
   applyVersionsToRegExps,
   joinVersionedBrowsersRegExps
-} from '../regexp'
-import { IUserAgentRegExpOptions } from './types'
-import { patchRegExps } from './workarounds'
-import { optimizeAll } from './optimize'
+} from '../regexp/index.js'
+import type { IUserAgentRegExpOptions } from './types.js'
+import { patchRegExps } from './workarounds.js'
+import { optimizeAll } from './optimize.js'
 
 export const defaultOptions = {
   ignoreMinor: false,

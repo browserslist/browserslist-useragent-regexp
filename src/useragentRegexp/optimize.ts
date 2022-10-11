@@ -1,5 +1,5 @@
-import { IBrowserVersionedRegExp } from '../useragent/types'
-import { optimize } from '../regexp/optimize'
+import type { IBrowserVersionedRegExp } from '../useragent/types.js'
+import { optimize } from '../regexp/optimize.js'
 
 /**
  * Optimize all RegExps.

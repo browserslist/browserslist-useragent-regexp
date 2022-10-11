@@ -4,20 +4,20 @@ import {
   rangedSemverToRegExp,
   getRequiredSemverPartsCount,
   isAllVersion
-} from '../semver'
-import { IRangedBrowsers } from '../browsers'
-import {
+} from '../semver/index.js'
+import type { IRangedBrowsers } from '../browsers/types.js'
+import type {
   IBrowserVersionRegExp,
   IBrowserVersionedRegExp
-} from '../useragent'
-import { uniq } from '../useragent/util'
+} from '../useragent/types.js'
+import { uniq } from '../useragent/util.js'
 import {
   joinParts,
   getNumberPatternsCount,
   replaceNumberPatterns,
   regExpToString
-} from './util'
-import { getNumberPatternsPart } from './numbersPart'
+} from './util.js'
+import { getNumberPatternsPart } from './numbersPart.js'
 
 /**
  * Apply ranged sevmers to the RegExp.

@@ -1,5 +1,6 @@
-import { BROWSERS_SHIRTNAMES } from './shirtnames'
-import { parseBrowsersList } from './browserslist'
+import { describe, it, expect } from 'vitest'
+import { BROWSERS_SHIRTNAMES } from './shirtnames.js'
+import { parseBrowsersList } from './browserslist.js'
 
 describe('Browsers', () => {
   describe('browserslist', () => {

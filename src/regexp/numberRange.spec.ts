@@ -1,4 +1,5 @@
-import { rangeToRegExp } from './numberRange'
+import { describe, it, expect } from 'vitest'
+import { rangeToRegExp } from './numberRange.js'
 
 describe('RegExp', () => {
   describe('numberRange', () => {

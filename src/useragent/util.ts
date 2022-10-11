@@ -1,9 +1,9 @@
-import { hasNumberPattern } from '../regexp/util'
+import { hasNumberPattern } from '../regexp/util.js'
 import {
   ISemver,
   ISemverCompareOptions,
   compareSemvers
-} from '../semver'
+} from '../semver/index.js'
 
 /**
  * Remove duplicates from array.

@@ -1,10 +1,11 @@
-import { IBrowser } from './types'
-import { ISemver } from '../semver'
+import { describe, it, expect } from 'vitest'
+import type { IBrowser } from './types.js'
+import type { ISemver } from '../semver/types.js'
 import {
   mergeBrowserVersions,
   versionsListToRanges,
   browserVersionsToRanges
-} from './optimize'
+} from './optimize.js'
 
 describe('Browsers', () => {
   describe('optimize', () => {

@@ -1,4 +1,4 @@
-import { IBrowserVersionedRegExp } from '../useragent'
+import type { IBrowserVersionedRegExp } from '../useragent/types.js'
 
 export const DIGIT_PATTERN = '\\d'
 export const NUMBER_PATTERN = `${DIGIT_PATTERN}+`

@@ -1,11 +1,12 @@
-import { IRangedSemver } from '../semver'
-import { IBrowserVersionRegExp } from '../useragent'
-import { IRangedBrowsers } from '../browsers'
-import { regExpToString } from '../regexp'
+import { describe, it, expect } from 'vitest'
+import type { IRangedSemver } from '../semver/types.js'
+import type { IBrowserVersionRegExp } from '../useragent/types.js'
+import type { IRangedBrowsers } from '../browsers/types.js'
+import { regExpToString } from '../regexp/index.js'
 import {
   applyVersionsToRegExp,
   applyVersionsToRegExps
-} from './versions'
+} from './versions.js'
 
 describe('RegExp', () => {
   describe('versions', () => {

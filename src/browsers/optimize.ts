@@ -3,16 +3,16 @@ import {
   IRangedSemver,
   ISemverRange,
   SemverPart
-} from '../semver'
-import {
+} from '../semver/index.js'
+import type {
   IBrowser,
   IBrowsers,
   IRangedBrowsers
-} from './types'
+} from './types.js'
 import {
   compareArrays,
   numbersToRanges
-} from './util'
+} from './util.js'
 
 /**
  * Merge browser info object to map with versions.
@@ -81,8 +81,8 @@ export function versionsListToRanges(versions: ISemver[]) {
 
     for (let p = SemverPart.Major; p <= SemverPart.Patch; p++) {
       if ((p === part || part === null)
-				&& prev[p] + 1 === current[p]
-				&& compareArrays(prev, current, p + 1)
+        && prev[p] + 1 === current[p]
+        && compareArrays(prev, current, p + 1)
       ) {
         part = p
 
