@@ -1,24 +1,24 @@
 {
-	"testEnvironment": "node",
-	"testRegex": "/src/.*\\.spec\\.(jsx?|tsx?)$",
-	"transform": {
-		"^.+\\.(t|j)sx?$": ["@swc/jest", {
-		  "env": {
-			"targets": {
-			  "node": 12
-			}
-		  }
-		}]
-	},
-	"collectCoverage": true,
-	"collectCoverageFrom": [
-		"src/**/*.{js,jsx,ts,tsx}",
-		"!src/cli.ts",
-		"!**/*.d.ts",
-		"!**/node_modules/**"
-	],
-	"coverageReporters": [
-		"lcovonly",
-		"text"
-	]
+  "testEnvironment": "node",
+  "testRegex": "/src/.*\\.spec\\.(jsx?|tsx?)$",
+  "transform": {
+    "^.+\\.(t|j)sx?$": ["@swc/jest", {
+      "env": {
+      "targets": {
+        "node": 12
+      }
+      }
+    }]
+  },
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/cli.ts",
+    "!**/*.d.ts",
+    "!**/node_modules/**"
+  ],
+  "coverageReporters": [
+    "lcovonly",
+    "text"
+  ]
 }
