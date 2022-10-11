@@ -1,4 +1,0 @@
-{
-	"rollup.config.js": "trigen-scripts lint --fix",
-	"src/**/*.ts": "trigen-scripts lint --fix"
-}
