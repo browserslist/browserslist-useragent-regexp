@@ -1,3 +1,5 @@
 {
-	"packageManager": "yarn"
+  "withoutPublish": true,
+  "tempDir": "package",
+  "files": ["**/*.spec.d.ts", "**/*.spec.d.ts.map"]
 }

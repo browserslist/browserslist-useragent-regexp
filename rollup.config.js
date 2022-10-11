@@ -44,7 +44,7 @@ export default [
     plugins: [...plugins(nodeEsm.join(', ')), shebang()],
     external: _ => !_.endsWith('src/cli.ts'),
     output: {
-      file: 'lib/cli.js',
+      file: 'dist/cli.js',
       format: 'cjs',
       exports: 'named',
       sourcemap: true

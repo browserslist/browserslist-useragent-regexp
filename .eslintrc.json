@@ -19,6 +19,6 @@
     "prefer-destructuring": "off"
   },
   "ignorePatterns": [
-    "lib"
+    "dist"
   ]
 }

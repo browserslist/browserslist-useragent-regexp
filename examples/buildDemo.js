@@ -1,7 +1,7 @@
 const {
   getUserAgentRegExps,
   getUserAgentRegExp
-} = require('../lib')
+} = require('../dist')
 
 function renderStyles() {
   return `<style>

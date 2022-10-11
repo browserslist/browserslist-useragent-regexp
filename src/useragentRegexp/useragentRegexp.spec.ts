@@ -33,8 +33,8 @@ function *getUserAgents() {
     for (let i = 0; i < 30; i++) {
       try {
         data = new UserAgent(({ userAgent }) => !userAgents.has(userAgent)
-						&& mobile(userAgent, i)
-						&& matchesUA(userAgent, options))
+            && mobile(userAgent, i)
+            && matchesUA(userAgent, options))
       } catch (err) {
         continue
       }
