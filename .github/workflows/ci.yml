@@ -3,17 +3,16 @@ on:
   push:
   pull_request:
 jobs:
-  base-test:
+  test:
     runs-on: ubuntu-latest
-    name: Node.js base test
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    name: Node.js test
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
       - name: Run tests
@@ -23,26 +22,3 @@ jobs:
         if: success()
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-  matrix-test:
-    strategy:
-      matrix:
-        node-version:
-          - 12
-          - 14
-        runs-on:
-          - ubuntu-latest
-          - macos-latest
-    name: Node.js ${{ matrix.node-version }} on ${{ matrix.runs-on }} matrix test
-    runs-on: ${{ matrix.runs-on }}
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-      - name: Run tests
-        run: yarn test
