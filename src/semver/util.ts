@@ -1,6 +1,4 @@
-import {
-	compareArrays
-} from '../browsers/util';
+import { compareArrays } from '../browsers/util'
 
 /**
  * Check target if is 'all'.
@@ -8,11 +6,11 @@ import {
  * @returns Is 'all' or not.
  */
 export function isAllVersion(version: unknown): boolean {
-	const target: unknown = Array.isArray(version)
-		? version[0]
-		: version;
+  const target: unknown = Array.isArray(version)
+    ? version[0]
+    : version
 
-	return target === 'all';
+  return target === 'all'
 }
 
 /**
@@ -21,5 +19,5 @@ export function isAllVersion(version: unknown): boolean {
  * @returns Uniq arrays.
  */
 export function uniqItems<T = unknown>(items: T[][]) {
-	return items.filter(Boolean).filter((a, i, items) => items && !items.some((b, j) => j > i && compareArrays(a, b)));
+  return items.filter(Boolean).filter((a, i, items) => items && !items.some((b, j) => j > i && compareArrays(a, b)))
 }

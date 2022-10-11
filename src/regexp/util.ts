@@ -1,11 +1,9 @@
-import {
-	IBrowserVersionedRegExp
-} from '../useragent';
+import { IBrowserVersionedRegExp } from '../useragent'
 
-export const DIGIT_PATTERN = '\\d';
-export const NUMBER_PATTERN = `${DIGIT_PATTERN}+`;
-export const BRACED_NUMBER_PATTERN = `(${NUMBER_PATTERN})`;
-export const ESCAPE_SYMBOL = '\\';
+export const DIGIT_PATTERN = '\\d'
+export const NUMBER_PATTERN = `${DIGIT_PATTERN}+`
+export const BRACED_NUMBER_PATTERN = `(${NUMBER_PATTERN})`
+export const ESCAPE_SYMBOL = '\\'
 
 /**
  * Join RegExp parts with "or".
@@ -14,11 +12,11 @@ export const ESCAPE_SYMBOL = '\\';
  * @returns Joined parts.
  */
 export function joinParts(parts: string[], wrapRequired = false) {
-	const joined = parts.join('|');
+  const joined = parts.join('|')
 
-	return wrapRequired || parts.length > 1
-		? `(${joined})`
-		: joined;
+  return wrapRequired || parts.length > 1
+    ? `(${joined})`
+    : joined
 }
 
 /**
@@ -27,9 +25,9 @@ export function joinParts(parts: string[], wrapRequired = false) {
  * @returns Joined RegExps string.
  */
 export function joinVersionedBrowsersRegExps(versionedBrowsersRegExps: IBrowserVersionedRegExp[]) {
-	return versionedBrowsersRegExps
-		.map(_ => `(${_.regExpString})`)
-		.join('|');
+  return versionedBrowsersRegExps
+    .map(_ => `(${_.regExpString})`)
+    .join('|')
 }
 
 /**
@@ -38,7 +36,7 @@ export function joinVersionedBrowsersRegExps(versionedBrowsersRegExps: IBrowserV
  * @returns Has or not.
  */
 export function hasNumberPattern(regExp: string|RegExp) {
-	return regExp.toString().includes(BRACED_NUMBER_PATTERN);
+  return regExp.toString().includes(BRACED_NUMBER_PATTERN)
 }
 
 /**
@@ -47,7 +45,7 @@ export function hasNumberPattern(regExp: string|RegExp) {
  * @returns Number patterns count.
  */
 export function getNumberPatternsCount(regExp: string|RegExp) {
-	return regExp.toString().split(BRACED_NUMBER_PATTERN).length - 1;
+  return regExp.toString().split(BRACED_NUMBER_PATTERN).length - 1
 }
 
 /**
@@ -56,9 +54,9 @@ export function getNumberPatternsCount(regExp: string|RegExp) {
  * @returns RegExp string without slashes.
  */
 export function regExpToString(regExp: RegExp) {
-	return regExp
-		.toString()
-		.replace(/^\/|\/$/g, '');
+  return regExp
+    .toString()
+    .replace(/^\/|\/$/g, '')
 }
 
 /**
@@ -69,23 +67,23 @@ export function regExpToString(regExp: RegExp) {
  * @returns RegExp string with replaced number patterns.
  */
 export function replaceNumberPatterns(
-	regExp: string|RegExp,
-	numbers: string[],
-	numberPatternsCount?: number
+  regExp: string|RegExp,
+  numbers: string[],
+  numberPatternsCount?: number
 ) {
-	const strRegExp = typeof regExp === 'string'
-		? regExp
-		: regExpToString(regExp);
-	const numbersToReplace = typeof numberPatternsCount === 'number'
-		&& numberPatternsCount < numbers.length
-		? numbers.slice(0, numberPatternsCount)
-		: numbers;
-	const numberedStrRegExp = numbersToReplace.reduce(
-		(_, num) => _.replace(BRACED_NUMBER_PATTERN, num),
-		strRegExp
-	);
+  const strRegExp = typeof regExp === 'string'
+    ? regExp
+    : regExpToString(regExp)
+  const numbersToReplace = typeof numberPatternsCount === 'number'
+    && numberPatternsCount < numbers.length
+    ? numbers.slice(0, numberPatternsCount)
+    : numbers
+  const numberedStrRegExp = numbersToReplace.reduce(
+    (_, num) => _.replace(BRACED_NUMBER_PATTERN, num),
+    strRegExp
+  )
 
-	return numberedStrRegExp;
+  return numberedStrRegExp
 }
 
 /**
@@ -94,7 +92,7 @@ export function replaceNumberPatterns(
  * @returns Digits array.
  */
 export function numberToDigits(num: string|number) {
-	return Array.from(num.toString()).map(Number);
+  return Array.from(num.toString()).map(Number)
 }
 
 /**
@@ -105,19 +103,19 @@ export function numberToDigits(num: string|number) {
  * @returns Should skip this char or not.
  */
 export function skipSquareBraces(skip: boolean, prevChar: string, char: string) {
-	if (char === '['
-		&& prevChar !== ESCAPE_SYMBOL
-	) {
-		return true;
-	}
+  if (char === '['
+    && prevChar !== ESCAPE_SYMBOL
+  ) {
+    return true
+  }
 
-	if (char === ']'
-		&& prevChar !== ESCAPE_SYMBOL
-	) {
-		return false;
-	}
+  if (char === ']'
+    && prevChar !== ESCAPE_SYMBOL
+  ) {
+    return false
+  }
 
-	return skip;
+  return skip
 }
 
 /**
@@ -127,75 +125,75 @@ export function skipSquareBraces(skip: boolean, prevChar: string, char: string) 
  * @returns RegExp group postfix part.
  */
 export function capturePostfix(regExpStr: string, startFrom: number) {
-	let char = regExpStr[startFrom];
+  let char = regExpStr[startFrom]
 
-	switch (char) {
-		case '+':
-		case '*':
-		case '?':
-			return char;
+  switch (char) {
+    case '+':
+    case '*':
+    case '?':
+      return char
 
-		case '(': {
-			const nextChar = regExpStr[startFrom + 1];
-			const afterNextChar = regExpStr[startFrom + 2];
+    case '(': {
+      const nextChar = regExpStr[startFrom + 1]
+      const afterNextChar = regExpStr[startFrom + 2]
 
-			if (
-				nextChar !== '?'
-				|| afterNextChar !== '=' && afterNextChar !== '!'
-			) {
-				return '';
-			}
+      if (
+        nextChar !== '?'
+        || afterNextChar !== '=' && afterNextChar !== '!'
+      ) {
+        return ''
+      }
 
-			break;
-		}
+      break
+    }
 
-		case '{':
-			break;
+    case '{':
+      break
 
-		default:
-			return '';
-	}
+    default:
+      return ''
+  }
 
-	const regExpStrLength = regExpStr.length;
-	let prevChar = '';
-	let braceBalance = 0;
-	let skip = false;
-	let postfix = '';
+  const regExpStrLength = regExpStr.length
+  let prevChar = ''
+  let braceBalance = 0
+  let skip = false
+  let postfix = ''
 
-	for (let i = startFrom; i < regExpStrLength; i++) {
-		char = regExpStr[i];
-		prevChar = regExpStr[i - 1];
-		skip = skipSquareBraces(skip, prevChar, char);
+  for (let i = startFrom; i < regExpStrLength; i++) {
+    char = regExpStr[i]
+    prevChar = regExpStr[i - 1]
+    skip = skipSquareBraces(skip, prevChar, char)
 
-		if (!skip
-			&& prevChar !== ESCAPE_SYMBOL
-			&& (
-				char === '('
-				|| char === '{'
-			)
-		) {
-			braceBalance++;
-		}
+    if (!skip
+      && prevChar !== ESCAPE_SYMBOL
+      && (
+        char === '('
+        || char === '{'
+      )
+    ) {
+      braceBalance++
+    }
 
-		if (braceBalance > 0) {
-			postfix += char;
-		}
+    if (braceBalance > 0) {
+      postfix += char
+    }
 
-		if (!skip
-			&& prevChar !== ESCAPE_SYMBOL
-			&& braceBalance > 0
-			&& (
-				char === ')'
-				|| char === '}'
-			)
-		) {
-			braceBalance--;
+    if (!skip
+      && prevChar !== ESCAPE_SYMBOL
+      && braceBalance > 0
+      && (
+        char === ')'
+        || char === '}'
+      )
+    ) {
+      braceBalance--
 
-			if (braceBalance === 0) {
-				break;
-			}
-		}
-	}
+      if (braceBalance === 0) {
+        break
+      }
+    }
+  }
 
-	return postfix;
+  return postfix
 }

@@ -1,7 +1,7 @@
 import {
-	BROWSERS_SHIRTNAMES_REGEXP,
-	BROWSERS_SHIRTNAMES
-} from './shirtnames';
+  BROWSERS_SHIRTNAMES_REGEXP,
+  BROWSERS_SHIRTNAMES
+} from './shirtnames'
 
 /**
  * Replace family shirtname with fullname.
@@ -9,15 +9,15 @@ import {
  * @returns String with fullname.
  */
 export function normalizeBrowserFamily(query: string) {
-	const matches = BROWSERS_SHIRTNAMES_REGEXP.exec(query);
+  const matches = BROWSERS_SHIRTNAMES_REGEXP.exec(query)
 
-	if (Array.isArray(matches)) {
-		const [shirtname] = matches;
+  if (Array.isArray(matches)) {
+    const [shirtname] = matches
 
-		return query.replace(shirtname, BROWSERS_SHIRTNAMES[shirtname]);
-	}
+    return query.replace(shirtname, BROWSERS_SHIRTNAMES[shirtname])
+  }
 
-	return query;
+  return query
 }
 
 /**
@@ -28,15 +28,15 @@ export function normalizeBrowserFamily(query: string) {
  * @returns Equals or not.
  */
 export function compareArrays(a: unknown[], b: unknown[], from = 0) {
-	const len = a.length;
+  const len = a.length
 
-	for (let i = from; i < len; i++) {
-		if (a[i] !== b[i]) {
-			return false;
-		}
-	}
+  for (let i = from; i < len; i++) {
+    if (a[i] !== b[i]) {
+      return false
+    }
+  }
 
-	return true;
+  return true
 }
 
 /**
@@ -45,16 +45,13 @@ export function compareArrays(a: unknown[], b: unknown[], from = 0) {
  * @returns Number or two numbers.
  */
 export function numbersToRanges(numbers: number|number[]) {
-	if (typeof numbers === 'number') {
-		return numbers;
-	}
+  if (typeof numbers === 'number') {
+    return numbers
+  }
 
-	if (numbers.length === 1) {
-		return numbers[0];
-	}
+  if (numbers.length === 1) {
+    return numbers[0]
+  }
 
-	return [
-		numbers[0],
-		numbers[numbers.length - 1]
-	];
+  return [numbers[0], numbers[numbers.length - 1]]
 }

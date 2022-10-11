@@ -1,16 +1,10 @@
+import { isAllVersion } from '../semver/util'
 import {
-	isAllVersion
-} from '../semver/util';
-import {
-	NUMBER_PATTERN,
-	joinParts
-} from './util';
-import {
-	rayToNumberPatterns
-} from './numberRay';
-import {
-	segmentToNumberPatternsOrEnum
-} from './numberSegment';
+  NUMBER_PATTERN,
+  joinParts
+} from './util'
+import { rayToNumberPatterns } from './numberRay'
+import { segmentToNumberPatternsOrEnum } from './numberSegment'
 
 /**
  * Get RegExp for given numeric range.
@@ -19,14 +13,14 @@ import {
  * @returns Range pattern.
  */
 export function rangeToRegExp(from: number, to = Infinity) {
-	if (isAllVersion(from)) {
-		return NUMBER_PATTERN;
-	}
+  if (isAllVersion(from)) {
+    return NUMBER_PATTERN
+  }
 
-	const numberPatterns = to === Infinity
-		? rayToNumberPatterns(from)
-		: segmentToNumberPatternsOrEnum(from, to);
-	const regExpStr = joinParts(numberPatterns);
+  const numberPatterns = to === Infinity
+    ? rayToNumberPatterns(from)
+    : segmentToNumberPatternsOrEnum(from, to)
+  const regExpStr = joinParts(numberPatterns)
 
-	return regExpStr;
+  return regExpStr
 }

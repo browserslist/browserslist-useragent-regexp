@@ -1,31 +1,23 @@
+import { getRegExpsForBrowsers } from '../useragent'
 import {
-	getRegExpsForBrowsers
-} from '../useragent';
+  getBrowsersList,
+  mergeBrowserVersions,
+  browserVersionsToRanges
+} from '../browsers'
 import {
-	getBrowsersList,
-	mergeBrowserVersions,
-	browserVersionsToRanges
-} from '../browsers';
-import {
-	applyVersionsToRegExps,
-	joinVersionedBrowsersRegExps
-} from '../regexp';
-import {
-	IUserAgentRegExpOptions
-} from './types';
-import {
-	patchRegExps
-} from './workarounds';
-import {
-	optimizeAll
-} from './optimize';
+  applyVersionsToRegExps,
+  joinVersionedBrowsersRegExps
+} from '../regexp'
+import { IUserAgentRegExpOptions } from './types'
+import { patchRegExps } from './workarounds'
+import { optimizeAll } from './optimize'
 
 export const defaultOptions = {
-	ignoreMinor: false,
-	ignorePatch: true,
-	allowZeroSubversions: false,
-	allowHigherVersions: false
-};
+  ignoreMinor: false,
+  ignorePatch: true,
+  allowZeroSubversions: false,
+  allowHigherVersions: false
+}
 
 /**
  * Compile browserslist query to RegExps.
@@ -33,29 +25,29 @@ export const defaultOptions = {
  * @returns Objects with info about compiled RegExps.
  */
 export function getUserAgentRegExps(options: IUserAgentRegExpOptions = {}) {
-	const {
-		browsers,
-		env,
-		path,
-		...otherOptions
-	} = options;
-	const finalOptions = {
-		...defaultOptions,
-		...otherOptions
-	};
-	const browsersList = getBrowsersList({
-		browsers,
-		env,
-		path
-	});
-	const mergedBrowsers = mergeBrowserVersions(browsersList);
-	const rangedBrowsers = browserVersionsToRanges(mergedBrowsers);
-	const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, finalOptions);
-	const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, finalOptions);
-	const patchedRegExps = patchRegExps(versionedRegExps, mergedBrowsers);
-	const optimizedRegExps = optimizeAll(patchedRegExps);
+  const {
+    browsers,
+    env,
+    path,
+    ...otherOptions
+  } = options
+  const finalOptions = {
+    ...defaultOptions,
+    ...otherOptions
+  }
+  const browsersList = getBrowsersList({
+    browsers,
+    env,
+    path
+  })
+  const mergedBrowsers = mergeBrowserVersions(browsersList)
+  const rangedBrowsers = browserVersionsToRanges(mergedBrowsers)
+  const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, finalOptions)
+  const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, finalOptions)
+  const patchedRegExps = patchRegExps(versionedRegExps, mergedBrowsers)
+  const optimizedRegExps = optimizeAll(patchedRegExps)
 
-	return optimizedRegExps;
+  return optimizedRegExps
 }
 
 /**
@@ -64,9 +56,9 @@ export function getUserAgentRegExps(options: IUserAgentRegExpOptions = {}) {
  * @returns Compiled RegExp.
  */
 export function getUserAgentRegExp(options: IUserAgentRegExpOptions = {}) {
-	const regExps = getUserAgentRegExps(options);
-	const regExpStr = joinVersionedBrowsersRegExps(regExps);
-	const regExp = new RegExp(regExpStr);
+  const regExps = getUserAgentRegExps(options)
+  const regExpStr = joinVersionedBrowsersRegExps(regExps)
+  const regExp = new RegExp(regExpStr)
 
-	return regExp;
+  return regExp
 }

@@ -1,17 +1,11 @@
-import browserslist from 'browserslist';
+import browserslist from 'browserslist'
+import { semverify } from '../semver'
 import {
-	semverify
-} from '../semver';
-import {
-	IBrowser,
-	IBrowsersListRequest
-} from './types';
-import {
-	BROWSERS_SHIRTNAMES
-} from './shirtnames';
-import {
-	normalizeBrowserFamily
-} from './util';
+  IBrowser,
+  IBrowsersListRequest
+} from './types'
+import { BROWSERS_SHIRTNAMES } from './shirtnames'
+import { normalizeBrowserFamily } from './util'
 
 /**
  * Browsers strings to info objects.
@@ -19,26 +13,23 @@ import {
  * @returns Browser info objects.
  */
 export function parseBrowsersList(browsersList: string[]) {
-	return browsersList.reduce<IBrowser[]>((browsers, browser) => {
-		const [
-			name,
-			...versions
-		] = browser.split(/ |-/);
-		const family = (BROWSERS_SHIRTNAMES[name] || name).toLowerCase();
+  return browsersList.reduce<IBrowser[]>((browsers, browser) => {
+    const [name, ...versions] = browser.split(/ |-/)
+    const family = (BROWSERS_SHIRTNAMES[name] || name).toLowerCase()
 
-		return versions.reduce((browsers, version) => {
-			const semver = semverify(version);
+    return versions.reduce((browsers, version) => {
+      const semver = semverify(version)
 
-			if (semver) {
-				browsers.push({
-					family,
-					version: semver
-				});
-			}
+      if (semver) {
+        browsers.push({
+          family,
+          version: semver
+        })
+      }
 
-			return browsers;
-		}, browsers);
-	}, []);
+      return browsers
+    }, browsers)
+  }, [])
 }
 
 /**
@@ -47,19 +38,19 @@ export function parseBrowsersList(browsersList: string[]) {
  * @returns Browser info objects.
  */
 export function getBrowsersList(options: IBrowsersListRequest = {}) {
-	const {
-		browsers,
-		env,
-		path
-	} = options;
-	const normalizedBrowsers = Array.isArray(browsers)
-		? browsers.map(normalizeBrowserFamily)
-		: browsers;
-	const browsersList = browserslist(normalizedBrowsers, {
-		env,
-		path
-	});
-	const parsedBrowsers = parseBrowsersList(browsersList);
+  const {
+    browsers,
+    env,
+    path
+  } = options
+  const normalizedBrowsers = Array.isArray(browsers)
+    ? browsers.map(normalizeBrowserFamily)
+    : browsers
+  const browsersList = browserslist(normalizedBrowsers, {
+    env,
+    path
+  })
+  const parsedBrowsers = parseBrowsersList(browsersList)
 
-	return parsedBrowsers;
+  return parsedBrowsers
 }

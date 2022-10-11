@@ -1,32 +1,30 @@
 /* eslint-disable import/unambiguous, no-var, prefer-template, prefer-arrow-callback, func-names */
 /* eslint-env browser */
 
-document.getElementById('useragent').innerText = navigator.userAgent;
+document.getElementById('useragent').innerText = navigator.userAgent
 
 Array.from(document.querySelectorAll('[data-query]')).forEach(function (input) {
+  var queryDiv = input.parentElement.parentElement
+  var queriesDiv = queryDiv.parentElement
+  var { query } = input.dataset
+  var some = false
 
-	var queryDiv = input.parentElement.parentElement;
-	var queriesDiv = queryDiv.parentElement;
-	var query = input.dataset.query;
-	var some = false;
+  Array.from(document.querySelectorAll('[data-for-query=' + query + ']')).forEach(function (input) {
+    var li = input.parentElement
+    var ul = li.parentElement
+    var checked = new RegExp(input.dataset.regexp).test(navigator.userAgent)
 
-	Array.from(document.querySelectorAll('[data-for-query=' + query + ']')).forEach(function (input) {
+    input.checked = checked
+    some = some || checked
 
-		var li = input.parentElement;
-		var ul = li.parentElement;
-		var checked = new RegExp(input.dataset.regexp).test(navigator.userAgent);
+    if (checked) {
+      ul.insertBefore(li, ul.firstElementChild)
+    }
+  })
 
-		input.checked = checked;
-		some = some || checked;
+  input.checked = some
 
-		if (checked) {
-			ul.insertBefore(li, ul.firstElementChild);
-		}
-	});
-
-	input.checked = some;
-
-	if (some) {
-		queriesDiv.insertBefore(queryDiv, queriesDiv.firstElementChild);
-	}
-});
+  if (some) {
+    queriesDiv.insertBefore(queryDiv, queriesDiv.firstElementChild)
+  }
+})
