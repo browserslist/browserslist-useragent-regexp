@@ -1,0 +1,9 @@
+name: "❓ Question"
+description: "Have a Question?"
+labels: ["question"]
+body:
+  - type: textarea
+    attributes:
+      label: Describe your question
+    validations:
+      required: true
