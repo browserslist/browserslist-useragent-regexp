@@ -1,32 +1,30 @@
 /* eslint-disable import/unambiguous */
 /* eslint-env browser */
 
-document.getElementById('useragent').innerText = navigator.userAgent;
+document.getElementById('useragent').innerText = navigator.userAgent
 
 document.querySelectorAll('[data-query]').forEach((input) => {
+  const queryDiv = input.parentElement.parentElement
+  const queriesDiv = queryDiv.parentElement
+  const { query } = input.dataset
+  let some = false
 
-	const queryDiv = input.parentElement.parentElement;
-	const queriesDiv = queryDiv.parentElement;
-	const query = input.dataset.query;
-	let some = false;
+  document.querySelectorAll(`[data-for-query=${query}]`).forEach((input) => {
+    const li = input.parentElement
+    const ul = li.parentElement
+    const checked = new RegExp(input.dataset.regexp).test(navigator.userAgent)
 
-	document.querySelectorAll(`[data-for-query=${query}]`).forEach((input) => {
+    input.checked = checked
+    some = some || checked
 
-		const li = input.parentElement;
-		const ul = li.parentElement;
-		const checked = new RegExp(input.dataset.regexp).test(navigator.userAgent);
+    if (checked) {
+      ul.insertBefore(li, ul.firstElementChild)
+    }
+  })
 
-		input.checked = checked;
-		some = some || checked;
+  input.checked = some
 
-		if (checked) {
-			ul.insertBefore(li, ul.firstElementChild);
-		}
-	});
-
-	input.checked = some;
-
-	if (some) {
-		queriesDiv.insertBefore(queryDiv, queriesDiv.firstElementChild);
-	}
-});
+  if (some) {
+    queriesDiv.insertBefore(queryDiv, queriesDiv.firstElementChild)
+  }
+})

@@ -1,19 +1,15 @@
+import { BRACED_NUMBER_PATTERN } from '../regexp/util'
+import { rangeToRegExp } from '../regexp/numberRange'
 import {
-	BRACED_NUMBER_PATTERN
-} from '../regexp/util';
+  ISemverLike,
+  ISemver,
+  IRangedSemver,
+  ISemverCompareOptions
+} from './types'
 import {
-	rangeToRegExp
-} from '../regexp/numberRange';
-import {
-	ISemverLike,
-	ISemver,
-	IRangedSemver,
-	ISemverCompareOptions
-} from './types';
-import {
-	isAllVersion,
-	uniqItems
-} from './util';
+  isAllVersion,
+  uniqItems
+} from './util'
 
 /**
  * Get semver from string or array.
@@ -21,37 +17,45 @@ import {
  * @returns Array with semver parts.
  */
 export function semverify(version: ISemverLike): ISemver | null {
-	const versionParts = Array.isArray(version)
-		? version
-		: version.toString().split('.');
+  const versionParts = Array.isArray(version)
+    ? version
+    : version.toString().split('.')
 
-	if (isAllVersion(versionParts[0])) {
-		return [versionParts[0] as number, 0, 0];
-	}
+  if (isAllVersion(versionParts[0])) {
+    return [
+      versionParts[0] as number,
+      0,
+      0
+    ]
+  }
 
-	let versionPart: number | string = null;
-	let semverPart: number = null;
-	const semver: ISemver = [0, 0, 0];
+  let versionPart: number | string = null
+  let semverPart: number = null
+  const semver: ISemver = [
+    0,
+    0,
+    0
+  ]
 
-	for (let i = 0; i < 3; i++) {
-		versionPart = versionParts[i];
+  for (let i = 0; i < 3; i++) {
+    versionPart = versionParts[i]
 
-		if (typeof versionPart === 'undefined') {
-			continue;
-		}
+    if (typeof versionPart === 'undefined') {
+      continue
+    }
 
-		semverPart = typeof versionPart === 'number'
-			? versionPart
-			: parseInt(versionPart, 10);
+    semverPart = typeof versionPart === 'number'
+      ? versionPart
+      : parseInt(versionPart, 10)
 
-		if (isNaN(semverPart)) {
-			return null;
-		}
+    if (isNaN(semverPart)) {
+      return null
+    }
 
-		semver[i] = semverPart;
-	}
+    semver[i] = semverPart
+  }
 
-	return semver;
+  return semver
 }
 
 /**
@@ -62,49 +66,49 @@ export function semverify(version: ISemverLike): ISemver | null {
  * @returns Equals or not.
  */
 export function compareSemvers(a: ISemver, b: ISemver, options: ISemverCompareOptions) {
-	const [
-		major,
-		minor,
-		patch
-	] = a;
-	const [
-		majorBase,
-		minorBase,
-		patchBase
-	] = b;
-	const {
-		ignoreMinor,
-		ignorePatch,
-		allowHigherVersions
-	} = options;
+  const [
+    major,
+    minor,
+    patch
+  ] = a
+  const [
+    majorBase,
+    minorBase,
+    patchBase
+  ] = b
+  const {
+    ignoreMinor,
+    ignorePatch,
+    allowHigherVersions
+  } = options
 
-	if (isAllVersion(majorBase)) {
-		return true;
-	}
+  if (isAllVersion(majorBase)) {
+    return true
+  }
 
-	const compareMinor = !ignoreMinor;
-	// const comparePatch = ignoreMinor ? false : !ignorePatch;
-	const comparePatch = compareMinor && !ignorePatch;
+  const compareMinor = !ignoreMinor
+  // const comparePatch = ignoreMinor ? false : !ignorePatch;
+  const comparePatch = compareMinor && !ignorePatch
 
-	if (allowHigherVersions) {
-		if (
-			comparePatch && patch < patchBase
+  if (allowHigherVersions) {
+    if (
+      comparePatch && patch < patchBase
 			|| compareMinor && minor < minorBase
-		) {
-			return false;
-		}
+    ) {
+      return false
+    }
 
-		return major >= majorBase;
-	}
+    return major >= majorBase
+  }
 
-	if (
-		comparePatch && patch !== patchBase
+  if (
+    comparePatch && patch !== patchBase
 		|| compareMinor && minor !== minorBase
-	) {
-		return false;
-	}
+  ) {
+    return false
+  }
 
-	return major === majorBase;
+  return major === majorBase
 }
 
 /**
@@ -114,28 +118,28 @@ export function compareSemvers(a: ISemver, b: ISemver, options: ISemverCompareOp
  * @returns Required semver parts count.
  */
 export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, options: ISemverCompareOptions) {
-	const {
-		ignoreMinor,
-		ignorePatch,
-		allowZeroSubversions
-	} = options;
-	let shouldRepeatCount = ignoreMinor
-		? 1
-		: ignorePatch
-			? 2
-			: 3;
+  const {
+    ignoreMinor,
+    ignorePatch,
+    allowZeroSubversions
+  } = options
+  let shouldRepeatCount = ignoreMinor
+    ? 1
+    : ignorePatch
+      ? 2
+      : 3
 
-	if (allowZeroSubversions) {
-		for (let i = shouldRepeatCount - 1; i > 0; i--) {
-			if (version[i] !== 0 || shouldRepeatCount === 1) {
-				break;
-			}
+  if (allowZeroSubversions) {
+    for (let i = shouldRepeatCount - 1; i > 0; i--) {
+      if (version[i] !== 0 || shouldRepeatCount === 1) {
+        break
+      }
 
-			shouldRepeatCount--;
-		}
-	}
+      shouldRepeatCount--
+    }
+  }
 
-	return shouldRepeatCount;
+  return shouldRepeatCount
 }
 
 /**
@@ -145,65 +149,65 @@ export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, opti
  * @returns Array of regexp pattern strings.
  */
 export function rangedSemverToRegExp(rangedVersion: IRangedSemver, options: ISemverCompareOptions) {
-	const {
-		ignoreMinor,
-		ignorePatch,
-		allowHigherVersions
-	} = options;
-	const ignoreIndex = isAllVersion(rangedVersion[0])
-		? 0
-		: ignoreMinor
-			? 1
-			: ignorePatch
-				? 2
-				: Infinity;
+  const {
+    ignoreMinor,
+    ignorePatch,
+    allowHigherVersions
+  } = options
+  const ignoreIndex = isAllVersion(rangedVersion[0])
+    ? 0
+    : ignoreMinor
+      ? 1
+      : ignorePatch
+        ? 2
+        : Infinity
 
-	if (allowHigherVersions) {
-		const numberPatterns: string[][] = uniqItems(
-			rangedVersion.map((_, i) => {
-				const ri = 2 - i;
-				const d = Number(i > 0);
-				let start = 0;
+  if (allowHigherVersions) {
+    const numberPatterns: string[][] = uniqItems(
+      rangedVersion.map((_, i) => {
+        const ri = 2 - i
+        const d = Number(i > 0)
+        let start = 0
 
-				return rangedVersion.map((range, j) => {
-					if (j >= ignoreIndex) {
-						return BRACED_NUMBER_PATTERN;
-					}
+        return rangedVersion.map((range, j) => {
+          if (j >= ignoreIndex) {
+            return BRACED_NUMBER_PATTERN
+          }
 
-					start = Array.isArray(range)
-						? range[0]
-						: range;
+          start = Array.isArray(range)
+            ? range[0]
+            : range
 
-					if (j < ri) {
-						return start.toString();
-					}
+          if (j < ri) {
+            return start.toString()
+          }
 
-					if (j > ri) {
-						return BRACED_NUMBER_PATTERN;
-					}
+          if (j > ri) {
+            return BRACED_NUMBER_PATTERN
+          }
 
-					return rangeToRegExp(start + d);
-				});
-			})
-		);
+          return rangeToRegExp(start + d)
+        })
+      })
+    )
 
-		return numberPatterns;
-	}
+    return numberPatterns
+  }
 
-	const numberPatterns: string[] = rangedVersion.map((range, i) => {
-		if (i >= ignoreIndex) {
-			return BRACED_NUMBER_PATTERN;
-		}
+  const numberPatterns: string[] = rangedVersion.map((range, i) => {
+    if (i >= ignoreIndex) {
+      return BRACED_NUMBER_PATTERN
+    }
 
-		if (Array.isArray(range)) {
-			return rangeToRegExp(
-				range[0],
-				range[1]
-			);
-		}
+    if (Array.isArray(range)) {
+      return rangeToRegExp(
+        range[0],
+        range[1]
+      )
+    }
 
-		return range.toString();
-	});
+    return range.toString()
+  })
 
-	return [numberPatterns];
+  return [numberPatterns]
 }

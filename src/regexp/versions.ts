@@ -1,29 +1,23 @@
 import {
-	IRangedSemver,
-	ISemverCompareOptions,
-	rangedSemverToRegExp,
-	getRequiredSemverPartsCount,
-	isAllVersion
-} from '../semver';
+  IRangedSemver,
+  ISemverCompareOptions,
+  rangedSemverToRegExp,
+  getRequiredSemverPartsCount,
+  isAllVersion
+} from '../semver'
+import { IRangedBrowsers } from '../browsers'
 import {
-	IRangedBrowsers
-} from '../browsers';
+  IBrowserVersionRegExp,
+  IBrowserVersionedRegExp
+} from '../useragent'
+import { uniq } from '../useragent/util'
 import {
-	IBrowserVersionRegExp,
-	IBrowserVersionedRegExp
-} from '../useragent';
-import {
-	uniq
-} from '../useragent/util';
-import {
-	joinParts,
-	getNumberPatternsCount,
-	replaceNumberPatterns,
-	regExpToString
-} from './util';
-import {
-	getNumberPatternsPart
-} from './numbersPart';
+  joinParts,
+  getNumberPatternsCount,
+  replaceNumberPatterns,
+  regExpToString
+} from './util'
+import { getNumberPatternsPart } from './numbersPart'
 
 /**
  * Apply ranged sevmers to the RegExp.
@@ -34,44 +28,44 @@ import {
  * @returns RegExp with given versions.
  */
 export function applyVersionsToRegExp(
-	regExp: string|RegExp,
-	versions: IRangedSemver[],
-	options: ISemverCompareOptions
+  regExp: string|RegExp,
+  versions: IRangedSemver[],
+  options: ISemverCompareOptions
 ) {
-	let maxRequiredPartsCount = 1;
-	const regExpStr = typeof regExp === 'string'
-		? regExp
-		: regExpToString(regExp);
-	const numberPatternsCount = getNumberPatternsCount(regExpStr);
-	const suitableVersions = versions.map((version) => {
-		const requiredPartsCount = getRequiredSemverPartsCount(version, options);
+  let maxRequiredPartsCount = 1
+  const regExpStr = typeof regExp === 'string'
+    ? regExp
+    : regExpToString(regExp)
+  const numberPatternsCount = getNumberPatternsCount(regExpStr)
+  const suitableVersions = versions.map((version) => {
+    const requiredPartsCount = getRequiredSemverPartsCount(version, options)
 
-		maxRequiredPartsCount = Math.max(maxRequiredPartsCount, requiredPartsCount);
+    maxRequiredPartsCount = Math.max(maxRequiredPartsCount, requiredPartsCount)
 
-		return numberPatternsCount >= requiredPartsCount
-			? version
-			: null;
-	}).filter(Boolean);
+    return numberPatternsCount >= requiredPartsCount
+      ? version
+      : null
+  }).filter(Boolean)
 
-	if (!suitableVersions.length) {
-		return null;
-	}
+  if (!suitableVersions.length) {
+    return null
+  }
 
-	const numberPatternsPart = getNumberPatternsPart(regExpStr, maxRequiredPartsCount);
-	const versionsRegExpPart = joinParts(
-		uniq(
-			[].concat(
-				...suitableVersions.map(version => rangedSemverToRegExp(version, options).map(parts => replaceNumberPatterns(
-					numberPatternsPart,
-					parts,
-					maxRequiredPartsCount
-				)))
-			)
-		)
-	);
-	const regExpWithVersions = regExpStr.replace(numberPatternsPart, versionsRegExpPart);
+  const numberPatternsPart = getNumberPatternsPart(regExpStr, maxRequiredPartsCount)
+  const versionsRegExpPart = joinParts(
+    uniq(
+      [].concat(
+        ...suitableVersions.map(version => rangedSemverToRegExp(version, options).map(parts => replaceNumberPatterns(
+          numberPatternsPart,
+          parts,
+          maxRequiredPartsCount
+        )))
+      )
+    )
+  )
+  const regExpWithVersions = regExpStr.replace(numberPatternsPart, versionsRegExpPart)
 
-	return regExpWithVersions;
+  return regExpWithVersions
 }
 
 /**
@@ -82,51 +76,51 @@ export function applyVersionsToRegExp(
  * @returns Objects with requested browser version and RegExp special for this version.
  */
 export function applyVersionsToRegExps(
-	browserVersionRegExps: IBrowserVersionRegExp[],
-	browsers: IRangedBrowsers,
-	options: ISemverCompareOptions
+  browserVersionRegExps: IBrowserVersionRegExp[],
+  browsers: IRangedBrowsers,
+  options: ISemverCompareOptions
 ) {
-	const versionedRegExps: IBrowserVersionedRegExp[] = [];
+  const versionedRegExps: IBrowserVersionedRegExp[] = []
 
-	browserVersionRegExps.forEach(({
-		family,
-		regExp: sourceRegExp,
-		resultFixedVersion,
-		requestVersions,
-		...other
-	}) => {
-		const sourceRegExpString = regExpToString(sourceRegExp);
-		let regExp: RegExp = null;
-		let regExpString = '';
+  browserVersionRegExps.forEach(({
+    family,
+    regExp: sourceRegExp,
+    resultFixedVersion,
+    requestVersions,
+    ...other
+  }) => {
+    const sourceRegExpString = regExpToString(sourceRegExp)
+    let regExp: RegExp = null
+    let regExpString = ''
 
-		if (resultFixedVersion) {
-			regExp = sourceRegExp;
-			regExpString = sourceRegExpString;
-		} else {
-			regExpString = applyVersionsToRegExp(
-				sourceRegExpString,
-				browsers.get(family),
-				options
-			);
-			regExp = new RegExp(regExpString);
-		}
+    if (resultFixedVersion) {
+      regExp = sourceRegExp
+      regExpString = sourceRegExpString
+    } else {
+      regExpString = applyVersionsToRegExp(
+        sourceRegExpString,
+        browsers.get(family),
+        options
+      )
+      regExp = new RegExp(regExpString)
+    }
 
-		if (regExpString && regExp) {
-			versionedRegExps.push({
-				family,
-				sourceRegExp,
-				sourceRegExpString,
-				regExp,
-				regExpString,
-				resultFixedVersion,
-				requestVersions,
-				requestVersionsStrings: requestVersions.map(_ => (isAllVersion(_)
-					? String(_[0])
-					: _.join('.'))),
-				...other
-			});
-		}
-	});
+    if (regExpString && regExp) {
+      versionedRegExps.push({
+        family,
+        sourceRegExp,
+        sourceRegExpString,
+        regExp,
+        regExpString,
+        resultFixedVersion,
+        requestVersions,
+        requestVersionsStrings: requestVersions.map(_ => (isAllVersion(_)
+          ? String(_[0])
+          : _.join('.'))),
+        ...other
+      })
+    }
+  })
 
-	return versionedRegExps;
+  return versionedRegExps
 }
