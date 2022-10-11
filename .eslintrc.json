@@ -1,6 +1,7 @@
 {
   "extends": [
     "@trigen/eslint-config",
+    "@trigen/eslint-config/esm",
     "@trigen/eslint-config/tsm",
     "@trigen/eslint-config/typescript",
     "@trigen/eslint-config/typescript-requiring-type-checking",
