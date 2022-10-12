@@ -21,7 +21,8 @@
     "node": ">=14.0.0"
   },
   "bin": {
-    "browserslist-useragent-regexp": "./dist/cli.js"
+    "browserslist-useragent-regexp": "./dist/cli.js",
+    "bluare": "./dist/cli.js"
   },
   "exports": "./src/index.ts",
   "publishConfig": {
