@@ -40,7 +40,7 @@
     "clear:package": "del ./package",
     "clear": "del ./package ./dist ./coverage",
     "prepublishOnly": "run test build clear:package clean-publish",
-    "postpublish": "yarn clear:package",
+    "postpublish": "pnpm clear:package",
     "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "run -p [ rollup -c ] emitDeclarations",
     "lint": "eslint './*{js,ts}' './src/**/*.{js,ts}' './examples/**/*.{js,ts}'",
