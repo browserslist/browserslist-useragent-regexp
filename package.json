@@ -54,9 +54,11 @@
     "release": "run bumpVersion [ git push origin master --tags ] createGithubRelease",
     "updateGitHooks": "simple-git-hooks"
   },
+  "peerDependencies": {
+    "browserslist": ">=4.0.0"
+  },
   "dependencies": {
     "argue-cli": "^1.2.0",
-    "browserslist": "^4.21.4",
     "chalk": "^4.0.0",
     "easy-table": "^1.1.1",
     "useragent": "^2.3.0"
@@ -74,6 +76,7 @@
     "@trigen/scripts": "8.0.0-alpha.18",
     "@types/node": "^18.8.4",
     "@vitest/coverage-c8": "^0.24.1",
+    "browserslist": "^4.21.4",
     "browserslist-useragent": "^3.0.0",
     "clean-publish": "^4.0.1",
     "commitizen": "^4.2.5",
