@@ -135,7 +135,7 @@ Module exposes two main methods:
 
 ### [getUserAgentRegexes(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexes)
 
-Compile browserslist query to [RegExps for each browser](#regexp-info-object).
+Compile browserslist query to [regexes for each browser](#regex-info-object).
 
 ### [getUserAgentRegex(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregex)
 
@@ -154,7 +154,7 @@ Compile browserslist query to one regex.
 | allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. |
 | allowZeroSubversions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
 
-#### RegExp info object
+#### Regex info object
 
 | Property | Type | Description |
 |----------|------|-------------|
