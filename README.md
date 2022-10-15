@@ -45,7 +45,7 @@ not dead
 ```
 
 <details>
-    <summary>for Windows users</summary>
+  <summary>for Windows users</summary>
 
 ```json
 {
@@ -79,7 +79,7 @@ export default /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\
 import supportedBrowsers from './supportedBrowsers.js';
 
 if (supportedBrowsers.test(navigator.userAgent)) {
-    alert('Your browser is supported.');
+  alert('Your browser is supported.');
 }
 ```
 
