@@ -40,7 +40,7 @@ forEach(findByAttribute('data-query'), function (input) {
   forEach(findByAttribute('data-for-query', query), function (input) {
     var li = input.parentElement;
     var ul = li.parentElement;
-    var checked = new RegExp(input.getAttribute('data-regexp')).test(navigator.userAgent);
+    var checked = new RegExp(input.getAttribute('data-regex')).test(navigator.userAgent);
 
     input.checked = checked;
     some = some || checked;

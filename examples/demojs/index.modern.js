@@ -12,7 +12,7 @@ document.querySelectorAll('[data-query]').forEach((input) => {
   document.querySelectorAll(`[data-for-query=${query}]`).forEach((input) => {
     const li = input.parentElement
     const ul = li.parentElement
-    const checked = new RegExp(input.dataset.regexp).test(navigator.userAgent)
+    const checked = new RegExp(input.dataset.regex).test(navigator.userAgent)
 
     input.checked = checked
     some = some || checked
