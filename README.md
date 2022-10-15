@@ -113,6 +113,12 @@ npx browserslist-useragent-regexp [query] [...options]
 yarn exec -- browserslist-useragent-regexp [query] [...options]
 ```
 
+Also, short alias is available:
+
+```bash
+pnpm bluare [query] [...options]
+```
+
 | Option | Description | Default |
 |--------|-------------|---------|
 | query | Manually provide a browserslist query. Specifying this overrides the browserslist configuration specified in your project. | |
