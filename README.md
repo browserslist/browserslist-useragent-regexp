@@ -5,7 +5,6 @@
 [![Dependencies status][deps]][deps-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
-[![Dependabot badge][dependabot]][dependabot-url]
 [![Documentation badge][documentation]][documentation-url]
 
 [npm]: https://img.shields.io/npm/v/browserslist-useragent-regexp.svg
@@ -14,22 +13,19 @@
 [node]: https://img.shields.io/node/v/browserslist-useragent-regexp.svg
 [node-url]: https://nodejs.org
 
-[deps]: https://david-dm.org/browserslist/browserslist-useragent-regexp.svg
-[deps-url]: https://david-dm.org/browserslist/browserslist-useragent-regexp
+[deps]: https://img.shields.io/librariesio/release/npm/browserslist-useragent-regexp
+[deps-url]: https://libraries.io/npm/browserslist-useragent-regexp/tree
 
 [build]: https://img.shields.io/github/workflow/status/browserslist/browserslist-useragent-regexp/CI.svg
 [build-url]: https://github.com/browserslist/browserslist-useragent-regexp/actions
 
-[coverage]: https://img.shields.io/coveralls/browserslist/browserslist-useragent-regexp.svg
-[coverage-url]: https://coveralls.io/r/browserslist/browserslist-useragent-regexp
-
-[dependabot]: https://api.dependabot.com/badges/status?host=github&repo=browserslist/browserslist-useragent-regexp
-[dependabot-url]: https://dependabot.com/
+[coverage]: https://img.shields.io/codecov/c/github/browserslist/browserslist-useragent-regexp.svg
+[coverage-url]: https://app.codecov.io/gh/browserslist/browserslist-useragent-regexp
 
 [documentation]: https://img.shields.io/badge/API-Documentation-2b7489.svg
 [documentation-url]: https://browserslist.github.io/browserslist-useragent-regexp
 
-A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a RegExp to test browser useragent. Simplest example: you can detect supported browsers on client-side.
+A utility to compile [browserslist query](https://github.com/browserslist/browserslist#queries) to a regex to test browser useragent. Simplest example: you can detect supported browsers on client-side.
 
 1) Create `.browserslistrc` config, for example like this:
 
@@ -43,7 +39,7 @@ not dead
 ```json
 {
   "scripts": {
-    "supportedBrowsers": "echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" > supportedBrowsers.js"
+    "supportedBrowsers": "echo \"export default $(browserslist-useragent-regexp --allowHigherVersions);\" > supportedBrowsers.js"
   }
 }
 ```
@@ -54,16 +50,18 @@ not dead
 ```json
 {
   "scripts": {
-    "supportedBrowsers": "(echo module.exports = && browserslist-useragent-regexp --allowHigherVersions) > supportedBrowsers.js"
+    "supportedBrowsers": "(echo export default && browserslist-useragent-regexp --allowHigherVersions) > supportedBrowsers.js"
   }
 }
 ```
 
 </details>
 
-3) Run this script, to compile RegExp:
+3) Run this script, to compile regex:
 
 ```bash
+pnpm supportedBrowsers
+# or
 npm run supportedBrowsers
 # or
 yarn supportedBrowsers
@@ -72,13 +70,13 @@ yarn supportedBrowsers
 `supportedBrowsers.js`:
 
 ```js
-module.exports = /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.](3|4)|12[_\.](0|1))(?:[_\.]\d+)?)|(OperaMini(?:\/att)?\/?(\d+)?(?:\.\d+)?(?:\.\d+)?)|(Opera\/.+Opera Mobi.+Version\/46\.0)|(Opera\/46\.0.+Opera Mobi)|(Opera Mobi.+Opera(?:\/|\s+)46\.0)|(SamsungBrowser\/(8|9)\.2)|(Edge\/(17|18)(?:\.0)?)|(HeadlessChrome(?:\/(72|73)\.0\.\d+)?)|((Chromium|Chrome)\/(72|73)\.0(?:\.\d+)?)|(IEMobile[ \/]11\.0)|(Version\/12\.(0|1)(?:\.\d+)?.*Safari\/)|(Trident\/7\.0)|(Firefox\/(65|66)\.0\.\d+)|(Firefox\/(65|66)\.0(pre|[ab]\d+[a-z]*)?)|(([MS]?IE) 11\.0)/;
+export default /((CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(11[_\.](3|4)|12[_\.](0|1))(?:[_\.]\d+)?)|(OperaMini(?:\/att)?\/?(\d+)?(?:\.\d+)?(?:\.\d+)?)|(Opera\/.+Opera Mobi.+Version\/46\.0)|(Opera\/46\.0.+Opera Mobi)|(Opera Mobi.+Opera(?:\/|\s+)46\.0)|(SamsungBrowser\/(8|9)\.2)|(Edge\/(17|18)(?:\.0)?)|(HeadlessChrome(?:\/(72|73)\.0\.\d+)?)|((Chromium|Chrome)\/(72|73)\.0(?:\.\d+)?)|(IEMobile[ \/]11\.0)|(Version\/12\.(0|1)(?:\.\d+)?.*Safari\/)|(Trident\/7\.0)|(Firefox\/(65|66)\.0\.\d+)|(Firefox\/(65|66)\.0(pre|[ab]\d+[a-z]*)?)|(([MS]?IE) 11\.0)/;
 ```
 
-4) Import RegExp from created file:
+4) Import regex from created file:
 
 ```js
-const supportedBrowsers = require('./supportedBrowsers');
+import supportedBrowsers from './supportedBrowsers.js';
 
 if (supportedBrowsers.test(navigator.userAgent)) {
     alert('Your browser is supported.');
@@ -88,6 +86,8 @@ if (supportedBrowsers.test(navigator.userAgent)) {
 ## Install
 
 ```bash
+pnpm add -D browserslist-useragent-regexp
+# or
 npm i -D browserslist-useragent-regexp
 # or
 yarn add -D browserslist-useragent-regexp
@@ -106,6 +106,8 @@ How to make differential resource loading and other optimizations with `browsers
 ## CLI
 
 ```bash
+pnpm browserslist-useragent-regexp [query] [...options]
+# or
 npx browserslist-useragent-regexp [query] [...options]
 # or
 yarn exec -- browserslist-useragent-regexp [query] [...options]
@@ -115,7 +117,7 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 |--------|-------------|---------|
 | query | Manually provide a browserslist query. Specifying this overrides the browserslist configuration specified in your project. | |
 | &#x2011;&#x2011;help, -h | Print this message. | |
-| &#x2011;&#x2011;verbose, -v | Print additional info about RegExps. | |
+| &#x2011;&#x2011;verbose, -v | Print additional info about regexes. | |
 | &#x2011;&#x2011;ignorePatch | Ignore differences in patch browser numbers. | `true` |
 | &#x2011;&#x2011;ignoreMinor | Ignore differences in minor browser versions. | `false` |
 | &#x2011;&#x2011;allowHigherVersions | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. | `false` |
@@ -125,13 +127,13 @@ yarn exec -- browserslist-useragent-regexp [query] [...options]
 
 Module exposes two main methods:
 
-### [getUserAgentRegExps(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexps)
+### [getUserAgentRegexes(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexes)
 
 Compile browserslist query to [RegExps for each browser](#regexp-info-object).
 
-### [getUserAgentRegExp(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexp)
+### [getUserAgentRegex(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregex)
 
-Compile browserslist query to one RegExp.
+Compile browserslist query to one regex.
 
 > [Description of all methods you can find in Documentation.](https://browserslist.github.io/browserslist-useragent-regexp/index.html)
 
@@ -152,11 +154,11 @@ Compile browserslist query to one RegExp.
 |----------|------|-------------|
 | family | `string` | Browser family. |
 | requestVersions | `[number, number, number][]` | Versions provided by browserslist. |
-| regExp | `RegExp` | RegExp to match useragent with family and versions. |
-| sourceRegExp | `RegExp` | Original useragent RegExp, without versions. |
-| resultFixedVersion | `[number, number, number] \| null` | Useragent version of RegExp. |
-| resultMinVersion | `[number, number, number] \| null` | Useragent min version of RegExp. |
-| resultMaxVersion | `[number, number, number] \| null` | Useragent max version of RegExp. |
+| regex | `RegExp` | Regex to match useragent with family and versions. |
+| sourceRegex | `RegExp` | Original useragent regex, without versions. |
+| version | `[number, number, number] \| null` | Useragent version of regex. |
+| minVersion | `[number, number, number] \| null` | Useragent min version of regex. |
+| maxVersion | `[number, number, number] \| null` | Useragent max version of regex. |
 
 ## Other
 
