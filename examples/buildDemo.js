@@ -1,6 +1,6 @@
 import {
-  getUserAgentRegExps,
-  getUserAgentRegExp
+  getUserAgentRegexes,
+  getUserAgentRegex
 } from '../dist/index.js'
 
 function renderStyles() {
@@ -56,12 +56,12 @@ th, td {
 }
 
 function renderScript() {
-  const modernBrowsers = getUserAgentRegExp({
+  const modernBrowsers = getUserAgentRegex({
     browsers: 'last 2 versions and last 1 year',
     allowHigherVersions: true,
     allowZeroSubverions: true
   })
-  const actualBrowsers = getUserAgentRegExp({
+  const actualBrowsers = getUserAgentRegex({
     browsers: 'last 2 years and not last 2 versions',
     allowHigherVersions: true,
     allowZeroSubverions: true
@@ -122,33 +122,33 @@ function renderHtml(body) {
 </html>`
 }
 
-function renderUserAgentRegExp({
+function renderUserAgentRegex({
   family,
-  sourceRegExpString,
-  regExpString,
+  sourceRegexString,
+  regexString,
   requestVersionsStrings,
-  resultFixedVersion,
-  resultMinVersion,
-  resultMaxVersion
+  version,
+  minVersion,
+  maxVersion
 }, query) {
-  let regExpBrowsersVersion = ''
+  let regexBrowsersVersion = ''
 
-  if (resultMinVersion) {
-    regExpBrowsersVersion = resultMinVersion.join('.')
+  if (minVersion) {
+    regexBrowsersVersion = minVersion.join('.')
   } else {
-    regExpBrowsersVersion = '...'
+    regexBrowsersVersion = '...'
   }
 
-  regExpBrowsersVersion += ' - '
+  regexBrowsersVersion += ' - '
 
-  if (resultMaxVersion) {
-    regExpBrowsersVersion += resultMaxVersion.join('.')
+  if (maxVersion) {
+    regexBrowsersVersion += maxVersion.join('.')
   } else {
-    regExpBrowsersVersion += '...'
+    regexBrowsersVersion += '...'
   }
 
   return `<li>
-  <input type="checkbox" onclick="return false" readonly data-for-query="${query}" data-regexp="${regExpString.replace(/([^\\])"/g, '$1\\"')}">
+  <input type="checkbox" onclick="return false" readonly data-for-query="${query}" data-regex="${regexString.replace(/([^\\])"/g, '$1\\"')}">
   <table>
     <tr>
       <th>Family:</th><td>${family}</td>
@@ -157,23 +157,23 @@ function renderUserAgentRegExp({
       <th>Versions:</th><td>${requestVersionsStrings.join(' ')}</td>
     </tr>
     <tr>
-      <th>Source RegExp:</th><td><pre>${sourceRegExpString}</pre></td>
+      <th>Source regex:</th><td><pre>${sourceRegexString}</pre></td>
     </tr>
     <tr>
-      <th>Source RegExp fixed version:</th><td>${resultFixedVersion ? resultFixedVersion.join('.') : '...'}</td>
+      <th>Source regex fixed version:</th><td>${version ? version.join('.') : '...'}</td>
     </tr>
     <tr>
-      <th>Source RegExp browsers versions:</th><td>${regExpBrowsersVersion}</td>
+      <th>Source regex browsers versions:</th><td>${regexBrowsersVersion}</td>
     </tr>
     <tr>
-      <th>Versioned RegExp:</th><td><pre>${regExpString}</pre></td>
+      <th>Versioned regex:</th><td><pre>${regexString}</pre></td>
     </tr>
   </table>
 </li>`
 }
 
 function renderQuery(query) {
-  const result = getUserAgentRegExps({
+  const result = getUserAgentRegexes({
     browsers: query,
     allowHigherVersions: true,
     allowZeroSubverions: true
@@ -185,7 +185,7 @@ function renderQuery(query) {
     <pre>${query}</pre>
   </h2>
   <ul>
-    ${result.map(_ => renderUserAgentRegExp(_, query)).join('\n')}
+    ${result.map(_ => renderUserAgentRegex(_, query)).join('\n')}
   </ul>
 </div>`
 }

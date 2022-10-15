@@ -1,3 +1,3 @@
 export * from './types.js'
-export * from './util.js'
+export * from './utils.js'
 export * from './semver.js'

@@ -1,11 +1,9 @@
 import browserslist from 'browserslist'
 import { semverify } from '../semver/index.js'
 import type {
-  IBrowser,
-  IBrowsersListRequest
+  Browser,
+  BrowserslistRequest
 } from './types.js'
-import { BROWSERS_SHIRTNAMES } from './shirtnames.js'
-import { normalizeBrowserFamily } from './util.js'
 
 /**
  * Browsers strings to info objects.
@@ -13,9 +11,8 @@ import { normalizeBrowserFamily } from './util.js'
  * @returns Browser info objects.
  */
 export function parseBrowsersList(browsersList: string[]) {
-  return browsersList.reduce<IBrowser[]>((browsers, browser) => {
-    const [name, ...versions] = browser.split(/ |-/)
-    const family = (BROWSERS_SHIRTNAMES[name] || name).toLowerCase()
+  return browsersList.reduce<Browser[]>((browsers, browser) => {
+    const [family, ...versions] = browser.split(/ |-/)
 
     return versions.reduce((browsers, version) => {
       const semver = semverify(version)
@@ -37,16 +34,13 @@ export function parseBrowsersList(browsersList: string[]) {
  * @param options - Options to get browsers list.
  * @returns Browser info objects.
  */
-export function getBrowsersList(options: IBrowsersListRequest = {}) {
+export function getBrowsersList(options: BrowserslistRequest = {}) {
   const {
     browsers,
     env,
     path
   } = options
-  const normalizedBrowsers = Array.isArray(browsers)
-    ? browsers.map(normalizeBrowserFamily)
-    : browsers
-  const browsersList = browserslist(normalizedBrowsers, {
+  const browsersList = browserslist(browsers, {
     env,
     path
   })

@@ -1,21 +1,18 @@
 import { describe, it, expect } from 'vitest'
-import { BROWSERS_SHIRTNAMES } from './shirtnames.js'
 import { parseBrowsersList } from './browserslist.js'
 
 describe('Browsers', () => {
   describe('browserslist', () => {
     describe('parseBrowsersList', () => {
       it('should correct parse browsers list', () => {
-        const shirtname = Object.keys(BROWSERS_SHIRTNAMES)[0]
-        const fullname = BROWSERS_SHIRTNAMES[shirtname]
         const browsersList = [
-          `${shirtname} 10`,
-          'Chrome 11.12',
-          'OPERA 13.14.15'
+          'ie 10',
+          'chrome 11.12',
+          'opera 13.14.15'
         ]
         const browsers = [
           {
-            family: fullname.toLowerCase(),
+            family: 'ie',
             version: [
               10,
               0,

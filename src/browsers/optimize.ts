@@ -1,26 +1,24 @@
 import {
-  ISemver,
-  IRangedSemver,
-  ISemverRange,
+  Semver,
+  RangedSemver,
+  SemverRange,
   SemverPart
 } from '../semver/index.js'
+import { compareArrays } from '../utils/index.js'
 import type {
-  IBrowser,
-  IBrowsers,
-  IRangedBrowsers
+  Browser,
+  BrowsersVersions,
+  RangedBrowsersVersions
 } from './types.js'
-import {
-  compareArrays,
-  numbersToRanges
-} from './util.js'
+import { numbersToRanges } from './utils.js'
 
 /**
  * Merge browser info object to map with versions.
  * @param browsers - Browser info object to merge.
  * @returns Merged browsers map.
  */
-export function mergeBrowserVersions(browsers: IBrowser[]) {
-  const merge: IBrowsers = new Map<string, ISemver[]>()
+export function mergeBrowserVersions(browsers: Browser[]) {
+  const merge: BrowsersVersions = new Map<string, Semver[]>()
 
   browsers.forEach(({
     family,
@@ -61,18 +59,18 @@ export function mergeBrowserVersions(browsers: IBrowser[]) {
  * @param versions - Semver versions list.
  * @returns Ranged versions list.
  */
-export function versionsListToRanges(versions: ISemver[]) {
+export function versionsListToRanges(versions: Semver[]) {
   if (versions.length < 2) {
     return versions
   }
 
   const max = versions.length + 1
-  const ranges: IRangedSemver[] = []
+  const ranges: RangedSemver[] = []
   let prev: number[] = null
   let current: number[] = versions[0]
-  let major: ISemverRange = [current[SemverPart.Major]]
-  let minor: ISemverRange = [current[SemverPart.Minor]]
-  let patch: ISemverRange = [current[SemverPart.Patch]]
+  let major: SemverRange = [current[SemverPart.Major]]
+  let minor: SemverRange = [current[SemverPart.Minor]]
+  let patch: SemverRange = [current[SemverPart.Patch]]
   let part: SemverPart = null
 
   for (let i = 1; i < max; i++) {
@@ -130,8 +128,8 @@ export function versionsListToRanges(versions: ISemver[]) {
  * @param browsers - Browser map with versions.
  * @returns Browser map with ranged versions.
  */
-export function browserVersionsToRanges(browsers: IBrowsers) {
-  const ranged: IRangedBrowsers = new Map<string, IRangedSemver[]>()
+export function browserVersionsToRanges(browsers: BrowsersVersions) {
+  const ranged: RangedBrowsersVersions = new Map<string, RangedSemver[]>()
 
   browsers.forEach((versions, family) => {
     ranged.set(family, versionsListToRanges(versions))

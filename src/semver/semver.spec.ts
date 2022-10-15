@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
-import type { ISemver } from './types.js'
+import type { Semver } from './types.js'
 import {
   semverify,
   compareSemvers,
   getRequiredSemverPartsCount,
-  rangedSemverToRegExp
+  rangedSemverToRegex
 } from './semver.js'
 
 describe('Semver', () => {
@@ -565,7 +565,7 @@ describe('Semver', () => {
         ignorePatch: false,
         allowZeroSubversions: false
       }
-      const version: ISemver = [
+      const version: Semver = [
         1,
         2,
         3
@@ -612,17 +612,17 @@ describe('Semver', () => {
         ignorePatch: false,
         allowZeroSubversions: true
       }
-      const version: ISemver = [
+      const version: Semver = [
         1,
         2,
         3
       ]
-      const zeroVersion: ISemver = [
+      const zeroVersion: Semver = [
         1,
         1,
         0
       ]
-      const zerosVersion: ISemver = [
+      const zerosVersion: Semver = [
         1,
         0,
         0
@@ -700,7 +700,7 @@ describe('Semver', () => {
     })
   })
 
-  describe('rangedSemverToRegExp', () => {
+  describe('rangedSemverToRegex', () => {
     const options = {
       ignoreMinor: false,
       ignorePatch: false,
@@ -709,7 +709,7 @@ describe('Semver', () => {
 
     it('should return only numbers', () => {
       expect(
-        rangedSemverToRegExp(
+        rangedSemverToRegex(
           [
             11,
             12,
@@ -728,7 +728,7 @@ describe('Semver', () => {
 
     it('should return only numbers patterns', () => {
       expect(
-        rangedSemverToRegExp(
+        rangedSemverToRegex(
           [
             'all',
             0,
@@ -752,7 +752,7 @@ describe('Semver', () => {
       }
 
       expect(
-        rangedSemverToRegExp(
+        rangedSemverToRegex(
           [
             11,
             12,
@@ -776,7 +776,7 @@ describe('Semver', () => {
       }
 
       expect(
-        rangedSemverToRegExp(
+        rangedSemverToRegex(
           [
             11,
             12,
@@ -795,7 +795,7 @@ describe('Semver', () => {
 
     it('should return ranged major', () => {
       expect(
-        rangedSemverToRegExp(
+        rangedSemverToRegex(
           [
             [11, 13],
             12,
@@ -819,7 +819,7 @@ describe('Semver', () => {
       }
 
       expect(
-        rangedSemverToRegExp(
+        rangedSemverToRegex(
           [
             [11, 13],
             12,

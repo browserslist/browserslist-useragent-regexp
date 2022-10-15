@@ -1,5 +1,4 @@
 export * from './types.js'
-export * from './util.js'
-export * from './shirtnames.js'
+export * from './utils.js'
 export * from './browserslist.js'
 export * from './optimize.js'
