@@ -134,7 +134,7 @@ function renderUserAgentRegex({
   let regexBrowsersVersion = ''
 
   if (minVersion) {
-    regexBrowsersVersion = minVersion.join('.')
+    regexBrowsersVersion = minVersion.filter(isFinite).join('.')
   } else {
     regexBrowsersVersion = '...'
   }
@@ -142,7 +142,7 @@ function renderUserAgentRegex({
   regexBrowsersVersion += ' - '
 
   if (maxVersion) {
-    regexBrowsersVersion += maxVersion.join('.')
+    regexBrowsersVersion += maxVersion.filter(isFinite).join('.')
   } else {
     regexBrowsersVersion += '...'
   }
