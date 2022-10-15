@@ -1,28 +1,29 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+## [4.0.0-beta.0](https://github.com/browserslist/browserslist-useragent-regexp/compare/v3.0.0...v4.0.0-beta.0) (2022-10-15)
 
-<!--
 
-DO NOT TOUCH. SAVE IT ON TOP.
+### ⚠ BREAKING CHANGES
 
-## [semver] - date
-### Added
-- ...
+* regexp -> regex in JS API naming, new regexes from ua-regexes-lite
+* now browserslist is peer dependency
+* NodeJS >= 14 is required, no commonjs support
 
-### Changed
-- ...
+### Features
 
-### Fixed
-- ...
+* `bluare` binary alias ([288b473](https://github.com/browserslist/browserslist-useragent-regexp/commit/288b4732490977e7e70038b72d94476d735214da))
+* browserslist as peer dependency ([eedbcc5](https://github.com/browserslist/browserslist-useragent-regexp/commit/eedbcc58794cb8cbf491027ffd651abadd27d5ed))
+* move to ESM ([#1450](https://github.com/browserslist/browserslist-useragent-regexp/issues/1450)) ([41456bc](https://github.com/browserslist/browserslist-useragent-regexp/commit/41456bc22b789fee57384a00abb64e0690ded08a))
 
-### Removed
-- ...
 
--->
+### Bug Fixes
+
+* typo in cli option ([e11f219](https://github.com/browserslist/browserslist-useragent-regexp/commit/e11f2196b5b291f31f81057fa5d468c51f48e1a6))
+
+
+* rename js api, ua-regexes-lite instead of useragents ([#1454](https://github.com/browserslist/browserslist-useragent-regexp/issues/1454)) ([332b7d8](https://github.com/browserslist/browserslist-useragent-regexp/commit/332b7d87cc83e749109f973671239eddcd026bff))
 
 ## [3.0.0] - 2021-02-03
 ### Breaking
