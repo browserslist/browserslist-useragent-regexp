@@ -1,26 +1,25 @@
-
-export interface ISemverCompareOptions {
+export interface SemverCompareOptions {
   ignoreMinor?: boolean
   ignorePatch?: boolean
   allowZeroSubversions?: boolean
   allowHigherVersions?: boolean
 }
 
-export type ISemver = [
+export type Semver = [
   number,
   number,
   number
 ]
 
-export type ISemverRange = number|number[]
+export type SemverRange = number | number[]
 
-export type IRangedSemver = [
-  ISemverRange,
-  ISemverRange,
-  ISemverRange
+export type RangedSemver = [
+  SemverRange,
+  SemverRange,
+  SemverRange
 ]
 
-export type ISemverLike = string|(number|string)[]
+export type SemverLike = string | (number | string)[]
 
 export enum SemverPart {
   Major = 0,

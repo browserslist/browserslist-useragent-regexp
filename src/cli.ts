@@ -1,27 +1,23 @@
 /* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   argv,
   read,
   end,
-  options as readOptions
+  alias,
+  option,
+  readOptions
 } from 'argue-cli'
-import chalk from 'chalk'
+import colors from 'picocolors'
 import Table from 'easy-table'
 import {
-  getUserAgentRegExp,
+  getUserAgentRegex,
   getBrowsersList,
   mergeBrowserVersions,
   browserVersionsToRanges,
-  getRegExpsForBrowsers,
-  applyVersionsToRegExps,
-  patchRegExps,
+  getRegexesForBrowsers,
+  applyVersionsToRegexes,
   optimizeAll,
-  joinVersionedBrowsersRegExps,
+  joinVersionedBrowsersRegexes,
   isAllVersion,
   defaultOptions
 } from './index.js'
@@ -29,15 +25,15 @@ import {
 const {
   help,
   verbose,
-  ...regExpOptions
-}: any = readOptions([
-  ['help', 'h'],
-  ['verbose', 'v'],
-  'ignorePatch',
-  'ignoreMinor',
-  'allowHigherVersions',
-  'allowZeroVersions'
-], [])
+  ...regexOptions
+} = readOptions(
+  option(alias('help', 'h'), Boolean),
+  option(alias('verbose', 'v'), Boolean),
+  option('ignorePatch', Boolean),
+  option('ignoreMinor', Boolean),
+  option('allowHigherVersions', Boolean),
+  option('allowZeroVersions', Boolean)
+)
 
 if (help) {
   end()
@@ -57,7 +53,7 @@ if (help) {
   optionsTable.newRow()
 
   optionsTable.cell('Option', '--verbose, -v')
-  optionsTable.cell('Description', 'Print additional info about RegExps.')
+  optionsTable.cell('Description', 'Print additional info about regexes.')
   optionsTable.newRow()
 
   optionsTable.cell('Option', '--ignorePatch')
@@ -94,7 +90,7 @@ const query = argv.length
 const options = {
   browsers: query,
   ...defaultOptions,
-  ...regExpOptions
+  ...regexOptions
 }
 
 end()
@@ -104,13 +100,13 @@ if (verbose) {
   const mergedBrowsers = mergeBrowserVersions(browsersList)
 
   console.log(
-    chalk.blue('\n> Browserslist\n')
+    colors.blue('\n> Browserslist\n')
   )
 
   const browsersTable = new Table()
 
   mergedBrowsers.forEach((versions, browser) => {
-    browsersTable.cell('Browser', chalk.yellow(browser))
+    browsersTable.cell('Browser', colors.yellow(browser))
 
     versions.forEach((version, i) => {
       if (isAllVersion(version)) {
@@ -126,76 +122,75 @@ if (verbose) {
   console.log(browsersTable.print())
 
   const rangedBrowsers = browserVersionsToRanges(mergedBrowsers)
-  const sourceRegExps = getRegExpsForBrowsers(mergedBrowsers, options)
-  const versionedRegExps = applyVersionsToRegExps(sourceRegExps, rangedBrowsers, options)
-  const patchedRegExps = patchRegExps(versionedRegExps, mergedBrowsers)
-  const optimizedRegExps = optimizeAll(patchedRegExps)
+  const sourceRegexes = getRegexesForBrowsers(mergedBrowsers, options)
+  const versionedRegexes = applyVersionsToRegexes(sourceRegexes, rangedBrowsers, options)
+  const optimizedRegexes = optimizeAll(versionedRegexes)
 
   console.log(
-    chalk.blue('\n> RegExps\n')
+    colors.blue('\n> Regexes\n')
   )
 
-  optimizedRegExps.forEach(({
+  optimizedRegexes.forEach(({
     family,
     requestVersionsStrings,
-    sourceRegExp,
-    resultFixedVersion,
-    resultMinVersion,
-    resultMaxVersion,
-    regExp
+    sourceRegex,
+    version,
+    minVersion,
+    maxVersion,
+    regex
   }) => {
-    const regExpsTable = new Table()
+    const regexesTable = new Table()
 
-    regExpsTable.cell('Name', chalk.yellow('Family:'))
-    regExpsTable.cell('Value', family)
-    regExpsTable.newRow()
+    regexesTable.cell('Name', colors.yellow('Family:'))
+    regexesTable.cell('Value', family)
+    regexesTable.newRow()
 
-    regExpsTable.cell('Name', chalk.yellow('Versions:'))
-    regExpsTable.cell('Value', requestVersionsStrings.join(' '))
-    regExpsTable.newRow()
+    regexesTable.cell('Name', colors.yellow('Versions:'))
+    regexesTable.cell('Value', requestVersionsStrings.join(' '))
+    regexesTable.newRow()
 
-    regExpsTable.cell('Name', chalk.yellow('Source RegExp:'))
-    regExpsTable.cell('Value', sourceRegExp)
-    regExpsTable.newRow()
+    regexesTable.cell('Name', colors.yellow('Source regex:'))
+    regexesTable.cell('Value', sourceRegex)
+    regexesTable.newRow()
 
-    regExpsTable.cell('Name', chalk.yellow('Source RegExp fixed version:'))
-    regExpsTable.cell('Value', resultFixedVersion ? resultFixedVersion.join('.') : '...')
-    regExpsTable.newRow()
+    regexesTable.cell('Name', colors.yellow('Source regex fixed version:'))
+    regexesTable.cell('Value', version ? version.join('.') : '...')
+    regexesTable.newRow()
 
-    let regExpBrowsersVersion = ''
+    let regexBrowsersVersion = ''
 
-    if (resultMinVersion) {
-      regExpBrowsersVersion = resultMinVersion.join('.')
+    if (minVersion) {
+      regexBrowsersVersion = minVersion.filter(isFinite).join('.')
     } else {
-      regExpBrowsersVersion = '...'
+      regexBrowsersVersion = '...'
     }
 
-    regExpBrowsersVersion += ' - '
+    regexBrowsersVersion += ' - '
 
-    if (resultMaxVersion) {
-      regExpBrowsersVersion += resultMaxVersion.join('.')
+    if (maxVersion) {
+      regexBrowsersVersion += maxVersion.filter(isFinite).join('.')
     } else {
-      regExpBrowsersVersion += '...'
+      regexBrowsersVersion += '...'
     }
 
-    regExpsTable.cell('Name', chalk.yellow('Source RegExp browsers versions:'))
-    regExpsTable.cell('Value', regExpBrowsersVersion)
-    regExpsTable.newRow()
+    regexesTable.cell('Name', colors.yellow('Source regex browsers versions:'))
+    regexesTable.cell('Value', regexBrowsersVersion)
+    regexesTable.newRow()
 
-    regExpsTable.cell('Name', chalk.yellow('Versioned RegExp:'))
-    regExpsTable.cell('Value', regExp)
-    regExpsTable.newRow()
+    regexesTable.cell('Name', colors.yellow('Versioned regex:'))
+    regexesTable.cell('Value', regex)
+    regexesTable.newRow()
 
-    console.log(`${regExpsTable.print()}\n`)
+    console.log(`${regexesTable.print()}\n`)
   })
 
-  const regExpStr = joinVersionedBrowsersRegExps(optimizedRegExps)
-  const regExp = new RegExp(regExpStr)
+  const regexStr = joinVersionedBrowsersRegexes(optimizedRegexes)
+  const regex = new RegExp(regexStr)
 
-  console.log(regExp)
+  console.log(regex)
   process.exit(0)
 }
 
 console.log(
-  getUserAgentRegExp(options)
+  getUserAgentRegex(options)
 )

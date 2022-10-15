@@ -1,19 +1,19 @@
 import type {
-  ISemver,
-  IRangedSemver
+  Semver,
+  RangedSemver
 } from '../semver/types.js'
 
-export interface IBrowser {
+export interface Browser {
   family: string
-  version: ISemver
+  version: Semver
 }
 
-export interface IBrowsersListRequest {
-  browsers?: string|string[]
+export interface BrowserslistRequest {
+  browsers?: string | string[]
   env?: string
   path?: string
 }
 
-export type IBrowsers = Map<string, ISemver[]>
+export type BrowsersVersions = Map<string, Semver[]>
 
-export type IRangedBrowsers = Map<string, IRangedSemver[]>
+export type RangedBrowsersVersions = Map<string, RangedSemver[]>

@@ -14,12 +14,12 @@ not dead
 ```json
 {
   "scripts": {
-    "supportedBrowsers": "echo \"module.exports = $(browserslist-useragent-regexp --allowHigherVersions);\" > supportedBrowsers.js"
+    "supportedBrowsers": "echo \"export default $(browserslist-useragent-regexp --allowHigherVersions);\" > supportedBrowsers.js"
   }
 }
 ```
 
-3) Run this script, to compile RegExp:
+3) Run this script, to compile regex:
 
 ```bash
 npm run supportedBrowsers
@@ -27,10 +27,10 @@ npm run supportedBrowsers
 yarn supportedBrowsers
 ```
 
-4) Import RegExp from created file:
+4) Import regex from created file:
 
 ```js
-const supportedBrowsers = require('./supportedBrowsers');
+import supportedBrowsers from './supportedBrowsers.js';
 
 if (supportedBrowsers.test(navigator.userAgent)) {
     alert('Your browser is supported.');
@@ -55,12 +55,12 @@ dead
 ```json
 {
   "scripts": {
-    "supportedBrowsers": "echo \"module.exports = $(BROWSERSLIST_ENV=unsupported browserslist-useragent-regexp);\" > supportedBrowsers.js"
+    "supportedBrowsers": "echo \"export default $(BROWSERSLIST_ENV=unsupported browserslist-useragent-regexp);\" > supportedBrowsers.js"
   }
 }
 ```
 
-3) Run this script, to compile RegExp:
+3) Run this script, to compile regex:
 
 ```bash
 npm run supportedBrowsers
@@ -68,10 +68,10 @@ npm run supportedBrowsers
 yarn supportedBrowsers
 ```
 
-4) Import RegExp from created file:
+4) Import regex from created file:
 
 ```js
-const unsupportedBrowsers = require('./unsupportedBrowsers');
+import unsupportedBrowsers from './unsupportedBrowsers.js';
 
 if (unsupportedBrowsers.test(navigator.userAgent)) {
     alert('Your browser is unsupported.');

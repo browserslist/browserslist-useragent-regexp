@@ -45,6 +45,7 @@
     "build": "run -p [ rollup -c ] emitDeclarations",
     "lint": "eslint './*{js,ts}' './src/**/*.{js,ts}' './examples/**/*.{js,ts}'",
     "test:unit": "vitest run --coverage",
+    "test:unit:watch": "vitest watch",
     "test:size": "size-limit",
     "test": "run -p lint test:unit",
     "build:demo": "node examples/buildDemo > ./docs/demo.html && cp -R examples/demojs/ docs/demojs/",
@@ -59,10 +60,10 @@
     "browserslist": ">=4.0.0"
   },
   "dependencies": {
-    "argue-cli": "^1.2.0",
-    "chalk": "^4.0.0",
+    "argue-cli": "^2.1.0",
     "easy-table": "^1.1.1",
-    "useragent": "^2.3.0"
+    "picocolors": "^1.0.0",
+    "ua-regexes-lite": "^1.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -78,7 +79,6 @@
     "@types/node": "^18.8.4",
     "@vitest/coverage-c8": "^0.24.1",
     "browserslist": "^4.21.4",
-    "browserslist-useragent": "^3.0.0",
     "clean-publish": "^4.0.1",
     "commitizen": "^4.2.5",
     "del-cli": "^4.0.1",
@@ -92,7 +92,6 @@
     "size-limit": "^8.1.0",
     "standard-version": "^9.5.0",
     "typescript": "^4.8.4",
-    "user-agents": "^1.0.213",
     "vite": "^3.1.7",
     "vitest": "^0.24.1"
   }

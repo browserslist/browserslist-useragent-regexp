@@ -1,22 +1,20 @@
-import { BRACED_NUMBER_PATTERN } from '../regexp/util.js'
-import { rangeToRegExp } from '../regexp/numberRange.js'
+import { BRACED_NUMBER_PATTERN } from '../regex/utils.js'
+import { rangeToRegex } from '../regex/numberRange.js'
+import { uniqItems } from '../utils/index.js'
 import type {
-  ISemverLike,
-  ISemver,
-  IRangedSemver,
-  ISemverCompareOptions
+  SemverLike,
+  Semver,
+  RangedSemver,
+  SemverCompareOptions
 } from './types.js'
-import {
-  isAllVersion,
-  uniqItems
-} from './util.js'
+import { isAllVersion } from './utils.js'
 
 /**
  * Get semver from string or array.
  * @param version - Target to convert.
  * @returns Array with semver parts.
  */
-export function semverify(version: ISemverLike): ISemver | null {
+export function semverify(version: SemverLike): Semver | null {
   const versionParts = Array.isArray(version)
     ? version
     : version.toString().split('.')
@@ -31,7 +29,7 @@ export function semverify(version: ISemverLike): ISemver | null {
 
   let versionPart: number | string = null
   let semverPart: number = null
-  const semver: ISemver = [
+  const semver: Semver = [
     0,
     0,
     0
@@ -65,7 +63,7 @@ export function semverify(version: ISemverLike): ISemver | null {
  * @param options - Compare options.
  * @returns Equals or not.
  */
-export function compareSemvers(a: ISemver, b: ISemver, options: ISemverCompareOptions) {
+export function compareSemvers(a: Semver, b: Semver, options: SemverCompareOptions) {
   const [
     major,
     minor,
@@ -117,7 +115,7 @@ export function compareSemvers(a: ISemver, b: ISemver, options: ISemverCompareOp
  * @param options - Semver compare options.
  * @returns Required semver parts count.
  */
-export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, options: ISemverCompareOptions) {
+export function getRequiredSemverPartsCount(version: Semver|RangedSemver, options: SemverCompareOptions) {
   const {
     ignoreMinor,
     ignorePatch,
@@ -143,12 +141,12 @@ export function getRequiredSemverPartsCount(version: ISemver|IRangedSemver, opti
 }
 
 /**
- * Ranged semver to regexp patterns.
+ * Ranged semver to regex patterns.
  * @param rangedVersion - Ranged semver.
  * @param options - Semver compare options.
- * @returns Array of regexp pattern strings.
+ * @returns Array of regex pattern strings.
  */
-export function rangedSemverToRegExp(rangedVersion: IRangedSemver, options: ISemverCompareOptions) {
+export function rangedSemverToRegex(rangedVersion: RangedSemver, options: SemverCompareOptions) {
   const {
     ignoreMinor,
     ignorePatch,
@@ -186,7 +184,7 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, options: ISem
             return BRACED_NUMBER_PATTERN
           }
 
-          return rangeToRegExp(start + d)
+          return rangeToRegex(start + d)
         })
       })
     )
@@ -200,7 +198,7 @@ export function rangedSemverToRegExp(rangedVersion: IRangedSemver, options: ISem
     }
 
     if (Array.isArray(range)) {
-      return rangeToRegExp(
+      return rangeToRegex(
         range[0],
         range[1]
       )

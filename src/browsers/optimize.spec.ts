@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import type { IBrowser } from './types.js'
-import type { ISemver } from '../semver/types.js'
+import type { Browser } from './types.js'
+import type { Semver } from '../semver/types.js'
 import {
   mergeBrowserVersions,
   versionsListToRanges,
@@ -11,7 +11,7 @@ describe('Browsers', () => {
   describe('optimize', () => {
     describe('mergeBrowserVersions', () => {
       it('should merge browsers versions', () => {
-        const browsers: IBrowser[] = [
+        const browsers: Browser[] = [
           {
             family: 'firefox',
             version: [
@@ -55,7 +55,7 @@ describe('Browsers', () => {
 
     describe('versionsListToRanges', () => {
       it('should collapse ranges', () => {
-        const versions: ISemver[] = [
+        const versions: Semver[] = [
           [
             11,
             0,
@@ -536,7 +536,7 @@ describe('Browsers', () => {
 
     describe('browserVersionsToRanges', () => {
       it('should collapse ranges', () => {
-        const browsers = new Map<string, ISemver[]>([
+        const browsers = new Map<string, Semver[]>([
           [
             'chrome',
             [

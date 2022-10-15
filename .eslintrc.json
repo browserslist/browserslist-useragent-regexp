@@ -12,11 +12,12 @@
   },
   "parserOptions": {
     "tsconfigRootDir": "./",
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.json", "./test/tsconfig.json"]
   },
   "rules": {
     "@typescript-eslint/no-magic-numbers": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-misused-promises": "off",
     "array-element-newline": "off",
     "prefer-destructuring": "off"
   },
