@@ -12,7 +12,7 @@ Array.from(document.querySelectorAll('[data-query]')).forEach(function (input) {
   Array.from(document.querySelectorAll('[data-for-query=' + query + ']')).forEach(function (input) {
     var li = input.parentElement
     var ul = li.parentElement
-    var checked = new RegExp(input.dataset.regexp).test(navigator.userAgent)
+    var checked = new RegExp(input.dataset.regex).test(navigator.userAgent)
 
     input.checked = checked
     some = some || checked
