@@ -32,7 +32,7 @@ const {
   option('ignorePatch', Boolean),
   option('ignoreMinor', Boolean),
   option('allowHigherVersions', Boolean),
-  option('allowZeroVersions', Boolean)
+  option('allowZeroSubversions', Boolean)
 )
 
 if (help) {
