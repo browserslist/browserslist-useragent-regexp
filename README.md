@@ -133,11 +133,11 @@ pnpm bluare [query] [...options]
 
 Module exposes two main methods:
 
-### [getUserAgentRegexes(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregexes)
+### [getUserAgentRegexes(options)](https://browserslist.github.io/browserslist-useragent-regexp/functions/getUserAgentRegexes.html)
 
 Compile browserslist query to [regexes for each browser](#regex-info-object).
 
-### [getUserAgentRegex(options)](https://browserslist.github.io/browserslist-useragent-regexp/modules/index.html#getuseragentregex)
+### [getUserAgentRegex(options)](https://browserslist.github.io/browserslist-useragent-regexp/functions/getUserAgentRegex.html)
 
 Compile browserslist query to one regex.
 
