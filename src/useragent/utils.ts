@@ -5,16 +5,16 @@ import {
 } from '../semver/index.js'
 
 /**
- * Check version.
+ * Find matched versions.
  * @param minVersion - Semver version.
  * @param maxVersion - Semver version.
  * @param bases - Base semver versions.
  * @param options - Semver compare options.
- * @returns Some version is matched.
+ * @returns Matched versions.
  */
-export function someSemverMatched(
-  minVersion: Semver,
-  maxVersion: Semver,
+export function findMatchedVersions(
+  minVersion: Semver | null,
+  maxVersion: Semver | null,
   bases: Semver[],
   options: SemverCompareOptions
 ) {
@@ -22,14 +22,15 @@ export function someSemverMatched(
     ...options,
     allowHigherVersions: true
   }
+  const minComparator = (ver: Semver) => compareSemvers(ver, minVersion, compareOptions)
+  const maxComparator = (ver: Semver) => compareSemvers(maxVersion, ver, compareOptions)
+  const comparator = minVersion && maxVersion
+    ? (ver: Semver) => minComparator(ver) && maxComparator(ver)
+    : minVersion
+      ? minComparator
+      : maxVersion
+        ? maxComparator
+        : () => true
 
-  return (
-    !minVersion || bases.some(
-      _ => compareSemvers(_, minVersion, compareOptions)
-    )
-  ) && (
-    !maxVersion || bases.some(
-      _ => compareSemvers(maxVersion, _, compareOptions)
-    )
-  )
+  return bases.filter(comparator)
 }

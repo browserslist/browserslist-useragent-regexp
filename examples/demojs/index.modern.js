@@ -1,30 +1,48 @@
-/* eslint-disable import/unambiguous */
-/* eslint-env browser */
+/* eslint-disable */
+
+function elevateElements(elements) {
+  const firstElement = elements[0]
+  const root = elements[0].parentElement
+  const firstRootElement = root.firstElementChild
+
+  if (firstElement === firstRootElement) {
+    return
+  }
+
+  const fragment = document.createDocumentFragment()
+
+  elements.forEach((element) => {
+    fragment.append(element)
+  })
+
+  root.insertBefore(fragment, firstRootElement)
+}
 
 document.getElementById('useragent').innerText = navigator.userAgent
 
 document.querySelectorAll('[data-query]').forEach((input) => {
-  const queryDiv = input.parentElement.parentElement
-  const queriesDiv = queryDiv.parentElement
   const { query } = input.dataset
   let some = false
 
   document.querySelectorAll(`[data-for-query=${query}]`).forEach((input) => {
-    const li = input.parentElement
-    const ul = li.parentElement
-    const checked = new RegExp(input.dataset.regex).test(navigator.userAgent)
+    const { regex, family } = input.dataset
+    const checked = new RegExp(regex).test(navigator.userAgent)
 
     input.checked = checked
     some = some || checked
 
     if (checked) {
-      ul.insertBefore(li, ul.firstElementChild)
+      elevateElements(
+        document.querySelectorAll(`[data-group-family=${family}]`)
+      )
     }
   })
 
   input.checked = some
 
   if (some) {
-    queriesDiv.insertBefore(queryDiv, queriesDiv.firstElementChild)
+    elevateElements(
+      document.querySelectorAll(`[data-group-query=${query}]`)
+    )
   }
 })

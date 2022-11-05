@@ -1,8 +1,15 @@
+import type { Expression } from 'regexp-tree/ast'
+import { concat } from '../utils/index.js'
 import {
-  DIGIT_PATTERN,
-  numberToDigits,
-  joinParts
-} from './utils.js'
+  AlternativeNode,
+  SimpleCharNode,
+  CharacterClassNode,
+  ClassRangeNode,
+  DisjunctionCapturingGroupNode,
+  DigitPatternNode,
+  optimizeSegmentNumberPatterns
+} from '../regex/index.js'
+import { numberToDigits } from './utils.js'
 
 /**
  * Get digit pattern.
@@ -13,22 +20,38 @@ import {
  */
 export function segmentRangeNumberPattern(from: number, to: number, zeros?: number) {
   if (to < from) {
-    return ''
+    return null
   }
 
+  const fromNode = SimpleCharNode(from)
+  const toNode = SimpleCharNode(to)
   const zerosPrefix = typeof zeros === 'number' && zeros > 0
-    ? '0'.repeat(zeros)
-    : ''
+    ? Array.from({
+      length: zeros
+    }, () => SimpleCharNode(0))
+    : []
+  const addPrefix = zerosPrefix.length
+    ? (node: Expression) => AlternativeNode(zerosPrefix, node)
+    : (node: Expression) => node
 
   if (from === to) {
-    return `${zerosPrefix}${from}`
+    return addPrefix(fromNode)
   }
 
   if (from === 0 && to === 9) {
-    return `${zerosPrefix}${DIGIT_PATTERN}`
+    return addPrefix(DigitPatternNode())
   }
 
-  return `${zerosPrefix}[${from}-${to}]`
+  if (to - from === 1) {
+    return addPrefix(CharacterClassNode(
+      fromNode,
+      toNode
+    ))
+  }
+
+  return addPrefix(CharacterClassNode(
+    ClassRangeNode(fromNode, toNode)
+  ))
 }
 
 /**
@@ -93,44 +116,13 @@ export function splitCommonDiff(a: number[], b: number[]): [string, number, numb
 }
 
 /**
- * Get shirter variant.
- * @param from - Segment start.
- * @param to - Segment end.
- * @param rangeNumberPatterns - Numeric segment patterns.
- * @returns Enum or numeric segment patterns.
- */
-export function enumOrRange(from: number, to: number, rangeNumberPatterns: string[]) {
-  const rangePartsCount = rangeNumberPatterns.length
-  const nums: string[] = []
-  let rangeIndex = 0
-  let rangeSymbolsCount = 0
-  let enumSymbolsCount = 0
-
-  for (let num = from; num <= to; num++) {
-    nums.push(num.toString())
-    enumSymbolsCount += Math.floor(Math.log10(num) + 1) + 1
-
-    while (enumSymbolsCount > rangeSymbolsCount) {
-      if (rangeIndex >= rangePartsCount) {
-        return rangeNumberPatterns
-      }
-
-      rangeSymbolsCount += rangeNumberPatterns[rangeIndex++].length + 1
-    }
-  }
-
-  return nums
-}
-
-/**
  * Get segment patterns.
- * @todo   Optomize. E.g. 32-99.
  * @param from - Segment start.
  * @param to - Segment end.
  * @param digitsInNumber - How many digits should be en number. Will be filled by zeros.
  * @returns Segment patterns.
  */
-export function segmentToNumberPatterns(from: number, to: number, digitsInNumber = 0): string[] {
+export function segmentToNumberPatterns(from: number, to: number, digitsInNumber = 0): Expression[] {
   const fromDigits = numberToDigits(from)
   const digitsCount = fromDigits.length
 
@@ -144,8 +136,8 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
 
   if (digitsCount !== toDigits.length) {
     const decadeRanges = splitToDecadeRanges(from, to)
-    const parts = ([] as string[]).concat(
-      ...decadeRanges.map(([from, to]) => segmentToNumberPatterns(from, to, digitsInNumber))
+    const parts = concat(
+      decadeRanges.map(([from, to]) => segmentToNumberPatterns(from, to, digitsInNumber))
     )
 
     return parts
@@ -162,7 +154,12 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
     const digitsInNumber = digitsCount - common.length
     const diffParts = segmentToNumberPatterns(from, to, digitsInNumber)
 
-    return [`${common}${joinParts(diffParts)}`]
+    return [
+      AlternativeNode(
+        Array.from(common, SimpleCharNode),
+        DisjunctionCapturingGroupNode(diffParts)
+      )
+    ]
   }
 
   const range = Array.from({
@@ -177,49 +174,50 @@ export function segmentToNumberPatterns(from: number, to: number, digitsInNumber
       const ri = digitsCount - i - 1
       const d = Number(i > 0)
 
-      return fromDigits.map((digit, j) => {
-        if (j < ri) {
-          return digit
-        }
+      return AlternativeNode(
+        fromDigits.map((digit, j) => {
+          if (j < ri) {
+            return SimpleCharNode(digit)
+          }
 
-        if (j > ri) {
-          return segmentRangeNumberPattern(0, 9)
-        }
+          if (j > ri) {
+            return segmentRangeNumberPattern(0, 9)
+          }
 
-        return segmentRangeNumberPattern(digit + d, 9)
-      }).join('')
+          return segmentRangeNumberPattern(digit + d, 9)
+        })
+      )
     }),
     // but output more readable
     ...middleSegment
-      ? [`${middleSegment}${DIGIT_PATTERN.repeat(digitsCount - 1)}`]
+      ? [
+        AlternativeNode(
+          middleSegment,
+          Array.from({
+            length: digitsCount - 1
+          }, () => DigitPatternNode())
+        )
+      ]
       : [],
     ...range.map((_, i) => {
       const ri = digitsCount - i - 1
       const d = Number(i > 0)
 
-      return toDigits.map((digit, j) => {
-        if (j < ri) {
-          return digit
-        }
+      return AlternativeNode(
+        toDigits.map((digit, j) => {
+          if (j < ri) {
+            return SimpleCharNode(digit)
+          }
 
-        if (j > ri) {
-          return segmentRangeNumberPattern(0, 9)
-        }
+          if (j > ri) {
+            return segmentRangeNumberPattern(0, 9)
+          }
 
-        return segmentRangeNumberPattern(0, digit - d)
-      }).join('')
+          return segmentRangeNumberPattern(0, digit - d)
+        })
+      )
     })
   ]
 
-  return parts
-}
-
-/**
- * Get segment or enum patterns.
- * @param from - Segment start.
- * @param to - Segment end.
- * @returns Enum or numeric segment patterns.
- */
-export function segmentToNumberPatternsOrEnum(from: number, to: number) {
-  return enumOrRange(from, to, segmentToNumberPatterns(from, to))
+  return optimizeSegmentNumberPatterns(parts)
 }

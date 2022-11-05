@@ -1,5 +1,8 @@
 import browserslist from 'browserslist'
-import { semverify } from '../semver/index.js'
+import {
+  semverify,
+  rangeSemver
+} from '../semver/index.js'
 import type {
   Browser,
   BrowserslistRequest
@@ -12,7 +15,11 @@ import type {
  */
 export function parseBrowsersList(browsersList: string[]) {
   return browsersList.reduce<Browser[]>((browsers, browser) => {
-    const [family, ...versions] = browser.split(/ |-/)
+    const [family, versionString, versionStringTo] = browser.split(/ |-/)
+    const version = semverify(versionString)
+    const versions = versionStringTo
+      ? rangeSemver(version, semverify(versionStringTo))
+      : [version]
 
     return versions.reduce((browsers, version) => {
       const semver = semverify(version)

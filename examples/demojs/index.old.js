@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 function forEach(elements, handler) {
   for (var i = 0, len = elements.length; i < len; i++) {
     handler(elements[i]);
@@ -29,30 +30,50 @@ function findByAttribute(attribute, value) {
   return result;
 }
 
+function elevateElements(elements) {
+  var firstElement = elements[0]
+  var root = elements[0].parentElement
+  var firstRootElement = root.children[0]
+
+  if (firstElement === firstRootElement) {
+    return
+  }
+
+  var fragment = document.createDocumentFragment()
+
+  forEach(elements, function (element) {
+    fragment.appendChild(element)
+  })
+
+  root.insertBefore(fragment, firstRootElement)
+}
+
 document.getElementById('useragent').innerText = navigator.userAgent;
 
 forEach(findByAttribute('data-query'), function (input) {
-  var queryDiv = input.parentElement.parentElement;
-  var queriesDiv = queryDiv.parentElement;
   var query = input.getAttribute('data-query');
   var some = false;
 
   forEach(findByAttribute('data-for-query', query), function (input) {
-    var li = input.parentElement;
-    var ul = li.parentElement;
-    var checked = new RegExp(input.getAttribute('data-regex')).test(navigator.userAgent);
+    var regex = input.getAttribute('data-regex')
+    var family = input.getAttribute('data-family')
+    var checked = new RegExp(regex).test(navigator.userAgent);
 
     input.checked = checked;
     some = some || checked;
 
     if (checked) {
-      ul.insertBefore(li, ul.children[0]);
+      elevateElements(
+        findByAttribute('data-group-family', family)
+      )
     }
   });
 
   input.checked = some;
 
   if (some) {
-    queriesDiv.insertBefore(queryDiv, queriesDiv.children[0]);
+    elevateElements(
+      findByAttribute('data-group-query', query)
+    )
   }
 });

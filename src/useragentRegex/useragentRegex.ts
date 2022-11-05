@@ -1,15 +1,14 @@
 import { getRegexesForBrowsers } from '../useragent/index.js'
 import {
   getBrowsersList,
-  mergeBrowserVersions,
-  browserVersionsToRanges
+  mergeBrowserVersions
 } from '../browsers/index.js'
-import {
-  applyVersionsToRegexes,
-  joinVersionedBrowsersRegexes
-} from '../regex/index.js'
+import { applyVersionsToRegexes } from '../versions/index.js'
 import type { UserAgentRegexOptions } from './types.js'
-import { optimizeAll } from './optimize.js'
+import {
+  compileRegexes,
+  compileRegex
+} from './utils.js'
 
 export const defaultOptions = {
   ignoreMinor: false,
@@ -19,11 +18,11 @@ export const defaultOptions = {
 }
 
 /**
- * Compile browserslist query to regexes.
+ * Get source regexes objects from browserslist query.
  * @param options - Browserslist and semver compare options.
- * @returns Objects with info about compiled regexes.
+ * @returns Source regexes objects.
  */
-export function getUserAgentRegexes(options: UserAgentRegexOptions = {}) {
+export function getPreUserAgentRegexes(options: UserAgentRegexOptions = {}) {
   const {
     browsers,
     env,
@@ -40,12 +39,21 @@ export function getUserAgentRegexes(options: UserAgentRegexOptions = {}) {
     path
   })
   const mergedBrowsers = mergeBrowserVersions(browsersList)
-  const rangedBrowsers = browserVersionsToRanges(mergedBrowsers)
   const sourceRegexes = getRegexesForBrowsers(mergedBrowsers, finalOptions)
-  const versionedRegexes = applyVersionsToRegexes(sourceRegexes, rangedBrowsers, finalOptions)
-  const optimizedRegexes = optimizeAll(versionedRegexes)
+  const versionedRegexes = applyVersionsToRegexes(sourceRegexes, finalOptions)
 
-  return optimizedRegexes
+  return versionedRegexes
+}
+
+/**
+ * Compile browserslist query to regexes.
+ * @param options - Browserslist and semver compare options.
+ * @returns Objects with info about compiled regexes.
+ */
+export function getUserAgentRegexes(options: UserAgentRegexOptions = {}) {
+  return compileRegexes(
+    getPreUserAgentRegexes(options)
+  )
 }
 
 /**
@@ -54,9 +62,7 @@ export function getUserAgentRegexes(options: UserAgentRegexOptions = {}) {
  * @returns Compiled regex.
  */
 export function getUserAgentRegex(options: UserAgentRegexOptions = {}) {
-  const regexes = getUserAgentRegexes(options)
-  const regexStr = joinVersionedBrowsersRegexes(regexes)
-  const regex = new RegExp(regexStr)
-
-  return regex
+  return compileRegex(
+    getPreUserAgentRegexes(options)
+  )
 }

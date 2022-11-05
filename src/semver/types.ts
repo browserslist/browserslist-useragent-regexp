@@ -11,7 +11,7 @@ export type Semver = [
   number
 ]
 
-export type SemverRange = number | number[]
+export type SemverRange = number | [number, number]
 
 export type RangedSemver = [
   SemverRange,
