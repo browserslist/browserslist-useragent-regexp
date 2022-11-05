@@ -17,13 +17,13 @@ export function parseBrowsersList(browsersList: string[]) {
   return browsersList.reduce<Browser[]>((browsers, browser) => {
     const [family, versionString, versionStringTo] = browser.split(/ |-/)
     const version = semverify(versionString)
-    const versions = versionStringTo
-      ? rangeSemver(version, semverify(versionStringTo))
-      : [version]
+    const versions = !version
+      ? []
+      : versionStringTo
+        ? rangeSemver(version, semverify(versionStringTo))
+        : [version]
 
-    return versions.reduce((browsers, version) => {
-      const semver = semverify(version)
-
+    return versions.reduce((browsers, semver) => {
       if (semver) {
         browsers.push({
           family,
