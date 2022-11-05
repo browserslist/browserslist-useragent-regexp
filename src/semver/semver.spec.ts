@@ -4,7 +4,7 @@ import {
   semverify,
   compareSemvers,
   getRequiredSemverPartsCount,
-  rangedSemverToRegex
+  rangeSemver
 } from './semver.js'
 
 describe('Semver', () => {
@@ -77,12 +77,12 @@ describe('Semver', () => {
       )
     })
 
-    it('should ignore \'all\' version', () => {
+    it('should return Infinity for \'all\' version', () => {
       expect(
         semverify('all')
       ).toEqual(
         [
-          'all',
+          Infinity,
           0,
           0
         ]
@@ -92,7 +92,7 @@ describe('Semver', () => {
         semverify(['all'])
       ).toEqual(
         [
-          'all',
+          Infinity,
           0,
           0
         ]
@@ -111,7 +111,7 @@ describe('Semver', () => {
   })
 
   describe('compareSemvers', () => {
-    it('should handle \'all\' version', () => {
+    it('should handle Infinity (\'all\') version', () => {
       expect(
         compareSemvers(
           [
@@ -120,10 +120,10 @@ describe('Semver', () => {
             1
           ],
           [
-            'all',
+            Infinity,
             0,
             0
-          ] as any,
+          ],
           {}
         )
       ).toBe(
@@ -700,149 +700,43 @@ describe('Semver', () => {
     })
   })
 
-  describe('rangedSemverToRegex', () => {
-    const options = {
-      ignoreMinor: false,
-      ignorePatch: false,
-      allowHigherVersions: false
-    }
-
-    it('should return only numbers', () => {
+  describe('rangeSemver', () => {
+    it('should range patch', () => {
       expect(
-        rangedSemverToRegex(
-          [
-            11,
-            12,
-            0
-          ],
-          options
+        rangeSemver(
+          [4, 4, 3],
+          [4, 4, 5]
         )
       ).toEqual([
-        [
-          '11',
-          '12',
-          '0'
-        ]
+        [4, 4, 3],
+        [4, 4, 4],
+        [4, 4, 5]
       ])
     })
 
-    it('should return only numbers patterns', () => {
+    it('should range minor', () => {
       expect(
-        rangedSemverToRegex(
-          [
-            'all',
-            0,
-            0
-          ] as any,
-          options
+        rangeSemver(
+          [15, 4, 0],
+          [15, 6, 0]
         )
       ).toEqual([
-        [
-          '(\\d+)',
-          '(\\d+)',
-          '(\\d+)'
-        ]
+        [15, 4, 0],
+        [15, 5, 0],
+        [15, 6, 0]
       ])
     })
 
-    it('should return number pattern at patch', () => {
-      const ignorePatchOptions = {
-        ...options,
-        ignorePatch: true
-      }
-
+    it('should range minor', () => {
       expect(
-        rangedSemverToRegex(
-          [
-            11,
-            12,
-            0
-          ],
-          ignorePatchOptions
+        rangeSemver(
+          [100, 0, 0],
+          [102, 0, 0]
         )
       ).toEqual([
-        [
-          '11',
-          '12',
-          '(\\d+)'
-        ]
-      ])
-    })
-
-    it('should return number patterns at minor and patch', () => {
-      const ignoreMinorOptions = {
-        ...options,
-        ignoreMinor: true
-      }
-
-      expect(
-        rangedSemverToRegex(
-          [
-            11,
-            12,
-            0
-          ],
-          ignoreMinorOptions
-        )
-      ).toEqual([
-        [
-          '11',
-          '(\\d+)',
-          '(\\d+)'
-        ]
-      ])
-    })
-
-    it('should return ranged major', () => {
-      expect(
-        rangedSemverToRegex(
-          [
-            [11, 13],
-            12,
-            0
-          ],
-          options
-        )
-      ).toEqual([
-        [
-          '1[1-3]',
-          '12',
-          '0'
-        ]
-      ])
-    })
-
-    it('should return ranged major ray', () => {
-      const allowHigherOptions = {
-        ...options,
-        allowHigherVersions: true
-      }
-
-      expect(
-        rangedSemverToRegex(
-          [
-            [11, 13],
-            12,
-            0
-          ],
-          allowHigherOptions
-        )
-      ).toEqual([
-        [
-          '11',
-          '12',
-          '\\d+'
-        ],
-        [
-          '11',
-          '(1[3-9]|[2-9]\\d|\\d{3,})',
-          '(\\d+)'
-        ],
-        [
-          '(1[2-9]|[2-9]\\d|\\d{3,})',
-          '(\\d+)',
-          '(\\d+)'
-        ]
+        [100, 0, 0],
+        [101, 0, 0],
+        [102, 0, 0]
       ])
     })
   })

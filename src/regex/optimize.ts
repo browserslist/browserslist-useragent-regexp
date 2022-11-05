@@ -1,82 +1,131 @@
+import type {
+  AstRegExp,
+  AstNode,
+  Expression
+} from 'regexp-tree/ast'
+import RegexpTree from 'regexp-tree'
 import {
-  BRACED_NUMBER_PATTERN,
-  ESCAPE_SYMBOL,
-  skipSquareBraces,
-  capturePostfix
-} from './utils.js'
-
-export const OPTIMIZABLE_GROUP = /^\([\s\w\d_\-/!]+\)$/
-export const CHARCLASS_UNESCAPES = /[/.$*+?[{}|()]/
+  isCharNode,
+  isDigitRangeNode,
+  parseRegex,
+  toString
+} from './regex.js'
 
 /**
- * Optimize regex string:
- * - remove unnecessary braces;
- * - remove unnecessary escapes in ranges.
- * @param regexStr - Regex string to optimize.
+ * Optimize regex.
+ * @param regex - Regex to optimize.
  * @returns Optimized regex string.
  */
-export function optimize(regexStr: string) {
-  const regexStrLength = regexStr.length
-  let inGroup = false
-  let skip = false
-  let char = ''
-  let prevChar = ''
-  let nextChar = ''
-  let postfix = ''
-  let groupAccum = ''
-  let optimizedRegexStr = ''
+export function optimizeRegex(regex: string | RegExp | AstRegExp): AstRegExp
+export function optimizeRegex<T extends AstNode>(regex: T): T
 
-  for (let i = 0; i < regexStrLength; i++) {
-    char = regexStr[i]
-    prevChar = regexStr[i - 1]
-    nextChar = regexStr[i + 1]
-    skip = skipSquareBraces(skip, prevChar, char)
+export function optimizeRegex(regex: string | RegExp | AstNode) {
+  // Optimization requires filled codePoints
+  const regexAst = RegexpTree.optimize(parseRegex(toString(regex))).getAST()
 
-    if (!skip
-      && prevChar !== ESCAPE_SYMBOL
-      && char === '('
-    ) {
-      if (inGroup) {
-        optimizedRegexStr += groupAccum
-      }
+  RegexpTree.traverse(regexAst, {
+    Group(nodePath) {
+      const {
+        parent,
+        node
+      } = nodePath
+      const { expression } = node
 
-      inGroup = true
-      groupAccum = ''
-    }
+      node.capturing = true
 
-    if (skip
-      && char === ESCAPE_SYMBOL
-      && CHARCLASS_UNESCAPES.test(nextChar)
-    ) {
-      i++
-      char = nextChar
-    }
-
-    if (inGroup) {
-      groupAccum += char
-    } else {
-      optimizedRegexStr += char
-    }
-
-    if (!skip
-      && prevChar !== ESCAPE_SYMBOL
-      && char === ')'
-      && inGroup
-    ) {
-      inGroup = false
-      postfix = capturePostfix(regexStr, i + 1)
-      groupAccum += postfix
-
-      if (groupAccum === BRACED_NUMBER_PATTERN
-        || OPTIMIZABLE_GROUP.test(groupAccum)
+      if (parent.type === 'RegExp'
+        || expression.type !== 'Disjunction' && parent.type !== 'Repetition'
+        || expression.type === 'Disjunction' && parent.type === 'Disjunction'
       ) {
-        groupAccum = groupAccum.substr(1, groupAccum.length - 2)
+        nodePath.replace(nodePath.node.expression)
       }
+    }
+  })
 
-      optimizedRegexStr += groupAccum
-      i += postfix.length
+  return regexAst
+}
+
+/**
+ * Merge digits patterns if possible.
+ * @param a
+ * @param b
+ * @returns Merged node.
+ */
+export function mergeDigits(a: Expression, b: Expression) {
+  if (isCharNode(a) && isCharNode(b) && a.value === b.value) {
+    return b
+  }
+
+  if (
+    isCharNode(a, /\d/) && isDigitRangeNode(b)
+    && Number(b.expressions[0].from.value) - Number(a.value) === 1
+  ) {
+    return {
+      ...b,
+      expressions: [
+        {
+          ...b.expressions[0],
+          from: a
+        }
+      ]
     }
   }
 
-  return optimizedRegexStr
+  if (
+    isDigitRangeNode(a) && isCharNode(b, /\d/)
+    && Number(b.value) - Number(a.expressions[0].to.value) === 1
+  ) {
+    return {
+      ...a,
+      expressions: [
+        {
+          ...a.expressions[0],
+          to: b
+        }
+      ]
+    }
+  }
+
+  return null
+}
+
+/**
+ * Optimize segment number patterns.
+ * @param patterns
+ * @returns Optimized segment number patterns.
+ */
+export function optimizeSegmentNumberPatterns(patterns: Expression[]) {
+  return patterns.reduce<Expression[]>((patterns, node) => {
+    const prevNode = patterns[patterns.length - 1]
+
+    if (prevNode
+      && node.type === 'Alternative' && prevNode.type === 'Alternative'
+      && node.expressions.length === prevNode.expressions.length
+    ) {
+      const merged = prevNode.expressions.reduceRight<Expression[]>((exps, exp, i) => {
+        if (!exps) {
+          return exps
+        }
+
+        const merged = mergeDigits(exp, node.expressions[i])
+
+        if (merged) {
+          exps.unshift(merged)
+        } else {
+          return null
+        }
+
+        return exps
+      }, [])
+
+      if (merged) {
+        node.expressions = merged
+        patterns.pop()
+      }
+    }
+
+    patterns.push(node)
+
+    return patterns
+  }, [])
 }

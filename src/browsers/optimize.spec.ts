@@ -3,8 +3,7 @@ import type { Browser } from './types.js'
 import type { Semver } from '../semver/types.js'
 import {
   mergeBrowserVersions,
-  versionsListToRanges,
-  browserVersionsToRanges
+  versionsListToRanges
 } from './optimize.js'
 
 describe('Browsers', () => {
@@ -40,13 +39,13 @@ describe('Browsers', () => {
         const mergedBrowsers = mergeBrowserVersions(browsers)
 
         expect(
-          mergedBrowsers.get('firefox').length
+          mergedBrowsers.get('firefox')?.length
         ).toBe(
           2
         )
 
         expect(
-          mergedBrowsers.get('chrome').length
+          mergedBrowsers.get('chrome')?.length
         ).toBe(
           1
         )
@@ -531,113 +530,6 @@ describe('Browsers', () => {
             0
           ]
         ])
-      })
-    })
-
-    describe('browserVersionsToRanges', () => {
-      it('should collapse ranges', () => {
-        const browsers = new Map<string, Semver[]>([
-          [
-            'chrome',
-            [
-              [
-                11,
-                0,
-                0
-              ],
-              [
-                12,
-                0,
-                0
-              ],
-              [
-                13,
-                0,
-                0
-              ]
-            ]
-          ],
-          [
-            'firefox',
-            [
-              [
-                10,
-                0,
-                0
-              ]
-            ]
-          ],
-          [
-            'ios',
-            [
-              [
-                11,
-                1,
-                0
-              ],
-              [
-                11,
-                2,
-                0
-              ],
-              [
-                12,
-                1,
-                0
-              ],
-              [
-                12,
-                2,
-                0
-              ]
-            ]
-          ]
-        ])
-        const rangedBrowsers = [
-          [
-            'chrome',
-            [
-              [
-                [11, 13],
-                0,
-                0
-              ]
-            ]
-          ],
-          [
-            'firefox',
-            [
-              [
-                10,
-                0,
-                0
-              ]
-            ]
-          ],
-          [
-            'ios',
-            [
-              [
-                11,
-                [1, 2],
-                0
-              ],
-              [
-                12,
-                [1, 2],
-                0
-              ]
-            ]
-          ]
-        ]
-
-        expect(
-          Array.from(
-            browserVersionsToRanges(browsers).entries()
-          )
-        ).toEqual(
-          rangedBrowsers
-        )
       })
     })
   })

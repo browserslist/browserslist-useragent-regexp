@@ -1,19 +1,20 @@
 import { describe, it, expect } from 'vitest'
-import type { RangedSemver } from '../semver/types.js'
 import type { BrowserRegex } from '../useragent/types.js'
-import type { RangedBrowsersVersions } from '../browsers/types.js'
-import { regexToString } from '../regex/index.js'
+import {
+  toString,
+  toRegex
+} from '../regex/index.js'
 import {
   applyVersionsToRegex,
   applyVersionsToRegexes
 } from './versions.js'
 
-describe('Regex', () => {
+describe('Versions', () => {
   describe('versions', () => {
     describe('applyVersionsToRegex', () => {
       it('should work with RegExp', () => {
         expect(
-          applyVersionsToRegex(
+          toString(applyVersionsToRegex(
             /Chrome v(\d+) (\d+) (\d+)/,
             [
               [
@@ -28,15 +29,15 @@ describe('Regex', () => {
               ]
             ],
             {}
-          )
+          ))
         ).toBe(
-          'Chrome v((10|11) 0 0|64 0 0)'
+          '/Chrome v(1[01] 0 0|64 0 0)/'
         )
       })
 
       it('should work with string', () => {
         expect(
-          applyVersionsToRegex(
+          toString(applyVersionsToRegex(
             'Chrome v(\\d+) (\\d+) (\\d+)?',
             [
               [
@@ -51,38 +52,15 @@ describe('Regex', () => {
               ]
             ],
             {}
-          )
+          ))
         ).toBe(
-          'Chrome v((10|11) 0 0?|64 0 0?)'
-        )
-      })
-
-      it('should ignore unsuitable RegExp', () => {
-        expect(
-          applyVersionsToRegex(
-            'Chrome v(\\d+) (\\d+)',
-            [
-              [
-                [10, 11],
-                0,
-                0
-              ],
-              [
-                64,
-                0,
-                0
-              ]
-            ],
-            {}
-          )
-        ).toBe(
-          null
+          '/Chrome v(1[01] 0 0?|64 0 0?)/'
         )
       })
 
       it('should apply semver compare options', () => {
         expect(
-          applyVersionsToRegex(
+          toString(applyVersionsToRegex(
             'Chrome v(\\d+)',
             [
               [
@@ -106,15 +84,15 @@ describe('Regex', () => {
               allowZeroSubversions: true,
               allowHigherVersions: true
             }
-          )
+          ))
         ).toBe(
-          'Chrome v(10|(1[1-9]|[2-9]\\d|\\d{3,})|64|(6[5-9]|[7-9]\\d|\\d{3,}))'
+          '/Chrome v([1-9]\\d|\\d{3,})/'
         )
       })
 
       it('should apply semver to match higher version ', () => {
         expect(
-          applyVersionsToRegex(
+          toString(applyVersionsToRegex(
             'Chrome v(\\d+) (\\d+)',
             [
               [
@@ -128,9 +106,9 @@ describe('Regex', () => {
               allowZeroSubversions: true,
               allowHigherVersions: true
             }
-          )
+          ))
         ).toBe(
-          'Chrome v(8 2|8 ([3-9]|\\d{2,})|(9|\\d{2,}) (\\d+))'
+          '/Chrome v(8 ([2-9]|\\d{2,})|(9|\\d{2,}) \\d+)/'
         )
       })
     })
@@ -140,105 +118,51 @@ describe('Regex', () => {
         {
           family: 'chrome',
           regex: /Chrome (\d+) (\d+) (\d+)/,
-          requestVersions: [
-            [
-              64,
-              0,
-              0
-            ],
-            [
-              73,
-              0,
-              0
-            ]
-          ]
+          requestVersions: [[64, 0, 0], [73, 0, 0]],
+          matchedVersions: [[64, 0, 0], [73, 0, 0]]
         },
         {
           family: 'firefox',
           regex: /FF/,
-          requestVersions: [
-            [
-              1,
-              2,
-              3
-            ]
-          ]
+          requestVersions: [[1, 2, 3]],
+          matchedVersions: [[1, 2, 3]]
         },
         {
           family: 'ie',
           regex: /lol serious?/,
-          requestVersions: [
-            [
-              5,
-              0,
-              0
-            ]
-          ],
-          version: [
-            5,
-            0,
-            0
-          ]
+          requestVersions: [[5, 0, 0]],
+          version: [5, 0, 0],
+          matchedVersions: [[5, 0, 0]]
         }
       ]
-      const browsers: RangedBrowsersVersions = new Map([
-        [
-          'chrome',
-          [
-            [
-              [64, 73],
-              0,
-              0
-            ] as RangedSemver
-          ]
-        ],
-        [
-          'firefox',
-          [
-            [
-              1,
-              2,
-              3
-            ] as RangedSemver
-          ]
-        ],
-        [
-          'ie',
-          [
-            [
-              5,
-              0,
-              0
-            ] as RangedSemver
-          ]
-        ]
-      ])
 
       it('should return versioned RegExp objects with info', () => {
         expect(
           applyVersionsToRegexes(
             regexes,
-            browsers,
             {
               allowZeroSubversions: true,
               allowHigherVersions: true
             }
-          )
+          ).map(({ regexAst, ...regex }) => ({
+            ...regex,
+            regex: toRegex(regexAst)
+          }))
         ).toEqual([
           {
             ...regexes[0],
             sourceRegex: regexes[0].regex,
-            sourceRegexString: regexToString(regexes[0].regex),
-            regex: /Chrome (64|(6[5-9]|[7-9]\d|\d{3,})) (\d+) (\d+)/,
-            regexString: 'Chrome (64|(6[5-9]|[7-9]\\d|\\d{3,})) (\\d+) (\\d+)',
-            requestVersionsStrings: regexes[0].requestVersions.map(_ => _.join('.'))
+            regex: /Chrome (6[4-9]|[7-9]\d|\d{3,}) (\d+) (\d+)/
+          },
+          {
+            ...regexes[1],
+            sourceRegex: regexes[1].regex,
+            regex: /FF/
           },
           {
             ...regexes[2],
             sourceRegex: regexes[2].regex,
-            sourceRegexString: regexToString(regexes[2].regex),
-            regexString: regexToString(regexes[2].regex),
-            requestVersionsStrings: regexes[2].requestVersions.map(_ => _.join('.'))
+            regex: /lol serious?/
           }
         ])
       })

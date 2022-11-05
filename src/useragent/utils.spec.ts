@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { Semver } from '../semver/types.js'
-import { someSemverMatched } from './utils.js'
+import { findMatchedVersions } from './utils.js'
 
 describe('UserAgent', () => {
   describe('utils', () => {
@@ -25,7 +25,7 @@ describe('UserAgent', () => {
 
       it('should correct match semver', () => {
         expect(
-          someSemverMatched(
+          findMatchedVersions(
             [
               9,
               0,
@@ -35,12 +35,12 @@ describe('UserAgent', () => {
             versions,
             {}
           )
-        ).toBe(
-          true
+        ).toEqual(
+          versions
         )
 
         expect(
-          someSemverMatched(
+          findMatchedVersions(
             null,
             [
               11,
@@ -50,12 +50,23 @@ describe('UserAgent', () => {
             versions,
             {}
           )
-        ).toBe(
-          true
+        ).toEqual(
+          [
+            [
+              10,
+              0,
+              0
+            ],
+            [
+              11,
+              0,
+              0
+            ]
+          ]
         )
 
         expect(
-          someSemverMatched(
+          findMatchedVersions(
             [
               10,
               0,
@@ -69,12 +80,12 @@ describe('UserAgent', () => {
             versions,
             {}
           )
-        ).toBe(
-          true
+        ).toEqual(
+          versions
         )
 
         expect(
-          someSemverMatched(
+          findMatchedVersions(
             [
               16,
               0,
@@ -84,12 +95,12 @@ describe('UserAgent', () => {
             versions,
             {}
           )
-        ).toBe(
-          false
+        ).toEqual(
+          []
         )
 
         expect(
-          someSemverMatched(
+          findMatchedVersions(
             null,
             [
               9,
@@ -99,8 +110,8 @@ describe('UserAgent', () => {
             versions,
             {}
           )
-        ).toBe(
-          false
+        ).toEqual(
+          []
         )
       })
     })

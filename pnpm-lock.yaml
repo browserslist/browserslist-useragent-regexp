@@ -22,6 +22,7 @@ specifiers:
   eslint: ^8.25.0
   nano-staged: ^0.8.0
   picocolors: ^1.0.0
+  regexp-tree: ^0.1.24
   rollup: ^2.79.1
   rollup-plugin-add-shebang: ^0.3.0
   rollup-plugin-swc: ^0.2.1
@@ -31,7 +32,7 @@ specifiers:
   standard-version: ^9.5.0
   typedoc: ^0.23.16
   typescript: ^4.8.4
-  ua-regexes-lite: ^1.1.1
+  ua-regexes-lite: ^1.1.3
   vite: ^3.1.7
   vitest: ^0.24.1
 
@@ -39,7 +40,8 @@ dependencies:
   argue-cli: 2.1.0
   easy-table: 1.2.0
   picocolors: 1.0.0
-  ua-regexes-lite: 1.1.1
+  regexp-tree: 0.1.24
+  ua-regexes-lite: 1.1.3
 
 devDependencies:
   '@commitlint/cli': 17.1.2_@swc+core@1.3.6
@@ -219,6 +221,28 @@ packages:
       - '@swc/core'
       - '@swc/wasm'
     dev: true
+
+  /@commitlint/load/17.2.0_@swc+core@1.3.6:
+    resolution: {integrity: sha512-HDD57qSqNrk399R4TIjw31AWBG8dBjNj1MrDKZKmC/wvimtnIFlqzcu1+sxfXIOHj/+M6tcMWDtvknGUd7SU+g==}
+    engines: {node: '>=v14'}
+    dependencies:
+      '@commitlint/config-validator': 17.1.0
+      '@commitlint/execute-rule': 17.0.0
+      '@commitlint/resolve-extends': 17.1.0
+      '@commitlint/types': 17.0.0
+      '@types/node': 14.18.32
+      chalk: 4.1.2
+      cosmiconfig: 7.0.1
+      cosmiconfig-typescript-loader: 4.1.1_vfayau7oz5qy4giwqlppd3j3ti
+      lodash: 4.17.21
+      resolve-from: 5.0.0
+      ts-node: 10.9.1_4bmdhmbnpgdbhkjtm3umzti77e
+      typescript: 4.8.4
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+    dev: true
+    optional: true
 
   /@commitlint/message/17.0.0:
     resolution: {integrity: sha512-LpcwYtN+lBlfZijHUdVr8aNFTVpHjuHI52BnfoV01TF7iSLnia0jttzpLkrLmI8HNQz6Vhr9UrxDWtKZiMGsBw==}
@@ -1734,7 +1758,7 @@ packages:
       longest: 2.0.1
       word-wrap: 1.2.3
     optionalDependencies:
-      '@commitlint/load': 17.1.2_@swc+core@1.3.6
+      '@commitlint/load': 17.2.0_@swc+core@1.3.6
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -2907,7 +2931,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.3
+      uglify-js: 3.17.4
     dev: true
 
   /hard-rejection/2.1.0:
@@ -4222,6 +4246,11 @@ packages:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
     dev: true
 
+  /regexp-tree/0.1.24:
+    resolution: {integrity: sha512-s2aEVuLhvnVJW6s/iPgEGK6R+/xngd2jNQ+xy4bXNDKxZKJH6jpPHY6kVeVv1IeLCHgswRj+Kl3ELaDjG6V1iw==}
+    hasBin: true
+    dev: false
+
   /regexp.prototype.flags/1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
     engines: {node: '>= 0.4'}
@@ -4903,13 +4932,13 @@ packages:
     hasBin: true
     dev: true
 
-  /ua-regexes-lite/1.1.1:
-    resolution: {integrity: sha512-XzJmfjKYqbUfMwfdfKAWvHrba3nLQ4UmPboP7Xja2YB0TMbbXc6RCWKzFTkRVeyG4spRMkS3BGqbWLhJPVE/EQ==}
+  /ua-regexes-lite/1.1.3:
+    resolution: {integrity: sha512-wVCKEDwt+pkG4Utsh9lR/wPtZvl3m/2LHzaj7+xwl7Kb4OaG871yLOpKg4k59RaTUGdKKHdyGDA+DyT98yLpJA==}
     engines: {node: '>=14'}
     dev: false
 
-  /uglify-js/3.17.3:
-    resolution: {integrity: sha512-JmMFDME3iufZnBpyKL+uS78LRiC+mK55zWfM5f/pWBJfpOttXAqYfdDGRukYhJuyRinvPVAtUhvy7rlDybNtFg==}
+  /uglify-js/3.17.4:
+    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true

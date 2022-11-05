@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { compareArrays, uniq } from './index.js'
+import { compareArrays } from './index.js'
 
 describe('Utils', () => {
   describe('compareArrays', () => {
@@ -84,29 +84,6 @@ describe('Utils', () => {
         compareArrays([3, 1], [1, 2], 3)
       ).toBe(
         true
-      )
-    })
-  })
-
-  describe('uniq', () => {
-    it('should filter duplicate elements', () => {
-      expect(
-        uniq([
-          1,
-          1,
-          2,
-          3,
-          3,
-          3,
-          4
-        ])
-      ).toEqual(
-        [
-          1,
-          2,
-          3,
-          4
-        ]
       )
     })
   })

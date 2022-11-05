@@ -18,19 +18,34 @@ export function compareArrays(a: unknown[], b: unknown[], from = 0) {
 }
 
 /**
- * Remove duplicates from array.
- * @param items - Items to filter.
- * @returns Uniq items.
+ * Clone simple object.
+ * @param value
+ * @returns Object clone.
  */
-export function uniq<T>(items: T[]): T[] {
-  return items.filter((_, i) => !items.includes(_, i + 1))
+export function clone<T>(value: T): T {
+  if (value === null || typeof value !== 'object') {
+    return value
+  }
+
+  /* eslint-disable */
+  const copy = Array.isArray(value)
+    ? []
+    : {}
+  let i
+
+  for (i in value) {
+    copy[i] = clone(value[i])
+  }
+  /* eslint-enable */
+
+  return copy as T
 }
 
 /**
- * Remove duplicated arrays.
- * @param items - Array of arrays to remove duplicates.
- * @returns Uniq arrays.
+ * Concat arrays.
+ * @param items
+ * @returns Concatinated arrays.
  */
-export function uniqItems<T = unknown>(items: T[][]) {
-  return items.filter(Boolean).filter((a, i, items) => items && !items.some((b, j) => j > i && compareArrays(a, b)))
+export function concat<T>(items: (T | T[])[]) {
+  return ([] as T[]).concat(...items)
 }

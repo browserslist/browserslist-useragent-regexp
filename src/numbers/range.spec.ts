@@ -1,12 +1,13 @@
 import { describe, it, expect } from 'vitest'
-import { rangeToRegex } from './numberRange.js'
+import { toString } from '../regex/index.js'
+import { rangeToRegex } from './range.js'
 
-describe('Regex', () => {
-  describe('numberRange', () => {
+describe('Numbers', () => {
+  describe('range', () => {
     describe('rangeToRegex', () => {
-      it('should return number pattern for \'all\' version', () => {
+      it('should return number pattern for Infinity (\'all\') version', () => {
         expect(
-          rangeToRegex('all' as any)
+          toString(rangeToRegex(Infinity))
         ).toBe(
           '\\d+'
         )
@@ -14,7 +15,7 @@ describe('Regex', () => {
 
       it('should return ray pattern', () => {
         expect(
-          rangeToRegex(6)
+          toString(rangeToRegex(6))
         ).toBe(
           '([6-9]|\\d{2,})'
         )
@@ -22,9 +23,9 @@ describe('Regex', () => {
 
       it('should return segment pattern', () => {
         expect(
-          rangeToRegex(6, 8)
+          toString(rangeToRegex(6, 8))
         ).toBe(
-          '(6|7|8)'
+          '[6-8]'
         )
       })
     })

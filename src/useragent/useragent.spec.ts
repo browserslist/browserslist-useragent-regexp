@@ -22,7 +22,8 @@ describe('UserAgent', () => {
         {
           regex: /chrome/,
           family: 'chrome',
-          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
+          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
         }
       ])
     })
@@ -54,7 +55,8 @@ describe('UserAgent', () => {
           version: [99, 0, 0],
           minVersion: [99, 0, 0],
           maxVersion: [99, 0, 0],
-          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
+          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[99, 0, 0]]
         }
       ])
     })
@@ -86,13 +88,15 @@ describe('UserAgent', () => {
           family: 'chrome',
           minVersion: [10, 0, 0],
           maxVersion: [99, 0, 0],
-          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
+          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[98, 0, 0], [99, 0, 0]]
         },
         {
           regex: /chrome xxx/,
           family: 'chrome',
           minVersion: [100, 0, 0],
-          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
+          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[100, 0, 0]]
         }
       ])
     })
@@ -115,7 +119,8 @@ describe('UserAgent', () => {
         {
           regex: /chrome patch/,
           family: 'chrome',
-          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
+          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
         }
       ])
     })
@@ -138,7 +143,8 @@ describe('UserAgent', () => {
         {
           regex: /chrome/,
           family: 'chrome',
-          requestVersions: [[99, 0, 0], [100, 0, 0]]
+          requestVersions: [[99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[99, 0, 0], [100, 0, 0]]
         }
       ])
     })
@@ -162,7 +168,8 @@ describe('UserAgent', () => {
           regex: /chrome patch/,
           family: 'chrome',
           maxVersion: [98, 0, 0],
-          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]]
+          requestVersions: [[98, 0, 0], [99, 0, 0], [100, 0, 0]],
+          matchedVersions: [[98, 0, 0]]
         }
       ])
     })

@@ -1,13 +1,9 @@
-import { BRACED_NUMBER_PATTERN } from '../regex/utils.js'
-import { rangeToRegex } from '../regex/numberRange.js'
-import { uniqItems } from '../utils/index.js'
 import type {
   SemverLike,
   Semver,
   RangedSemver,
   SemverCompareOptions
 } from './types.js'
-import { isAllVersion } from './utils.js'
 
 /**
  * Get semver from string or array.
@@ -19,9 +15,9 @@ export function semverify(version: SemverLike): Semver | null {
     ? version
     : version.toString().split('.')
 
-  if (isAllVersion(versionParts[0])) {
+  if (versionParts[0] === 'all') {
     return [
-      versionParts[0] as number,
+      Infinity,
       0,
       0
     ]
@@ -57,6 +53,32 @@ export function semverify(version: SemverLike): Semver | null {
 }
 
 /**
+ * Get semver range.
+ * @param from
+ * @param to
+ * @returns Semver range.
+ */
+export function rangeSemver(from: Semver, to: Semver) {
+  let partIndex = 0
+  const range: Semver[] = []
+
+  for (let i = 2; i >= 0; i--) {
+    if (from[i] !== to[i]) {
+      partIndex = i
+      break
+    }
+  }
+
+  for (let i = from[partIndex], max = to[partIndex]; i <= max; i++) {
+    range.push(
+      from.map((v, j) => (j === partIndex ? i : v)) as Semver
+    )
+  }
+
+  return range
+}
+
+/**
  * Compare semvers.
  * @param a - Semver to compare.
  * @param b - Semver to compare with.
@@ -80,12 +102,11 @@ export function compareSemvers(a: Semver, b: Semver, options: SemverCompareOptio
     allowHigherVersions
   } = options
 
-  if (isAllVersion(majorBase)) {
+  if (majorBase === Infinity) {
     return true
   }
 
   const compareMinor = !ignoreMinor
-  // const comparePatch = ignoreMinor ? false : !ignorePatch;
   const comparePatch = compareMinor && !ignorePatch
 
   if (allowHigherVersions) {
@@ -115,7 +136,7 @@ export function compareSemvers(a: Semver, b: Semver, options: SemverCompareOptio
  * @param options - Semver compare options.
  * @returns Required semver parts count.
  */
-export function getRequiredSemverPartsCount(version: Semver|RangedSemver, options: SemverCompareOptions) {
+export function getRequiredSemverPartsCount(version: Semver | RangedSemver, options: SemverCompareOptions) {
   const {
     ignoreMinor,
     ignorePatch,
@@ -138,74 +159,4 @@ export function getRequiredSemverPartsCount(version: Semver|RangedSemver, option
   }
 
   return shouldRepeatCount
-}
-
-/**
- * Ranged semver to regex patterns.
- * @param rangedVersion - Ranged semver.
- * @param options - Semver compare options.
- * @returns Array of regex pattern strings.
- */
-export function rangedSemverToRegex(rangedVersion: RangedSemver, options: SemverCompareOptions) {
-  const {
-    ignoreMinor,
-    ignorePatch,
-    allowHigherVersions
-  } = options
-  const ignoreIndex = isAllVersion(rangedVersion[0])
-    ? 0
-    : ignoreMinor
-      ? 1
-      : ignorePatch
-        ? 2
-        : Infinity
-
-  if (allowHigherVersions) {
-    const numberPatterns: string[][] = uniqItems(
-      rangedVersion.map((_, i) => {
-        const ri = 2 - i
-        const d = Number(i > 0)
-        let start = 0
-
-        return rangedVersion.map((range, j) => {
-          if (j >= ignoreIndex) {
-            return BRACED_NUMBER_PATTERN
-          }
-
-          start = Array.isArray(range)
-            ? range[0]
-            : range
-
-          if (j < ri) {
-            return start.toString()
-          }
-
-          if (j > ri) {
-            return BRACED_NUMBER_PATTERN
-          }
-
-          return rangeToRegex(start + d)
-        })
-      })
-    )
-
-    return numberPatterns
-  }
-
-  const numberPatterns: string[] = rangedVersion.map((range, i) => {
-    if (i >= ignoreIndex) {
-      return BRACED_NUMBER_PATTERN
-    }
-
-    if (Array.isArray(range)) {
-      return rangeToRegex(
-        range[0],
-        range[1]
-      )
-    }
-
-    return range.toString()
-  })
-
-  return [numberPatterns]
 }

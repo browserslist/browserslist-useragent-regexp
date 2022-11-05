@@ -1,14 +1,12 @@
 import {
   Semver,
   RangedSemver,
-  SemverRange,
   SemverPart
 } from '../semver/index.js'
 import { compareArrays } from '../utils/index.js'
 import type {
   Browser,
-  BrowsersVersions,
-  RangedBrowsersVersions
+  BrowsersVersions
 } from './types.js'
 import { numbersToRanges } from './utils.js'
 
@@ -68,9 +66,9 @@ export function versionsListToRanges(versions: Semver[]) {
   const ranges: RangedSemver[] = []
   let prev: number[] = null
   let current: number[] = versions[0]
-  let major: SemverRange = [current[SemverPart.Major]]
-  let minor: SemverRange = [current[SemverPart.Minor]]
-  let patch: SemverRange = [current[SemverPart.Patch]]
+  let major: number | number[] = [current[SemverPart.Major]]
+  let minor: number | number[] = [current[SemverPart.Minor]]
+  let patch: number | number[] = [current[SemverPart.Patch]]
   let part: SemverPart = null
 
   for (let i = 1; i < max; i++) {
@@ -121,19 +119,4 @@ export function versionsListToRanges(versions: Semver[]) {
   }
 
   return ranges
-}
-
-/**
- * Browser versions to ranged versions.
- * @param browsers - Browser map with versions.
- * @returns Browser map with ranged versions.
- */
-export function browserVersionsToRanges(browsers: BrowsersVersions) {
-  const ranged: RangedBrowsersVersions = new Map<string, RangedSemver[]>()
-
-  browsers.forEach((versions, family) => {
-    ranged.set(family, versionsListToRanges(versions))
-  })
-
-  return ranged
 }
