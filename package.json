@@ -54,6 +54,7 @@
     "bumpVersion": "standard-version",
     "createGithubRelease": "simple-github-release",
     "release": "run bumpVersion [ git push origin master --tags ] createGithubRelease",
+    "release:beta": "run [ bumpVersion --prerelease beta ] [ git push origin master --tags ] [ createGithubRelease --prerelease ]",
     "updateGitHooks": "simple-git-hooks"
   },
   "peerDependencies": {
