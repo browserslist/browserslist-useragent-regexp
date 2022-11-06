@@ -64,7 +64,7 @@ forEach(findByAttribute('data-query'), function (input) {
 
     if (checked) {
       elevateElements(
-        findByAttribute('data-group-family', family)
+        findByAttribute('data-group-family', query + ' ' + family)
       )
     }
   });

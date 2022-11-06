@@ -24,7 +24,7 @@ document.querySelectorAll('[data-query]').forEach((input) => {
   const { query } = input.dataset
   let some = false
 
-  document.querySelectorAll(`[data-for-query=${query}]`).forEach((input) => {
+  document.querySelectorAll(`[data-for-query='${query}']`).forEach((input) => {
     const { regex, family } = input.dataset
     const checked = new RegExp(regex).test(navigator.userAgent)
 
@@ -33,7 +33,7 @@ document.querySelectorAll('[data-query]').forEach((input) => {
 
     if (checked) {
       elevateElements(
-        document.querySelectorAll(`[data-group-family=${family}]`)
+        document.querySelectorAll(`[data-group-family='${query} ${family}']`)
       )
     }
   })
@@ -42,7 +42,7 @@ document.querySelectorAll('[data-query]').forEach((input) => {
 
   if (some) {
     elevateElements(
-      document.querySelectorAll(`[data-group-query=${query}]`)
+      document.querySelectorAll(`[data-group-query='${query}']`)
     )
   }
 })

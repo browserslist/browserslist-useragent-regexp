@@ -24,7 +24,7 @@ Array.from(document.querySelectorAll('[data-query]')).forEach(function (input) {
   var query = input.dataset.query
   var some = false
 
-  Array.from(document.querySelectorAll('[data-for-query=' + query + ']')).forEach(function (input) {
+  Array.from(document.querySelectorAll('[data-for-query="' + query + '"]')).forEach(function (input) {
     var regex = input.dataset.regex
     var family = input.dataset.family
     var checked = new RegExp(regex).test(navigator.userAgent)
@@ -34,7 +34,7 @@ Array.from(document.querySelectorAll('[data-query]')).forEach(function (input) {
 
     if (checked) {
       elevateElements(
-        document.querySelectorAll('[data-group-family=' + family + ']')
+        document.querySelectorAll('[data-group-family="' + query + ' ' + family + '"]')
       )
     }
   })
@@ -43,7 +43,7 @@ Array.from(document.querySelectorAll('[data-query]')).forEach(function (input) {
 
   if (some) {
     elevateElements(
-      document.querySelectorAll('[data-group-query=' + query + ']')
+      document.querySelectorAll('[data-group-query="' + query + '"]')
     )
   }
 })

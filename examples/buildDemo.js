@@ -65,11 +65,11 @@ th, td {
 
 function renderScript() {
   const modernBrowsers = getUserAgentRegex({
-    browsers: 'last 2 versions and last 1 year',
+    browsers: 'last 3 years and not dead',
     allowHigherVersions: true
   })
   const actualBrowsers = getUserAgentRegex({
-    browsers: 'last 2 years and not last 2 versions',
+    browsers: 'last 6 years and not dead',
     allowHigherVersions: true
   })
 
@@ -172,26 +172,26 @@ function renderUserAgentRegex({
     regexBrowsersVersion += '...'
   }
 
-  return `<tr data-group-family="${family}">
+  return `<tr data-group-family="${query} ${family}">
     <th rowspan="6" valign="top">
       <input type="checkbox" onclick="return false" readonly data-family="${family}" data-for-query="${query}" data-regex="${regexString.replace(/^\/|\/$/g, '').replace(/([^\\])"/g, '$1\\"')}">
     </th>
     <th>Family:</th>
     <td>${family}</td>
   </tr>
-  <tr data-group-family="${family}">
+  <tr data-group-family="${query} ${family}">
     <th>Versions:</th><td>${requestVersionsString}</td>
   </tr>
-  <tr data-group-family="${family}">
+  <tr data-group-family="${query} ${family}">
     <th>Matched versions:</th><td>${matchedVersionsString}</td>
   </tr>
-  <tr data-group-family="${family}">
+  <tr data-group-family="${query} ${family}">
     <th>Source regex:</th><td><pre>${sourceRegexString}</pre></td>
   </tr>
-  <tr data-group-family="${family}">
+  <tr data-group-family="${query} ${family}">
     <th>${version ? 'Source regex fixed browser version' : 'Source regex browsers versions'}:</th><td>${version ? version.join('.') : regexBrowsersVersion}</td>
   </tr>
-  <tr data-group-family="${family}" class="last">
+  <tr data-group-family="${query} ${family}" class="last">
     <th>Versioned regex:</th><td><pre>${regexString}</pre></td>
   </tr>`
 }
@@ -239,4 +239,4 @@ function render(queries) {
 </table>`)
 }
 
-console.log(render(['defaults', 'dead']))
+console.log(render(['dead', 'defaults']))
