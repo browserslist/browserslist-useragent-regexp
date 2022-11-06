@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Publish
-        run: pnpm publish --no-git-checks --tag NPM_TAG
+        run: pnpm publish --no-git-checks --tag $NPM_TAG
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TAG: ${{ contains(github.ref_name, '-beta') && 'next' || 'latest' }}
