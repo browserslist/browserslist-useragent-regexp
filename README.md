@@ -103,6 +103,8 @@ How to make differential resource loading and other optimizations with `browsers
 
 [Demo](https://browserslist.github.io/browserslist-useragent-regexp/demo.html) ([sources](https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/docs/demo.html#L17-L29), [build script](https://github.com/browserslist/browserslist-useragent-regexp/blob/7cf6afb7da2b6c77179abb8b8bd1bbcb61cf376a/examples/buildDemo.js#L61-L74)).
 
+Also, testing useragents using generated regex [is faster](https://gist.github.com/dangreen/55c41072d8891efd3a772a4739d6cd9d) than using the `matchesUA` method from browserslist-useragent.
+
 ## CLI
 
 ```bash
