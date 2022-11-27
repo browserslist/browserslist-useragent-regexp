@@ -1,8 +1,8 @@
-import swc from 'rollup-plugin-swc'
+import { swc } from 'rollup-plugin-swc3'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import nodeEsm from '@trigen/browserslist-config/node-esm'
 import shebang from 'rollup-plugin-add-shebang'
-import pkg from './package.json'
+import pkg from './package.json' assert { type: 'json' }
 
 const extensions = ['.js', '.ts']
 const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_)
@@ -11,6 +11,7 @@ const plugins = targets => [
     extensions
   }),
   swc({
+    tsconfig: false,
     jsc: {
       parser: {
         syntax: 'typescript'

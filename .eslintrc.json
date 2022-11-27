@@ -19,9 +19,11 @@
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "array-element-newline": "off",
-    "prefer-destructuring": "off"
+    "prefer-destructuring": "off",
+    "@typescript-eslint/keyword-spacing": ["error", {}]
   },
   "ignorePatterns": [
+    "rollup.config.js",
     "dist"
   ]
 }
