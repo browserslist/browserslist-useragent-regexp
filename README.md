@@ -16,7 +16,7 @@
 [deps]: https://img.shields.io/librariesio/release/npm/browserslist-useragent-regexp
 [deps-url]: https://libraries.io/npm/browserslist-useragent-regexp/tree
 
-[build]: https://img.shields.io/github/workflow/status/browserslist/browserslist-useragent-regexp/CI.svg
+[build]: https://img.shields.io/github/actions/workflow/status/browserslist/browserslist-useragent-regexp/ci.yml?branch=master
 [build-url]: https://github.com/browserslist/browserslist-useragent-regexp/actions
 
 [coverage]: https://img.shields.io/codecov/c/github/browserslist/browserslist-useragent-regexp.svg
