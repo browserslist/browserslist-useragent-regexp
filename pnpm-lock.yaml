@@ -25,7 +25,7 @@ specifiers:
   regexp-tree: ^0.1.24
   rollup: ^3.5.0
   rollup-plugin-add-shebang: ^0.3.0
-  rollup-plugin-swc3: ^0.7.0
+  rollup-plugin-swc3: ^0.8.0
   simple-git-hooks: ^2.8.1
   simple-github-release: ^1.0.0
   size-limit: ^8.1.0
@@ -64,7 +64,7 @@ devDependencies:
   nano-staged: 0.8.0
   rollup: 3.5.0
   rollup-plugin-add-shebang: 0.3.1
-  rollup-plugin-swc3: 0.7.0_oepiuhfbijtn2h33hil5q7bbwe
+  rollup-plugin-swc3: 0.8.0_oepiuhfbijtn2h33hil5q7bbwe
   simple-git-hooks: 2.8.1
   simple-github-release: 1.0.0
   size-limit: 8.1.0
@@ -4712,8 +4712,8 @@ packages:
       rollup-pluginutils: 2.8.2
     dev: true
 
-  /rollup-plugin-swc3/0.7.0_oepiuhfbijtn2h33hil5q7bbwe:
-    resolution: {integrity: sha512-aWkbRGjmzSLs8BPQEuGo3PQsBAsYyL9Nk5xZ6ruEnBp+5RN9KavSQV1nM13gSmXZNBhz7Wh5mscyo5lCWQ1Bpg==}
+  /rollup-plugin-swc3/0.8.0_oepiuhfbijtn2h33hil5q7bbwe:
+    resolution: {integrity: sha512-IJapqORpU4NgSJHaFvbTcUe4WQPzgE6v8Suu95ZO4Qw1VwGRcuurvSCuYX1fIzR+DLVlZH4zq/T6uqbmw3Bzxw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@swc/core': '>=1.2.165'
