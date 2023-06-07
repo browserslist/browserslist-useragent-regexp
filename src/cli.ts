@@ -9,8 +9,8 @@ import {
 } from 'argue-cli'
 import colors from 'picocolors'
 import Table from 'easy-table'
+import type { Semver } from './index.js'
 import {
-  Semver,
   getUserAgentRegex,
   getBrowsersList,
   mergeBrowserVersions,

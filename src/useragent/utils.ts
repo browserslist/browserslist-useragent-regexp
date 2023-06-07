@@ -1,8 +1,8 @@
-import {
+import type {
   Semver,
-  SemverCompareOptions,
-  compareSemvers
+  SemverCompareOptions
 } from '../semver/index.js'
+import { compareSemvers } from '../semver/index.js'
 
 /**
  * Find matched versions.

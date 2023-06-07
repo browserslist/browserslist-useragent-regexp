@@ -3,7 +3,8 @@ import type {
   AstNode,
   Expression
 } from 'regexp-tree/ast'
-import RegexpTree, { NodePath } from 'regexp-tree'
+import type { NodePath } from 'regexp-tree'
+import RegexpTree from 'regexp-tree'
 import type {
   SemverRange,
   RangedSemver,
