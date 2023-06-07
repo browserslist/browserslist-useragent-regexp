@@ -8,7 +8,7 @@ specifiers:
   '@size-limit/file': ^8.1.0
   '@swc/core': ^1.3.20
   '@swc/helpers': ^0.4.14
-  '@trigen/browserslist-config': 8.0.0-alpha.23
+  '@trigen/browserslist-config': 8.0.0-alpha.24
   '@trigen/eslint-config': 8.0.0-alpha.23
   '@trigen/scripts': 8.0.0-alpha.23
   '@types/node': ^18.11.9
@@ -51,7 +51,7 @@ devDependencies:
   '@size-limit/file': 8.1.0_size-limit@8.1.0
   '@swc/core': 1.3.20
   '@swc/helpers': 0.4.14
-  '@trigen/browserslist-config': 8.0.0-alpha.23
+  '@trigen/browserslist-config': 8.0.0-alpha.24
   '@trigen/eslint-config': 8.0.0-alpha.23_ux2l6n3ryprk5pcskvewqmecmi
   '@trigen/scripts': 8.0.0-alpha.23
   '@types/node': 18.11.9
@@ -890,8 +890,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@trigen/browserslist-config/8.0.0-alpha.23:
-    resolution: {integrity: sha512-/ROeN/h2RqT+olHGrdpdzn8RScL7gNOmn/D9LshqYSRG+m6woEySI2WuPjOB2tVwhnWsEJVjzYdrN/Mpuv0U2Q==}
+  /@trigen/browserslist-config/8.0.0-alpha.24:
+    resolution: {integrity: sha512-h/zjYkGmgQ4qID9HU8B5KQwj56NRb1777gwtIUdZbX5lbGXiYmv9uxTR4FR7SoTR8kBZMqgInAHtm4T0rnuyNA==}
     engines: {node: '>=10'}
     dev: true
 
