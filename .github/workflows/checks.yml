@@ -33,7 +33,7 @@ jobs:
         run: |
           echo '{"Exclude": ["docs"]}' > .ecrc
       - name: Check editorconfig
-        uses: editorconfig-checker/action-editorconfig-checker@v1
+        uses: editorconfig-checker/action-editorconfig-checker@main
   package-json:
     runs-on: ubuntu-latest
     name: package.json
