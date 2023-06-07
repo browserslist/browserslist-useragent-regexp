@@ -1,8 +1,8 @@
-import {
+import type {
   Semver,
-  RangedSemver,
-  SemverPart
+  RangedSemver
 } from '../semver/index.js'
+import { SemverPart } from '../semver/index.js'
 import { compareArrays } from '../utils/index.js'
 import type {
   Browser,

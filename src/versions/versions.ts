@@ -8,11 +8,11 @@ import type {
   BrowserVersionedRegex
 } from '../useragent/types.js'
 import { clone } from '../utils/index.js'
-import {
+import type {
   RangedSemver,
-  SemverCompareOptions,
-  getRequiredSemverPartsCount
+  SemverCompareOptions
 } from '../semver/index.js'
+import { getRequiredSemverPartsCount } from '../semver/index.js'
 import { versionsListToRanges } from '../browsers/index.js'
 import {
   parseRegex,
