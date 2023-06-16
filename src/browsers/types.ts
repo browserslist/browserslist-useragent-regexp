@@ -1,3 +1,5 @@
+import type browserslist from 'browserslist'
+import type { Options } from 'browserslist'
 import type {
   Semver,
   RangedSemver
@@ -8,10 +10,8 @@ export interface Browser {
   version: Semver
 }
 
-export interface BrowserslistRequest {
-  browsers?: string | string[]
-  env?: string
-  path?: string
+export interface BrowserslistRequest extends Options {
+  browsers?: Parameters<typeof browserslist>[0]
 }
 
 export type BrowsersVersions = Map<string, Semver[]>

@@ -44,13 +44,9 @@ export function parseBrowsersList(browsersList: string[]) {
 export function getBrowsersList(options: BrowserslistRequest = {}) {
   const {
     browsers,
-    env,
-    path
+    ...browserslistOptions
   } = options
-  const browsersList = browserslist(browsers, {
-    env,
-    path
-  })
+  const browsersList = browserslist(browsers, browserslistOptions)
   const parsedBrowsers = parseBrowsersList(browsersList)
 
   return parsedBrowsers
