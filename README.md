@@ -150,11 +150,12 @@ Compile browserslist query to one regex.
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | browsers | `string \| string[]` | — | Manually provide a browserslist query (or an array of queries). Specifying this overrides the browserslist configuration specified in your project. |
-| env | `string` | — | When multiple browserslist [environments](https://github.com/ai/browserslist#environments) are specified, pick the config belonging to this environment. |
 | ignorePatch | `boolean` | `true` | Ignore differences in patch browser numbers. |
 | ignoreMinor | `boolean` | `false` | Ignore differences in minor browser versions. |
 | allowHigherVersions | `boolean` | `false` | For all the browsers in the browserslist query, return a match if the useragent version is equal to or higher than the one specified in browserslist. |
 | allowZeroSubversions | `boolean` | `false` | Ignore match of patch or patch and minor, if they are 0. |
+
+Any of the [`browserslist` API options](https://github.com/browserslist/browserslist#js-api) may also be provided.
 
 #### Regex info object
 
