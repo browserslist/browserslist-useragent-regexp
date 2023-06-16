@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.0.0...v4.1.0) (2023-06-16)
+
+
+### Features
+
+* allow all browserslist options via JS API ([#1489](https://github.com/browserslist/browserslist-useragent-regexp/issues/1489)) ([38d1e23](https://github.com/browserslist/browserslist-useragent-regexp/commit/38d1e23fe8e59875208426f9a32b9a4d06577e28))
+
 ## [4.0.0](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.0.0-beta.1...v4.0.0) (2022-11-15)
 
 ## [4.0.0-beta.1](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.0.0-beta.0...v4.0.0-beta.1) (2022-11-06)
