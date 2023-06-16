@@ -2,8 +2,7 @@ import type { SemverCompareOptions } from '../semver/index.js'
 import { getRegexesForBrowsers } from '../useragent/index.js'
 import {
   getBrowsersList,
-  mergeBrowserVersions,
-  type BrowserslistRequest
+  mergeBrowserVersions
 } from '../browsers/index.js'
 import { applyVersionsToRegexes } from '../versions/index.js'
 import type { UserAgentRegexOptions } from './types.js'
@@ -25,23 +24,14 @@ export const defaultOptions = {
  * @returns Source regexes objects.
  */
 export function getPreUserAgentRegexes(options: UserAgentRegexOptions = {}) {
-  const regexpOptions: SemverCompareOptions = {
-    ...defaultOptions
+  const finalOptions = {
+    ...defaultOptions,
+    ...options
   }
-  const browserslistOptions: BrowserslistRequest = {}
-
-  for (const optName of Object.keys(options) as (keyof UserAgentRegexOptions)[]) {
-    if (optName in defaultOptions) {
-      regexpOptions[optName] = options[optName]
-    } else {
-      browserslistOptions[optName] = options[optName]
-    }
-  }
-
-  const browsersList = getBrowsersList(browserslistOptions)
+  const browsersList = getBrowsersList(finalOptions)
   const mergedBrowsers = mergeBrowserVersions(browsersList)
-  const sourceRegexes = getRegexesForBrowsers(mergedBrowsers, regexpOptions)
-  const versionedRegexes = applyVersionsToRegexes(sourceRegexes, regexpOptions)
+  const sourceRegexes = getRegexesForBrowsers(mergedBrowsers, finalOptions)
+  const versionedRegexes = applyVersionsToRegexes(sourceRegexes, finalOptions)
 
   return versionedRegexes
 }
