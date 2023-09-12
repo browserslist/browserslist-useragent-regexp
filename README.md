@@ -1,11 +1,16 @@
 # browserslist-useragent-regexp
 
+[![ESM-only package][package]][package-url]
 [![NPM version][npm]][npm-url]
 [![Node version][node]][node-url]
 [![Dependencies status][deps]][deps-url]
+[![Install size][size]][size-url]
 [![Build status][build]][build-url]
 [![Coverage status][coverage]][coverage-url]
 [![Documentation badge][documentation]][documentation-url]
+
+[package]: https://img.shields.io/badge/package-ESM--only-ffe536.svg
+[package-url]: https://nodejs.org/api/esm.html
 
 [npm]: https://img.shields.io/npm/v/browserslist-useragent-regexp.svg
 [npm-url]: https://npmjs.com/package/browserslist-useragent-regexp
@@ -15,6 +20,9 @@
 
 [deps]: https://img.shields.io/librariesio/release/npm/browserslist-useragent-regexp
 [deps-url]: https://libraries.io/npm/browserslist-useragent-regexp/tree
+
+[size]: https://packagephobia.com/badge?p=browserslist-useragent-regexp
+[size-url]: https://packagephobia.com/result?p=browserslist-useragent-regexp
 
 [build]: https://img.shields.io/github/actions/workflow/status/browserslist/browserslist-useragent-regexp/ci.yml?branch=master
 [build-url]: https://github.com/browserslist/browserslist-useragent-regexp/actions
