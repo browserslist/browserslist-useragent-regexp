@@ -83,8 +83,8 @@ devDependencies:
     specifier: ^0.3.0
     version: 0.3.1
   rollup-plugin-swc3:
-    specifier: ^0.9.0
-    version: 0.9.0(@swc/core@1.3.20)(rollup@3.5.0)
+    specifier: ^0.10.0
+    version: 0.10.1(@swc/core@1.3.20)(rollup@3.5.0)
   simple-git-hooks:
     specifier: ^2.8.1
     version: 2.8.1
@@ -4991,25 +4991,36 @@ packages:
       rollup-pluginutils: 2.8.2
     dev: true
 
-  /rollup-plugin-swc3@0.9.0(@swc/core@1.3.20)(rollup@3.5.0):
-    resolution: {integrity: sha512-b5OjzeD9F5H6hmtHqI6GJkPiJPyUrIu9cjvvjv4OOMW79nukmmd8QJLqrVxsJk7Y3vZXOzOgBSzKLkCM/Jt5Vw==}
+  /rollup-plugin-swc3@0.10.1(@swc/core@1.3.20)(rollup@3.5.0):
+    resolution: {integrity: sha512-cRjkK5CqqOO1GTPPcdxPqczR5YNibxKyO7OY1tWbHzEhd/VDlnc30WROdnvz6wc13dJg3HO8xGUfjIvyZTx+Gg==}
     engines: {node: '>=12'}
     peerDependencies:
       '@swc/core': '>=1.2.165'
       rollup: ^2.0.0 || ^3.0.0
     dependencies:
       '@fastify/deepmerge': 1.3.0
-      '@napi-rs/magic-string': 0.3.4
       '@rollup/pluginutils': 4.2.1
       '@swc/core': 1.3.20
       get-tsconfig: 4.6.2
       rollup: 3.5.0
+      rollup-swc-preserve-directives: 0.3.2(@swc/core@1.3.20)(rollup@3.5.0)
     dev: true
 
   /rollup-pluginutils@2.8.2:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
     dependencies:
       estree-walker: 0.6.1
+    dev: true
+
+  /rollup-swc-preserve-directives@0.3.2(@swc/core@1.3.20)(rollup@3.5.0):
+    resolution: {integrity: sha512-W0zljPCOMFErWUweRvnN9LCNrII2KzjAw9iZUNM1kZdf3rwQGQQiaCPnH4ugu3UIj1b+zEJKee20S8Ozgwh8Wg==}
+    peerDependencies:
+      '@swc/core': '>=1.2.165'
+      rollup: ^2.0.0 || ^3.0.0
+    dependencies:
+      '@napi-rs/magic-string': 0.3.4
+      '@swc/core': 1.3.20
+      rollup: 3.5.0
     dev: true
 
   /rollup@3.24.0:
