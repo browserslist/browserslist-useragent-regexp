@@ -95,7 +95,7 @@
     "rollup-plugin-swc3": "^0.10.0",
     "simple-git-hooks": "^2.8.1",
     "simple-github-release": "^1.0.0",
-    "size-limit": "^8.1.0",
+    "size-limit": "^9.0.0",
     "standard-version": "^9.5.0",
     "typedoc": "^0.25.0",
     "typescript": "^5.0.0",
