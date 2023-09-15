@@ -50,8 +50,8 @@ devDependencies:
     specifier: 8.0.0-alpha.26
     version: 8.0.0-alpha.26(@testing-library/dom@9.3.1)(eslint@8.28.0)(typescript@5.1.3)
   '@trigen/scripts':
-    specifier: 8.0.0-alpha.26
-    version: 8.0.0-alpha.26
+    specifier: 8.0.0-alpha.27
+    version: 8.0.0-alpha.27
   '@types/node':
     specifier: ^18.11.9
     version: 18.11.9
@@ -1211,8 +1211,8 @@ packages:
       - typescript
     dev: true
 
-  /@trigen/scripts@8.0.0-alpha.26:
-    resolution: {integrity: sha512-w5/IxpxuZI+RhZjDSHnwWJMU4fqFhcA3w/RHhg+3NF5XD+3NdPwHNyA7YhRk5lWSUko8gURxF3arUkHpxGMzhg==}
+  /@trigen/scripts@8.0.0-alpha.27:
+    resolution: {integrity: sha512-k/uFnLlgP+/DZEnOn1kEAphw1vjzphUFOkBPU1vpH5SRk7kgdszJ5fzaLdgaqF7jpD1Odux1wAkzuJuaUXyhyQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
