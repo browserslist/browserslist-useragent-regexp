@@ -9,7 +9,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     /* Modules */
-    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
