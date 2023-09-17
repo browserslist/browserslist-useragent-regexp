@@ -5,7 +5,7 @@ import {
   getUserAgentRegexes
 } from './useragentRegex.js'
 
-function *getUserAgents() {
+function* getUserAgents() {
   const regexesCache = new Map<string, RegExp>()
   const getRegex = (query: string) => {
     let regex = regexesCache.get(query)
