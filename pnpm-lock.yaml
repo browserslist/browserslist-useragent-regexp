@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^15.0.1
     version: 15.0.1(rollup@3.5.0)
   '@size-limit/file':
-    specifier: ^9.0.0
-    version: 9.0.0(size-limit@9.0.0)
+    specifier: ^10.0.0
+    version: 10.0.1(size-limit@9.0.0)
   '@swc/core':
     specifier: ^1.3.20
     version: 1.3.20
@@ -1042,11 +1042,11 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@size-limit/file@9.0.0(size-limit@9.0.0):
-    resolution: {integrity: sha512-oM2UaH2FRq4q22k+R+P6xCpzET10T94LFdSjb9svVu/vOD7NaB9LGcG6se8TW1BExXiyXO4GEhLsBt3uMKM3qA==}
+  /@size-limit/file@10.0.1(size-limit@9.0.0):
+    resolution: {integrity: sha512-xQMh/Hy8QgyHaac+DSSKcwmcJlQglDTY67L5ouUf78SlDxiKQrr8QMiYdCj7Zl5KM+gmee/eIbl6v2qbpf/Vxw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
-      size-limit: 9.0.0
+      size-limit: 10.0.1
     dependencies:
       semver: 7.5.4
       size-limit: 9.0.0
