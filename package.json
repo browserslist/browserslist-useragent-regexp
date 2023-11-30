@@ -50,6 +50,7 @@
     "lint": "eslint './*{js,ts}' './src/**/*.{js,ts}' './examples/**/*.{js,ts}'",
     "test:unit": "vitest run --coverage",
     "test:unit:watch": "vitest watch",
+    "test:types": "tsc --noEmit",
     "test:size": "size-limit",
     "test": "run -p lint test:unit",
     "build:demo": "node examples/buildDemo > ./docs/demo.html && cp -R examples/demojs/ docs/demojs/",
