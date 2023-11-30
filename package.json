@@ -91,7 +91,7 @@
     "del-cli": "^5.0.0",
     "eslint": "^8.28.0",
     "nano-staged": "^0.8.0",
-    "rollup": "^3.5.0",
+    "rollup": "^4.0.0",
     "rollup-plugin-add-shebang": "^0.3.0",
     "rollup-plugin-swc3": "^0.10.0",
     "simple-git-hooks": "^2.8.1",
