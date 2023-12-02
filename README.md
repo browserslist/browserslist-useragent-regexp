@@ -24,7 +24,7 @@
 [size]: https://packagephobia.com/badge?p=browserslist-useragent-regexp
 [size-url]: https://packagephobia.com/result?p=browserslist-useragent-regexp
 
-[build]: https://img.shields.io/github/actions/workflow/status/browserslist/browserslist-useragent-regexp/ci.yml?branch=master
+[build]: https://img.shields.io/github/actions/workflow/status/browserslist/browserslist-useragent-regexp/tests.yml?branch=master
 [build-url]: https://github.com/browserslist/browserslist-useragent-regexp/actions
 
 [coverage]: https://img.shields.io/codecov/c/github/browserslist/browserslist-useragent-regexp.svg
