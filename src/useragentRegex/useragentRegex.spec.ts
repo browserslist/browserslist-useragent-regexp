@@ -7,16 +7,17 @@ import {
 
 function* getUserAgents() {
   const regexesCache = new Map<string, RegExp>()
-  const getRegex = (query: string) => {
-    let regex = regexesCache.get(query)
+  const getRegex = (query: string, allowHigherVersions = true) => {
+    const key = `${query}:${allowHigherVersions}`
+    let regex = regexesCache.get(key)
 
     if (!regex) {
       regex = getUserAgentRegex({
         browsers: query,
-        allowHigherVersions: true,
+        allowHigherVersions,
         allowZeroSubversions: true
       })
-      regexesCache.set(query, regex)
+      regexesCache.set(key, regex)
     }
 
     return regex
@@ -27,8 +28,9 @@ function* getUserAgents() {
       for (const query of useragent.yes) {
         yield {
           ua: useragent.ua,
-          regex: getRegex(query),
+          regex: getRegex(query, useragent.allowHigherVersions),
           query,
+          allowHigherVersions: useragent.allowHigherVersions,
           should: true
         }
       }
@@ -38,7 +40,8 @@ function* getUserAgents() {
       for (const query of useragent.no) {
         yield {
           ua: useragent.ua,
-          regex: getRegex(query),
+          regex: getRegex(query, useragent.allowHigherVersions),
+          allowHigherVersions: useragent.allowHigherVersions,
           query,
           should: false
         }
@@ -47,10 +50,18 @@ function* getUserAgents() {
   }
 }
 
-function inspect(query: string, ua: string, should: boolean) {
+interface UserAgentTest {
+  ua: string
+  regex: RegExp
+  query: string
+  allowHigherVersions?: boolean
+  should: boolean
+}
+
+function inspect({ query, ua, should, allowHigherVersions }: UserAgentTest) {
   const info = getUserAgentRegexes({
     browsers: query,
-    allowHigherVersions: true,
+    allowHigherVersions,
     allowZeroSubversions: true
   })
   const message = `${should ? 'Should' : 'Should not'} matches:
@@ -74,7 +85,7 @@ describe('UserAgentRegex', () => {
       res = ua.regex.test(ua.ua)
 
       if (res !== ua.should) {
-        inspect(ua.query, ua.ua, ua.should)
+        inspect(ua)
       }
     }
   })
