@@ -98,6 +98,15 @@ export const useragents = [
     yes: ['edge 105', 'edge >= 105', 'chrome 105']
   },
   /**
+   * Edge bug #1530
+   */
+  {
+    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36 Edge/120.0',
+    allowHigherVersions: false,
+    yes: ['edge 120'],
+    no: ['edge 12']
+  },
+  /**
    * Firefox Desktop
    */
   {
@@ -105,11 +114,29 @@ export const useragents = [
     yes: ['firefox >= 40']
   },
   /**
+   * Firefox Desktop bug #1530
+   */
+  {
+    ua: 'Mozilla/5.0 (Windows NT 5.2; rv:42.0) Gecko/20100101 Firefox/120.0',
+    allowHigherVersions: false,
+    yes: ['firefox 120'],
+    no: ['firefox 12']
+  },
+  /**
    * Chrome Desktop
    */
   {
     ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
     yes: ['chrome >= 60']
+  },
+  /**
+   * Chrome Desktop bug #1530
+   */
+  {
+    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+    allowHigherVersions: false,
+    yes: ['chrome 120'],
+    no: ['chrome 12']
   },
   /**
    * Safari Desktop
