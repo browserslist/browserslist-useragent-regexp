@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.1.1...v4.1.2) (2024-04-05)
+
+
+### Bug Fixes
+
+* fix splitCommonDiff function to work correctly on common digits after first difference ([#1543](https://github.com/browserslist/browserslist-useragent-regexp/issues/1543)) ([ae3981c](https://github.com/browserslist/browserslist-useragent-regexp/commit/ae3981ce92408c4a04175f1ad0ee446024ddbbc1))
+
 ### [4.1.1](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.1.0...v4.1.1) (2023-12-24)
 
 
