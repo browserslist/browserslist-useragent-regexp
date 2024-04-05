@@ -100,7 +100,7 @@ export function splitCommonDiff(a: number[], b: number[]): [string, number, numb
     currA = a[i]
     currB = b[i]
 
-    if (currA === currB) {
+    if (currA === currB && diffA === '' && diffB === '') {
       common += currA
     } else {
       diffA += currA

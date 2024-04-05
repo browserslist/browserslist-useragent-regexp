@@ -125,6 +125,16 @@ describe('Numbers', () => {
           12
         ])
       })
+
+      it('should work correctly, if there are common digits after first difference', () => {
+        expect(
+          splitCommonDiff([1, 0, 3], [1, 2, 3])
+        ).toEqual(['1', 3, 23])
+
+        expect(
+          splitCommonDiff([1, 2, 5, 2], [1, 4, 5, 3])
+        ).toEqual(['1', 252, 453])
+      })
     })
 
     describe('segmentToNumberPatterns', () => {
