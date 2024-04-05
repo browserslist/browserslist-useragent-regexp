@@ -80,7 +80,7 @@
     "@swc/core": "^1.3.20",
     "@swc/helpers": "^0.5.1",
     "@trigen/browserslist-config": "8.0.0-alpha.27",
-    "@trigen/eslint-config": "8.0.0-alpha.29",
+    "@trigen/eslint-config": "8.0.0-alpha.32",
     "@trigen/scripts": "8.0.0-alpha.30",
     "@types/node": "^20.10.1",
     "@vitest/coverage-v8": "^1.0.0",
