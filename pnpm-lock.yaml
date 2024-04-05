@@ -50,8 +50,8 @@ devDependencies:
     specifier: 8.0.0-alpha.29
     version: 8.0.0-alpha.29(eslint@8.28.0)(typescript@5.1.3)
   '@trigen/scripts':
-    specifier: 8.0.0-alpha.29
-    version: 8.0.0-alpha.29
+    specifier: 8.0.0-alpha.30
+    version: 8.0.0-alpha.30
   '@types/node':
     specifier: ^20.10.1
     version: 20.10.1
@@ -1112,8 +1112,8 @@ packages:
       - typescript
     dev: true
 
-  /@trigen/scripts@8.0.0-alpha.29:
-    resolution: {integrity: sha512-XGWUK/Ql0jsD5TiIcYTT8RI8SUuHfh6AXcZnWLqaFLNra66uUJfTipDz/bcI0ZTSOIJbIEnUrB9xD8WDXrCTCg==}
+  /@trigen/scripts@8.0.0-alpha.30:
+    resolution: {integrity: sha512-WM6npRXrGrsoeDL6b1HnRpWa0yGraQ+1Kwdtfas72DFJf9UdVWf4w7jhETE41JzIzcpDysTO1PpmLAZqwuZu8A==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
