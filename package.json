@@ -30,6 +30,7 @@
   },
   "exports": "./src/index.ts",
   "publishConfig": {
+    "types": "./dist/index.d.ts",
     "exports": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
