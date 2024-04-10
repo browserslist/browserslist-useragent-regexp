@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.3](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.1.2...v4.1.3) (2024-04-10)
+
+
+### Bug Fixes
+
+* restore types field in package.json ([#1546](https://github.com/browserslist/browserslist-useragent-regexp/issues/1546)) ([3fdde6a](https://github.com/browserslist/browserslist-useragent-regexp/commit/3fdde6a8a8b5a2c634e4812da069678152d8f047)), closes [#1545](https://github.com/browserslist/browserslist-useragent-regexp/issues/1545)
+
 ### [4.1.2](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.1.1...v4.1.2) (2024-04-05)
 
 
