@@ -88,7 +88,7 @@
     "browserslist": "^4.22.2",
     "clean-publish": "^4.0.1",
     "commitizen": "^4.2.5",
-    "del-cli": "^5.0.0",
+    "del-cli": "^6.0.0",
     "eslint": "^8.28.0",
     "nano-staged": "^0.8.0",
     "rollup": "^4.6.1",
