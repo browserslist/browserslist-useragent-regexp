@@ -56,10 +56,6 @@
     "build:demo": "node examples/buildDemo > ./docs/demo.html && cp -R examples/demojs/ docs/demojs/",
     "build:docs": "typedoc ./src --out ./docs --excludeExternals && touch docs/.nojekyll",
     "commit": "cz",
-    "bumpVersion": "standard-version",
-    "createGithubRelease": "simple-github-release",
-    "release": "run bumpVersion [ git push origin master --tags ] createGithubRelease",
-    "release:beta": "run [ bumpVersion --prerelease beta ] [ git push origin master --tags ] [ createGithubRelease --prerelease ]",
     "updateGitHooks": "simple-git-hooks"
   },
   "peerDependencies": {
@@ -95,9 +91,7 @@
     "rollup-plugin-add-shebang": "^0.3.1",
     "rollup-plugin-swc3": "^0.11.0",
     "simple-git-hooks": "^2.8.1",
-    "simple-github-release": "^1.0.0",
     "size-limit": "^11.0.0",
-    "standard-version": "^9.5.0",
     "typedoc": "^0.25.1",
     "typescript": "^5.8.3",
     "vite": "^5.0.4",
