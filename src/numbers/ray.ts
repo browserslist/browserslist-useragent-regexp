@@ -76,19 +76,19 @@ export function rayToNumberPatterns(from: number) {
       if (j < ri) {
         nodes.push(SimpleCharNode(digit))
       } else
-      if (prev) {
-        if (j > ri) {
-          nodes.push(DigitPatternNode())
-        } else {
-          prev = rayRangeDigitPattern(digit, d)
-
-          if (prev) {
-            nodes.push(prev)
+        if (prev) {
+          if (j > ri) {
+            nodes.push(DigitPatternNode())
           } else {
-            return []
+            prev = rayRangeDigitPattern(digit, d)
+
+            if (prev) {
+              nodes.push(prev)
+            } else {
+              return []
+            }
           }
         }
-      }
 
       return nodes
     }, [])
