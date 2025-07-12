@@ -37,7 +37,6 @@ export function visitors(visitors: Visitors): TraversalHandlers {
 
   if (typeof every === 'function') {
     return {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '*': every,
       ...visitors
     }
