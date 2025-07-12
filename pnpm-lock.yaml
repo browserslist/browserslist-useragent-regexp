@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^0.5.1
     version: 0.5.1
   '@trigen/browserslist-config':
-    specifier: 8.0.0-alpha.30
-    version: 8.0.0-alpha.30
+    specifier: 8.0.0
+    version: 8.0.0
   '@trigen/eslint-config':
     specifier: 8.0.0-alpha.32
     version: 8.0.0-alpha.32(eslint@8.28.0)(typescript@5.1.3)
@@ -1087,9 +1087,9 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /@trigen/browserslist-config@8.0.0-alpha.30:
-    resolution: {integrity: sha512-hFaQT8GZtYO5jbtRUMI4kyjkDbFWNKcgTqjkNgoHoZwvDTN4JTCegjOTr00XH64K5SMxbVs7iv6SOE36G5NK+w==}
-    engines: {node: '>=10'}
+  /@trigen/browserslist-config@8.0.0:
+    resolution: {integrity: sha512-qMwN/a0kvnaN7OMtQtB9W4SnYQLdXTCT04qfzgnMZzO301erPMh1EFN16ewoDl5VjcwK9VH9/pudBHTssYoowQ==}
+    engines: {node: '>=20'}
     dev: true
 
   /@trigen/eslint-config@8.0.0-alpha.32(eslint@8.28.0)(typescript@5.1.3):
