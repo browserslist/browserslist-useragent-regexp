@@ -17,6 +17,8 @@
     "declarationMap": true,
     "inlineSourceMap": true,
     "outDir": "dist",
+    /* JavaScript */
+    "allowJs": true,
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
@@ -30,9 +32,9 @@
     "skipLibCheck": true
   },
   "include": [
-    "src"
+    "src",
+    "test",
+    "**/*.js"
   ],
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+  "exclude": []
 }

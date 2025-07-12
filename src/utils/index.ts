@@ -27,7 +27,6 @@ export function clone<T>(value: T): T {
     return value
   }
 
-  /* eslint-disable */
   const copy = Array.isArray(value)
     ? []
     : {}
@@ -36,7 +35,6 @@ export function clone<T>(value: T): T {
   for (i in value) {
     copy[i] = clone(value[i])
   }
-  /* eslint-enable */
 
   return copy as T
 }
