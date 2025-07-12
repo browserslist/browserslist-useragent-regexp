@@ -99,7 +99,7 @@
     "size-limit": "^11.0.0",
     "standard-version": "^9.5.0",
     "typedoc": "^0.25.1",
-    "typescript": "5.1.3",
+    "typescript": "5.8.3",
     "vite": "^5.0.4",
     "vitest": "^3.0.0"
   }
