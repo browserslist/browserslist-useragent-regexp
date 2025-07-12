@@ -50,8 +50,8 @@ devDependencies:
     specifier: 8.0.0-alpha.32
     version: 8.0.0-alpha.32(eslint@8.28.0)(typescript@5.1.3)
   '@trigen/scripts':
-    specifier: 8.0.0-alpha.30
-    version: 8.0.0-alpha.30
+    specifier: 8.0.0
+    version: 8.0.0
   '@types/node':
     specifier: ^20.10.1
     version: 20.10.1
@@ -954,6 +954,21 @@ packages:
     dev: true
     optional: true
 
+  /@simple-libs/child-process-utils@1.0.1:
+    resolution: {integrity: sha512-3nWd8irxvDI6v856wpPCHZ+08iQR0oHTZfzAZmnbsLzf+Sf1odraP6uKOHDZToXq3RPRV/LbqGVlSCogm9cJjg==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@simple-libs/stream-utils': 1.1.0
+      '@types/node': 22.16.3
+    dev: true
+
+  /@simple-libs/stream-utils@1.1.0:
+    resolution: {integrity: sha512-6rsHTjodIn/t90lv5snQjRPVtOosM7Vp0AKdrObymq45ojlgVwnpAqdc+0OBBrpEiy31zZ6/TKeIVqV1HwvnuQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@types/node': 22.16.3
+    dev: true
+
   /@sindresorhus/merge-streams@1.0.0:
     resolution: {integrity: sha512-rUV5WyJrJLoloD4NDN1V1+LDMDWOa4OTsT4yYJwQNpTU6FWxkxHpL7eu4w+DmiH8x/EAM1otkPE1+LaspIbplw==}
     engines: {node: '>=18'}
@@ -1120,14 +1135,16 @@ packages:
       - typescript
     dev: true
 
-  /@trigen/scripts@8.0.0-alpha.30:
-    resolution: {integrity: sha512-WM6npRXrGrsoeDL6b1HnRpWa0yGraQ+1Kwdtfas72DFJf9UdVWf4w7jhETE41JzIzcpDysTO1PpmLAZqwuZu8A==}
-    engines: {node: '>=14'}
+  /@trigen/scripts@8.0.0:
+    resolution: {integrity: sha512-GsZlxLB5pqEx028TZtiKjfyh/LLA4oGHArp9sQS0oYBPgOs6m13fTGyRcmL7MFzcIXlWR6V7WfnRdV79mrq/RA==}
+    engines: {node: '>=20'}
     hasBin: true
     dependencies:
+      '@simple-libs/child-process-utils': 1.0.1
+      '@simple-libs/stream-utils': 1.1.0
       argue-cli: 2.1.0
       dotenv: 16.1.4
-      p-limit: 5.0.0
+      p-limit: 6.2.0
     dev: true
 
   /@types/chai@5.2.2:
@@ -1170,6 +1187,12 @@ packages:
     resolution: {integrity: sha512-T2qwhjWwGH81vUEx4EXmBKsTJRXFXNZTL4v0gi01+zyBmCwzE6TyHszqX01m+QHTEq+EZNo13NeJIdEqf+Myrg==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
+
+  /@types/node@22.16.3:
+    resolution: {integrity: sha512-sr4Xz74KOUeYadexo1r8imhRtlVXcs+j3XK3TcoiYk7B1t3YRVJgtaD3cwX73NYb71pmVuMLNRhJ9XKdoDB74g==}
+    dependencies:
+      undici-types: 6.21.0
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -4415,11 +4438,11 @@ packages:
       yocto-queue: 1.0.0
     dev: true
 
-  /p-limit@5.0.0:
-    resolution: {integrity: sha512-/Eaoq+QyLSiXQ4lyYV23f14mZRQcXnxfHrN0vCai+ak9G0pp9iEQukIIZq5NccEvwRB8PUnZT0KsOoDCINS1qQ==}
+  /p-limit@6.2.0:
+    resolution: {integrity: sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA==}
     engines: {node: '>=18'}
     dependencies:
-      yocto-queue: 1.0.0
+      yocto-queue: 1.2.1
     dev: true
 
   /p-locate@2.0.0:
@@ -5537,6 +5560,10 @@ packages:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
 
+  /undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+    dev: true
+
   /unicorn-magic@0.1.0:
     resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
     engines: {node: '>=18'}
@@ -5862,6 +5889,11 @@ packages:
 
   /yocto-queue@1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
+    engines: {node: '>=12.20'}
+    dev: true
+
+  /yocto-queue@1.2.1:
+    resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
     dev: true
 
