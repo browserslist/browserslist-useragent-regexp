@@ -34,8 +34,8 @@ importers:
         specifier: ^19.0.0
         version: 19.8.1(@types/node@22.16.3)(commitizen@4.3.1(@types/node@22.16.3)(typescript@5.8.3))(inquirer@8.2.5)(typescript@5.8.3)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@4.45.0)
+        specifier: ^16.0.0
+        version: 16.0.1(rollup@4.45.0)
       '@size-limit/file':
         specifier: ^11.0.0
         version: 11.2.0(size-limit@11.2.0)
@@ -476,8 +476,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@rollup/plugin-node-resolve@15.3.1':
-    resolution: {integrity: sha512-tgg6b91pAybXHJQMAAwW9VuWBO6Thi+q7BCNARLwSqlmsHz0XYURtGvh/AuwSADXSI4h/2uHbs7s4FzlZDGSGA==}
+  '@rollup/plugin-node-resolve@16.0.1':
+    resolution: {integrity: sha512-tk5YCxJWIG81umIvNkSod2qK5KyQW19qcBF/B78n1bjtOON6gzKoVeSzAE8yHCZEDmqkHKkxplExA8KzdJLJpA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
@@ -3153,7 +3153,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@rollup/plugin-node-resolve@15.3.1(rollup@4.45.0)':
+  '@rollup/plugin-node-resolve@16.0.1(rollup@4.45.0)':
     dependencies:
       '@rollup/pluginutils': 5.2.0(rollup@4.45.0)
       '@types/resolve': 1.20.2
