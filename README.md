@@ -19,7 +19,7 @@
 [node-url]: https://nodejs.org
 
 [deps]: https://img.shields.io/librariesio/release/npm/browserslist-useragent-regexp
-[deps-url]: https://libraries.io/npm/browserslist-useragent-regexp/tree
+[deps-url]: https://libraries.io/npm/browserslist-useragent-regexp
 
 [size]: https://packagephobia.com/badge?p=browserslist-useragent-regexp
 [size-url]: https://packagephobia.com/result?p=browserslist-useragent-regexp
