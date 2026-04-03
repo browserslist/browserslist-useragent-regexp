@@ -111,7 +111,8 @@ export const useragents = [
    */
   {
     ua: 'Mozilla/5.0 (Windows NT 5.2; rv:42.0) Gecko/20100101 Firefox/42.0',
-    yes: ['firefox >= 40']
+    yes: ['firefox >= 40'],
+    no: ['> 9000%']
   },
   /**
    * Firefox Desktop bug #1530

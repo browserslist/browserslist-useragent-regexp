@@ -109,10 +109,15 @@ export function RepetitionNode(expression: Expression, quantifier: Quantifier): 
   }
 }
 
-export function DisjunctionNode(...expressions: (Expression | Expression[])[]): Disjunction | Expression {
+export function DisjunctionNode(...expressions: (Expression | Expression[])[]): Disjunction | Expression | CharacterClass {
   const exprs = concat(expressions).filter(Boolean)
 
-  if (exprs.length === 1) {
+  if (exprs.length === 0) {
+    return {
+      type: 'CharacterClass',
+      expressions: []
+    }
+  } else if (exprs.length === 1) {
     return exprs[0]
   }
 
