@@ -76,8 +76,8 @@ importers:
         specifier: ^9.31.0
         version: 9.31.0(jiti@2.4.2)
       nano-staged:
-        specifier: ^0.8.0
-        version: 0.8.0
+        specifier: ^0.9.0
+        version: 0.9.0
       rollup:
         specifier: ^4.6.1
         version: 4.45.0
@@ -2121,8 +2121,8 @@ packages:
   mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
 
-  nano-staged@0.8.0:
-    resolution: {integrity: sha512-QSEqPGTCJbkHU2yLvfY6huqYPjdBrOaTMKatO1F8nCSrkQGXeKwtCiCnsdxnuMhbg3DTVywKaeWLGCE5oJpq0g==}
+  nano-staged@0.9.0:
+    resolution: {integrity: sha512-0JfyX4i0Vp5HhC9RDtJ1kp7psz8CFuS3Gya3Z6WZv//QCwA9dPzi1S803VdR0c0P6R7sSvweZ5mSJmYQ/N+loQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
 
@@ -5052,7 +5052,7 @@ snapshots:
 
   mute-stream@0.0.8: {}
 
-  nano-staged@0.8.0:
+  nano-staged@0.9.0:
     dependencies:
       picocolors: 1.1.1
 
