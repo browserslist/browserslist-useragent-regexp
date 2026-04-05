@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.4](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.1.3...v4.1.4) (2026-04-05)
+
+### Bug Fixes
+
+* faithfully match an empty set of browsers ([#1583](https://github.com/browserslist/browserslist-useragent-regexp/issues/1583)) ([0369751](https://github.com/browserslist/browserslist-useragent-regexp/commit/0369751bc5ff63c8fa6f449960e1192c5c061676))
+
 ### [4.1.3](https://github.com/browserslist/browserslist-useragent-regexp/compare/v4.1.2...v4.1.3) (2024-04-10)
 
 
