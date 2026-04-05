@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - master
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -59,4 +63,3 @@ jobs:
         with:
           workflow: release
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          npm-token: ${{ secrets.NPM_TOKEN }}
