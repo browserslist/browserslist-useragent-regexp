@@ -18,7 +18,7 @@ jobs:
       workflow: ${{ steps.check.outputs.workflow }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Context check
         id: check
         uses: trigensoftware/simple-release-action@latest
@@ -32,7 +32,7 @@ jobs:
     if: needs.check.outputs.workflow == 'pull-request'
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Create or update pull request
         uses: trigensoftware/simple-release-action@latest
         with:
@@ -45,7 +45,7 @@ jobs:
     if: needs.check.outputs.workflow == 'release'
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
